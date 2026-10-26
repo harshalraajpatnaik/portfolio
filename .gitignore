@@ -1,0 +1,70 @@
+# =============================================================================
+# Root .gitignore for Harshal Raaj Patnaik Portfolio Monorepo
+# =============================================================================
+
+# Operating System & Cache
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# IDEs & Editor Configuration
+.idea/
+*.iml
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.project
+.classpath
+.settings/
+*.sublime-workspace
+*.sublime-project
+
+# Node / Angular Frontend Build Artifacts
+frontend/node_modules/
+frontend/dist/
+frontend/.angular/
+frontend/.sass-cache/
+frontend/tmp/
+frontend/out-tsc/
+frontend/bazel-out/
+frontend/coverage/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Java / Spring Boot Backend Build Artifacts
+backend/target/
+*.class
+*.jar
+*.war
+*.ear
+*.nar
+*.exec
+*.zip
+*.tar.gz
+*.rar
+hs_err_pid*
+replay_pid*
+/target/
+.mvn/wrapper/maven-wrapper.jar
+
+# Logs & Runtime Dumps
+logs/
+*.log
+*.dump
+
+# Local Environment Variables & Secrets
+.env
+.env.local
+.env.*.local
+
+# Root Temporary Media Files (Official file tracked under frontend/src/assets/audio/pokemon-theme.mp3)
+Original Pokemon Theme Singer*.mp3

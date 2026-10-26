@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Harshal Raaj Patnaik - Resume</title>
+  <style>
+    @page {
+      size: letter;
+      margin: 0.42in 0.52in;
+    }
+    body {
+      font-family: "Latin Modern Roman", "Computer Modern Roman", "Times New Roman", Times, serif;
+      font-size: 9.2pt;
+      line-height: 1.22;
+      color: #000;
+      margin: 0;
+      padding: 0;
+      background: #fff;
+    }
+    a {
+      color: #000;
+      text-decoration: underline;
+    }
+    .header {
+      text-align: center;
+      margin-bottom: 4pt;
+    }
+    .name {
+      font-size: 19pt;
+      font-variant: small-caps;
+      font-weight: bold;
+      letter-spacing: 0.5pt;
+      margin-bottom: 1pt;
+    }
+    .target-role {
+      font-size: 9pt;
+      font-weight: bold;
+      color: #222;
+      margin-bottom: 2pt;
+    }
+    .contact {
+      font-size: 8.6pt;
+      color: #111;
+      line-height: 1.3;
+    }
+    .section-title {
+      font-size: 10.2pt;
+      font-weight: bold;
+      font-variant: small-caps;
+      border-bottom: 1px solid #000;
+      padding-bottom: 1pt;
+      margin-top: 5pt;
+      margin-bottom: 2.5pt;
+      text-transform: uppercase;
+      letter-spacing: 0.3pt;
+    }
+    .subheading {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-top: 2pt;
+      margin-bottom: 1pt;
+    }
+    .subheading-title {
+      font-weight: bold;
+      font-size: 9.2pt;
+    }
+    .subheading-date {
+      font-weight: bold;
+      font-size: 8.8pt;
+      text-align: right;
+    }
+    .subheading-role {
+      font-style: italic;
+      font-size: 8.8pt;
+    }
+    .subheading-loc {
+      font-style: italic;
+      font-size: 8.8pt;
+      text-align: right;
+    }
+    ul {
+      margin: 1.5pt 0 2.5pt 0;
+      padding-left: 11pt;
+    }
+    li {
+      font-size: 8.6pt;
+      line-height: 1.23;
+      margin-bottom: 1.2pt;
+    }
+    .skills-block {
+      font-size: 8.6pt;
+      line-height: 1.3;
+      margin-top: 1.5pt;
+    }
+    .skills-label {
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="name">HARSHAL RAAJ PATNAIK</div>
+    <div class="target-role">Senior Full-Stack &amp; Cloud Systems Engineer | Technical Product &amp; Platform Lead</div>
+    <div class="contact">
+      +91-9982143442 &nbsp;~&nbsp;
+      <a href="mailto:harshalraajpatnaik@outlook.com">harshalraajpatnaik@outlook.com</a> &nbsp;~&nbsp;
+      <a href="https://linkedin.com/in/harshalraajpatnaik/">linkedin.com/in/harshalraajpatnaik</a> &nbsp;~&nbsp;
+      <a href="https://github.com/harshalraajpatnaik">github.com/harshalraajpatnaik</a>
+    </div>
+  </div>
+
+  <!-- EDUCATION -->
+  <div class="section-title">Education</div>
+  <div class="subheading">
+    <div class="subheading-title">Indian Institute of Management Kozhikode (IIMK)</div>
+    <div class="subheading-date">2025 – Present</div>
+  </div>
+  <div class="subheading">
+    <div class="subheading-role">Executive Post Graduate Programme in Management (EPGPM) – Business Strategy, Platform Economics &amp; Operations</div>
+    <div class="subheading-loc">Kochi, India</div>
+  </div>
+
+  <div class="subheading" style="margin-top: 2.5pt;">
+    <div class="subheading-title">SRM Institute of Science and Technology</div>
+    <div class="subheading-date">2017 – 2021</div>
+  </div>
+  <div class="subheading">
+    <div class="subheading-role">Bachelor of Technology in Computer Science and Engineering (CGPA: 8.76 / 87.6%)</div>
+    <div class="subheading-loc">Chennai, India</div>
+  </div>
+
+  <!-- PROFESSIONAL EXPERIENCE -->
+  <div class="section-title">Professional Experience</div>
+
+  <div class="subheading">
+    <div class="subheading-title">Tata Communications Ltd.</div>
+    <div class="subheading-date">Jul 2021 – Present</div>
+  </div>
+  <div class="subheading">
+    <div class="subheading-role">Software Development Engineer (Full-Stack &amp; Cloud Platforms)</div>
+    <div class="subheading-loc">Chennai, India</div>
+  </div>
+  <ul>
+    <li>Reduced cloud batch scheduler execution latency by <strong>92.6% (slashing cycle time from ~18 minutes down to 80 seconds)</strong> across distributed cloud clusters by partitioning Cassandra mutations into strict 50-item batches, implementing multi-level Redis caching, and tuning HikariCP connection pools.</li>
+    <li>Architected the full-stack onboarding workflow for <strong>Caringo Swarm S3-compatible cloud object storage</strong> using Java, Maven, and Angular, automating bucket provisioning and dynamic DNS A-record associations for <strong>100% self-service cloud storage rollout</strong>.</li>
+    <li>Engineered multi-hypervisor orchestration dashboard managing heterogeneous <strong>KVM, VMware ESXi, and OLVM clusters</strong>; decoupled long-running provisioning tasks via asynchronous <strong>RabbitMQ message queues</strong>, ensuring zero UI blocking and reliable state reconciliation.</li>
+    <li>Owned and scaled the core enterprise VM tracking service serving <strong>executive leadership</strong>, delivering real-time virtual infrastructure capacity tracking, state reconciliation, and multi-tenant host allocation.</li>
+    <li>Automated perimeter security provisioning via <strong>FortiGate REST APIs</strong> for firewall rules and IPsec VPNs; engineered an in-process sliding-window rate limiter that <strong>eliminated 100% of HTTP 429 rate-limiting failures</strong>.</li>
+    <li>Spearheaded frontend modernization from legacy AngularJS to modern <strong>Angular 17</strong>, re-architecting monolithic views into reactive, modular components and <strong>reducing client-side render times and maintenance overhead</strong>.</li>
+    <li>Automated continuous integration and artifact deployment pipelines via <strong>Jenkins CI</strong>, reducing release cycle friction and enforcing automated <strong>JaCoCo code quality and regression gates</strong>.</li>
+    <li>Stepped up as <strong>Acting Scrum Master</strong> facilitating sprint ceremonies, cross-functional dependency tracking, and timely production delivery; earned <strong>3× Extra Mile Commitment Awards</strong> for operational excellence.</li>
+  </ul>
+
+  <!-- STRATEGY & TECH CAPSTONE -->
+  <div class="section-title">Strategy &amp; Technical Product Capstone</div>
+
+  <div class="subheading">
+    <div class="subheading-title">SthiraX: Distributed CO₂-Mineralization Platform for Certified Precast Materials <em>| IIM Kozhikode BPP</em></div>
+    <div class="subheading-date">In Progress</div>
+  </div>
+  <ul>
+    <li>Architected an asset-light climate-tech platform retrofitting regional precast plants with modular industrial CO₂-curing units, targeting India's <strong>mandatory 5%–25% recycled precast mandate by 2030 across 20,000+ sqm projects</strong> (addressing India's &lt;1% recycling baseline).</li>
+    <li>Engineered batch-level <strong>MRV (Measurement, Reporting &amp; Verification) software</strong> generating cryptographically verifiable Digital Product Passports for developers and EPC contractors fulfilling legal EPR compliance.</li>
+    <li>Designed an asset-light multi-tiered monetization strategy (equipment leasing, per-tonne curing royalties, and MRV SaaS subscriptions), modeling viable unit economics independent of voluntary carbon credit market volatility.</li>
+    <li>Developed a geospatial multi-factor ranking algorithm evaluating industrial CO₂ haul economics, steel slag feedstock supply, and regional precast manufacturing cluster density.</li>
+  </ul>
+
+  <!-- TECHNICAL & LEADERSHIP SKILLS -->
+  <div class="section-title">Technical &amp; Leadership Competencies</div>
+  <div class="skills-block">
+    <div><span class="skills-label">Core Languages:</span> Java (8/11/17), Python, TypeScript, JavaScript, SQL</div>
+    <div><span class="skills-label">Backend &amp; Distributed Systems:</span> Spring Boot 3, Hibernate/JPA, RabbitMQ (AMQP), REST APIs, Microservices Architecture, Flowable BPMN</div>
+    <div><span class="skills-label">Frontend &amp; UI Engineering:</span> Angular 17, AngularJS, RxJS, HTML5/CSS3, Tailwind CSS, Responsive Web Design, State Management</div>
+    <div><span class="skills-label">Databases, Caching &amp; Cloud:</span> MySQL, Cassandra, Redis, Caringo Swarm / S3, KVM, VMware ESXi, OLVM, Docker</div>
+    <div><span class="skills-label">DevOps, SRE &amp; Security:</span> Jenkins CI/CD, Git, Linux, Maven, FortiGate APIs, Postman, Swagger/OpenAPI, SonarQube, JaCoCo</div>
+    <div><span class="skills-label">Product Strategy &amp; Leadership:</span> Platform Business Models, Unit Economics, EPR Compliance, Agile / Scrum Master, Cross-Functional Leadership</div>
+  </div>
+
+  <!-- HONORS & CERTIFICATIONS -->
+  <div class="section-title">Honors, Certifications &amp; Extracurricular</div>
+  <ul>
+    <li><strong>3× Extra Mile Commitment Award</strong> – Tata Communications Ltd. for critical cloud platform delivery and reliability.</li>
+    <li><strong>Flipkart Grid 2.0 Engineering Challenge</strong> – Team Lead; achieved <strong>Top 150 Nationwide Rank</strong> out of 20,000+ teams.</li>
+    <li><strong>Architecting with Google Compute Engine</strong> (Google Cloud / Coursera) &amp; <strong>Full Stack Web Development</strong> (Coding Ninjas).</li>
+    <li><strong>Rank 2404 Globally</strong> in Second Round of 5th SOF International Mathematics Olympiad (Science Olympiad Foundation).</li>
+  </ul>
+
+</body>
+</html>

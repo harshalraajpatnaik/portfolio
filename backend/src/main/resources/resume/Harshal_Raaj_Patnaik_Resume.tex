@@ -1,0 +1,160 @@
+%-------------------------
+% Executive Tech & Business Resume in LaTeX (Google ATS-Standard Format)
+% Candidate: Harshal Raaj Patnaik
+% Target: Senior Full-Stack & Cloud Systems Engineer | Technical Product & Platform Lead
+% Strictly 1-Page Format following Google's "Accomplished [X] relative to [Y] by doing [Z]" Framework
+%-------------------------
+
+\documentclass[letterpaper,10pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\usepackage{fontawesome5}
+\input{glyphtounicode}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Tight single-page geometry
+\addtolength{\oddsidemargin}{-0.65in}
+\addtolength{\evensidemargin}{-0.65in}
+\addtolength{\textwidth}{1.3in}
+\addtolength{\topmargin}{-0.75in}
+\addtolength{\textheight}{1.52in}
+
+\urlstyle{same}
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Section styling with neat horizontal rule
+\titleformat{\section}{
+  \vspace{-5pt}\scshape\raggedright\large\bfseries
+}{}{0em}{}[\color{black}\titlerule \vspace{-4pt}]
+
+\pdfgentounicode=1
+
+% Custom command helpers
+\newcommand{\resumeItem}[1]{
+  \item\small{{#1 \vspace{-2pt}}}
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{1.0\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & \textbf{\small #2} \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-5pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{1.0\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & \textbf{\small #2}\\
+    \end{tabular*}\vspace{-5pt}
+}
+
+\renewcommand\labelitemi{$\vcenter{\hbox{\tiny$\bullet$}}$}
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.0in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}[leftmargin=0.15in, rightmargin=0.0in]}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-4pt}}
+
+%-------------------------------------------
+\begin{document}
+
+%----------HEADING----------
+\begin{center}
+    {\Huge \scshape HARSHAL RAAJ PATNAIK} \\ \vspace{1pt}
+    \textbf{\small Senior Full-Stack \& Cloud Systems Engineer $|$ Technical Product \& Platform Lead} \\ \vspace{2pt}
+    \small \raisebox{-0.1\height}\faPhone\ +91-9982143442 ~ 
+    \href{mailto:harshalraajpatnaik@outlook.com}{\raisebox{-0.2\height}\faEnvelope\ \underline{harshalraajpatnaik@outlook.com}} ~ 
+    \href{https://linkedin.com/in/harshalraajpatnaik/}{\raisebox{-0.2\height}\faLinkedin\ \underline{linkedin.com/in/harshalraajpatnaik}} ~ 
+    \href{https://github.com/harshalraajpatnaik}{\raisebox{-0.2\height}\faGithub\ \underline{github.com/harshalraajpatnaik}}
+    \vspace{-6pt}
+\end{center}
+
+%-----------EDUCATION-----------
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Indian Institute of Management Kozhikode (IIMK)}{2025 -- Present}
+      {Executive Post Graduate Programme in Management (EPGPM) -- Business Strategy, Platform Economics \& Operations}{Kochi, India}
+    \resumeSubheading
+      {SRM Institute of Science and Technology}{2017 -- 2021}
+      {Bachelor of Technology in Computer Science and Engineering (CGPA: 8.76 / 87.6\%)}{Chennai, India}
+  \resumeSubHeadingListEnd
+
+%-----------EXPERIENCE-----------
+\section{Professional Experience}
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+      {Tata Communications Ltd.}{Jul 2021 -- Present}
+      {Software Development Engineer (Full-Stack \& Cloud Platforms)}{Chennai, India}
+      \resumeItemListStart
+        \resumeItem{Reduced cloud batch scheduler execution latency by \textbf{92.6\% (slashing cycle time from $\sim$18 minutes down to 80 seconds)} across distributed cloud clusters by partitioning Cassandra mutations into strict 50-item batches, implementing multi-level Redis caching, and tuning HikariCP connection pools.}
+        \resumeItem{Architected the full-stack onboarding workflow for \textbf{Caringo Swarm S3-compatible cloud object storage} using Java, Maven, and Angular, automating bucket provisioning and dynamic DNS A-record associations for \textbf{100\% self-service cloud storage rollout}.}
+        \resumeItem{Engineered multi-hypervisor orchestration dashboard managing heterogeneous \textbf{KVM, VMware ESXi, and OLVM clusters}; decoupled long-running provisioning tasks via asynchronous \textbf{RabbitMQ message queues}, ensuring zero UI blocking and reliable state reconciliation.}
+        \resumeItem{Owned and scaled the core enterprise VM tracking service serving \textbf{executive leadership}, delivering real-time virtual infrastructure capacity tracking, state reconciliation, and multi-tenant host allocation.}
+        \resumeItem{Automated perimeter security provisioning via \textbf{FortiGate REST APIs} for firewall rules and IPsec VPNs; engineered an in-process sliding-window rate limiter that \textbf{eliminated 100\% of HTTP 429 rate-limiting failures}.}
+        \resumeItem{Spearheaded frontend modernization from legacy AngularJS to modern \textbf{Angular 17}, re-architecting monolithic views into reactive, modular components and \textbf{reducing client-side render times and maintenance overhead}.}
+        \resumeItem{Automated continuous integration and artifact deployment pipelines via \textbf{Jenkins CI}, reducing release cycle friction and enforcing automated \textbf{JaCoCo code quality and regression gates}.}
+        \resumeItem{Stepped up as \textbf{Acting Scrum Master} facilitating sprint ceremonies, cross-functional dependency tracking, and timely production delivery; earned \textbf{3$\times$ Extra Mile Commitment Awards} for operational excellence.}
+      \resumeItemListEnd
+
+  \resumeSubHeadingListEnd
+
+%-----------STRATEGY & TECH CAPSTONE-----------
+\section{Strategy \& Technical Product Capstone}
+  \resumeSubHeadingListStart
+    \resumeProjectHeading
+      {\textbf{SthiraX: Distributed $\text{CO}_2$-Mineralization Platform for Certified Precast Materials} $|$ \emph{IIM Kozhikode BPP}}{In Progress}
+      \resumeItemListStart
+        \resumeItem{Architected an asset-light climate-tech platform retrofitting regional precast plants with modular industrial $\text{CO}_2$-curing units, targeting India's \textbf{mandatory 5\%--25\% recycled precast mandate by 2030 across 20,000+ sqm projects} (addressing India's $<$1\% recycling baseline).}
+        \resumeItem{Engineered batch-level \textbf{MRV (Measurement, Reporting \& Verification) software} generating cryptographically verifiable Digital Product Passports for developers and EPC contractors fulfilling legal EPR compliance.}
+        \resumeItem{Designed an asset-light multi-tiered monetization strategy (equipment leasing, per-tonne curing royalties, and MRV SaaS subscriptions), modeling viable unit economics independent of voluntary carbon credit market volatility.}
+        \resumeItem{Developed a geospatial multi-factor ranking algorithm evaluating industrial $\text{CO}_2$ haul economics, steel slag feedstock supply, and regional precast manufacturing cluster density.}
+      \resumeItemListEnd
+  \resumeSubHeadingListEnd
+
+%-----------TECHNICAL SKILLS-----------
+\section{Technical \& Leadership Competencies}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Core Languages}{: Java (8/11/17), Python, TypeScript, JavaScript, SQL} \\
+     \textbf{Backend \& Distributed Systems}{: Spring Boot 3, Hibernate/JPA, RabbitMQ (AMQP), REST APIs, Microservices Architecture, Flowable BPMN} \\
+     \textbf{Frontend \& UI Engineering}{: Angular 17, AngularJS, RxJS, HTML5/CSS3, Tailwind CSS, Responsive Web Design, State Management} \\
+     \textbf{Databases, Caching \& Cloud}{: MySQL, Cassandra, Redis, Caringo Swarm / S3, KVM, VMware ESXi, OLVM, Docker} \\
+     \textbf{DevOps, SRE \& Security}{: Jenkins CI/CD, Git, Linux, Maven, FortiGate APIs, Postman, Swagger/OpenAPI, SonarQube, JaCoCo} \\
+     \textbf{Product Strategy \& Leadership}{: Platform Business Models, Unit Economics, EPR Compliance, Agile / Scrum Master, Cross-Functional Leadership}
+    }}
+ \end{itemize}
+ \vspace{-4pt}
+
+%-----------HONORS & CERTIFICATIONS-----------
+\section{Honors, Certifications \& Extracurricular}
+  \resumeSubHeadingListStart
+    \resumeProjectHeading
+      {\textbf{3$\times$ Extra Mile Commitment Award} -- Tata Communications Ltd. for critical cloud platform delivery and reliability}{}
+    \resumeProjectHeading
+      {\textbf{Flipkart Grid 2.0 Engineering Challenge} -- Team Lead; achieved \textbf{Top 150 Nationwide Rank} out of 20,000+ teams}{}
+    \resumeProjectHeading
+      {\textbf{Architecting with Google Compute Engine} (Google Cloud / Coursera) \& \textbf{Full Stack Web Development} (Coding Ninjas)}{}
+    \resumeProjectHeading
+      {\textbf{Rank 2404 Globally} in Second Round of 5th SOF International Mathematics Olympiad (Science Olympiad Foundation)}{}
+  \resumeSubHeadingListEnd
+
+\end{document}

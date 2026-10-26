@@ -1,0 +1,59 @@
+<!-- Dramatic Pokéball Throw & Burst Intro (Shown on first visit or re-triggered) -->
+<app-pokeball-intro
+  *ngIf="!introShown"
+  (completed)="onIntroCompleted()">
+</app-pokeball-intro>
+
+<!-- Main Pokédex Experience -->
+<div class="min-h-screen bg-[#07090e] text-white selection:bg-crimson selection:text-white">
+  <!-- Top Pokédex Navigation -->
+  <app-nav></app-nav>
+
+  <main>
+    <!-- Section 1: Pokédex Hero & Interactive Starter Pokémon -->
+    <app-hero [profile]="profile"></app-hero>
+
+    <!-- Section 2: Pokémon Battle Ready Case Studies (Pikachu, Charmander, Squirtle, Bulbasaur, Psyduck, Onix) -->
+    <app-projects [projects]="projects"></app-projects>
+
+    <!-- Section 3: Tech × Business Synergy Spotlight: SthiraX Platform Capstone -->
+    <app-sthirax></app-sthirax>
+
+    <!-- Section 4: Gym Leaders & Mentors (Ash, Misty, Brock RPG Dialogue) -->
+    <app-trainers></app-trainers>
+
+    <!-- Section 5: Real-Time Spring Boot 3 Telemetry -->
+    <app-telemetry [telemetry]="telemetry"></app-telemetry>
+
+    <!-- Section 6: Engineering Competencies & Stats -->
+    <app-skills></app-skills>
+
+    <!-- Section 7: Official 1-Page Google ATS Resume -->
+    <app-resume [profile]="profile"></app-resume>
+
+    <!-- Section 8: Contact Transmission Gateway -->
+    <app-contact></app-contact>
+  </main>
+
+  <!-- Global Pokédex Footer -->
+  <footer class="py-12 px-6 border-t border-red-900/40 bg-black/80 text-xs font-mono text-white/40 pb-24 sm:pb-12">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <span class="w-3 h-3 rounded-full bg-crimson animate-pulse"></span>
+        <span class="text-white/80 font-bold">POKÉDEX PRO · HARSHAL RAAJ PATNAIK</span>
+      </div>
+      <div class="flex flex-wrap items-center gap-4 text-[11px]">
+        <span>POWERED BY SPRING BOOT 3 & ANGULAR 17</span>
+        <span>•</span>
+        <a href="http://localhost:8080/swagger-ui.html" target="_blank" rel="noopener noreferrer" class="hover:text-energy transition-colors">SWAGGER UI ↗</a>
+        <span>•</span>
+        <a href="http://localhost:8080/api/v1/resume/download" target="_blank" rel="noopener noreferrer" class="hover:text-energy transition-colors">ATS RESUME (PDF) ↗</a>
+        <span>•</span>
+        <a href="http://localhost:8080/api/v1/resume/latex" target="_blank" rel="noopener noreferrer" class="hover:text-cyan-glow transition-colors">RESUME (.TEX) ↗</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Official Pokémon Theme Song Floating Player (YouTube fCkeLBGSINs) -->
+  <app-pokemon-player></app-pokemon-player>
+</div>

@@ -1,0 +1,59 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: portfolio-backend
+
+  # Disable OAuth2 auto-config for simple JWT setup
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          # Use symmetric secret for simple portfolio JWT signing
+          # Override via PORTFOLIO_JWT_SECRET env var in production
+          issuer-uri: ""
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      show-details: always
+  info:
+    env:
+      enabled: true
+
+info:
+  app:
+    name: Harshal Raaj Patnaik — Portfolio API
+    version: "@project.version@"
+    description: REST API powering the portfolio. Built with Spring Boot 3, Java 17.
+
+# JWT Configuration (override via env vars in production)
+portfolio:
+  security:
+    jwt-secret: "${PORTFOLIO_JWT_SECRET:your-very-long-dev-secret-key-at-least-512-bits-long-for-hmac-sha}"
+    jwt-expiration-ms: 86400000  # 24 hours
+  admin:
+    username: "${PORTFOLIO_ADMIN_USERNAME:admin}"
+    # BCrypt-hashed password (override via env). Default is 'changeme!'
+    password-hash: "${PORTFOLIO_ADMIN_PASSWORD_HASH:$2a$12$PLhGD2GyvUzm0MlibCEdoOVCFOALY.eoSEDq0nEj1WA65bSRDPnA6}"
+  rate-limit:
+    contact-capacity: 5
+    contact-refill-minutes: 60
+
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    display-operation-id: false
+    tags-sorter: alpha
+    operations-sorter: alpha
+  info:
+    title: "Portfolio REST API"
+    description: "Live API powering Harshal Raaj Patnaik's portfolio. Demonstrates production-grade Spring Boot 3 patterns including rate limiting, Spring Security, and Actuator telemetry."
+    version: "1.0.0"
