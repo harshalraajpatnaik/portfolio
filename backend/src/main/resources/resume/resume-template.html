@@ -2,20 +2,24 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Harshal Raaj Patnaik - Resume</title>
+  <title></title>
   <style>
     @page {
       size: letter;
-      margin: 0.38in 0.48in;
+      margin: 0; /* Suppresses Chrome default headers (date, title) and footers (URL, page) */
+    }
+    *, *::before, *::after {
+      box-sizing: border-box;
     }
     body {
-      font-family: "Latin Modern Roman", "Computer Modern Roman", "Times New Roman", Times, serif;
-      font-size: 8.8pt;
-      line-height: 1.20;
+      font-family: "Times New Roman", Times, Georgia, "DejaVu Serif", serif;
+      font-size: 8.7pt;
+      line-height: 1.21;
       color: #000;
       margin: 0;
-      padding: 0;
+      padding: 0.35in 0.45in;
       background: #fff;
+      -webkit-font-smoothing: antialiased;
     }
     a {
       color: #000;
@@ -35,7 +39,7 @@
     .target-role {
       font-size: 8.8pt;
       font-weight: bold;
-      color: #222;
+      color: #111;
       margin-bottom: 2pt;
     }
     .contact {

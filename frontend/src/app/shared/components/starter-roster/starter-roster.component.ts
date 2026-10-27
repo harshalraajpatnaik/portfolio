@@ -19,13 +19,13 @@ export interface PokemonCompanion {
   standalone: true,
   imports: [CommonModule],
   template: `
-    <div class="glass-card p-6 rounded-2xl border-2 border-crimson/30 relative overflow-hidden bg-slate-900/90 shadow-2xl">
+    <div class="glass-card p-4 sm:p-5 rounded-2xl border-2 border-crimson/30 relative overflow-hidden bg-slate-900/90 shadow-2xl">
       <!-- Pokédex Header Bar -->
-      <div class="flex items-center justify-between pb-4 mb-5 border-b border-white/10">
-        <div class="flex items-center gap-2.5">
+      <div class="flex items-center justify-between pb-2.5 mb-3.5 border-b border-white/10">
+        <div class="flex items-center gap-2">
           <!-- Sensor lens -->
-          <div class="w-7 h-7 rounded-full bg-cyan-glow border-2 border-white/80 shadow-[0_0_12px_#00E5FF] animate-pulse flex items-center justify-center">
-            <div class="w-2.5 h-2.5 rounded-full bg-white/80"></div>
+          <div class="w-6 h-6 rounded-full bg-cyan-glow border-2 border-white/80 shadow-[0_0_10px_#00E5FF] animate-pulse flex items-center justify-center">
+            <div class="w-2 h-2 rounded-full bg-white/80"></div>
           </div>
           <!-- LEDs -->
           <div class="flex items-center gap-1.5 ml-1">
@@ -33,26 +33,26 @@ export interface PokemonCompanion {
             <span class="w-2 h-2 rounded-full bg-energy"></span>
             <span class="w-2 h-2 rounded-full bg-grass"></span>
           </div>
-          <span class="text-xs font-mono font-bold tracking-wider text-white/80 ml-2">POKÉDEX PARTY ROSTER</span>
+          <span class="text-[11px] font-mono font-bold tracking-wider text-white/80 ml-1.5">POKÉDEX PARTY ROSTER</span>
         </div>
-        <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-white/10 text-energy font-bold">
+        <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-white/10 text-energy font-bold">
           ACTIVE: {{ selectedPokemon.name.toUpperCase() }}
         </span>
       </div>
 
       <!-- Main Pokémon Showcase Display -->
-      <div class="grid grid-cols-1 sm:grid-cols-12 gap-6 items-center">
+      <div class="grid grid-cols-1 sm:grid-cols-12 gap-4 items-center">
         <!-- 3D Animated Pokémon Sprite Display -->
-        <div class="sm:col-span-5 flex flex-col items-center justify-center p-6 rounded-xl bg-black/60 border border-white/10 relative min-h-[180px]">
+        <div class="sm:col-span-5 flex flex-col items-center justify-center p-3 rounded-xl bg-black/60 border border-white/10 relative min-h-[135px]">
           <div class="absolute inset-0 bg-radial-glow opacity-30 pointer-events-none"
                [ngStyle]="{ 'background': 'radial-gradient(circle, ' + selectedPokemon.typeColor + '33 0%, transparent 70%)' }"></div>
           
           <img
             [src]="selectedPokemon.spriteUrl"
             [alt]="selectedPokemon.name"
-            class="h-28 sm:h-32 object-contain drop-shadow-[0_8px_16px_rgba(0,0,0,0.8)] transition-all transform hover:scale-110" />
+            class="h-20 sm:h-24 object-contain drop-shadow-[0_8px_16px_rgba(0,0,0,0.8)] transition-all transform hover:scale-110" />
 
-          <div class="text-xs font-mono mt-3 px-3 py-1 rounded-full border text-white flex items-center gap-1.5"
+          <div class="text-[10.5px] font-mono mt-2 px-2.5 py-0.5 rounded-full border text-white flex items-center gap-1.5"
                [ngStyle]="{ 'border-color': selectedPokemon.typeColor, 'background-color': selectedPokemon.typeColor + '22' }">
             <span>{{ selectedPokemon.typeEmoji }}</span>
             <span class="font-bold tracking-wide">{{ selectedPokemon.type }}</span>
@@ -61,20 +61,20 @@ export interface PokemonCompanion {
         </div>
 
         <!-- Pokémon Tech Specs -->
-        <div class="sm:col-span-7 space-y-3 font-mono">
+        <div class="sm:col-span-7 space-y-2 font-mono">
           <div>
-            <h4 class="text-2xl font-bold text-white tracking-tight flex items-center gap-2">
+            <h4 class="text-lg sm:text-xl font-bold text-white tracking-tight flex items-center gap-2">
               <span>{{ selectedPokemon.name }}</span>
             </h4>
-            <p class="text-xs text-energy font-medium mt-0.5">{{ selectedPokemon.engineeringRole }}</p>
+            <p class="text-[11px] text-energy font-medium mt-0.5">{{ selectedPokemon.engineeringRole }}</p>
           </div>
 
-          <p class="text-xs text-white/70 italic bg-white/5 p-2.5 rounded-lg border border-white/5 leading-relaxed">
+          <p class="text-[10.5px] text-white/70 italic bg-white/5 p-2 rounded-lg border border-white/5 leading-snug">
             "{{ selectedPokemon.quote }}"
           </p>
 
           <!-- Stat Gauges -->
-          <div class="space-y-1.5 text-[11px]">
+          <div class="space-y-1 text-[10px]">
             <div class="flex justify-between text-white/60">
               <span>THROUGHPUT</span>
               <span class="text-energy font-bold">{{ selectedPokemon.stats.attack }}%</span>
@@ -95,16 +95,16 @@ export interface PokemonCompanion {
       </div>
 
       <!-- Quick Selector Ribbon -->
-      <div class="mt-6 pt-4 border-t border-white/10 flex items-center justify-between gap-2 overflow-x-auto">
+      <div class="mt-3.5 pt-2.5 border-t border-white/10 flex items-center justify-between gap-1.5 overflow-x-auto pb-1">
         <button
           *ngFor="let p of party"
           (click)="choosePokemon(p)"
           [class.ring-2]="selectedPokemon.id === p.id"
           [class.ring-energy]="selectedPokemon.id === p.id"
           [class.bg-white-15]="selectedPokemon.id === p.id"
-          class="flex flex-col items-center p-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/5 transition-all flex-1 min-w-[56px] group">
-          <img [src]="p.spriteUrl" [alt]="p.name" class="h-10 w-10 object-contain group-hover:scale-110 transition-transform" />
-          <span class="text-[10px] font-mono text-white/70 mt-1 font-bold">{{ p.name }}</span>
+          class="flex flex-col items-center p-1.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/5 transition-all flex-1 min-w-[50px] group">
+          <img [src]="p.spriteUrl" [alt]="p.name" class="h-7 w-7 sm:h-8 sm:w-8 object-contain group-hover:scale-110 transition-transform" />
+          <span class="text-[9px] font-mono text-white/70 mt-0.5 font-bold">{{ p.name }}</span>
         </button>
       </div>
     </div>

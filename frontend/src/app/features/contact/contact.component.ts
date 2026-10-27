@@ -89,9 +89,18 @@ import { ContactRequest } from '../../core/models/api.models';
               type="submit"
               [disabled]="isSubmitting"
               class="w-full py-4 rounded-xl font-medium bg-crimson hover:bg-crimson/90 disabled:opacity-50 text-white shadow-lg shadow-crimson/30 transition-all font-mono text-sm tracking-wide">
-              <span *ngIf="!isSubmitting">SEND TRANSMISSION →</span>
-              <span *ngIf="isSubmitting">DISPATCHING VIA REST API...</span>
+              <span *ngIf="!isSubmitting">SEND TRANSMISSION TO HARSHAL →</span>
+              <span *ngIf="isSubmitting">DISPATCHING TO HARSHAL'S EMAIL...</span>
             </button>
+
+            <!-- Direct Mail Client Fallback -->
+            <div class="text-center pt-2">
+              <a
+                [href]="getMailtoUrl()"
+                class="inline-flex items-center gap-2 text-xs font-mono text-white/60 hover:text-energy underline transition-colors">
+                <span>✉ Prefer standard email client? Click to compose to harshalraajpatnaik&#64;outlook.com</span>
+              </a>
+            </div>
           </form>
 
           <!-- Direct Verified Channels -->
@@ -133,18 +142,24 @@ export class ContactComponent {
 
     this.api.submitContact(this.formData).subscribe({
       next: (res) => {
-        this.successMsg = res.message || 'Message received! Thank you for reaching out.';
+        this.successMsg = 'Transmission successfully dispatched to Harshal (harshalraajpatnaik@outlook.com). Thank you for reaching out!';
         this.formData = { name: '', email: '', message: '' };
         this.isSubmitting = false;
       },
       error: (err) => {
         if (err.status === 429) {
-          this.errorMsg = 'Rate limit exceeded (5 requests per hour). Please try again later.';
+          this.errorMsg = 'Rate limit exceeded (5 requests per hour). Please try again later or email harshalraajpatnaik@outlook.com directly.';
         } else {
-          this.errorMsg = 'Failed to deliver message via backend API. Please try again.';
+          this.errorMsg = 'Failed to deliver message via backend API. Please try again or email harshalraajpatnaik@outlook.com directly.';
         }
         this.isSubmitting = false;
       }
     });
+  }
+
+  getMailtoUrl(): string {
+    const subject = encodeURIComponent(`[Portfolio Transmission] Message from ${this.formData.name || 'Visitor'}`);
+    const body = encodeURIComponent(this.formData.message || 'Hi Harshal,\n\nI visited your portfolio and would like to connect.\n');
+    return `mailto:harshalraajpatnaik@outlook.com?subject=${subject}&body=${body}`;
   }
 }

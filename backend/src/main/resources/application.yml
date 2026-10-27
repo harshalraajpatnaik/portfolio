@@ -14,7 +14,23 @@ spring:
           # Override via PORTFOLIO_JWT_SECRET env var in production
           issuer-uri: ""
 
+  # Outbound transactional email configuration
+  mail:
+    host: "${SPRING_MAIL_HOST:smtp-mail.outlook.com}"
+    port: "${SPRING_MAIL_PORT:587}"
+    username: "${SPRING_MAIL_USERNAME:}"
+    password: "${SPRING_MAIL_PASSWORD:}"
+    properties:
+      mail:
+        smtp:
+          auth: "${SPRING_MAIL_AUTH:true}"
+          starttls:
+            enable: "${SPRING_MAIL_STARTTLS:true}"
+
 management:
+  health:
+    mail:
+      enabled: false
   endpoints:
     web:
       exposure:
@@ -44,6 +60,8 @@ portfolio:
   rate-limit:
     contact-capacity: 5
     contact-refill-minutes: 60
+  contact:
+    recipient-email: "${PORTFOLIO_CONTACT_RECIPIENT:harshalraajpatnaik@outlook.com}"
 
 springdoc:
   api-docs:
