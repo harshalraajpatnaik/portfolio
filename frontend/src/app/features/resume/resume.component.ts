@@ -74,7 +74,7 @@ import { PokemonAudioService } from '../../core/services/pokemon-audio.service';
               HARSHAL RAAJ PATNAIK
             </h1>
             <div class="text-[10.5px] font-bold text-slate-800 mb-1">
-              Senior Full-Stack &amp; Cloud Systems Engineer | Technical Product &amp; Platform Lead
+              Senior Full-Stack &amp; Cloud Systems Engineer | Technical Product &amp; Platform Lead (Tech × MBA)
             </div>
             <div class="text-[10px] text-slate-700 leading-normal">
               +91-9982143442 &nbsp;~&nbsp;
@@ -95,7 +95,7 @@ import { PokemonAudioService } from '../../core/services/pokemon-audio.service';
                 <span class="text-right">2025 – Present</span>
               </div>
               <div class="flex justify-between items-baseline italic text-[10px] text-slate-800">
-                <span>Executive Post Graduate Programme in Management (EPGPM) – Business Strategy, Platform Economics &amp; Operations</span>
+                <span>Executive Post Graduate Programme (EPGP) in General Management – Product Strategy, Finance &amp; Operations</span>
                 <span class="text-right">Kochi, India</span>
               </div>
             </div>
@@ -169,7 +169,7 @@ import { PokemonAudioService } from '../../core/services/pokemon-audio.service';
               <div><strong>Databases, Caching &amp; Storage:</strong> Cassandra, Redis, MySQL, Caringo Swarm / S3, Hibernate/JPA, HikariCP (Connection Pool Tuning)</div>
               <div><strong>Networking, Security &amp; Gateways:</strong> Kong API Gateway, FortiGate REST APIs, IPsec VPN, DNS Automation, Sliding-Window Rate Limiting, Reverse Proxies</div>
               <div><strong>DevOps, SRE &amp; Observability:</strong> Jenkins CI/CD, JUnit, Mockito, Zabbix APIs, Linux, Maven, SonarQube, Postman, Swagger/OpenAPI</div>
-              <div><strong>Product Strategy &amp; Leadership:</strong> Technical Mentorship, Code Reviews, Agile / Scrum Master, Platform Business Models, Unit Economics, EPR Mandates</div>
+              <div><strong>Product Strategy &amp; MBA Coursework:</strong> Product Management, Financial Accounting, Operations Management, Strategy Management, Risk Analysis, Product Analytics, Negotiation &amp; Conflict Management, Brand Strategy, Entrepreneurship</div>
             </div>
           </div>
 

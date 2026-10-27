@@ -15,7 +15,7 @@
 
 > **"Bridging large-scale cloud infrastructure with product economics, regulatory compliance, and distributed systems architecture."**
 > 
-> *Full-Stack & Cloud Platforms Engineer at **Tata Communications Ltd.** | Executive PGPM at **IIM Kozhikode (2025 – Present)** | B.Tech CSE at **SRM IST (CGPA: 8.76 / 87.6%)***
+> *Full-Stack & Cloud Platforms Engineer at **Tata Communications Ltd.** | Executive Post Graduate Programme (EPGP) in General Management at **IIM Kozhikode (2025 – Present)** | B.Tech CSE at **SRM IST (CGPA: 8.76 / 87.6%)***
 
 </div>
 

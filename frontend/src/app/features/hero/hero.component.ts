@@ -60,7 +60,9 @@ import { PokemonAudioService } from '../../core/services/pokemon-audio.service';
               <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-energy/40 bg-energy/10 text-energy text-xs font-mono font-semibold">
                 <span>⚡ TATA COMMUNICATIONS SDE</span>
                 <span>•</span>
-                <span>IIM KOZHIKODE EXEC-PGPM</span>
+                <span>IIM KOZHIKODE EPGP</span>
+                <span>•</span>
+                <span>TECH × PRODUCT & STRATEGY</span>
               </div>
 
               <!-- Main Headline -->
@@ -69,10 +71,17 @@ import { PokemonAudioService } from '../../core/services/pokemon-audio.service';
               </h1>
 
               <!-- Bio Summary: Grounded, authentic, combining engineering and executive business sense -->
-              <p class="text-base sm:text-lg text-white/80 leading-relaxed font-sans">
-                I'm <strong class="text-white font-bold">Harshal Raaj Patnaik</strong>, Software Development Engineer at <strong class="text-energy">Tata Communications</strong> and Executive MBA scholar at <strong class="text-cyan-glow">IIM Kozhikode</strong>.
-                I engineer multi-hypervisor provisioning dashboards, Caringo Swarm S3 object storage onboarding, and high-throughput batch schedulers (92.6% latency reduction) while bridging technical systems with platform economics.
-              </p>
+              <div class="space-y-3 text-base sm:text-lg text-white/80 leading-relaxed font-sans">
+                <p>
+                  I'm <strong class="text-white font-bold">Harshal Raaj Patnaik</strong>, Software Development Engineer at <strong class="text-energy">Tata Communications</strong> and Executive MBA scholar in the <strong class="text-cyan-glow">Executive Post Graduate Programme (EPGP) in General Management at IIM Kozhikode</strong>.
+                </p>
+                <p class="text-sm sm:text-base text-white/75">
+                  I engineer multi-hypervisor provisioning dashboards across KVM, VMware, and OLVM, Caringo Swarm S3 object storage onboarding, and high-throughput batch schedulers (slashing latency by 92.6% from 18m to 80s).
+                </p>
+                <p class="text-sm sm:text-base text-white/90 border-l-2 border-energy pl-3.5 italic bg-white/5 py-2 rounded-r-lg">
+                  <strong>The Tech × Business Advantage:</strong> By uniting distributed systems engineering with executive coursework in <em>Product Management, Financial Accounting, Operations Strategy, Risk Analysis, Product Analytics, and Negotiation</em>, I bridge the divide between deep tech and business impact—building resilient, cost-optimized architectures that scale revenue and solve complex enterprise mandates.
+                </p>
+              </div>
 
               <!-- Gym Badges of Engineering -->
               <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">

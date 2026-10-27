@@ -17,11 +17,13 @@ public class ProfileService {
     public ProfileResponse getProfile() {
         return new ProfileResponse(
                 "Harshal Raaj Patnaik",
-                "Full-Stack & Cloud Engineer | Technical Product & Platform Builder",
-                "Full-stack and cloud platforms engineer at Tata Communications Ltd. with hands-on enterprise " +
-                "experience designing multi-hypervisor VM orchestration, S3-compatible Caringo Swarm object storage, " +
-                "and distributed batch schedulers. Currently pursuing Executive PGPM at IIM Kozhikode (Kochi Campus), " +
-                "bridging technical systems architecture with platform economics, regulatory compliance, and business strategy.",
+                "Full-Stack & Cloud Engineer | Technical Product & Platform Builder (Tech × MBA)",
+                "Software Development Engineer at Tata Communications Ltd. and Executive MBA scholar in the " +
+                "Executive Post Graduate Programme (EPGP) in General Management at IIM Kozhikode. Hands-on enterprise " +
+                "architect designing multi-hypervisor VM orchestration across KVM/VMware/OLVM, Caringo Swarm S3 storage onboarding, " +
+                "and high-throughput distributed batch schedulers (92.6% latency reduction). Unites distributed systems engineering " +
+                "with executive coursework in Product Management, Financial Accounting, Operations Strategy, Risk Analysis, Product Analytics, " +
+                "and Negotiation to bridge deep tech with platform economics and enterprise value.",
                 new ContactInfo(
                         "https://linkedin.com/in/harshalraajpatnaik/",
                         "https://github.com/harshalraajpatnaik",
@@ -44,8 +46,8 @@ public class ProfileService {
         return List.of(
                 new EducationEntry(
                         "Indian Institute of Management Kozhikode (IIMK)",
-                        "Executive Post Graduate Programme in Management (EPGPM)",
-                        "Business Strategy, Operations & Platform Economics",
+                        "Executive Post Graduate Programme (EPGP) in General Management",
+                        "Product Management, Financial Accounting, Operations, Strategy & Risk Analysis",
                         "2025 – Present",
                         "Kochi, India",
                         "Capstone: SthiraX — Distributed CO₂-Mineralization Platform for Certified Low-Carbon Precast Materials in India"

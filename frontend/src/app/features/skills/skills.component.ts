@@ -118,7 +118,7 @@ export class SkillsComponent {
     { name: 'Multi-Hypervisor VM Engines', level: 'Expert', proficiency: 92, context: 'Orchestrating KVM, VMware ESXi, vCloud Director, and OLVM' },
     { name: 'FortiGate Network Automation', level: 'Advanced', proficiency: 85, context: 'Firewall rules, IPsec VPN automation, sliding-window rate control' },
     { name: 'Zabbix Telemetry & Capacity', level: 'Proficient', proficiency: 80, context: 'Bandwidth monitoring, history.get vs trend.get telemetry pipelines' },
-    { name: 'Business & Operations Strategy', level: 'Executive', proficiency: 90, context: 'IIM Kozhikode EPGPM: Capacity planning, SLA governance, cost metering' },
+    { name: 'Business & Operations Strategy', level: 'Executive', proficiency: 90, context: 'IIM Kozhikode EPGP: Capacity planning, SLA governance, product analytics, cost metering' },
     { name: 'Docker & Containerization', level: 'Advanced', proficiency: 82, context: 'Multi-stage lean builds, non-root runtimes, containerized microservices' },
   ];
 }
