@@ -70,7 +70,7 @@ The application is structured as a decoupled full-stack monorepo featuring a **S
             |                    |                           |                    |
    +--------v---------+ +--------v--------+         +--------v--------+  +--------v--------+
    | Profile Service  | | Project Service |         | Telemetry API   |  | Resume Engine   |
-   | Education & Bio  | | 11 Roster Feats |         | JVM & Actuator  |  | PDF / LaTeX .tex|
+   | Education & Bio  | | 20 Roster Feats |         | JVM & Actuator  |  | PDF / LaTeX .tex|
    +------------------+ +-----------------+         +-----------------+  +-----------------+
 ```
 
@@ -105,6 +105,15 @@ Every cloud system engineered by Harshal at **Tata Communications** and **IIM Ko
 | **Krookodile** | `#553` | 🐊 GROUND | **Database Concurrency, Locking & Connection Pool Engineering**<br/>Resolved database concurrency deadlocks, HikariCP connection pool exhaustion warnings, and Hibernate lazy-loading session boundaries in MySQL and Cassandra. | `Earthquake`<br/>**Zero N+1** queries & leak-free pool |
 | **Psyduck** | `#054` | 🔮 PSYCHIC | **Production SRE Concurrency & Acting Scrum Master Leadership**<br/>Diagnosed thread pool exhaustion and async request timeouts; stepped up as Acting Scrum Master facilitating sprint ceremonies (recognized with 3× Extra Mile Commitment Awards). | `Amnesia`<br/>**3×** Extra Mile Award winner |
 | **Onix** | `#095` | 🪨 ROCK | **Machine Learning Rating Recommendation & Data Pipelines**<br/>Cleaned, extracted, and trained Kaggle motion picture datasets in Python using collaborative and content-based filtering (KNN, Pearson correlation, cosine similarity). | `Rock Slide`<br/>**KNN & Pearson** recommendation |
+| **Mewtwo** | `#150` | 🧠 PSYCHIC | **Flowable BPMN Workflow Engine & Long-Running Distributed Sagas**<br/>Orchestrated multi-step VM, storage, and network provisioning workflows using Flowable BPMN state machines, designing automated compensating rollback transactions for zero stuck states. | `Psystrike`<br/>**0** stuck workflow states |
+| **Snorlax** | `#143` | ⚖️ NORMAL | **Compute, Network & Datastore Capacity Reporting Engine**<br/>Aggregated hardware utilization metrics across thousands of physical hypervisors and storage nodes, automating SLA compliance auditing and executive saturation forecasting. | `Rest & Body Slam`<br/>**Real-time** multi-tenant rollups |
+| **Dragonite** | `#149` | 🐉 DRAGON | **Burstable Bandwidth Policing & Multi-Tier Traffic Control**<br/>Programmed Committed Information Rate (CIR) and Peak Information Rate (PIR) policies across SDN virtual/physical tiers, eliminating noisy-neighbor network starvation. | `Dragon Pulse`<br/>**0%** baseline loss |
+| **Gengar** | `#094` | 👻 GHOST | **FortiGate HTTP 429 In-Process Sliding-Window Rate Limiter & Token Bucket**<br/>Engineered atomic sliding-window rate limit algorithm with RFC 6585 Retry-After backoff headers, defending management endpoints against cascading retry storms (>10,000 req/s). | `Shadow Ball`<br/>**<0.5ms** overhead (RFC 6585) |
+| **Gyarados** | `#130` | 🌊 WATER | **Switch-Port Utilization Telemetry & Location-Wise Switch Mapping**<br/>Automated network topology discovery correlating physical leaf-spine switch ports with virtual tenant circuits; built real-time alerting for CRC surges and duplex mismatches across global POPs. | `Hydro Pump`<br/>**Global** datacenter topology sweeps |
+| **Lapras** | `#131` | ❄️ ICE | **High-Availability Load-Balancer Orchestration (HAProxy, F5, Avi)**<br/>Programmed automated provisioning and health-checking pipelines for enterprise L4/L7 load-balancer clusters, achieving zero-downtime hitless VIP configuration reloads. | `Ice Beam`<br/>**Zero-downtime** VIP reloads |
+| **Ninetales** | `#038` | 🔥 FIRE | **Enterprise Java 8 to 17 & Spring Boot 3 Modernization & CVE Remediation**<br/>Spearheaded enterprise modernization of mission-critical cloud platform microservices to Java 17 LTS and Spring Boot 3, mitigating high-severity CVEs and reducing GC pause times by 35%. | `Flamethrower`<br/>**35%** cut in GC pause times |
+| **Jigglypuff** | `#039` | ✨ FAIRY | **Infrastructure Polling, Autoscaling State Synchronization & Deduplication**<br/>Architected asynchronous background synchronization workers that poll heterogeneous cloud hypervisor APIs, deduplicating events and reducing DB write load by 60% with optimistic locking. | `Dazzling Gleam`<br/>**60%** DB write reduction |
+| **Eevee** | `#133` | 🦊 NORMAL | **Public-IP Lifecycle Automation, CIDR Expansion & Migrated-IP Reconciliation**<br/>Built bitset-indexed subnet tracking to allocate contiguous CIDR blocks in constant O(1) time and automated lifecycle sweeps to detect and free orphaned public IPs. | `Swift`<br/>**O(1)** bitset allocation (0 leaks) |
 
 ---
 

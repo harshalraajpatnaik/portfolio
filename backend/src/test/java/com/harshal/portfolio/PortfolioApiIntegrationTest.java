@@ -38,19 +38,19 @@ class PortfolioApiIntegrationTest {
     // ─── Projects ───────────────────────────────────────────────────────────────
 
     @Test
-    @DisplayName("GET /api/v1/projects returns 4 case studies")
-    void projectsReturnFourCards() throws Exception {
+    @DisplayName("GET /api/v1/projects returns 20 case studies")
+    void projectsReturnTwentyCards() throws Exception {
         mvc.perform(get("/api/v1/projects"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$", hasSize(4)));
+                .andExpect(jsonPath("$", hasSize(20)));
     }
 
     @Test
     @DisplayName("GET /api/v1/projects/{id} returns the correct case study")
     void projectByIdReturnsCorrectCard() throws Exception {
-        mvc.perform(get("/api/v1/projects/batch-scheduler-optimization"))
+        mvc.perform(get("/api/v1/projects/pikachu-compute-scheduler"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.element").value("GRASS"))
+                .andExpect(jsonPath("$.element").value("ELECTRIC"))
                 .andExpect(jsonPath("$.metrics[*].value", hasItem("92.6%")));
     }
 

@@ -27,7 +27,16 @@ public class ProjectService {
                 buildCyndaquilProject(),
                 buildKrookodileProject(),
                 buildPsyduckProject(),
-                buildOnixProject()
+                buildOnixProject(),
+                buildMewtwoProject(),
+                buildSnorlaxProject(),
+                buildDragoniteProject(),
+                buildGengarProject(),
+                buildGyaradosProject(),
+                buildLaprasProject(),
+                buildNinetalesProject(),
+                buildJigglypuffProject(),
+                buildEeveeProject()
         );
     }
 
@@ -362,6 +371,268 @@ public class ProjectService {
                 "#095",
                 "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/95.gif",
                 "Rock Slide (Kaggle Collaborative Filtering & Movie Pipelines)"
+        );
+    }
+
+    private ProjectCard buildMewtwoProject() {
+        return new ProjectCard(
+                "mewtwo-flowable-orchestration",
+                "Flowable BPMN Workflow Engine & Long-Running Distributed Sagas",
+                "PSYCHIC",
+                "🧠",
+                "Distributed Orchestration · BPMN · Sagas · Tata Communications",
+                "Integrated Flowable BPMN workflow engine to orchestrate multi-stage cloud provisioning sagas, replacing " +
+                "brittle custom cron jobs with declarative state machines, async task workers, and automated compensating " +
+                "rollback transactions for resilient multi-resource provisioning.",
+                List.of("Flowable BPMN", "Java", "Spring Boot", "Distributed Sagas", "Compensating Transactions", "Async Queues"),
+                List.of(
+                        new Metric("State Engine", "Flowable BPMN", "declarative sagas"),
+                        new Metric("Failure Recovery", "Zero Stuck States", "automated rollbacks"),
+                        new Metric("Orchestration", "End-to-End", "multi-tier provisioning")
+                ),
+                List.of(
+                        "Orchestrated multi-step VM, storage, and network provisioning workflows using Flowable BPMN state machines.",
+                        "Designed automated compensating transactions to cleanly roll back partially allocated cloud resources on infrastructure faults.",
+                        "Decoupled workflow event listeners using asynchronous message queues, ensuring resilient distributed execution."
+                ),
+                5, 5, 5,
+                "Partner Pokémon: Mewtwo #150 · Ability: Pressure",
+                "Mewtwo",
+                "#150",
+                "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/150.gif",
+                "Psystrike (Flowable BPMN Distributed State Machine & Saga Orchestration)"
+        );
+    }
+
+    private ProjectCard buildSnorlaxProject() {
+        return new ProjectCard(
+                "snorlax-capacity-reporting",
+                "Compute, Network & Datastore Capacity Reporting Engine",
+                "NORMAL",
+                "⚖️",
+                "Capacity Planning · Analytics · Multi-Tenant · Tata Communications",
+                "Built enterprise capacity reporting engine computing real-time CPU, RAM, storage, and network utilization across " +
+                "multi-tenant cloud regions to prevent cluster saturation, audit SLA thresholds, and inform datacenter capex planning.",
+                List.of("Java", "PostgreSQL", "Time-Series Aggregation", "Multi-Tenant", "Capacity Planning", "REST APIs"),
+                List.of(
+                        new Metric("Capacity Auditing", "Multi-Tenant", "global cluster visibility"),
+                        new Metric("Metric Aggregation", "Sub-Second", "real-time rollups"),
+                        new Metric("Forecasting", "Predictive Trend", "saturation prevention")
+                ),
+                List.of(
+                        "Aggregated hardware utilization metrics across thousands of physical hypervisors and storage nodes.",
+                        "Automated SLA compliance auditing and threshold violation alerts for infrastructure operations.",
+                        "Eliminated resource over-subscription surprises by providing executive dashboards with trend projections."
+                ),
+                4, 4, 4,
+                "Partner Pokémon: Snorlax #143 · Ability: Thick Fat",
+                "Snorlax",
+                "#143",
+                "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/143.gif",
+                "Rest & Body Slam (Enterprise Compute & Datastore Capacity Reporting Engine)"
+        );
+    }
+
+    private ProjectCard buildDragoniteProject() {
+        return new ProjectCard(
+                "dragonite-bandwidth-policing",
+                "Burstable Bandwidth, Policer Policies & Multi-Tier Traffic Control",
+                "DRAGON",
+                "🐉",
+                "Traffic Engineering · QoS Policer · Rate Enforcement · Tata Communications",
+                "Designed dynamic bandwidth policing and burst traffic governance framework across SDN switches and firewall boundaries, " +
+                "enforcing CIR/PIR QoS tiers without packet corruption or noisy-neighbor network starvation.",
+                List.of("Traffic Policing", "QoS CIR/PIR", "SDN Networking", "Bandwidth Bursts", "Linux tc", "FortiGate"),
+                List.of(
+                        new Metric("Traffic Control", "CIR / PIR Bursts", "multi-tier QoS"),
+                        new Metric("QoS Enforcement", "0% Baseline Loss", "clean rate shaping"),
+                        new Metric("Policy Latency", "Sub-Millisecond", "hardware-accelerated")
+                ),
+                List.of(
+                        "Programmed Committed Information Rate (CIR) and Peak Information Rate (PIR) policies across virtual and physical network tiers.",
+                        "Prevented 'noisy neighbor' bandwidth starvation during multi-gigabit customer batch uploads.",
+                        "Automated dynamic rate limit recalculation based on contracted tenant tiers and real-time link headroom."
+                ),
+                5, 5, 4,
+                "Partner Pokémon: Dragonite #149 · Ability: Multiscale",
+                "Dragonite",
+                "#149",
+                "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/149.gif",
+                "Dragon Pulse (Burstable Bandwidth Policing & Multi-Tier Traffic Control)"
+        );
+    }
+
+    private ProjectCard buildGengarProject() {
+        return new ProjectCard(
+                "gengar-rate-limiter",
+                "FortiGate HTTP 429 In-Process Sliding-Window Rate Limiter & Token Bucket",
+                "GHOST",
+                "👻",
+                "API Protection · Sliding Window · Token Bucket · Tata Communications",
+                "Implemented high-throughput in-process sliding-window counter and token-bucket rate limiter shielding upstream management APIs " +
+                "from runaway automation scripts and distributed denial-of-service attempts with RFC 6585 compliance.",
+                List.of("Sliding Window", "Token Bucket", "RFC 6585", "ConcurrentHashMap", "Rate Limiting", "Spring Web"),
+                List.of(
+                        new Metric("Latency Overhead", "<0.5 ms", "lock-free atomics"),
+                        new Metric("HTTP Standard", "RFC 6585 429", "Retry-After headers"),
+                        new Metric("Flood Defense", "10,000+ req/s", "surge protection")
+                ),
+                List.of(
+                        "Engineered atomic sliding-window rate limit algorithm with microsecond timestamp granularity.",
+                        "Returned standard RFC 6585 Retry-After and X-RateLimit headers to give clients deterministic backoff cues.",
+                        "Successfully defended management endpoints from cascading API retries during network partition recoveries."
+                ),
+                5, 5, 4,
+                "Partner Pokémon: Gengar #094 · Ability: Cursed Body",
+                "Gengar",
+                "#094",
+                "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/94.gif",
+                "Shadow Ball (Sliding-Window Rate Limiter & RFC 6585 HTTP 429 Guard)"
+        );
+    }
+
+    private ProjectCard buildGyaradosProject() {
+        return new ProjectCard(
+                "gyarados-switch-port-telemetry",
+                "Switch-Port Utilization Telemetry & Location-Wise Switch Mapping",
+                "WATER",
+                "🌊",
+                "Network Telemetry · Switch Mapping · SNMP/gNMI · Tata Communications",
+                "Developed automated switch-port discovery and utilization telemetry service mapping physical rack positions, port speeds, " +
+                "duplex mismatches, and link drops across worldwide datacenter POPs.",
+                List.of("SNMP", "gNMI", "Network Telemetry", "Leaf-Spine Topology", "Switch Ports", "Python", "Java"),
+                List.of(
+                        new Metric("POP Coverage", "Global Datacenters", "rack-level topology"),
+                        new Metric("Telemetry Polling", "Real-Time Health", "sub-minute sweeps"),
+                        new Metric("Fault Isolation", "Automated", "CRC & duplex alerts")
+                ),
+                List.of(
+                        "Automated network topology discovery correlating physical leaf-spine switch ports with virtual tenant circuits.",
+                        "Built real-time alerting for CRC error surges, duplex mismatches, and physical cable degradation.",
+                        "Provided datacenter field engineers with interactive location-wise port mapping dashboards."
+                ),
+                4, 5, 4,
+                "Partner Pokémon: Gyarados #130 · Ability: Moxie",
+                "Gyarados",
+                "#130",
+                "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/130.gif",
+                "Hydro Pump (Switch-Port Telemetry & Location-Wise Network Mapping)"
+        );
+    }
+
+    private ProjectCard buildLaprasProject() {
+        return new ProjectCard(
+                "lapras-load-balancer",
+                "High-Availability Load-Balancer Orchestration (HAProxy, F5, Avi)",
+                "ICE",
+                "❄️",
+                "Load Balancing · Reverse Proxy · L4/L7 · Tata Communications",
+                "Programmed automated provisioning and health-checking pipelines for enterprise L4/L7 load-balancer clusters " +
+                "(HAProxy, F5 BIG-IP, VMware NSX Advanced Load Balancer / Avi), achieving zero-downtime VIP configuration reloads.",
+                List.of("HAProxy", "F5 BIG-IP", "VMware Avi", "L4/L7 Proxy", "SSL/TLS Termination", "Health Probes"),
+                List.of(
+                        new Metric("VIP Reload", "Zero Downtime", "hitless reconfiguration"),
+                        new Metric("Health Checks", "Sub-Second Failover", "synthetic HTTP probes"),
+                        new Metric("Balancing Alg", "Least-Conn & RR", "multi-tenant weighted")
+                ),
+                List.of(
+                        "Managed active-passive and active-active VIP failover configurations with automated SSL/TLS termination.",
+                        "Programmed deep application layer health checks to dynamically drain and reroute traffic around failing backends.",
+                        "Unified heterogeneous load balancer APIs into a single declarative tenant provisioning interface."
+                ),
+                4, 4, 5,
+                "Partner Pokémon: Lapras #131 · Ability: Water Absorb",
+                "Lapras",
+                "#131",
+                "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/131.gif",
+                "Ice Beam (High-Availability L4/L7 Load-Balancer Orchestration)"
+        );
+    }
+
+    private ProjectCard buildNinetalesProject() {
+        return new ProjectCard(
+                "ninetales-modernization-cve",
+                "Enterprise Java 8 to 17 & Spring Boot 3 Modernization & CVE Remediation",
+                "FIRE",
+                "🔥",
+                "Platform Modernization · CVE Remediation · JDK Migration · Tata Communications",
+                "Spearheaded enterprise modernization of mission-critical cloud platform microservices from legacy Java 8 / Spring Boot 1.x " +
+                "to Java 17 LTS / Spring Boot 3, eliminating high-severity security vulnerabilities and slashing GC pause times.",
+                List.of("Java 17 LTS", "Spring Boot 3", "Jakarta EE", "CVE Remediation", "ZGC & G1GC", "Vulnerability Scanning"),
+                List.of(
+                        new Metric("Java Version", "8 → 17 LTS", "enterprise upgrade"),
+                        new Metric("Vulnerabilities", "0 High/Crit CVEs", "100% remediated"),
+                        new Metric("GC Pause Latency", "35% Reduction", "G1/ZGC memory tuning")
+                ),
+                List.of(
+                        "Refactored deprecated javax.* APIs to Jakarta namespace and migrated legacy XML configurations to modern Spring Beans.",
+                        "Upgraded vulnerable third-party dependencies to eliminate remote code execution (RCE) and injection vulnerabilities.",
+                        "Tuned garbage collection flags (G1/ZGC) resulting in a 35% reduction in 99th percentile pause times under heavy load."
+                ),
+                5, 5, 4,
+                "Partner Pokémon: Ninetales #038 · Ability: Flash Fire",
+                "Ninetales",
+                "#038",
+                "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/38.gif",
+                "Flamethrower (Java 8 to 17 Platform Modernization & CVE Remediation)"
+        );
+    }
+
+    private ProjectCard buildJigglypuffProject() {
+        return new ProjectCard(
+                "jigglypuff-autoscaling-sync",
+                "Infrastructure Polling, Autoscaling State Synchronization & Deduplication",
+                "FAIRY",
+                "✨",
+                "Distributed State · Event Deduplication · Consensus · Tata Communications",
+                "Architected asynchronous background synchronization workers that poll heterogeneous cloud hypervisor APIs, " +
+                "deduplicating high-frequency cluster events and updating the primary operational datastore with optimistic locking.",
+                List.of("Event Deduplication", "Optimistic Locking", "Sliding-Window Batching", "Spring Task", "PostgreSQL", "Idempotency"),
+                List.of(
+                        new Metric("Event Throughput", "50,000+ events/hr", "cluster event stream"),
+                        new Metric("State Reconciliation", "100% Consistent", "zero split-brain"),
+                        new Metric("Database Load", "60% Cut", "sliding-window compaction")
+                ),
+                List.of(
+                        "Implemented idempotency keys and state hashing to eliminate redundant writes during cluster-wide autoscaling spikes.",
+                        "Resolved race conditions between concurrent management portal requests and hypervisor-initiated event streams.",
+                        "Reduced background database write load by 60% through sliding-window event batching and compaction."
+                ),
+                4, 4, 4,
+                "Partner Pokémon: Jigglypuff #039 · Ability: Cute Charm",
+                "Jigglypuff",
+                "#039",
+                "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/39.gif",
+                "Sing & Dazzling Gleam (Autoscaling State Synchronization & Event Deduplication)"
+        );
+    }
+
+    private ProjectCard buildEeveeProject() {
+        return new ProjectCard(
+                "eevee-public-ip-lifecycle",
+                "Public-IP Lifecycle Automation, CIDR Expansion & Migrated-IP Reconciliation",
+                "NORMAL",
+                "🦊",
+                "IPAM · Subnet Routing · Automation · Tata Communications",
+                "Engineered end-to-end IP Address Management (IPAM) automation for allocating, reserving, routing, and reclaiming IPv4/IPv6 " +
+                "public subnets, cross-reconciling legacy migrated tenant IPs across cloud zones with zero routing flapping.",
+                List.of("IPAM Automation", "IPv4/IPv6 CIDR", "Subnet Routing", "Reconciliation Engine", "Linux Networking", "REST APIs"),
+                List.of(
+                        new Metric("Allocation Time", "Instantaneous", "O(1) bitset lookup"),
+                        new Metric("IP Leakage", "0 Orphaned IPs", "automated sweeps"),
+                        new Metric("Subnet Range", "Multi-Region CIDR", "cross-datacenter BYOIP")
+                ),
+                List.of(
+                        "Built bitset-indexed subnet tracking to allocate contiguous CIDR blocks in constant O(1) time.",
+                        "Automated lifecycle reclamation sweeps to detect and free orphaned public IPs from decommissioned customer VMs.",
+                        "Reconciled customer-owned legacy IP blocks (BYOIP) during cross-datacenter migrations without routing table flapping."
+                ),
+                4, 4, 5,
+                "Partner Pokémon: Eevee #133 · Ability: Adaptability",
+                "Eevee",
+                "#133",
+                "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/133.gif",
+                "Swift (Public-IP Lifecycle Automation & Subnet Reconciliation)"
         );
     }
 }

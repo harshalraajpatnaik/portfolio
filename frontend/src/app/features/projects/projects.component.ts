@@ -166,14 +166,19 @@ export class ProjectsComponent {
   selectedElement = 'ALL';
 
   elementTypes = [
-    { type: 'ELECTRIC', label: 'PIKACHU (Compute)', icon: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/25.gif' },
-    { type: 'FIRE',     label: 'CHARMANDER & CYNDAQUIL (Security/API)', icon: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/4.gif' },
-    { type: 'WATER',    label: 'SQUIRTLE (Storage)', icon: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/7.gif' },
-    { type: 'GRASS',    label: 'BULBASAUR & SCEPTILE (Platform/SthiraX)', icon: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/1.gif' },
-    { type: 'FLYING',   label: 'BUTTERFREE & PIDGEOT (UI/DevOps)', icon: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/12.gif' },
-    { type: 'GROUND',   label: 'KROOKODILE (Data Concurrency)', icon: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/553.gif' },
-    { type: 'PSYCHIC',  label: 'PSYDUCK (SRE & CI)', icon: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/54.gif' },
-    { type: 'ROCK',     label: 'ONIX (ML & Data)', icon: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/95.gif' }
+    { type: 'ELECTRIC', label: 'ELECTRIC: PIKACHU', icon: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/25.gif' },
+    { type: 'PSYCHIC',  label: 'PSYCHIC: MEWTWO & PSYDUCK', icon: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/150.gif' },
+    { type: 'DRAGON',   label: 'DRAGON: DRAGONITE', icon: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/149.gif' },
+    { type: 'FIRE',     label: 'FIRE: CHARMANDER, CYNDAQUIL & NINETALES', icon: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/4.gif' },
+    { type: 'WATER',    label: 'WATER: SQUIRTLE & GYARADOS', icon: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/7.gif' },
+    { type: 'ICE',      label: 'ICE: LAPRAS', icon: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/131.gif' },
+    { type: 'GHOST',    label: 'GHOST: GENGAR', icon: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/94.gif' },
+    { type: 'NORMAL',   label: 'NORMAL: SNORLAX & EEVEE', icon: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/143.gif' },
+    { type: 'FAIRY',    label: 'FAIRY: JIGGLYPUFF', icon: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/39.gif' },
+    { type: 'GRASS',    label: 'GRASS: BULBASAUR & SCEPTILE', icon: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/1.gif' },
+    { type: 'FLYING',   label: 'FLYING: BUTTERFREE & PIDGEOT', icon: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/12.gif' },
+    { type: 'GROUND',   label: 'GROUND: KROOKODILE', icon: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/553.gif' },
+    { type: 'ROCK',     label: 'ROCK: ONIX', icon: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/95.gif' }
   ];
 
   constructor(private audio: PokemonAudioService) {}
@@ -192,8 +197,13 @@ export class ProjectsComponent {
       case 'GRASS':    return 'border-grass bg-grass/20 text-grass';
       case 'FLYING':   return 'border-sky-400 bg-sky-400/20 text-sky-400';
       case 'GROUND':   return 'border-amber-700 bg-amber-700/20 text-amber-500';
-      case 'PSYCHIC':  return 'border-psychic bg-psychic/20 text-psychic';
+      case 'PSYCHIC':  return 'border-purple-400 bg-purple-400/20 text-purple-300';
       case 'ROCK':     return 'border-amber-500 bg-amber-500/20 text-amber-500';
+      case 'DRAGON':   return 'border-indigo-400 bg-indigo-500/20 text-indigo-300';
+      case 'GHOST':    return 'border-purple-500 bg-purple-600/20 text-purple-400';
+      case 'ICE':      return 'border-cyan-300 bg-cyan-300/20 text-cyan-200';
+      case 'NORMAL':   return 'border-stone-400 bg-stone-400/20 text-stone-300';
+      case 'FAIRY':    return 'border-pink-400 bg-pink-400/20 text-pink-300';
       default:         return '';
     }
   }
@@ -288,6 +298,69 @@ export class ProjectsComponent {
           pokedexNo: '#095',
           spriteUrl: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/95.gif',
           signatureMove: 'Rock Slide (Kaggle Collaborative Filtering & Movie Pipelines)'
+        };
+      case 'mewtwo-flowable-orchestration':
+        return {
+          pokemonName: 'Mewtwo',
+          pokedexNo: '#150',
+          spriteUrl: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/150.gif',
+          signatureMove: 'Psystrike (Flowable BPMN Distributed State Machine & Saga Orchestration)'
+        };
+      case 'snorlax-capacity-reporting':
+        return {
+          pokemonName: 'Snorlax',
+          pokedexNo: '#143',
+          spriteUrl: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/143.gif',
+          signatureMove: 'Rest & Body Slam (Enterprise Compute & Datastore Capacity Reporting Engine)'
+        };
+      case 'dragonite-bandwidth-policing':
+        return {
+          pokemonName: 'Dragonite',
+          pokedexNo: '#149',
+          spriteUrl: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/149.gif',
+          signatureMove: 'Dragon Pulse (Burstable Bandwidth Policing & Multi-Tier Traffic Control)'
+        };
+      case 'gengar-rate-limiter':
+        return {
+          pokemonName: 'Gengar',
+          pokedexNo: '#094',
+          spriteUrl: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/94.gif',
+          signatureMove: 'Shadow Ball (Sliding-Window Rate Limiter & RFC 6585 HTTP 429 Guard)'
+        };
+      case 'gyarados-switch-port-telemetry':
+        return {
+          pokemonName: 'Gyarados',
+          pokedexNo: '#130',
+          spriteUrl: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/130.gif',
+          signatureMove: 'Hydro Pump (Switch-Port Telemetry & Location-Wise Network Mapping)'
+        };
+      case 'lapras-load-balancer':
+        return {
+          pokemonName: 'Lapras',
+          pokedexNo: '#131',
+          spriteUrl: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/131.gif',
+          signatureMove: 'Ice Beam (High-Availability L4/L7 Load-Balancer Orchestration)'
+        };
+      case 'ninetales-modernization-cve':
+        return {
+          pokemonName: 'Ninetales',
+          pokedexNo: '#038',
+          spriteUrl: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/38.gif',
+          signatureMove: 'Flamethrower (Java 8 to 17 Platform Modernization & CVE Remediation)'
+        };
+      case 'jigglypuff-autoscaling-sync':
+        return {
+          pokemonName: 'Jigglypuff',
+          pokedexNo: '#039',
+          spriteUrl: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/39.gif',
+          signatureMove: 'Sing & Dazzling Gleam (Autoscaling State Synchronization & Event Deduplication)'
+        };
+      case 'eevee-public-ip-lifecycle':
+        return {
+          pokemonName: 'Eevee',
+          pokedexNo: '#133',
+          spriteUrl: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/133.gif',
+          signatureMove: 'Swift (Public-IP Lifecycle Automation & Subnet Reconciliation)'
         };
       default:
         return {

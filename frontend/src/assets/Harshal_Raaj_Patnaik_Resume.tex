@@ -1,7 +1,7 @@
 %-------------------------
 % Executive Tech & Business Resume in LaTeX (Google ATS-Standard Format)
 % Candidate: Harshal Raaj Patnaik
-% Target: Senior Full-Stack & Cloud Systems Engineer | Technical Product & Platform Lead
+% Target: Senior Full-Stack & Cloud Systems Engineer | Technical Lead & Platform Architect
 % Strictly 1-Page Format following Google's "Accomplished [X] relative to [Y] by doing [Z]" Framework
 %-------------------------
 
@@ -78,7 +78,7 @@
 %----------HEADING----------
 \begin{center}
     {\Huge \scshape HARSHAL RAAJ PATNAIK} \\ \vspace{1pt}
-    \textbf{\small Senior Full-Stack \& Cloud Systems Engineer $|$ Technical Product \& Platform Lead} \\ \vspace{2pt}
+    \textbf{\small Senior Full-Stack \& Cloud Systems Engineer $|$ Technical Lead \& Platform Architect} \\ \vspace{2pt}
     \small \raisebox{-0.1\height}\faPhone\ +91-9982143442 ~ 
     \href{mailto:harshalraajpatnaik@outlook.com}{\raisebox{-0.2\height}\faEnvelope\ \underline{harshalraajpatnaik@outlook.com}} ~ 
     \href{https://linkedin.com/in/harshalraajpatnaik/}{\raisebox{-0.2\height}\faLinkedin\ \underline{linkedin.com/in/harshalraajpatnaik}} ~ 
@@ -103,16 +103,16 @@
 
     \resumeSubheading
       {Tata Communications Ltd.}{Jul 2021 -- Present}
-      {Software Development Engineer (Full-Stack \& Cloud Platforms)}{Chennai, India}
+      {Software Development Engineer (Cloud Infrastructure, Distributed Workflows \& Full-Stack)}{Chennai, India}
       \resumeItemListStart
-        \resumeItem{Reduced cloud batch scheduler execution latency by \textbf{92.6\% (slashing cycle time from $\sim$18 minutes down to 80 seconds)} across distributed cloud clusters by partitioning Cassandra mutations into strict 50-item batches, implementing multi-level Redis caching, and tuning HikariCP connection pools.}
-        \resumeItem{Architected the full-stack onboarding workflow for \textbf{Caringo Swarm S3-compatible cloud object storage} using Java, Maven, and Angular, automating bucket provisioning and dynamic DNS A-record associations for \textbf{100\% self-service cloud storage rollout}.}
-        \resumeItem{Engineered multi-hypervisor orchestration dashboard managing heterogeneous \textbf{KVM, VMware ESXi, and OLVM clusters}; decoupled long-running provisioning tasks via asynchronous \textbf{RabbitMQ message queues}, ensuring zero UI blocking and reliable state reconciliation.}
-        \resumeItem{Owned and scaled the core enterprise VM tracking service serving \textbf{executive leadership}, delivering real-time virtual infrastructure capacity tracking, state reconciliation, and multi-tenant host allocation.}
-        \resumeItem{Automated perimeter security provisioning via \textbf{FortiGate REST APIs} for firewall rules and IPsec VPNs; engineered an in-process sliding-window rate limiter that \textbf{eliminated 100\% of HTTP 429 rate-limiting failures}.}
-        \resumeItem{Spearheaded frontend modernization from legacy AngularJS to modern \textbf{Angular 17}, re-architecting monolithic views into reactive, modular components and \textbf{reducing client-side render times and maintenance overhead}.}
-        \resumeItem{Automated continuous integration and artifact deployment pipelines via \textbf{Jenkins CI}, reducing release cycle friction and enforcing automated \textbf{JaCoCo code quality and regression gates}.}
-        \resumeItem{Stepped up as \textbf{Acting Scrum Master} facilitating sprint ceremonies, cross-functional dependency tracking, and timely production delivery; earned \textbf{3$\times$ Extra Mile Commitment Awards} for operational excellence.}
+        \resumeItem{Slashed cloud batch scheduler execution latency by \textbf{92.6\% (from $\sim$18 minutes down to 80 seconds)} across distributed Cassandra clusters by implementing strict 50-item batch chunking, multi-level Redis caching, and tuning HikariCP connection pools.}
+        \resumeItem{Architected multi-hypervisor orchestration engine and Flowable workflows across \textbf{KVM, VMware ESXi, and OLVM}, managing automated VM provisioning, lifecycle operations, and state compensation via asynchronous \textbf{RabbitMQ} queues.}
+        \resumeItem{Built full-stack onboarding workflow for \textbf{Caringo Swarm S3-compatible cloud object storage} and automated cPanel DNS A-record associations, enabling \textbf{100\% self-service cloud storage and public IP lifecycle management}.}
+        \resumeItem{Automated perimeter network security controls via \textbf{FortiGate REST APIs} for firewall rules, VDOM tokens, and IPsec VPNs; engineered an in-process sliding-window rate limiter that \textbf{eliminated 100\% of HTTP 429 rate-limiting failures}.}
+        \resumeItem{Designed dynamic route discovery, wildcard path forwarding, and multi-tenant workspace access validation across \textbf{Apache APISIX, Kong, and Tyk} API gateways, integrating downstream audit logging and metering pipelines.}
+        \resumeItem{Engineered switch-port utilization and network capacity telemetry engine integrating Zabbix and Nimsoft APIs, computing cluster-wide CPU, memory, NSX, and datastore allocation to prevent capacity exhaustion.}
+        \resumeItem{Spearheaded frontend modernization to \textbf{Angular 17} with reactive component architectures, and led backend modernization from \textbf{Java 8 to 17 / Spring Boot 3}, resolving security CVEs in Netty, Log4j, and Apache Commons.}
+        \resumeItem{Stepped up as \textbf{Acting Scrum Master} and technical mentor for junior engineers, leading architecture reviews, code reviews, and dependency tracking; earned \textbf{3$\times$ Extra Mile Commitment Awards} for operational excellence.}
       \resumeItemListEnd
 
   \resumeSubHeadingListEnd
@@ -121,12 +121,11 @@
 \section{Strategy \& Technical Product Capstone}
   \resumeSubHeadingListStart
     \resumeProjectHeading
-      {\textbf{SthiraX: Distributed $\text{CO}_2$-Mineralization Platform for Certified Precast Materials} $|$ \emph{IIM Kozhikode BPP}}{In Progress}
+      {\textbf{SthiraX: Distributed $\text{CO}_2$-Mineralization \& IoT MRV Platform} $|$ \emph{IIM Kozhikode Capstone (BPP)}}{In Progress}
       \resumeItemListStart
-        \resumeItem{Architected an asset-light climate-tech platform retrofitting regional precast plants with modular industrial $\text{CO}_2$-curing units, targeting India's \textbf{mandatory 5\%--25\% recycled precast mandate by 2030 across 20,000+ sqm projects} (addressing India's $<$1\% recycling baseline).}
-        \resumeItem{Engineered batch-level \textbf{MRV (Measurement, Reporting \& Verification) software} generating cryptographically verifiable Digital Product Passports for developers and EPC contractors fulfilling legal EPR compliance.}
-        \resumeItem{Designed an asset-light multi-tiered monetization strategy (equipment leasing, per-tonne curing royalties, and MRV SaaS subscriptions), modeling viable unit economics independent of voluntary carbon credit market volatility.}
-        \resumeItem{Developed a geospatial multi-factor ranking algorithm evaluating industrial $\text{CO}_2$ haul economics, steel slag feedstock supply, and regional precast manufacturing cluster density.}
+        \resumeItem{Designed an asset-light platform retrofitting regional precast concrete plants with modular industrial $\text{CO}_2$-curing units to address India's \textbf{April 2026 C\&D Waste Management Rules (mandating 5\% to 25\% recycled material by 2030 across 20,000+ sqm projects)}.}
+        \resumeItem{Architected batch-level \textbf{IoT MRV (Measurement, Reporting \& Verification) software} tracking calcium carbonate uptake per production run and generating cryptographically verifiable Digital Product Passports for developer EPR compliance.}
+        \resumeItem{Modeled multi-tier unit economics (equipment leasing, per-tonne curing royalties, and MRV SaaS subscriptions) viable independent of voluntary carbon credit market volatility, supported by a geospatial regional scoring algorithm.}
       \resumeItemListEnd
   \resumeSubHeadingListEnd
 
@@ -134,12 +133,12 @@
 \section{Technical \& Leadership Competencies}
  \begin{itemize}[leftmargin=0.15in, label={}]
     \small{\item{
-     \textbf{Core Languages}{: Java (8/11/17), Python, TypeScript, JavaScript, SQL} \\
-     \textbf{Backend \& Distributed Systems}{: Spring Boot 3, Hibernate/JPA, RabbitMQ (AMQP), REST APIs, Microservices Architecture, Flowable BPMN} \\
-     \textbf{Frontend \& UI Engineering}{: Angular 17, AngularJS, RxJS, HTML5/CSS3, Tailwind CSS, Responsive Web Design, State Management} \\
-     \textbf{Databases, Caching \& Cloud}{: MySQL, Cassandra, Redis, Caringo Swarm / S3, KVM, VMware ESXi, OLVM, Docker} \\
-     \textbf{DevOps, SRE \& Security}{: Jenkins CI/CD, Git, Linux, Maven, FortiGate APIs, Postman, Swagger/OpenAPI, SonarQube, JaCoCo} \\
-     \textbf{Product Strategy \& Leadership}{: Platform Business Models, Unit Economics, EPR Compliance, Agile / Scrum Master, Cross-Functional Leadership}
+     \textbf{Languages \& Core}{: Java (8/11/17 LTS), Python, TypeScript, JavaScript, SQL, HTML5/CSS3, Bash} \\
+     \textbf{Distributed Systems \& Cloud}{: Spring Boot 3, Flowable BPMN, RabbitMQ (AMQP), Microservices Architecture, REST APIs, KVM, VMware ESXi, OLVM, Docker} \\
+     \textbf{Databases, Caching \& Storage}{: Cassandra, Redis, MySQL, Caringo Swarm / S3, Hibernate/JPA, HikariCP (Connection Pool Tuning)} \\
+     \textbf{Networking, Security \& Gateways}{: Apache APISIX, Kong, Tyk, FortiGate REST APIs, IPsec VPN, DNS Automation, Sliding-Window Rate Limiting} \\
+     \textbf{DevOps, SRE \& Observability}{: Jenkins CI/CD, JaCoCo, JUnit, Mockito, Zabbix APIs, Linux, Maven, SonarQube, Postman, Swagger/OpenAPI} \\
+     \textbf{Product Strategy \& Leadership}{: Technical Mentorship, Code Reviews, Agile / Scrum Master, Platform Business Models, Unit Economics, EPR Mandates}
     }}
  \end{itemize}
  \vspace{-4pt}

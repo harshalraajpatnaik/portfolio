@@ -123,18 +123,18 @@ import { PokemonAudioService } from '../../core/services/pokemon-audio.service';
                 <span class="text-right">Jul 2021 – Present</span>
               </div>
               <div class="flex justify-between items-baseline italic text-[10px] text-slate-800 mb-1">
-                <span>Software Development Engineer (Full-Stack &amp; Cloud Platforms)</span>
+                <span>Software Development Engineer (Cloud Infrastructure, Distributed Workflows &amp; Full-Stack)</span>
                 <span class="text-right">Chennai, India</span>
               </div>
               <ul class="list-disc pl-4 space-y-0.5 text-[10px] leading-relaxed text-slate-900">
-                <li>Reduced cloud batch scheduler execution latency by <strong>92.6% (slashing cycle time from ~18 minutes down to 80 seconds)</strong> across distributed cloud clusters by partitioning Cassandra mutations into strict 50-item batches, implementing multi-level Redis caching, and tuning HikariCP connection pools.</li>
-                <li>Architected the full-stack onboarding workflow for <strong>Caringo Swarm S3-compatible cloud object storage</strong> using Java, Maven, and Angular, automating bucket provisioning and dynamic DNS A-record associations for <strong>100% self-service cloud storage rollout</strong>.</li>
-                <li>Engineered multi-hypervisor orchestration dashboard managing heterogeneous <strong>KVM, VMware ESXi, and OLVM clusters</strong>; decoupled long-running provisioning tasks via asynchronous <strong>RabbitMQ message queues</strong>, ensuring zero UI blocking and reliable state reconciliation.</li>
-                <li>Owned and scaled the core enterprise VM tracking service serving <strong>executive leadership</strong>, delivering real-time virtual infrastructure capacity tracking, state reconciliation, and multi-tenant host allocation.</li>
-                <li>Automated perimeter security provisioning via <strong>FortiGate REST APIs</strong> for firewall rules and IPsec VPNs; engineered an in-process sliding-window rate limiter that <strong>eliminated 100% of HTTP 429 rate-limiting failures</strong>.</li>
-                <li>Spearheaded frontend modernization from legacy AngularJS to modern <strong>Angular 17</strong>, re-architecting monolithic views into reactive, modular components and <strong>reducing client-side render times and maintenance overhead</strong>.</li>
-                <li>Automated continuous integration and artifact deployment pipelines via <strong>Jenkins CI</strong>, reducing release cycle friction and enforcing automated <strong>JaCoCo code quality and regression gates</strong>.</li>
-                <li>Stepped up as <strong>Acting Scrum Master</strong> facilitating sprint ceremonies, cross-functional dependency tracking, and timely production delivery; earned <strong>3× Extra Mile Commitment Awards</strong> for operational excellence.</li>
+                <li>Slashed cloud batch scheduler execution latency by <strong>92.6% (from ~18 minutes down to 80 seconds)</strong> across distributed Cassandra clusters by implementing strict 50-item batch chunking, multi-level Redis caching, and tuning HikariCP connection pools.</li>
+                <li>Architected multi-hypervisor orchestration engine and Flowable workflows across <strong>KVM, VMware ESXi, and OLVM</strong>, managing automated VM provisioning, lifecycle operations, and state compensation via asynchronous <strong>RabbitMQ</strong> queues.</li>
+                <li>Built full-stack onboarding workflow for <strong>Caringo Swarm S3-compatible cloud object storage</strong> and automated cPanel DNS A-record associations, enabling <strong>100% self-service cloud storage and public IP lifecycle management</strong>.</li>
+                <li>Automated perimeter network security controls via <strong>FortiGate REST APIs</strong> for firewall rules, VDOM tokens, and IPsec VPNs; engineered an in-process sliding-window rate limiter that <strong>eliminated 100% of HTTP 429 rate-limiting failures</strong>.</li>
+                <li>Designed dynamic route discovery, wildcard path forwarding, and multi-tenant workspace access validation across <strong>Apache APISIX, Kong, and Tyk</strong> API gateways, integrating downstream audit logging and metering pipelines.</li>
+                <li>Engineered switch-port utilization and network capacity telemetry engine integrating Zabbix and Nimsoft APIs, computing cluster-wide CPU, memory, NSX, and datastore allocation to prevent capacity exhaustion.</li>
+                <li>Spearheaded frontend modernization to <strong>Angular 17</strong> with reactive component architectures, and led backend modernization from <strong>Java 8 to 17 / Spring Boot 3</strong>, resolving security CVEs in Netty, Log4j, and Apache Commons.</li>
+                <li>Stepped up as <strong>Acting Scrum Master</strong> and technical mentor for junior engineers, leading architecture reviews, code reviews, and dependency tracking; earned <strong>3× Extra Mile Commitment Awards</strong> for operational excellence.</li>
               </ul>
             </div>
           </div>
@@ -147,14 +147,13 @@ import { PokemonAudioService } from '../../core/services/pokemon-audio.service';
 
             <div>
               <div class="flex justify-between items-baseline text-[11px]">
-                <span><strong>SthiraX: Distributed CO₂-Mineralization Platform for Certified Precast Materials</strong> | <em>IIM Kozhikode BPP</em></span>
+                <span><strong>SthiraX: Distributed CO₂-Mineralization &amp; IoT MRV Platform</strong> | <em>IIM Kozhikode Capstone (BPP)</em></span>
                 <span class="font-bold text-right text-[10px]">In Progress</span>
               </div>
               <ul class="list-disc pl-4 space-y-0.5 text-[10px] leading-relaxed text-slate-900 mt-1">
-                <li>Architected an asset-light climate-tech platform retrofitting regional precast plants with modular industrial CO₂-curing units, targeting India's <strong>mandatory 5%–25% recycled precast mandate by 2030 across 20,000+ sqm projects</strong> (addressing India's &lt;1% recycling baseline).</li>
-                <li>Engineered batch-level <strong>MRV (Measurement, Reporting &amp; Verification) software</strong> generating cryptographically verifiable Digital Product Passports for developers and EPC contractors fulfilling legal EPR compliance.</li>
-                <li>Designed an asset-light multi-tiered monetization strategy (equipment leasing, per-tonne curing royalties, and MRV SaaS subscriptions), modeling viable unit economics independent of voluntary carbon credit market volatility.</li>
-                <li>Developed a geospatial multi-factor ranking algorithm evaluating industrial CO₂ haul economics, steel slag feedstock supply, and regional precast manufacturing cluster density.</li>
+                <li>Designed an asset-light platform retrofitting regional precast concrete plants with modular industrial CO₂-curing units to address India's <strong>April 2026 C&amp;D Waste Management Rules (mandating 5% to 25% recycled material by 2030 across 20,000+ sqm projects)</strong>.</li>
+                <li>Architected batch-level <strong>IoT MRV (Measurement, Reporting &amp; Verification) software</strong> tracking calcium carbonate uptake per production run and generating cryptographically verifiable Digital Product Passports for developer EPR compliance.</li>
+                <li>Modeled multi-tier unit economics (equipment leasing, per-tonne curing royalties, and MRV SaaS subscriptions) viable independent of voluntary carbon credit market volatility, supported by a geospatial regional scoring algorithm.</li>
               </ul>
             </div>
           </div>
@@ -165,12 +164,12 @@ import { PokemonAudioService } from '../../core/services/pokemon-audio.service';
               Technical &amp; Leadership Competencies
             </div>
             <div class="text-[10px] space-y-0.5 text-slate-900 leading-normal">
-              <div><strong>Core Languages:</strong> Java (8/11/17), Python, TypeScript, JavaScript, SQL</div>
-              <div><strong>Backend &amp; Distributed Systems:</strong> Spring Boot 3, Hibernate/JPA, RabbitMQ (AMQP), REST APIs, Microservices Architecture, Flowable BPMN</div>
-              <div><strong>Frontend &amp; UI Engineering:</strong> Angular 17, AngularJS, RxJS, HTML5/CSS3, Tailwind CSS, Responsive Web Design, State Management</div>
-              <div><strong>Databases, Caching &amp; Cloud:</strong> MySQL, Cassandra, Redis, Caringo Swarm / S3, KVM, VMware ESXi, OLVM, Docker</div>
-              <div><strong>DevOps, SRE &amp; Security:</strong> Jenkins CI/CD, Git, Linux, Maven, FortiGate APIs, Postman, Swagger/OpenAPI, SonarQube, JaCoCo</div>
-              <div><strong>Product Strategy &amp; Leadership:</strong> Platform Business Models, Unit Economics, EPR Compliance, Agile / Scrum Master, Cross-Functional Leadership</div>
+              <div><strong>Languages &amp; Core:</strong> Java (8/11/17 LTS), Python, TypeScript, JavaScript, SQL, HTML5/CSS3, Bash</div>
+              <div><strong>Distributed Systems &amp; Cloud:</strong> Spring Boot 3, Flowable BPMN, RabbitMQ (AMQP), Microservices Architecture, REST APIs, KVM, VMware ESXi, OLVM, Docker</div>
+              <div><strong>Databases, Caching &amp; Storage:</strong> Cassandra, Redis, MySQL, Caringo Swarm / S3, Hibernate/JPA, HikariCP (Connection Pool Tuning)</div>
+              <div><strong>Networking, Security &amp; Gateways:</strong> Apache APISIX, Kong, Tyk, FortiGate REST APIs, IPsec VPN, DNS Automation, Sliding-Window Rate Limiting</div>
+              <div><strong>DevOps, SRE &amp; Observability:</strong> Jenkins CI/CD, JaCoCo, JUnit, Mockito, Zabbix APIs, Linux, Maven, SonarQube, Postman, Swagger/OpenAPI</div>
+              <div><strong>Product Strategy &amp; Leadership:</strong> Technical Mentorship, Code Reviews, Agile / Scrum Master, Platform Business Models, Unit Economics, EPR Mandates</div>
             </div>
           </div>
 

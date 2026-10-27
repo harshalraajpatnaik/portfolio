@@ -234,6 +234,61 @@ export class StarterRosterComponent {
       engineeringRole: 'Machine Learning Recommendation Engine',
       stats: { hp: 99, attack: 88, speed: 70 },
       quote: 'Rock-solid data processing! Engineered movie recommendation pipelines with KNN, cosine similarity, and Pearson metrics.'
+    },
+    {
+      id: 150,
+      name: 'Mewtwo',
+      type: 'PSYCHIC',
+      typeEmoji: '🧠',
+      typeColor: '#B388FF',
+      spriteUrl: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/150.gif',
+      engineeringRole: 'Flowable BPMN Distributed State Machine & Sagas',
+      stats: { hp: 99, attack: 100, speed: 99 },
+      quote: 'Unstoppable distributed state execution! Replaced cron jobs with Flowable BPMN workflow engines and automated compensating rollbacks.'
+    },
+    {
+      id: 149,
+      name: 'Dragonite',
+      type: 'DRAGON',
+      typeEmoji: '🐉',
+      typeColor: '#818CF8',
+      spriteUrl: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/149.gif',
+      engineeringRole: 'Burstable Bandwidth Policing & Multi-Tier QoS',
+      stats: { hp: 96, attack: 98, speed: 94 },
+      quote: 'Soaring multi-gigabit throughput! Programmed CIR/PIR traffic policers to eradicate noisy-neighbor network starvation.'
+    },
+    {
+      id: 143,
+      name: 'Snorlax',
+      type: 'NORMAL',
+      typeEmoji: '⚖️',
+      typeColor: '#A8A29E',
+      spriteUrl: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/143.gif',
+      engineeringRole: 'Compute & Datastore Capacity Reporting Engine',
+      stats: { hp: 100, attack: 85, speed: 65 },
+      quote: 'Massive infrastructure oversight! Aggregated real-time CPU, RAM, and SAN metrics across thousands of nodes for capex forecasting.'
+    },
+    {
+      id: 94,
+      name: 'Gengar',
+      type: 'GHOST',
+      typeEmoji: '👻',
+      typeColor: '#C084FC',
+      spriteUrl: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/94.gif',
+      engineeringRole: 'Sliding-Window Rate Limiter & RFC 6585 429 Guard',
+      stats: { hp: 86, attack: 97, speed: 96 },
+      quote: 'Phantom flood mitigation! Protected internal management gateways from cascading retry storms with atomic sliding-window algorithms.'
+    },
+    {
+      id: 130,
+      name: 'Gyarados',
+      type: 'WATER',
+      typeEmoji: '🌊',
+      typeColor: '#00E5FF',
+      spriteUrl: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/130.gif',
+      engineeringRole: 'Switch-Port Telemetry & Datacenter Switch Mapping',
+      stats: { hp: 95, attack: 98, speed: 90 },
+      quote: 'Surging datacenter telemetry! Automated physical switch-port mapping, duplex error checks, and CRC alarms across global POPs.'
     }
   ];
 
