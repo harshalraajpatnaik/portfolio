@@ -110,7 +110,7 @@ export class SkillsComponent {
     { name: 'Cassandra Batch Optimization', level: 'Proficient', proficiency: 80, context: 'Partitioned batch operations (batch size 50), coordinator protection' },
     { name: 'Redis Multi-Layer Caching', level: 'Advanced', proficiency: 85, context: 'Cache-aside patterns, eviction policies, distributed session caching' },
     { name: 'Flowable BPMN Workflows', level: 'Advanced', proficiency: 84, context: 'Multi-step infrastructure provisioning & automatic failure resumption' },
-    { name: 'API Gateways (APISIX, Kong)', level: 'Proficient', proficiency: 78, context: 'Rate limiting, wildcard forwarding, workspace access validation' },
+    { name: 'API Gateways & Reverse Proxies (Kong)', level: 'Proficient', proficiency: 82, context: 'Rate limiting, wildcard path forwarding, workspace access validation' },
     { name: 'S3 Object Storage (Scality, MinIO)', level: 'Proficient', proficiency: 80, context: 'Bucket lifecycle management, metering, DNS A-record associations' },
   ];
 

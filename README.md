@@ -100,8 +100,8 @@ Every cloud system engineered by Harshal at **Tata Communications** and **IIM Ko
 | **Squirtle** | `#007` | 🌊 WATER | **Caringo Swarm S3 Object Storage Full-Stack Onboarding**<br/>Built end-to-end full-stack onboarding module using Java, Maven, and Angular, automating bucket provisioning and dynamic DNS A-record mapping for self-service cloud storage. | `Hydro Pump`<br/>**100%** self-service automated DNS |
 | **Charmander** | `#004` | 🔥 FIRE | **Perimeter Security & FortiGate Firewall REST Automation**<br/>Automated network security controls via FortiOS REST APIs for firewall rules and IPsec VPNs; built an in-process sliding-window rate limiter eliminating API thrashing. | `Fire Spin`<br/>**0** HTTP 429 errors (eliminated) |
 | **Butterfree** | `#012` | 🦋 FLYING | **Enterprise Frontend Metamorphosis: AngularJS to Angular 17**<br/>Spearheaded legacy portal modernization into modern Angular with TypeScript and RxJS, deconstructing `$scope` two-way bindings into modular, reactive component flows. | `Quiver Dance`<br/>**Full rewrite** to Angular 17 |
-| **Pidgeot** | `#018` | 🦅 FLYING | **High-Velocity CI/CD Pipeline Automation with Jenkins**<br/>Architected automated continuous integration workflows in Jenkins, compiling multi-module Maven projects and enforcing automated JaCoCo regression test quality gates. | `Hurricane`<br/>**100%** automated pipeline trigger |
-| **Cyndaquil** | `#155` | 🔥 FIRE | **API Gateway Routing, Upstream Discovery & Access Control**<br/>Engineered wildcard API-path forwarding, dedicated upstream gateway discovery, and workspace-level access token validation across Kong, Tyk, and Apache APISIX. | `Flame Wheel`<br/>**3** enterprise gateways unified |
+| **Pidgeot** | `#018` | 🦅 FLYING | **High-Velocity CI/CD Pipeline Automation with Jenkins**<br/>Architected automated continuous integration workflows in Jenkins, compiling multi-module Maven projects and enforcing automated JUnit and SonarQube regression test quality gates. | `Hurricane`<br/>**100%** automated pipeline trigger |
+| **Cyndaquil** | `#155` | 🔥 FIRE | **API Gateway Routing, Upstream Discovery & Access Control**<br/>Engineered wildcard API-path forwarding, dedicated upstream gateway discovery, and workspace-level access token validation across Kong API Gateway and reverse proxies. | `Flame Wheel`<br/>**Kong** gateway routing |
 | **Krookodile** | `#553` | 🐊 GROUND | **Database Concurrency, Locking & Connection Pool Engineering**<br/>Resolved database concurrency deadlocks, HikariCP connection pool exhaustion warnings, and Hibernate lazy-loading session boundaries in MySQL and Cassandra. | `Earthquake`<br/>**Zero N+1** queries & leak-free pool |
 | **Psyduck** | `#054` | 🔮 PSYCHIC | **Production SRE Concurrency & Acting Scrum Master Leadership**<br/>Diagnosed thread pool exhaustion and async request timeouts; stepped up as Acting Scrum Master facilitating sprint ceremonies (recognized with 3× Extra Mile Commitment Awards). | `Amnesia`<br/>**3×** Extra Mile Award winner |
 | **Onix** | `#095` | 🪨 ROCK | **Machine Learning Rating Recommendation & Data Pipelines**<br/>Cleaned, extracted, and trained Kaggle motion picture datasets in Python using collaborative and content-based filtering (KNN, Pearson correlation, cosine similarity). | `Rock Slide`<br/>**KNN & Pearson** recommendation |
@@ -227,7 +227,7 @@ npm start
 
 This repository adheres to enterprise continuous integration standards:
 - **Strict TypeScript & Angular Compiles**: Zero compile warnings or loose typing.
-- **JaCoCo Code Coverage**: Automated unit test execution during Maven package phases.
+- **JUnit & SonarQube Quality Gates**: Automated unit test execution during Maven package phases.
 - **Hermetic Build Verification**: Independent backend and frontend pipelines.
 - **Clean Git Hygiene**: Automated `.gitignore` shielding binaries, dependencies, and temporary files.
 

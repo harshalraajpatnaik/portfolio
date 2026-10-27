@@ -174,7 +174,7 @@ public class ProjectService {
                 "Built automated network security perimeter controls by integrating FortiOS REST APIs for firewall rule " +
                 "management, IPsec VPN provisioning, and public IP lifecycle management. Engineered an in-process sliding-window rate " +
                 "limiter that eliminated HTTP 429 thrashing against rate-limited appliance APIs.",
-                List.of("Java 17", "Spring Boot 3", "FortiOS REST", "Apache APISIX", "Sliding Window", "IPsec VPN"),
+                List.of("Java 17", "Spring Boot 3", "FortiOS REST", "Token Bucket", "Sliding Window", "IPsec VPN"),
                 List.of(
                         new Metric("Firewall APIs", "FortiOS REST", "automated rules"),
                         new Metric("VPN Tunnels", "Remote & Site-to-Site", "IPsec provisioned"),
@@ -234,7 +234,7 @@ public class ProjectService {
                 "Architected automated continuous integration workflows using Jenkins to streamline loading latest build " +
                 "artifacts, running automated regression suites, and packaging production-ready multi-module JARs. " +
                 "Cut manual deployment cycles and caught regressions prior to staging.",
-                List.of("Jenkins", "Maven", "Git", "Linux", "Bash", "JaCoCo", "Nexus"),
+                List.of("Jenkins", "Maven", "Git", "Linux", "Bash", "JUnit", "Nexus"),
                 List.of(
                         new Metric("Pipeline Automation", "100%", "automated trigger"),
                         new Metric("Testing Gate", "Automated", "regression suites"),
@@ -242,7 +242,7 @@ public class ProjectService {
                 ),
                 List.of(
                         "Automated build code checkouts, multi-module Maven compilation, and test execution.",
-                        "Integrated code quality gates with automated JaCoCo coverage reporting and Sonar checks.",
+                        "Integrated code quality gates with automated JUnit testing and SonarQube checks.",
                         "Streamlined release packaging for rapid hypervisor and storage module rollouts."
                 ),
                 4, 5, 4,
@@ -250,7 +250,7 @@ public class ProjectService {
                 "Pidgeot",
                 "#018",
                 "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/18.gif",
-                "Hurricane (High-Velocity Jenkins CI/CD & Quality Gates)"
+                "Hurricane (High-Velocity Jenkins CI/CD & SonarQube Quality Gates)"
         );
     }
 
@@ -260,13 +260,13 @@ public class ProjectService {
                 "API Gateway Routing, Upstream Discovery & Access Control",
                 "FIRE",
                 "🔥",
-                "API Management · Apache APISIX · Kong · Tyk · Tata Communications",
+                "API Management · Kong Gateway · Reverse Proxies · Tata Communications",
                 "Engineered wildcard API-path forwarding, dedicated gateway upstream discovery, and engagement-level access " +
-                "validation across enterprise API gateways (Kong, Tyk, Apache APISIX). Ensured tenant isolation " +
+                "validation across enterprise API gateways using Kong and reverse proxies. Ensured tenant isolation " +
                 "and fine-grained route metering.",
-                List.of("Apache APISIX", "Kong", "Tyk", "Spring Boot", "REST APIs", "OAuth2", "Rate Limiting"),
+                List.of("Kong Gateway", "Reverse Proxies", "Spring Boot", "REST APIs", "OAuth2", "Rate Limiting"),
                 List.of(
-                        new Metric("Gateways Supported", "3", "APISIX, Kong, Tyk"),
+                        new Metric("API Gateway", "Kong", "enterprise gateway"),
                         new Metric("Forwarding Mode", "Wildcard Paths", "dynamic discovery"),
                         new Metric("Access Control", "Multi-Tenant", "workspace level")
                 ),
@@ -280,7 +280,7 @@ public class ProjectService {
                 "Cyndaquil",
                 "#155",
                 "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/155.gif",
-                "Flame Wheel (API Gateway Routing & Multi-Tenant Access)"
+                "Flame Wheel (Kong Gateway Routing & Multi-Tenant Access)"
         );
     }
 
@@ -324,7 +324,7 @@ public class ProjectService {
                 "Diagnosed complex concurrency issues, resolved thread timeouts and database connection pool contention, " +
                 "and automated continuous integration using Jenkins to streamline loading builds and test suites. " +
                 "Acted as Scrum Master steering sprint goals and production stability, recognized with 3× Extra Mile Commitment Awards.",
-                List.of("Jenkins", "Spring Boot", "HikariCP", "JaCoCo", "JUnit", "Scrum Master", "Agile"),
+                List.of("Jenkins", "Spring Boot", "HikariCP", "JUnit", "Mockito", "Scrum Master", "Agile"),
                 List.of(
                         new Metric("CI Automation", "Jenkins", "automated builds"),
                         new Metric("Leadership Role", "Acting Scrum Master", "sprint velocity"),

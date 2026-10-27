@@ -131,7 +131,7 @@ import { PokemonAudioService } from '../../core/services/pokemon-audio.service';
                 <li>Architected multi-hypervisor orchestration engine and Flowable workflows across <strong>KVM, VMware ESXi, and OLVM</strong>, managing automated VM provisioning, lifecycle operations, and state compensation via asynchronous <strong>RabbitMQ</strong> queues.</li>
                 <li>Built full-stack onboarding workflow for <strong>Caringo Swarm S3-compatible cloud object storage</strong> and automated cPanel DNS A-record associations, enabling <strong>100% self-service cloud storage and public IP lifecycle management</strong>.</li>
                 <li>Automated perimeter network security controls via <strong>FortiGate REST APIs</strong> for firewall rules, VDOM tokens, and IPsec VPNs; engineered an in-process sliding-window rate limiter that <strong>eliminated 100% of HTTP 429 rate-limiting failures</strong>.</li>
-                <li>Designed dynamic route discovery, wildcard path forwarding, and multi-tenant workspace access validation across <strong>Apache APISIX, Kong, and Tyk</strong> API gateways, integrating downstream audit logging and metering pipelines.</li>
+                <li>Designed dynamic route discovery, wildcard path forwarding, and multi-tenant workspace access validation across <strong>Kong API Gateway and reverse proxies</strong>, integrating downstream audit logging, rate limiting, and metering pipelines.</li>
                 <li>Engineered switch-port utilization and network capacity telemetry engine integrating Zabbix and Nimsoft APIs, computing cluster-wide CPU, memory, NSX, and datastore allocation to prevent capacity exhaustion.</li>
                 <li>Spearheaded frontend modernization to <strong>Angular 17</strong> with reactive component architectures, and led backend modernization from <strong>Java 8 to 17 / Spring Boot 3</strong>, resolving security CVEs in Netty, Log4j, and Apache Commons.</li>
                 <li>Stepped up as <strong>Acting Scrum Master</strong> and technical mentor for junior engineers, leading architecture reviews, code reviews, and dependency tracking; earned <strong>3× Extra Mile Commitment Awards</strong> for operational excellence.</li>
@@ -167,8 +167,8 @@ import { PokemonAudioService } from '../../core/services/pokemon-audio.service';
               <div><strong>Languages &amp; Core:</strong> Java (8/11/17 LTS), Python, TypeScript, JavaScript, SQL, HTML5/CSS3, Bash</div>
               <div><strong>Distributed Systems &amp; Cloud:</strong> Spring Boot 3, Flowable BPMN, RabbitMQ (AMQP), Microservices Architecture, REST APIs, KVM, VMware ESXi, OLVM, Docker</div>
               <div><strong>Databases, Caching &amp; Storage:</strong> Cassandra, Redis, MySQL, Caringo Swarm / S3, Hibernate/JPA, HikariCP (Connection Pool Tuning)</div>
-              <div><strong>Networking, Security &amp; Gateways:</strong> Apache APISIX, Kong, Tyk, FortiGate REST APIs, IPsec VPN, DNS Automation, Sliding-Window Rate Limiting</div>
-              <div><strong>DevOps, SRE &amp; Observability:</strong> Jenkins CI/CD, JaCoCo, JUnit, Mockito, Zabbix APIs, Linux, Maven, SonarQube, Postman, Swagger/OpenAPI</div>
+              <div><strong>Networking, Security &amp; Gateways:</strong> Kong API Gateway, FortiGate REST APIs, IPsec VPN, DNS Automation, Sliding-Window Rate Limiting, Reverse Proxies</div>
+              <div><strong>DevOps, SRE &amp; Observability:</strong> Jenkins CI/CD, JUnit, Mockito, Zabbix APIs, Linux, Maven, SonarQube, Postman, Swagger/OpenAPI</div>
               <div><strong>Product Strategy &amp; Leadership:</strong> Technical Mentorship, Code Reviews, Agile / Scrum Master, Platform Business Models, Unit Economics, EPR Mandates</div>
             </div>
           </div>
