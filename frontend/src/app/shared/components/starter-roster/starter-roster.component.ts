@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PokemonAudioService } from '../../../core/services/pokemon-audio.service';
 
@@ -94,17 +94,49 @@ export interface PokemonCompanion {
         </div>
       </div>
 
-      <!-- Quick Selector Ribbon -->
-      <div class="mt-3.5 pt-2.5 border-t border-white/10 flex items-center justify-between gap-1.5 overflow-x-auto pb-1">
+      <!-- Quick Selector Ribbon Header Cue -->
+      <div class="mt-3 pt-2 border-t border-white/10 flex items-center justify-between text-[10px] font-mono px-1">
+        <span class="flex items-center gap-1.5 text-energy font-bold animate-pulse">
+          <span>◀</span>
+          <span>SCROLL OR USE ARROWS TO EXPLORE ALL 16 PARTNERS</span>
+          <span>▶</span>
+        </span>
+        <span class="text-white/40 text-[9px] bg-white/5 px-2 py-0.5 rounded border border-white/10">16 POKÉMON ROSTER</span>
+      </div>
+
+      <!-- Quick Selector Ribbon with Left/Right Arrows & Visible Scrollbar -->
+      <div class="relative flex items-center mt-1">
+        <!-- Scroll Left Arrow Button -->
         <button
-          *ngFor="let p of party"
-          (click)="choosePokemon(p)"
-          [class.ring-2]="selectedPokemon.id === p.id"
-          [class.ring-energy]="selectedPokemon.id === p.id"
-          [class.bg-white-15]="selectedPokemon.id === p.id"
-          class="flex flex-col items-center p-1.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/5 transition-all flex-1 min-w-[50px] group">
-          <img [src]="p.spriteUrl" [alt]="p.name" class="h-7 w-7 sm:h-8 sm:w-8 object-contain group-hover:scale-110 transition-transform" />
-          <span class="text-[9px] font-mono text-white/70 mt-0.5 font-bold">{{ p.name }}</span>
+          (click)="scrollRibbon('left')"
+          class="absolute -left-2 z-10 w-7 h-7 rounded-full bg-crimson border-2 border-white/80 text-white flex items-center justify-center text-[10px] font-bold shadow-[0_0_12px_rgba(220,10,45,0.7)] hover:scale-110 active:scale-95 transition-all cursor-pointer"
+          title="Scroll Left">
+          ◀
+        </button>
+
+        <!-- Scrollable Ribbon Container -->
+        <div
+          #rosterContainer
+          class="flex items-center gap-2 overflow-x-scroll py-2.5 px-6 scroll-smooth w-full rounded-xl bg-black/40 border border-white/10"
+          style="scrollbar-width: thin; scrollbar-color: #FFD600 rgba(220, 10, 45, 0.4);">
+          <button
+            *ngFor="let p of party"
+            (click)="choosePokemon(p)"
+            [class.ring-2]="selectedPokemon.id === p.id"
+            [class.ring-energy]="selectedPokemon.id === p.id"
+            [class.bg-white-15]="selectedPokemon.id === p.id"
+            class="flex flex-col items-center p-1.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/5 transition-all flex-shrink-0 w-[58px] group cursor-pointer">
+            <img [src]="p.spriteUrl" [alt]="p.name" class="h-7 w-7 sm:h-8 sm:w-8 object-contain group-hover:scale-110 transition-transform" />
+            <span class="text-[9px] font-mono text-white/80 mt-0.5 font-bold truncate max-w-full">{{ p.name }}</span>
+          </button>
+        </div>
+
+        <!-- Scroll Right Arrow Button -->
+        <button
+          (click)="scrollRibbon('right')"
+          class="absolute -right-2 z-10 w-7 h-7 rounded-full bg-crimson border-2 border-white/80 text-white flex items-center justify-center text-[10px] font-bold shadow-[0_0_12px_rgba(220,10,45,0.7)] hover:scale-110 active:scale-95 transition-all cursor-pointer"
+          title="Scroll Right">
+          ▶
         </button>
       </div>
     </div>
@@ -112,6 +144,7 @@ export interface PokemonCompanion {
 })
 export class StarterRosterComponent {
   @Output() pokemonSelected = new EventEmitter<PokemonCompanion>();
+  @ViewChild('rosterContainer') rosterContainer?: ElementRef<HTMLDivElement>;
 
   party: PokemonCompanion[] = [
     {
@@ -300,5 +333,13 @@ export class StarterRosterComponent {
     this.selectedPokemon = p;
     this.audio.playChirp();
     this.pokemonSelected.emit(p);
+  }
+
+  scrollRibbon(direction: 'left' | 'right'): void {
+    if (!this.rosterContainer?.nativeElement) return;
+    const container = this.rosterContainer.nativeElement;
+    const scrollAmount = direction === 'left' ? -220 : 220;
+    container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    this.audio.playBeep();
   }
 }

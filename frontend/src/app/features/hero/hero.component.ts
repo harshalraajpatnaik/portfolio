@@ -59,7 +59,7 @@ import { PokemonAudioService } from '../../core/services/pokemon-audio.service';
             <div class="lg:col-span-7 space-y-3.5 sm:space-y-4">
               <!-- Trainer ID Pill -->
               <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-energy/40 bg-energy/10 text-energy text-[11px] font-mono font-semibold">
-                <span>⚡ TATA COMMUNICATIONS SDE</span>
+                <span>⚡ SENIOR SWE · NOVAMESH / TATA COMMS</span>
                 <span>•</span>
                 <span>IIM KOZHIKODE EPGP</span>
                 <span>•</span>
@@ -74,7 +74,7 @@ import { PokemonAudioService } from '../../core/services/pokemon-audio.service';
               <!-- Bio Summary: Grounded, authentic, combining engineering and executive business sense -->
               <div class="space-y-2 sm:space-y-2.5 font-sans">
                 <p class="text-sm sm:text-[15px] text-white/90 leading-snug">
-                  I'm <strong class="text-white font-bold">Harshal Raaj Patnaik</strong>, Software Development Engineer at <strong class="text-energy">Tata Communications</strong> and Executive MBA scholar in the <strong class="text-cyan-glow">Executive Post Graduate Programme (EPGP) in General Management at IIM Kozhikode</strong>.
+                  I'm <strong class="text-white font-bold">Harshal Raaj Patnaik</strong>, Senior Software Engineer at <strong class="text-energy">Novamesh Ltd.</strong> (wholly owned subsidiary of Tata Communications) and Executive MBA scholar in the <strong class="text-cyan-glow">Executive Post Graduate Programme (EPGP) in General Management at IIM Kozhikode</strong>.
                 </p>
                 <p class="text-xs sm:text-[13px] text-white/75 leading-snug">
                   I engineer multi-hypervisor provisioning dashboards across KVM, VMware, and OLVM, Caringo Swarm S3 object storage onboarding, and high-throughput batch schedulers (slashing latency by 92.6% from 18m to 80s).

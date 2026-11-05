@@ -119,43 +119,67 @@ import { PokemonAudioService } from '../../core/services/pokemon-audio.service';
               Professional Experience
             </div>
 
-            <div>
+            <!-- NOVAMESH LTD. -->
+            <div class="mb-2">
               <div class="flex justify-between items-baseline font-bold text-[11px]">
-                <span>Tata Communications Ltd.</span>
-                <span class="text-right">Jul 2021 – Present</span>
+                <span>Novamesh Ltd. (Wholly Owned Subsidiary of Tata Communications)</span>
+                <span class="text-right">Apr 2024 – Present</span>
               </div>
               <div class="flex justify-between items-baseline italic text-[10px] text-slate-800 mb-1">
-                <span>Software Development Engineer (Cloud Infrastructure, Distributed Workflows &amp; Full-Stack)</span>
+                <span>Senior Software Engineer (Cloud Platforms &amp; Distributed Infrastructure)</span>
                 <span class="text-right">Chennai, India</span>
               </div>
               <ul class="list-disc pl-4 space-y-0.5 text-[10px] leading-relaxed text-slate-900">
-                <li>Slashed cloud batch scheduler execution latency by <strong>92.6% (from ~18 minutes down to 80 seconds)</strong> across distributed Cassandra clusters by implementing strict 50-item batch chunking, multi-level Redis caching, and tuning HikariCP connection pools.</li>
-                <li>Architected multi-hypervisor orchestration engine and Flowable workflows across <strong>KVM, VMware ESXi, and OLVM</strong>, managing automated VM provisioning, lifecycle operations, and state compensation via asynchronous <strong>RabbitMQ</strong> queues.</li>
-                <li>Built full-stack onboarding workflow for <strong>Caringo Swarm S3-compatible cloud object storage</strong> and automated cPanel DNS A-record associations, enabling <strong>100% self-service cloud storage and public IP lifecycle management</strong>.</li>
-                <li>Automated perimeter network security controls via <strong>FortiGate REST APIs</strong> for firewall rules, VDOM tokens, and IPsec VPNs; engineered an in-process sliding-window rate limiter that <strong>eliminated 100% of HTTP 429 rate-limiting failures</strong>.</li>
-                <li>Designed dynamic route discovery, wildcard path forwarding, and multi-tenant workspace access validation across <strong>Kong API Gateway and reverse proxies</strong>, integrating downstream audit logging, rate limiting, and metering pipelines.</li>
-                <li>Engineered switch-port utilization and network capacity telemetry engine integrating Zabbix and Nimsoft APIs, computing cluster-wide CPU, memory, NSX, and datastore allocation to prevent capacity exhaustion.</li>
-                <li>Spearheaded frontend modernization to <strong>Angular 17</strong> with reactive component architectures, and led backend modernization from <strong>Java 8 to 17 / Spring Boot 3</strong>, resolving security CVEs in Netty, Log4j, and Apache Commons.</li>
-                <li>Stepped up as <strong>Acting Scrum Master</strong> and technical mentor for junior engineers, leading architecture reviews, code reviews, and dependency tracking; earned <strong>3× Extra Mile Commitment Awards</strong> for operational excellence.</li>
+                <li>Architected multi-hypervisor VM orchestration and tracking dashboard across <strong>KVM, VMware ESXi, and OLVM</strong>, managing automated provisioning, capacity reconciliation, and state compensation via asynchronous <strong>RabbitMQ</strong> queues.</li>
+                <li>Slashed cloud batch scheduler execution latency by <strong>92.6% (from ~18 minutes down to 80 seconds)</strong> across Cassandra clusters by implementing strict 50-item batch chunking, multi-level Redis caching, and tuning HikariCP connection pools.</li>
+                <li>Automated network security controls via <strong>FortiGate REST APIs</strong> for firewall rules, VDOM tokens, and IPsec VPNs; engineered an in-process sliding-window rate limiter that <strong>eliminated 100% of HTTP 429 rate-limiting failures</strong>.</li>
+                <li>Designed route discovery, wildcard forwarding, and multi-tenant access control across <strong>Kong API Gateway</strong>; stepped up as <strong>Acting Scrum Master</strong> and mentor for junior engineers, driving architecture reviews and sprint velocity.</li>
+              </ul>
+            </div>
+
+            <!-- TATA COMMUNICATIONS LTD. -->
+            <div>
+              <div class="flex justify-between items-baseline font-bold text-[11px]">
+                <span>Tata Communications Ltd.</span>
+                <span class="text-right">Jul 2021 – Mar 2024</span>
+              </div>
+              <div class="flex justify-between items-baseline italic text-[10px] text-slate-800 mb-1">
+                <span>Software Development Engineer (Cloud Infrastructure, Storage &amp; Full-Stack)</span>
+                <span class="text-right">Chennai, India</span>
+              </div>
+              <ul class="list-disc pl-4 space-y-0.5 text-[10px] leading-relaxed text-slate-900">
+                <li>Built full-stack onboarding workflow for <strong>Caringo Swarm S3-compatible cloud object storage</strong> and automated cPanel DNS A-record associations using Java and Angular, enabling <strong>100% self-service storage provisioning and bucket metering</strong>.</li>
+                <li>Spearheaded frontend modernization to <strong>Angular 17</strong> with reactive component architectures, deconstructing legacy AngularJS scopes to improve client-side rendering performance, state predictability, and modular testability.</li>
+                <li>Automated build, test, and release packaging pipelines with <strong>Jenkins CI/CD</strong>, Maven multi-module builds, and JUnit quality gates, significantly cutting manual verification overhead and deployment friction.</li>
+                <li>Engineered switch-port utilization and network capacity telemetry engine integrating Zabbix and Nimsoft APIs to compute cluster-wide allocation; earned <strong>3× Extra Mile Commitment Awards</strong> for operational excellence.</li>
               </ul>
             </div>
           </div>
 
-          <!-- SECTION: STRATEGY & TECH CAPSTONE -->
+          <!-- SECTION: STRATEGY & TECH PROJECTS -->
           <div class="mb-3">
             <div class="font-bold uppercase tracking-wider text-[11px] border-b border-black pb-0.5 mb-1" style="font-variant: small-caps;">
-              Strategy &amp; Technical Product Capstone
+              Strategy &amp; Technical Projects
+            </div>
+
+            <div class="mb-1.5">
+              <div class="flex justify-between items-baseline text-[11px]">
+                <span><strong>SthiraX: Distributed CO₂-Mineralization &amp; IoT MRV Platform</strong> | <em>IIM Kozhikode Capstone (BPP)</em></span>
+                <span class="font-bold text-right text-[10px]">2025 – Present</span>
+              </div>
+              <ul class="list-disc pl-4 space-y-0.5 text-[10px] leading-relaxed text-slate-900 mt-0.5">
+                <li>Designed an asset-light retrofit architecture converting regional precast concrete plants into low-carbon facilities to fulfill India's <strong>April 2026 C&amp;D Waste Rules (mandating 5% to 25% recycled material by 2030 across 20,000+ sqm projects)</strong>.</li>
+                <li>Architected batch-level <strong>IoT MRV (Measurement, Reporting &amp; Verification) software</strong> generating cryptographically verifiable Digital Product Passports for developer EPR compliance, supported by multi-tiered SaaS and royalty unit economics.</li>
+              </ul>
             </div>
 
             <div>
               <div class="flex justify-between items-baseline text-[11px]">
-                <span><strong>SthiraX: Distributed CO₂-Mineralization &amp; IoT MRV Platform</strong> | <em>IIM Kozhikode Capstone (BPP)</em></span>
-                <span class="font-bold text-right text-[10px]">In Progress</span>
+                <span><strong>Workflow Reliability Lab &amp; CloudScale Platforms</strong> | <em>Distributed Systems &amp; Predictive Autoscaling</em></span>
+                <span class="font-bold text-right text-[10px]">2024 – 2025</span>
               </div>
-              <ul class="list-disc pl-4 space-y-0.5 text-[10px] leading-relaxed text-slate-900 mt-1">
-                <li>Designed an asset-light platform retrofitting regional precast concrete plants with modular industrial CO₂-curing units to address India's <strong>April 2026 C&amp;D Waste Management Rules (mandating 5% to 25% recycled material by 2030 across 20,000+ sqm projects)</strong>.</li>
-                <li>Architected batch-level <strong>IoT MRV (Measurement, Reporting &amp; Verification) software</strong> tracking calcium carbonate uptake per production run and generating cryptographically verifiable Digital Product Passports for developer EPR compliance.</li>
-                <li>Modeled multi-tier unit economics (equipment leasing, per-tonne curing royalties, and MRV SaaS subscriptions) viable independent of voluntary carbon credit market volatility, supported by a geospatial regional scoring algorithm.</li>
+              <ul class="list-disc pl-4 space-y-0.5 text-[10px] leading-relaxed text-slate-900 mt-0.5">
+                <li>Engineered distributed saga failure injection simulator verifying deterministic compensation boundaries, paired with predictive ML capacity autoscaling and Prometheus/Grafana cluster telemetry (<strong>Java 25, Spring Boot 4, FastAPI, Angular</strong>).</li>
               </ul>
             </div>
           </div>

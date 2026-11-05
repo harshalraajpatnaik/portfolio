@@ -105,6 +105,26 @@ import { PokemonAudioService } from '../../../core/services/pokemon-audio.servic
 
       </div>
 
+      <!-- 5-Second Pulsing Immersion Speech-Bubble Toast (Auto-dismisses in 5s or when clicked) -->
+      <div
+        *ngIf="showImmersionCallout && !audio.isMusicPlaying"
+        (click)="dismissCalloutAndPlay()"
+        class="mb-2 px-3.5 py-2 rounded-2xl bg-gradient-to-r from-crimson via-red-600 to-amber-500 text-white text-xs font-mono font-bold shadow-[0_0_25px_rgba(239,68,68,0.8)] border-2 border-white/90 flex items-center gap-2 cursor-pointer animate-bounce hover:scale-105 transition-all max-w-[290px] ml-auto">
+        <span class="text-base animate-spin flex-shrink-0">⚡</span>
+        <div class="leading-tight flex-1">
+          <div class="text-[10.5px] font-black tracking-wide flex items-center gap-1">
+            <span>POKÉMON THEME SONG</span>
+            <span class="text-[9px] bg-black/40 px-1 py-0.2 rounded text-energy">5s</span>
+          </div>
+          <div class="text-[9px] opacity-95 font-medium">Click here for full studio audio! 🎵</div>
+        </div>
+        <button
+          (click)="$event.stopPropagation(); dismissCallout()"
+          class="text-white/80 hover:text-white text-xs px-1 hover:bg-black/20 rounded">
+          ✕
+        </button>
+      </div>
+
       <!-- COMPACT FLOATING DOCK BAR (Always Visible) -->
       <div class="flex items-center gap-2 p-1.5 rounded-full bg-black/85 backdrop-blur-md border border-crimson/50 shadow-[0_4px_20px_rgba(220,10,45,0.4)]">
         <!-- Spinning Mini-Pokéball -->
@@ -145,13 +165,20 @@ export class PokemonPlayerComponent implements OnInit, OnDestroy {
   currentTime = 0;
   duration = 0;
   progressPercent = 0;
+  showImmersionCallout = true;
 
   private timerId: any = null;
+  private calloutTimerId: any = null;
 
   constructor(public audio: PokemonAudioService) {}
 
   ngOnInit(): void {
     if (typeof window !== 'undefined') {
+      // Auto-dismiss the immersion toast after 5 seconds
+      this.calloutTimerId = setTimeout(() => {
+        this.showImmersionCallout = false;
+      }, 5000);
+
       this.timerId = setInterval(() => {
         if (this.audio.bgAudio) {
           this.currentTime = this.audio.bgAudio.currentTime || 0;
@@ -167,6 +194,25 @@ export class PokemonPlayerComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     if (this.timerId) {
       clearInterval(this.timerId);
+    }
+    if (this.calloutTimerId) {
+      clearTimeout(this.calloutTimerId);
+    }
+  }
+
+  dismissCallout(): void {
+    this.showImmersionCallout = false;
+    if (this.calloutTimerId) {
+      clearTimeout(this.calloutTimerId);
+    }
+  }
+
+  dismissCalloutAndPlay(): void {
+    this.dismissCallout();
+    if (!this.audio.isMusicPlaying) {
+      this.audio.toggleMusic();
+    } else {
+      this.toggleExpanded();
     }
   }
 

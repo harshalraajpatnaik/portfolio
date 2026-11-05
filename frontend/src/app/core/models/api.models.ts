@@ -29,6 +29,9 @@ export interface WorkExperience {
 export interface ProjectCard {
   id: string;
   title: string;
+  category?: 'COMPANY' | 'PRODUCT';
+  companyName?: string;
+  period?: string;
   element: 'ELECTRIC' | 'WATER' | 'FIRE' | 'GRASS' | 'PSYCHIC' | 'FLYING' | 'GROUND' | 'ROCK' | 'DRAGON' | 'GHOST' | 'ICE' | 'NORMAL' | 'FAIRY';
   elementEmoji: string;
   domain: string;
