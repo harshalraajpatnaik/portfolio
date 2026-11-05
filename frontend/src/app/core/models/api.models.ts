@@ -29,7 +29,7 @@ export interface WorkExperience {
 export interface ProjectCard {
   id: string;
   title: string;
-  element: 'ELECTRIC' | 'WATER' | 'FIRE' | 'GRASS' | 'PSYCHIC' | 'FLYING' | 'GROUND' | 'ROCK';
+  element: 'ELECTRIC' | 'WATER' | 'FIRE' | 'GRASS' | 'PSYCHIC' | 'FLYING' | 'GROUND' | 'ROCK' | 'DRAGON' | 'GHOST' | 'ICE' | 'NORMAL' | 'FAIRY';
   elementEmoji: string;
   domain: string;
   summary: string;

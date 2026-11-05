@@ -40,7 +40,8 @@ import { PokemonAudioService } from '../../core/services/pokemon-audio.service';
               <span>{{ audio.soundEnabled ? '🔊 8-BIT: ON' : '🔇 8-BIT: OFF' }}</span>
             </button>
             <a
-              href="http://localhost:8080/api/v1/resume/download"
+              href="assets/Harshal_Raaj_Patnaik_Resume.pdf"
+              download="Harshal_Raaj_Patnaik_Resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
               class="px-3.5 py-1.5 rounded-xl text-[11px] font-mono font-bold bg-energy text-black hover:bg-energy/90 transition-all flex items-center gap-1 shadow-lg shadow-energy/20">

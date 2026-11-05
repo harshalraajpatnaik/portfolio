@@ -27,7 +27,8 @@ import { PokemonAudioService } from '../../core/services/pokemon-audio.service';
           <!-- Action Buttons Bar -->
           <div class="flex flex-wrap items-center justify-center gap-3 pt-3">
             <!-- Download Vector PDF -->
-            <a href="http://localhost:8080/api/v1/resume/download"
+            <a href="assets/Harshal_Raaj_Patnaik_Resume.pdf"
+               download="Harshal_Raaj_Patnaik_Resume.pdf"
                target="_blank"
                rel="noopener noreferrer"
                (click)="audio.playFanfare()"
@@ -37,7 +38,8 @@ import { PokemonAudioService } from '../../core/services/pokemon-audio.service';
             </a>
 
             <!-- Download LaTeX .tex Source -->
-            <a href="http://localhost:8080/api/v1/resume/latex"
+            <a href="assets/Harshal_Raaj_Patnaik_Resume.tex"
+               download="Harshal_Raaj_Patnaik_Resume.tex"
                target="_blank"
                rel="noopener noreferrer"
                (click)="audio.playChirp()"

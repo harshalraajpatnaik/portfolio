@@ -64,7 +64,8 @@ import { PokemonAudioService } from '../../../core/services/pokemon-audio.servic
           </div>
 
           <!-- Direct Resume Download Button (Google-Standard ATS PDF) -->
-          <a href="http://localhost:8080/api/v1/resume/download"
+          <a href="assets/Harshal_Raaj_Patnaik_Resume.pdf"
+             download="Harshal_Raaj_Patnaik_Resume.pdf"
              target="_blank"
              rel="noopener noreferrer"
              (click)="audio.playFanfare()"
@@ -77,6 +78,7 @@ import { PokemonAudioService } from '../../../core/services/pokemon-audio.servic
           <a href="http://localhost:8080/swagger-ui.html"
              target="_blank"
              rel="noopener noreferrer"
+             title="OpenAPI Swagger UI (Active when backend is running via ./start-dev.sh)"
              (click)="audio.playChirp()"
              class="hidden xl:flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-mono border border-grass/40 bg-grass/15 text-grass hover:bg-grass/25 transition-colors">
             <span class="w-1.5 h-1.5 rounded-full bg-grass animate-pulse"></span>
