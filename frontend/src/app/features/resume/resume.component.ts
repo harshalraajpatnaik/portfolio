@@ -76,7 +76,7 @@ import { PokemonAudioService } from '../../core/services/pokemon-audio.service';
               HARSHAL RAAJ PATNAIK
             </h1>
             <div class="text-[10.5px] font-bold text-slate-800 mb-1">
-              Senior Full-Stack &amp; Cloud Systems Engineer | Technical Product &amp; Platform Lead (Tech × MBA)
+              Senior Software Engineer &amp; Platform Architect | Cloud Infrastructure, Distributed Systems &amp; Product Strategy (Tech × MBA)
             </div>
             <div class="text-[10px] text-slate-700 leading-normal">
               +91-9982143442 &nbsp;~&nbsp;
@@ -134,7 +134,7 @@ import { PokemonAudioService } from '../../core/services/pokemon-audio.service';
                 <li><strong>Built Automated Order-to-Deployment Pipeline:</strong> <em>Built</em> end-to-end zero-touch order fulfillment pipeline converting customer service orders into automated, self-healing cloud deployments; integrated <strong>Flowable BPMN sagas</strong> and <strong>RabbitMQ</strong> to orchestrate VM provisioning, storage provisioning, network routing, and IP assignment with automated rollbacks, slashing customer provisioning lead time by <strong>85% (from 4 hours to under 35 minutes)</strong>.</li>
                 <li><strong>Designed Capacity &amp; Infrastructure Dashboard:</strong> <em>Designed</em> and engineered full-stack multi-tenant Capacity Planning &amp; Inventory Dashboard from design to distributed backend services, managing real-time lifecycle records across <strong>Compute</strong> (KVM, VMware ESXi, OLVM hypervisors), <strong>Storage</strong> (NetApp and HPE storage arrays, Caringo Swarm), and <strong>Network</strong> (public IP pool reports, switch port mappings, VDOM reports, bandwidth utilization telemetry) with interactive graphical heatmaps and trend analytics.</li>
                 <li><strong>Engineered High-Throughput Batch Processing:</strong> <em>Engineered</em> batch processing optimizations slashing cloud scheduler execution latency by <strong>92.6% (from ~18 minutes down to 80 seconds)</strong> across distributed Cassandra clusters using strict 50-item chunking, multi-level Redis caching, and HikariCP connection pool tuning.</li>
-                <li><strong>Led Fortinet Firewall &amp; Security Automation:</strong> <em>Led</em> enterprise <strong>Fortinet FortiGate Firewall</strong> automation via REST APIs for dynamic security policies, VDOM multi-tenancy, and IPsec VPN provisioning; built an in-process sliding-window rate limiter eliminating 100% of HTTP 429 throttling errors.</li>
+                <li><strong>Led Kong API Gateway &amp; Fortinet Firewall Automation:</strong> <em>Led</em> enterprise edge routing and security automation across <strong>Kong API Gateway</strong> and <strong>Fortinet FortiGate Firewalls</strong>; engineered dynamic route discovery, wildcard forwarding, and IPsec VPNs via REST APIs while implementing an in-process sliding-window rate limiter that <strong>eliminated 100% of HTTP 429 throttling errors</strong>.</li>
               </ul>
             </div>
 
@@ -236,8 +236,7 @@ import { PokemonAudioService } from '../../core/services/pokemon-audio.service';
               Leadership, Certifications &amp; Honors
             </div>
             <ul class="list-disc pl-4 space-y-0.5 text-[10px] leading-relaxed text-slate-900">
-              <li><strong>Leadership &amp; Agile Execution:</strong> Stepped up as <strong>Acting Scrum Master</strong>; orchestrated sprint ceremonies, backlog grooming, and delivery velocity in <strong>Jira</strong>, driving 100% on-time milestone delivery and technical mentorship for junior engineers.</li>
-              <li><strong>Cross-Functional Product &amp; Technical Strategy:</strong> Partnered with product managers and enterprise clients to define SLA/SLO baselines, author technical RFCs, and translate business platform roadmaps into resilient distributed microservices architectures.</li>
+              <li><strong>Leadership, Product &amp; Agile Strategy:</strong> Stepped up as <strong>Acting Scrum Master</strong>; orchestrated sprint ceremonies, backlog grooming, and delivery velocity in <strong>Jira</strong> (100% on-time milestone delivery); partnered with product managers and enterprise clients to define SLA/SLO baselines, author technical RFCs, and translate business platform roadmaps into resilient distributed microservices.</li>
               <li><strong>3× Extra Mile Commitment Award</strong> – Tata Communications Ltd. for critical cloud platform delivery, stability, and zero-defect deployments.</li>
               <li><strong>Flipkart Grid 2.0 Engineering Challenge</strong> – Team Lead; achieved <strong>Top 150 Nationwide Rank</strong> out of 20,000+ teams (Computer Vision &amp; OCR Track).</li>
               <li><strong>Certifications:</strong> <strong>Architecting with Google Compute Engine</strong> (Google Cloud / Coursera) &amp; <strong>Full Stack Web Development</strong> (Coding Ninjas).</li>
