@@ -33,13 +33,23 @@ import { interval, Subscription } from 'rxjs';
               <span class="w-1.5 h-1.5 rounded-full" [ngClass]="(api.isBackendOnline$ | async) ? 'bg-grass animate-pulse' : 'bg-cyan-glow animate-pulse'"></span>
               <span>{{ (api.isBackendOnline$ | async) ? 'BACKEND: CONNECTED' : 'BACKEND: STANDALONE' }}</span>
             </div>
-            <a href="http://localhost:8080/swagger-ui.html"
+            
+            <!-- Live link when online, in-UI modal when offline -->
+            <a *ngIf="(api.isBackendOnline$ | async)"
+               href="http://localhost:8080/swagger-ui.html"
                target="_blank"
                rel="noopener noreferrer"
-               title="Spring Boot 3 OpenAPI Swagger UI (Active when running locally via ./start-dev.sh)"
+               title="Spring Boot 3 OpenAPI Swagger UI (Active on Port 8080)"
                class="px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-lg bg-crimson/20 border border-crimson/40 text-crimson hover:bg-crimson/30 transition-all text-xs font-mono font-medium">
               OpenAPI Swagger UI ↗
             </a>
+
+            <button *ngIf="!(api.isBackendOnline$ | async)"
+                    (click)="openSwaggerModal()"
+                    title="View OpenAPI REST Specification & Architecture (Standalone Mode)"
+                    class="px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-lg bg-cyan-glow/15 border border-cyan-glow/40 text-cyan-glow hover:bg-cyan-glow/25 transition-all text-xs font-mono font-medium cursor-pointer">
+              OpenAPI Swagger UI (Spec) ↗
+            </button>
           </div>
         </div>
 
@@ -143,6 +153,10 @@ export class TelemetryComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.pollSub?.unsubscribe();
+  }
+
+  openSwaggerModal(): void {
+    this.api.openApiModal();
   }
 
   formatUptime(seconds: number): string {

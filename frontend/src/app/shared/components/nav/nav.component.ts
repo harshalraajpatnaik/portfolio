@@ -1,23 +1,30 @@
-import { Component } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PokemonAudioService } from '../../../core/services/pokemon-audio.service';
 import { PortfolioApiService } from '../../../core/services/portfolio-api.service';
+import { Subscription } from 'rxjs';
+
+export type PortfolioMode = 'pokemon' | 'recruiter';
 
 @Component({
   selector: 'app-nav',
   standalone: true,
   imports: [CommonModule],
   template: `
-    <nav class="fixed top-0 left-0 right-0 z-50 px-3 sm:px-6 py-2.5 transition-all" role="navigation" aria-label="Pokédex Navigation">
+    <nav class="fixed top-0 left-0 right-0 z-50 px-3 sm:px-6 py-2.5 transition-all" role="navigation" aria-label="Portfolio Navigation">
       <div class="max-w-7xl mx-auto flex items-center justify-between gap-2 sm:gap-4">
 
-        <!-- BRAND / POKÉDEX LOGO: Proportional and clean on mobile & desktop -->
-        <a href="#hero" class="flex items-center gap-2 sm:gap-2.5 flex-shrink-0 group" (click)="onNavClick('#hero')">
-          <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white border-2 border-crimson flex items-center justify-center p-1 shadow-[0_0_12px_rgba(220,10,45,0.8)] group-hover:scale-105 transition-transform flex-shrink-0 overflow-hidden">
+        <!-- BRAND LOGO: Proportional and clean on mobile & desktop -->
+        <a [href]="currentMode === 'pokemon' ? '#hero' : '#executive-summary'"
+           class="flex items-center gap-2 sm:gap-2.5 flex-shrink-0 group"
+           (click)="onNavClick(currentMode === 'pokemon' ? '#hero' : '#executive-summary')">
+          <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white border-2 flex items-center justify-center p-1 group-hover:scale-105 transition-transform flex-shrink-0 overflow-hidden"
+               [ngClass]="currentMode === 'pokemon' ? 'border-crimson shadow-[0_0_12px_rgba(220,10,45,0.8)]' : 'border-cyan-glow shadow-[0_0_12px_rgba(0,229,255,0.8)]'">
             <img src="assets/hp-logo.png" alt="Harshal Patnaik (HP)" class="w-full h-full object-contain">
           </div>
           <div class="flex flex-col justify-center flex-shrink-0">
-            <div class="font-black text-xs sm:text-sm text-white tracking-wider font-mono whitespace-nowrap group-hover:text-energy transition-colors">
+            <div class="font-black text-xs sm:text-sm text-white tracking-wider font-mono whitespace-nowrap transition-colors"
+                 [ngClass]="currentMode === 'pokemon' ? 'group-hover:text-energy' : 'group-hover:text-cyan-glow'">
               HARSHAL RAAJ PATNAIK
             </div>
             <div class="text-[9px] sm:text-[10px] font-mono text-white/50 tracking-wider whitespace-nowrap flex items-center gap-1 sm:gap-1.5">
@@ -32,7 +39,7 @@ import { PortfolioApiService } from '../../../core/services/portfolio-api.servic
 
         <!-- CENTER NAVIGATION (Desktop / Wide screens >= 1024px) -->
         <div class="hidden lg:flex items-center gap-1 font-mono text-xs flex-shrink-0">
-          <a *ngFor="let link of navLinks"
+          <a *ngFor="let link of activeNavLinks"
              [href]="link.href"
              (click)="audio.playBeep()"
              class="px-2.5 py-1.5 text-white/70 hover:text-white rounded-lg hover:bg-white/10 transition-colors whitespace-nowrap">
@@ -40,11 +47,37 @@ import { PortfolioApiService } from '../../../core/services/portfolio-api.servic
           </a>
         </div>
 
-        <!-- RIGHT SIDE: Audio Capsule + Action Buttons + Mobile Menu Toggle -->
+        <!-- RIGHT SIDE: Mode Switcher + Audio Capsule + Resume + Mobile Hamburger -->
         <div class="flex items-center gap-1.5 sm:gap-2 flex-shrink-0">
           
-          <!-- Consolidated Retro Audio Capsule (Desktop & Tablet) -->
-          <div class="hidden sm:flex items-center bg-black/50 border border-white/15 rounded-xl p-0.5 font-mono shadow-inner">
+          <!-- DYNAMIC UI INTERFACE SWITCHER TOGGLE (Replaces API Spec) -->
+          <div class="flex items-center">
+            <button
+              *ngIf="currentMode === 'pokemon'"
+              (click)="switchMode('recruiter')"
+              class="px-2.5 sm:px-3 py-1.5 rounded-xl text-xs font-mono font-bold bg-cyan-glow/15 hover:bg-cyan-glow/25 border border-cyan-glow/40 text-cyan-glow hover:border-cyan-glow transition-all flex items-center gap-1.5 shadow-sm cursor-pointer"
+              title="Switch to Clean Executive Recruiter & Hiring Manager Mode">
+              <span>💼</span>
+              <span class="hidden sm:inline">RECRUITER MODE</span>
+              <span class="sm:hidden">RECRUITER</span>
+              <span class="text-[10px] opacity-80">⇄</span>
+            </button>
+
+            <button
+              *ngIf="currentMode === 'recruiter'"
+              (click)="switchMode('pokemon')"
+              class="px-2.5 sm:px-3 py-1.5 rounded-xl text-xs font-mono font-bold bg-crimson/20 hover:bg-crimson/30 border border-crimson/50 text-white hover:border-crimson transition-all flex items-center gap-1.5 shadow-sm cursor-pointer"
+              title="Switch to Pokédex Pro Gamified Experience">
+              <span>⚡</span>
+              <span class="hidden sm:inline">POKÉDEX PRO</span>
+              <span class="sm:hidden">POKÉDEX</span>
+              <span class="text-[10px] text-energy">⇄</span>
+            </button>
+          </div>
+
+          <!-- Consolidated Retro Audio Capsule (Active in Pokédex Mode) -->
+          <div *ngIf="currentMode === 'pokemon'"
+               class="hidden sm:flex items-center bg-black/50 border border-white/15 rounded-xl p-0.5 font-mono shadow-inner">
             <!-- Theme Music Toggle -->
             <button
               (click)="audio.toggleMusic()"
@@ -70,110 +103,95 @@ import { PortfolioApiService } from '../../../core/services/portfolio-api.servic
              target="_blank"
              rel="noopener noreferrer"
              (click)="audio.playFanfare()"
-             class="px-2.5 sm:px-3.5 py-1.5 rounded-xl text-[11px] sm:text-xs font-mono font-bold bg-energy hover:bg-energy/90 text-black shadow-lg shadow-energy/25 transition-all flex items-center gap-1 flex-shrink-0">
+             class="px-2.5 sm:px-3.5 py-1.5 rounded-xl text-[11px] sm:text-xs font-mono font-bold transition-all flex items-center gap-1 flex-shrink-0 shadow-lg"
+             [ngClass]="currentMode === 'pokemon' ? 'bg-energy hover:bg-energy/90 text-black shadow-energy/25' : 'bg-cyan-glow hover:bg-cyan-glow/90 text-black shadow-cyan-glow/20'">
             <span>RESUME</span>
             <span class="hidden sm:inline">(PDF)</span>
             <span>↓</span>
           </a>
-
-          <!-- Swagger / OpenAPI Button: Live link if online, In-UI modal if offline -->
-          <ng-container *ngIf="!hideApiButton">
-            <ng-container *ngIf="(api.isBackendOnline$ | async); else offlineApiBtn">
-              <a href="http://localhost:8080/swagger-ui.html"
-                 target="_blank"
-                 rel="noopener noreferrer"
-                 title="OpenAPI 3.0 Swagger UI (Spring Boot Live on Port 8080)"
-                 (click)="audio.playChirp()"
-                 class="hidden xl:flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-mono border border-grass/40 bg-grass/15 text-grass hover:bg-grass/25 transition-colors">
-                <span class="w-1.5 h-1.5 rounded-full bg-grass animate-pulse"></span>
-                <span>API ↗</span>
-              </a>
-            </ng-container>
-            <ng-template #offlineApiBtn>
-              <button
-                (click)="openOfflineApiModal()"
-                title="View OpenAPI Specification & REST Architecture (Standalone Mode)"
-                class="hidden xl:flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-mono border border-cyan-glow/40 bg-cyan-glow/15 text-cyan-glow hover:bg-cyan-glow/25 transition-colors cursor-pointer">
-                <span class="w-1.5 h-1.5 rounded-full bg-cyan-glow"></span>
-                <span>API SPEC</span>
-              </button>
-            </ng-template>
-          </ng-container>
 
           <!-- MOBILE / TABLET HAMBURGER BUTTON (< 1024px) -->
           <button
             (click)="toggleMobileMenu()"
             class="lg:hidden p-1.5 sm:p-2 rounded-xl text-white/80 hover:text-white bg-white/5 border border-white/15 hover:border-white/30 transition-all flex items-center justify-center cursor-pointer"
             [attr.aria-expanded]="mobileMenuOpen"
-            aria-label="Toggle Pokédex Navigation Menu">
+            aria-label="Toggle Navigation Menu">
             <span *ngIf="!mobileMenuOpen" class="text-base sm:text-lg leading-none font-bold">☰</span>
-            <span *ngIf="mobileMenuOpen" class="text-base sm:text-lg leading-none font-bold text-energy">✕</span>
+            <span *ngIf="mobileMenuOpen" class="text-base sm:text-lg leading-none font-bold"
+                  [ngClass]="currentMode === 'pokemon' ? 'text-energy' : 'text-cyan-glow'">✕</span>
           </button>
 
         </div>
 
       </div>
 
-      <!-- Frosted Pokédex Backing -->
-      <div class="absolute inset-0 -z-10 backdrop-blur-md border-b border-red-900/60 bg-[#0a0d14]/90" aria-hidden="true"></div>
+      <!-- Frosted Navigation Backing -->
+      <div class="absolute inset-0 -z-10 backdrop-blur-md border-b bg-[#0a0d14]/90"
+           [ngClass]="currentMode === 'pokemon' ? 'border-red-900/60' : 'border-cyan-glow/30'"
+           aria-hidden="true"></div>
 
       <!-- RESPONSIVE MOBILE / TABLET SLIDE-DOWN DRAWER MENU -->
       <div
         *ngIf="mobileMenuOpen"
-        class="lg:hidden mt-2 p-4 rounded-2xl bg-[#0d121f]/98 backdrop-blur-2xl border-2 border-red-900/80 shadow-[0_12px_36px_rgba(0,0,0,0.85)] font-mono animate-in fade-in duration-200">
+        class="lg:hidden mt-2 p-4 rounded-2xl bg-[#0d121f]/98 backdrop-blur-2xl border-2 shadow-[0_12px_36px_rgba(0,0,0,0.85)] font-mono animate-in fade-in duration-200"
+        [ngClass]="currentMode === 'pokemon' ? 'border-red-900/80' : 'border-cyan-glow/40'">
         
         <!-- Header Ribbon inside drawer -->
         <div class="flex items-center justify-between pb-2.5 mb-3 border-b border-white/10 text-[10px] text-white/50">
           <div class="flex items-center gap-2">
-            <span class="w-2 h-2 rounded-full bg-cyan-glow animate-pulse"></span>
-            <span class="font-bold tracking-wider text-cyan-glow">POKÉDEX NAVIGATION DIRECTORY</span>
+            <span class="w-2 h-2 rounded-full animate-pulse"
+                  [ngClass]="currentMode === 'pokemon' ? 'bg-energy' : 'bg-cyan-glow'"></span>
+            <span class="font-bold tracking-wider"
+                  [ngClass]="currentMode === 'pokemon' ? 'text-energy' : 'text-cyan-glow'">
+              {{ currentMode === 'pokemon' ? 'POKÉDEX PRO DIRECTORY' : 'EXECUTIVE RECRUITER DIRECTORY' }}
+            </span>
           </div>
-          <span>8 SECTIONS</span>
+          <span>{{ activeNavLinks.length }} SECTIONS</span>
         </div>
 
         <!-- Section Navigation Links -->
         <div class="grid grid-cols-2 gap-2 text-xs">
           <a
-            *ngFor="let link of navLinks"
+            *ngFor="let link of activeNavLinks"
             [href]="link.href"
             (click)="onNavClick(link.href)"
-            class="p-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-energy/50 text-white/85 hover:text-white transition-all flex items-center gap-2">
-            <span class="text-[10px] text-energy font-bold">{{ link.num }}</span>
+            class="p-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-cyan-glow/50 text-white/85 hover:text-white transition-all flex items-center gap-2">
+            <span class="text-[10px] font-bold"
+                  [ngClass]="currentMode === 'pokemon' ? 'text-energy' : 'text-cyan-glow'">{{ link.num }}</span>
             <span class="font-medium truncate">{{ link.label }}</span>
           </a>
         </div>
 
-        <!-- Mobile Audio & Utility Controls in Drawer -->
+        <!-- Mobile Drawer Utilities & Mode Switcher -->
         <div class="mt-4 pt-3 border-t border-white/10 flex flex-wrap items-center justify-between gap-2 text-xs">
-          <div class="flex items-center gap-2">
-            <!-- Theme Music Toggle -->
+          <!-- Switch Mode in Mobile Drawer -->
+          <button
+            (click)="switchMode(currentMode === 'pokemon' ? 'recruiter' : 'pokemon'); mobileMenuOpen = false"
+            class="px-3 py-1.5 rounded-xl border text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer"
+            [ngClass]="currentMode === 'pokemon' ? 'border-cyan-glow/40 bg-cyan-glow/15 text-cyan-glow' : 'border-crimson/50 bg-crimson/20 text-white'">
+            <span>{{ currentMode === 'pokemon' ? '💼 SWITCH TO RECRUITER MODE' : '⚡ SWITCH TO POKÉDEX PRO' }}</span>
+          </button>
+
+          <!-- Audio toggles if in pokemon mode -->
+          <div *ngIf="currentMode === 'pokemon'" class="flex items-center gap-2">
             <button
               (click)="audio.toggleMusic()"
-              class="px-3 py-1.5 rounded-xl font-bold flex items-center gap-1.5 transition-all text-[11px] cursor-pointer"
+              class="px-2.5 py-1.5 rounded-xl font-bold flex items-center gap-1.5 transition-all text-[11px] cursor-pointer"
               [ngClass]="audio.isMusicPlaying ? 'bg-energy text-black' : 'bg-white/10 text-white/80'">
               <span class="w-1.5 h-1.5 rounded-full" [ngClass]="audio.isMusicPlaying ? 'bg-black animate-pulse' : 'bg-red-500'"></span>
-              <span>{{ audio.isMusicPlaying ? 'THEME PLAYING' : 'PLAY THEME' }}</span>
+              <span>{{ audio.isMusicPlaying ? 'THEME ON' : 'PLAY THEME' }}</span>
             </button>
-
-            <!-- SFX Button -->
             <button
               (click)="audio.toggleSound()"
               class="px-2.5 py-1.5 rounded-xl bg-white/10 text-white/80 text-[11px] hover:bg-white/15 transition-all cursor-pointer">
-              {{ audio.soundEnabled ? '🔊 SFX ON' : '🔇 SFX MUTED' }}
+              {{ audio.soundEnabled ? '🔊 SFX' : '🔇 SFX' }}
             </button>
           </div>
-
-          <!-- API Spec Modal button for mobile -->
-          <button
-            (click)="openOfflineApiModal(); mobileMenuOpen = false"
-            class="px-2.5 py-1.5 rounded-xl border border-cyan-glow/40 bg-cyan-glow/15 text-cyan-glow text-[11px] hover:bg-cyan-glow/25 transition-all cursor-pointer">
-            API SPEC ↗
-          </button>
         </div>
       </div>
     </nav>
 
-    <!-- IN-UI OPENAPI SPECIFICATION MODAL (When Backend is Offline or Standalone) -->
+    <!-- IN-UI OPENAPI SPECIFICATION MODAL (When Backend is Offline or Triggered via Swagger Links) -->
     <div *ngIf="showApiModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
       <div class="w-full max-w-3xl bg-[#0f1422] border-2 border-cyan-glow/50 rounded-2xl p-6 shadow-2xl font-mono text-white max-h-[85vh] flex flex-col">
         
@@ -184,7 +202,7 @@ import { PortfolioApiService } from '../../../core/services/portfolio-api.servic
             <span class="font-bold text-sm text-cyan-glow tracking-wider">OPENAPI 3.0 / REST SPECIFICATION</span>
             <span class="text-[10px] px-2 py-0.5 rounded bg-cyan-glow/20 text-cyan-glow border border-cyan-glow/30">STANDALONE MODE</span>
           </div>
-          <button (click)="closeApiModal()" class="text-white/60 hover:text-white px-2 py-1 rounded hover:bg-white/10 text-xs">✕ CLOSE</button>
+          <button (click)="closeApiModal()" class="text-white/60 hover:text-white px-2 py-1 rounded hover:bg-white/10 text-xs cursor-pointer">✕ CLOSE</button>
         </div>
 
         <!-- Body -->
@@ -216,7 +234,7 @@ import { PortfolioApiService } from '../../../core/services/portfolio-api.servic
               <div class="flex items-center gap-2">
                 <span class="px-1.5 py-0.5 bg-grass/20 text-grass font-bold text-[10px] rounded">GET</span>
                 <span class="text-white font-bold">/api/v1/projects</span>
-                <span class="text-white/40 text-[10px] ml-auto">Returns 19 Categorized Architectural Project Cards</span>
+                <span class="text-white/40 text-[10px] ml-auto">Returns Categorized Architectural Project Cards</span>
               </div>
             </div>
 
@@ -224,7 +242,7 @@ import { PortfolioApiService } from '../../../core/services/portfolio-api.servic
               <div class="flex items-center gap-2">
                 <span class="px-1.5 py-0.5 bg-grass/20 text-grass font-bold text-[10px] rounded">GET</span>
                 <span class="text-white font-bold">/api/v1/telemetry</span>
-                <span class="text-white/40 text-[10px] ml-auto">Returns System Load, JVM Heap, Cassandra/Redis Latencies</span>
+                <span class="text-white/40 text-[10px] ml-auto">Returns System Load, JVM Heap, Latencies</span>
               </div>
             </div>
 
@@ -247,11 +265,8 @@ import { PortfolioApiService } from '../../../core/services/portfolio-api.servic
         </div>
 
         <!-- Footer Actions -->
-        <div class="pt-4 border-t border-white/10 flex items-center justify-between flex-shrink-0 text-[11px]">
-          <button (click)="toggleHideApiButton()" class="text-white/50 hover:text-white underline">
-            Hide API button from navbar
-          </button>
-          <button (click)="closeApiModal()" class="px-4 py-1.5 bg-cyan-glow text-black font-bold rounded-lg hover:bg-cyan-glow/90 transition-all">
+        <div class="pt-4 border-t border-white/10 flex items-center justify-end flex-shrink-0 text-[11px]">
+          <button (click)="closeApiModal()" class="px-5 py-2 bg-cyan-glow text-black font-bold rounded-xl hover:bg-cyan-glow/90 transition-all cursor-pointer">
             Understood
           </button>
         </div>
@@ -260,27 +275,67 @@ import { PortfolioApiService } from '../../../core/services/portfolio-api.servic
     </div>
   `
 })
-export class NavComponent {
-  mobileMenuOpen = false;
+export class NavComponent implements OnInit, OnDestroy {
+  @Input() currentMode: PortfolioMode = 'pokemon';
+  @Output() modeChange = new EventEmitter<PortfolioMode>();
 
-  navLinks = [
-    { href: '#hero',      label: 'Pokédex',       num: '01' },
-    { href: '#projects',  label: 'Pokémon Roster', num: '02' },
-    { href: '#sthirax',   label: 'SthiraX (MBA)',  num: '03' },
-    { href: '#trainers',  label: 'Gym Leaders',    num: '04' },
-    { href: '#telemetry', label: 'Telemetry',      num: '05' },
-    { href: '#skills',    label: 'Skills',         num: '06' },
-    { href: '#resume',    label: 'ATS Resume',     num: '07' },
-    { href: '#contact',   label: 'Contact',        num: '08' },
+  mobileMenuOpen = false;
+  showApiModal = false;
+
+  private apiModalSub?: Subscription;
+
+  pokemonNavLinks = [
+    { href: '#hero',      label: 'Pokédex',        num: '01' },
+    { href: '#projects',  label: 'Pokémon Roster',  num: '02' },
+    { href: '#sthirax',   label: 'SthiraX (MBA)',   num: '03' },
+    { href: '#trainers',  label: 'Gym Leaders',     num: '04' },
+    { href: '#telemetry', label: 'Telemetry',       num: '05' },
+    { href: '#skills',    label: 'Skills',          num: '06' },
+    { href: '#resume',    label: 'ATS Resume',      num: '07' },
+    { href: '#contact',   label: 'Contact',         num: '08' },
   ];
 
-  showApiModal = false;
-  hideApiButton = false;
+  recruiterNavLinks = [
+    { href: '#executive-summary', label: 'Overview',       num: '01' },
+    { href: '#experience',        label: 'Experience',     num: '02' },
+    { href: '#projects',          label: 'Projects',       num: '03' },
+    { href: '#education',         label: 'Tech × MBA',     num: '04' },
+    { href: '#skills',            label: 'Competencies',   num: '05' },
+    { href: '#resume',            label: 'ATS Resume',     num: '06' },
+    { href: '#contact',           label: 'Contact',        num: '07' },
+  ];
 
   constructor(
     public audio: PokemonAudioService,
     public api: PortfolioApiService
   ) {}
+
+  ngOnInit(): void {
+    this.apiModalSub = this.api.showApiModal$.subscribe(show => {
+      this.showApiModal = show;
+    });
+  }
+
+  ngOnDestroy(): void {
+    if (this.apiModalSub) {
+      this.apiModalSub.unsubscribe();
+    }
+  }
+
+  get activeNavLinks() {
+    return this.currentMode === 'pokemon' ? this.pokemonNavLinks : this.recruiterNavLinks;
+  }
+
+  switchMode(target: PortfolioMode): void {
+    this.audio.playFanfare();
+    if (typeof document !== 'undefined' && (document as any).startViewTransition) {
+      (document as any).startViewTransition(() => {
+        this.modeChange.emit(target);
+      });
+    } else {
+      this.modeChange.emit(target);
+    }
+  }
 
   toggleMobileMenu(): void {
     this.mobileMenuOpen = !this.mobileMenuOpen;
@@ -294,15 +349,10 @@ export class NavComponent {
 
   openOfflineApiModal(): void {
     this.audio.playChirp();
-    this.showApiModal = true;
+    this.api.openApiModal();
   }
 
   closeApiModal(): void {
-    this.showApiModal = false;
-  }
-
-  toggleHideApiButton(): void {
-    this.hideApiButton = true;
-    this.showApiModal = false;
+    this.api.closeApiModal();
   }
 }

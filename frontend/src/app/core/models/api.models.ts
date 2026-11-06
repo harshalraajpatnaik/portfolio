@@ -47,6 +47,7 @@ export interface ProjectCard {
   pokedexNo?: string;
   spriteUrl?: string;
   signatureMove?: string;
+  repoUrl?: string;
 }
 
 export interface TelemetrySnapshot {
