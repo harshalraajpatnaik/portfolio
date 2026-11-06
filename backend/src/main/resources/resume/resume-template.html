@@ -14,7 +14,7 @@
     body {
       font-family: "Times New Roman", Times, Georgia, "DejaVu Serif", serif;
       font-size: 8.35pt;
-      line-height: 1.16;
+      line-height: 1.15;
       color: #000;
       margin: 0;
       padding: 0.22in 0.36in 0.20in 0.36in;
@@ -102,11 +102,6 @@
     .skills-label {
       font-weight: bold;
     }
-    .project-header {
-      font-size: 8.4pt;
-      margin-top: 1.2pt;
-      margin-bottom: 0.4pt;
-    }
   </style>
 </head>
 <body>
@@ -157,7 +152,7 @@
   </div>
   <ul>
     <li><strong>Scaled VM Dynamic Autoscaling:</strong> <em>Scaled</em> dynamic VM horizontal and vertical autoscaling policies across <strong>KVM, VMware ESXi, and OLVM</strong> hypervisors based on real-time CPU/memory thresholds, preventing resource starvation during traffic bursts.</li>
-    <li><strong>Built Automated Order-to-Deployment Pipeline:</strong> <em>Built</em> end-to-end zero-touch order fulfillment pipeline converting customer service orders into automated, self-healing cloud deployments; integrated <strong>Flowable BPMN sagas</strong> and <strong>RabbitMQ</strong> to orchestrate VM provisioning, storage provisioning, network routing, and IP assignment with automated compensation rollbacks.</li>
+    <li><strong>Built Automated Order-to-Deployment Pipeline:</strong> <em>Built</em> end-to-end zero-touch order fulfillment pipeline converting customer service orders into automated, self-healing cloud deployments; integrated <strong>Flowable BPMN sagas</strong> and <strong>RabbitMQ</strong> to orchestrate VM provisioning, storage provisioning, network routing, and IP assignment with automated rollbacks, slashing customer provisioning lead time by <strong>85% (from 4 hours to under 35 minutes)</strong>.</li>
     <li><strong>Designed Capacity &amp; Infrastructure Dashboard:</strong> <em>Designed</em> and engineered full-stack multi-tenant Capacity Planning &amp; Inventory Dashboard from design to distributed backend services, managing real-time lifecycle records across <strong>Compute</strong> (KVM, VMware ESXi, OLVM hypervisors), <strong>Storage</strong> (NetApp and HPE storage arrays, Caringo Swarm), and <strong>Network</strong> (public IP pool reports, switch port mappings, VDOM reports, bandwidth utilization telemetry) with interactive graphical heatmaps and trend analytics.</li>
     <li><strong>Engineered High-Throughput Batch Processing:</strong> <em>Engineered</em> batch processing optimizations slashing cloud scheduler execution latency by <strong>92.6% (from ~18 minutes down to 80 seconds)</strong> across distributed Cassandra clusters using strict 50-item chunking, multi-level Redis caching, and HikariCP connection pool tuning.</li>
     <li><strong>Led Fortinet Firewall &amp; Security Automation:</strong> <em>Led</em> enterprise <strong>Fortinet FortiGate Firewall</strong> automation via REST APIs for dynamic security policies, VDOM multi-tenancy, and IPsec VPN provisioning; built an in-process sliding-window rate limiter eliminating 100% of HTTP 429 throttling errors.</li>
@@ -183,36 +178,41 @@
   <!-- STRATEGY & TECHNICAL PROJECTS -->
   <div class="section-title">Strategy &amp; Technical Projects</div>
 
-  <div class="project-header">
-    <strong>SthiraX: Distributed CO₂-Mineralization &amp; IoT MRV Platform</strong> | <em>IIM Kozhikode Capstone (BPP)</em> &nbsp;[<a href="https://github.com/harshalraajpatnaik/sthirax-mrv">GitHub: github.com/harshalraajpatnaik/sthirax-mrv</a>]
+  <div class="subheading">
+    <div class="subheading-title"><strong>SthiraX: Distributed CO₂-Mineralization &amp; IoT MRV Platform</strong> | <em>IIM Kozhikode Capstone (BPP)</em></div>
+    <div class="subheading-date"><a href="https://github.com/harshalraajpatnaik/sthirax-mrv">GitHub ↗</a></div>
   </div>
   <ul>
     <li><em>Architected</em> asset-light retrofit platform converting regional concrete plants into certified low-carbon facilities to fulfill India's <strong>April 2026 C&amp;D Waste Rules (mandating 5% to 25% recycled material by 2030 across 20,000+ sqm projects)</strong>; built batch-level <strong>IoT MRV (Measurement, Reporting &amp; Verification) software</strong> generating cryptographically verifiable Digital Product Passports for developer EPR compliance, supported by SaaS and royalty unit economics.</li>
   </ul>
 
-  <div class="project-header">
-    <strong>MarginOS: Multi-Tenant Cloud FinOps &amp; Unit Economics Platform</strong> | <em>Cloud Economics &amp; FinOps</em> &nbsp;[<a href="https://github.com/harshalraajpatnaik/margin-os">GitHub: github.com/harshalraajpatnaik/margin-os</a>]
+  <div class="subheading" style="margin-top: 1pt;">
+    <div class="subheading-title"><strong>MarginOS: Multi-Tenant Cloud FinOps &amp; Unit Economics Platform</strong> | <em>Cloud Economics &amp; FinOps</em></div>
+    <div class="subheading-date"><a href="https://github.com/harshalraajpatnaik/margin-os">GitHub ↗</a></div>
   </div>
   <ul>
     <li><em>Designed</em> distributed FinOps intelligence engine analyzing multi-cloud hypervisor and storage telemetry to calculate real-time gross margins, compute unit economics (cost-per-VM/hour, storage tiers), and surface automated right-sizing recommendations that eliminate up to 28% in infrastructure spend leakages.</li>
   </ul>
 
-  <div class="project-header">
-    <strong>Workflow Reliability Lab: Distributed Sagas &amp; Chaos Engineering</strong> | <em>Distributed Systems Platform</em> &nbsp;[<a href="https://github.com/harshalraajpatnaik/workflow-reliability-lab">GitHub: github.com/harshalraajpatnaik/workflow-reliability-lab</a>]
+  <div class="subheading" style="margin-top: 1pt;">
+    <div class="subheading-title"><strong>Workflow Reliability Lab: Distributed Sagas &amp; Chaos Engineering</strong> | <em>Distributed Systems Platform</em></div>
+    <div class="subheading-date"><a href="https://github.com/harshalraajpatnaik/workflow-reliability-lab">GitHub ↗</a></div>
   </div>
   <ul>
     <li><em>Built</em> developer platform for testing distributed workflow reliability; built synthetic fault injection simulators (network partitions, timeout anomalies) and invariant checkers verifying ACID saga compensations (<strong>Java 25, Spring Boot 4, Angular, Docker</strong>).</li>
   </ul>
 
-  <div class="project-header">
-    <strong>QueryLens AI: Sandboxed Enterprise Text-to-SQL &amp; Semantic RAG</strong> | <em>AI &amp; Data Systems</em> &nbsp;[<a href="https://github.com/harshalraajpatnaik/querylens-ai">GitHub: github.com/harshalraajpatnaik/querylens-ai</a>]
+  <div class="subheading" style="margin-top: 1pt;">
+    <div class="subheading-title"><strong>QueryLens AI: Sandboxed Enterprise Text-to-SQL &amp; Semantic RAG</strong> | <em>AI &amp; Data Systems</em></div>
+    <div class="subheading-date"><a href="https://github.com/harshalraajpatnaik/querylens-ai">GitHub ↗</a></div>
   </div>
   <ul>
     <li><em>Architected</em> modular C4 3-tier Text-to-SQL engine (<strong>Angular 17 &rarr; Spring Boot 3 &rarr; FastAPI with pgvector RAG</strong>) with schema semantic search, AST validation, and read-only sandbox roles preventing SQL injection and unauthorized data exfiltration.</li>
   </ul>
 
-  <div class="project-header">
-    <strong>CloudScale: Predictive Workload Autoscaler &amp; Telemetry Engine</strong> | <em>Autonomous Cloud Infrastructure</em> &nbsp;[<a href="https://github.com/harshalraajpatnaik/cloudscale">GitHub: github.com/harshalraajpatnaik/cloudscale</a>]
+  <div class="subheading" style="margin-top: 1pt;">
+    <div class="subheading-title"><strong>CloudScale: Predictive Workload Autoscaler &amp; Telemetry Engine</strong> | <em>Autonomous Cloud Infrastructure</em></div>
+    <div class="subheading-date"><a href="https://github.com/harshalraajpatnaik/cloudscale">GitHub ↗</a></div>
   </div>
   <ul>
     <li><em>Developed</em> proactive Kubernetes/VM capacity autoscaling engine integrating Prometheus, Grafana, and time-series ML forecasting models (<strong>NumPy, Pandas, Scikit-learn</strong>) predicting compute resource spikes 15 minutes in advance, mitigating cold-start latencies and reducing over-provisioned idle capacity.</li>
@@ -233,6 +233,7 @@
   <div class="section-title">Leadership, Certifications &amp; Honors</div>
   <ul>
     <li><strong>Leadership &amp; Agile Execution:</strong> Stepped up as <strong>Acting Scrum Master</strong>; orchestrated sprint ceremonies, backlog grooming, and delivery velocity in <strong>Jira</strong>, driving 100% on-time milestone delivery and technical mentorship for junior engineers.</li>
+    <li><strong>Cross-Functional Product &amp; Technical Strategy:</strong> Partnered with product managers and enterprise clients to define SLA/SLO baselines, author technical RFCs, and translate business platform roadmaps into resilient distributed microservices architectures.</li>
     <li><strong>3× Extra Mile Commitment Award</strong> – Tata Communications Ltd. for critical cloud platform delivery, stability, and zero-defect deployments.</li>
     <li><strong>Flipkart Grid 2.0 Engineering Challenge</strong> – Team Lead; achieved <strong>Top 150 Nationwide Rank</strong> out of 20,000+ teams (Computer Vision &amp; OCR Track).</li>
     <li><strong>Certifications:</strong> <strong>Architecting with Google Compute Engine</strong> (Google Cloud / Coursera) &amp; <strong>Full Stack Web Development</strong> (Coding Ninjas).</li>

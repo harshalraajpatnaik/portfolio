@@ -131,7 +131,7 @@ import { PokemonAudioService } from '../../core/services/pokemon-audio.service';
               </div>
               <ul class="list-disc pl-4 space-y-0.5 text-[10px] leading-relaxed text-slate-900">
                 <li><strong>Scaled VM Dynamic Autoscaling:</strong> <em>Scaled</em> dynamic VM horizontal and vertical autoscaling policies across <strong>KVM, VMware ESXi, and OLVM</strong> hypervisors based on real-time CPU/memory thresholds, preventing resource starvation during traffic bursts.</li>
-                <li><strong>Built Automated Order-to-Deployment Pipeline:</strong> <em>Built</em> end-to-end zero-touch order fulfillment pipeline converting customer service orders into automated, self-healing cloud deployments; integrated <strong>Flowable BPMN sagas</strong> and <strong>RabbitMQ</strong> to orchestrate VM provisioning, storage provisioning, network routing, and IP assignment with automated compensation rollbacks.</li>
+                <li><strong>Built Automated Order-to-Deployment Pipeline:</strong> <em>Built</em> end-to-end zero-touch order fulfillment pipeline converting customer service orders into automated, self-healing cloud deployments; integrated <strong>Flowable BPMN sagas</strong> and <strong>RabbitMQ</strong> to orchestrate VM provisioning, storage provisioning, network routing, and IP assignment with automated rollbacks, slashing customer provisioning lead time by <strong>85% (from 4 hours to under 35 minutes)</strong>.</li>
                 <li><strong>Designed Capacity &amp; Infrastructure Dashboard:</strong> <em>Designed</em> and engineered full-stack multi-tenant Capacity Planning &amp; Inventory Dashboard from design to distributed backend services, managing real-time lifecycle records across <strong>Compute</strong> (KVM, VMware ESXi, OLVM hypervisors), <strong>Storage</strong> (NetApp and HPE storage arrays, Caringo Swarm), and <strong>Network</strong> (public IP pool reports, switch port mappings, VDOM reports, bandwidth utilization telemetry) with interactive graphical heatmaps and trend analytics.</li>
                 <li><strong>Engineered High-Throughput Batch Processing:</strong> <em>Engineered</em> batch processing optimizations slashing cloud scheduler execution latency by <strong>92.6% (from ~18 minutes down to 80 seconds)</strong> across distributed Cassandra clusters using strict 50-item chunking, multi-level Redis caching, and HikariCP connection pool tuning.</li>
                 <li><strong>Led Fortinet Firewall &amp; Security Automation:</strong> <em>Led</em> enterprise <strong>Fortinet FortiGate Firewall</strong> automation via REST APIs for dynamic security policies, VDOM multi-tenancy, and IPsec VPN provisioning; built an in-process sliding-window rate limiter eliminating 100% of HTTP 429 throttling errors.</li>
@@ -165,8 +165,9 @@ import { PokemonAudioService } from '../../core/services/pokemon-audio.service';
             </div>
 
             <div class="mb-1.5">
-              <div class="text-[11px]">
-                <strong>SthiraX: Distributed CO₂-Mineralization &amp; IoT MRV Platform</strong> | <em>IIM Kozhikode Capstone (BPP)</em> &nbsp;<span class="text-[10px] text-slate-600">[<a href="https://github.com/harshalraajpatnaik/sthirax-mrv" target="_blank" class="underline text-black">GitHub: sthirax-mrv</a>]</span>
+              <div class="flex justify-between items-baseline text-[11px]">
+                <span><strong>SthiraX: Distributed CO₂-Mineralization &amp; IoT MRV Platform</strong> | <em>IIM Kozhikode Capstone (BPP)</em></span>
+                <span class="text-[10px] text-slate-600"><a href="https://github.com/harshalraajpatnaik/sthirax-mrv" target="_blank" class="underline text-black font-semibold">GitHub ↗</a></span>
               </div>
               <ul class="list-disc pl-4 space-y-0.5 text-[10px] leading-relaxed text-slate-900 mt-0.5">
                 <li><em>Architected</em> asset-light retrofit platform converting regional concrete plants into certified low-carbon facilities to fulfill India's <strong>April 2026 C&amp;D Waste Rules (mandating 5% to 25% recycled material by 2030 across 20,000+ sqm projects)</strong>; built batch-level <strong>IoT MRV (Measurement, Reporting &amp; Verification) software</strong> generating cryptographically verifiable Digital Product Passports for developer EPR compliance, supported by SaaS and royalty unit economics.</li>
@@ -174,8 +175,9 @@ import { PokemonAudioService } from '../../core/services/pokemon-audio.service';
             </div>
 
             <div class="mb-1.5">
-              <div class="text-[11px]">
-                <strong>MarginOS: Multi-Tenant Cloud FinOps &amp; Unit Economics Platform</strong> | <em>Cloud Economics &amp; FinOps</em> &nbsp;<span class="text-[10px] text-slate-600">[<a href="https://github.com/harshalraajpatnaik/margin-os" target="_blank" class="underline text-black">GitHub: margin-os</a>]</span>
+              <div class="flex justify-between items-baseline text-[11px]">
+                <span><strong>MarginOS: Multi-Tenant Cloud FinOps &amp; Unit Economics Platform</strong> | <em>Cloud Economics &amp; FinOps</em></span>
+                <span class="text-[10px] text-slate-600"><a href="https://github.com/harshalraajpatnaik/margin-os" target="_blank" class="underline text-black font-semibold">GitHub ↗</a></span>
               </div>
               <ul class="list-disc pl-4 space-y-0.5 text-[10px] leading-relaxed text-slate-900 mt-0.5">
                 <li><em>Designed</em> distributed FinOps intelligence engine analyzing multi-cloud hypervisor and storage telemetry to calculate real-time gross margins, compute unit economics (cost-per-VM/hour, storage tiers), and surface automated right-sizing recommendations that eliminate up to 28% in infrastructure spend leakages.</li>
@@ -183,8 +185,9 @@ import { PokemonAudioService } from '../../core/services/pokemon-audio.service';
             </div>
 
             <div class="mb-1.5">
-              <div class="text-[11px]">
-                <strong>Workflow Reliability Lab: Distributed Sagas &amp; Chaos Engineering</strong> | <em>Distributed Systems Platform</em> &nbsp;<span class="text-[10px] text-slate-600">[<a href="https://github.com/harshalraajpatnaik/workflow-reliability-lab" target="_blank" class="underline text-black">GitHub: workflow-reliability-lab</a>]</span>
+              <div class="flex justify-between items-baseline text-[11px]">
+                <span><strong>Workflow Reliability Lab: Distributed Sagas &amp; Chaos Engineering</strong> | <em>Distributed Systems Platform</em></span>
+                <span class="text-[10px] text-slate-600"><a href="https://github.com/harshalraajpatnaik/workflow-reliability-lab" target="_blank" class="underline text-black font-semibold">GitHub ↗</a></span>
               </div>
               <ul class="list-disc pl-4 space-y-0.5 text-[10px] leading-relaxed text-slate-900 mt-0.5">
                 <li><em>Built</em> developer platform for testing distributed workflow reliability; built synthetic fault injection simulators (network partitions, timeout anomalies) and invariant checkers verifying ACID saga compensations (<strong>Java 25, Spring Boot 4, Angular, Docker</strong>).</li>
@@ -192,8 +195,9 @@ import { PokemonAudioService } from '../../core/services/pokemon-audio.service';
             </div>
 
             <div class="mb-1.5">
-              <div class="text-[11px]">
-                <strong>QueryLens AI: Sandboxed Enterprise Text-to-SQL &amp; Semantic RAG</strong> | <em>AI &amp; Data Systems</em> &nbsp;<span class="text-[10px] text-slate-600">[<a href="https://github.com/harshalraajpatnaik/querylens-ai" target="_blank" class="underline text-black">GitHub: querylens-ai</a>]</span>
+              <div class="flex justify-between items-baseline text-[11px]">
+                <span><strong>QueryLens AI: Sandboxed Enterprise Text-to-SQL &amp; Semantic RAG</strong> | <em>AI &amp; Data Systems</em></span>
+                <span class="text-[10px] text-slate-600"><a href="https://github.com/harshalraajpatnaik/querylens-ai" target="_blank" class="underline text-black font-semibold">GitHub ↗</a></span>
               </div>
               <ul class="list-disc pl-4 space-y-0.5 text-[10px] leading-relaxed text-slate-900 mt-0.5">
                 <li><em>Architected</em> modular C4 3-tier Text-to-SQL engine (<strong>Angular 17 &rarr; Spring Boot 3 &rarr; FastAPI with pgvector RAG</strong>) with schema semantic search, AST validation, and read-only sandbox roles preventing SQL injection and unauthorized data exfiltration.</li>
@@ -201,8 +205,9 @@ import { PokemonAudioService } from '../../core/services/pokemon-audio.service';
             </div>
 
             <div>
-              <div class="text-[11px]">
-                <strong>CloudScale: Predictive Workload Autoscaler &amp; Telemetry Engine</strong> | <em>Autonomous Cloud Infrastructure</em> &nbsp;<span class="text-[10px] text-slate-600">[<a href="https://github.com/harshalraajpatnaik/cloudscale" target="_blank" class="underline text-black">GitHub: cloudscale</a>]</span>
+              <div class="flex justify-between items-baseline text-[11px]">
+                <span><strong>CloudScale: Predictive Workload Autoscaler &amp; Telemetry Engine</strong> | <em>Autonomous Cloud Infrastructure</em></span>
+                <span class="text-[10px] text-slate-600"><a href="https://github.com/harshalraajpatnaik/cloudscale" target="_blank" class="underline text-black font-semibold">GitHub ↗</a></span>
               </div>
               <ul class="list-disc pl-4 space-y-0.5 text-[10px] leading-relaxed text-slate-900 mt-0.5">
                 <li><em>Developed</em> proactive Kubernetes/VM capacity autoscaling engine integrating Prometheus, Grafana, and time-series ML forecasting models (<strong>NumPy, Pandas, Scikit-learn</strong>) predicting compute resource spikes 15 minutes in advance, mitigating cold-start latencies and reducing over-provisioned idle capacity.</li>
@@ -232,6 +237,7 @@ import { PokemonAudioService } from '../../core/services/pokemon-audio.service';
             </div>
             <ul class="list-disc pl-4 space-y-0.5 text-[10px] leading-relaxed text-slate-900">
               <li><strong>Leadership &amp; Agile Execution:</strong> Stepped up as <strong>Acting Scrum Master</strong>; orchestrated sprint ceremonies, backlog grooming, and delivery velocity in <strong>Jira</strong>, driving 100% on-time milestone delivery and technical mentorship for junior engineers.</li>
+              <li><strong>Cross-Functional Product &amp; Technical Strategy:</strong> Partnered with product managers and enterprise clients to define SLA/SLO baselines, author technical RFCs, and translate business platform roadmaps into resilient distributed microservices architectures.</li>
               <li><strong>3× Extra Mile Commitment Award</strong> – Tata Communications Ltd. for critical cloud platform delivery, stability, and zero-defect deployments.</li>
               <li><strong>Flipkart Grid 2.0 Engineering Challenge</strong> – Team Lead; achieved <strong>Top 150 Nationwide Rank</strong> out of 20,000+ teams (Computer Vision &amp; OCR Track).</li>
               <li><strong>Certifications:</strong> <strong>Architecting with Google Compute Engine</strong> (Google Cloud / Coursera) &amp; <strong>Full Stack Web Development</strong> (Coding Ninjas).</li>
