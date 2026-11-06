@@ -103,14 +103,14 @@ export type PortfolioMode = 'pokemon' | 'recruiter';
             </button>
           </div>
 
-          <!-- Direct Resume Download Button (Google-Standard ATS PDF) -->
-          <a href="assets/Harshal_Raaj_Patnaik_Resume.pdf"
+          <!-- Direct Resume Download Button (Shown in Recruiter Mode; hidden in Pokédex Mode to avoid header clutter) -->
+          <a *ngIf="currentMode === 'recruiter'"
+             href="assets/Harshal_Raaj_Patnaik_Resume.pdf"
              download="Harshal_Raaj_Patnaik_Resume.pdf"
              target="_blank"
              rel="noopener noreferrer"
              (click)="audio.playFanfare()"
-             class="px-2.5 sm:px-3 py-1.5 rounded-xl text-xs font-mono font-bold transition-all flex items-center gap-1 flex-shrink-0 shadow-md cursor-pointer"
-             [ngClass]="currentMode === 'pokemon' ? 'bg-energy hover:bg-energy/90 text-black shadow-energy/25' : 'bg-cyan-glow hover:bg-cyan-glow/90 text-black shadow-cyan-glow/20'">
+             class="px-2.5 sm:px-3 py-1.5 rounded-xl text-xs font-mono font-bold transition-all flex items-center gap-1 flex-shrink-0 shadow-md cursor-pointer bg-cyan-glow hover:bg-cyan-glow/90 text-black shadow-cyan-glow/20">
             <span>RESUME</span>
             <span class="hidden sm:inline">(PDF)</span>
             <span>↓</span>
@@ -169,29 +169,43 @@ export type PortfolioMode = 'pokemon' | 'recruiter';
         </div>
 
         <!-- Mobile Drawer Utilities & Mode Switcher -->
-        <div class="mt-4 pt-3 border-t border-white/10 flex flex-wrap items-center justify-between gap-2 text-xs">
-          <!-- Switch Mode in Mobile Drawer -->
-          <button
-            (click)="switchMode(currentMode === 'pokemon' ? 'recruiter' : 'pokemon'); mobileMenuOpen = false"
-            class="px-3 py-1.5 rounded-xl border text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer"
-            [ngClass]="currentMode === 'pokemon' ? 'border-cyan-glow/40 bg-cyan-glow/15 text-cyan-glow' : 'border-crimson/50 bg-crimson/20 text-white'">
-            <span>{{ currentMode === 'pokemon' ? '💼 SWITCH TO RECRUITER MODE' : '⚡ SWITCH TO POKÉDEX PRO' }}</span>
-          </button>
+        <div class="mt-4 pt-3 border-t border-white/10 flex flex-col gap-2.5 text-xs">
+          <!-- 1-Tap Direct ATS Resume Download for Mobile/Tablet Viewports -->
+          <a href="assets/Harshal_Raaj_Patnaik_Resume.pdf"
+             download="Harshal_Raaj_Patnaik_Resume.pdf"
+             target="_blank"
+             rel="noopener noreferrer"
+             (click)="audio.playFanfare()"
+             class="w-full py-2.5 px-3 rounded-xl font-bold flex items-center justify-center gap-2 transition-all cursor-pointer shadow-md text-center"
+             [ngClass]="currentMode === 'pokemon' ? 'bg-energy text-black hover:bg-energy/90 shadow-energy/20' : 'bg-cyan-glow text-black hover:bg-cyan-glow/90 shadow-cyan-glow/20'">
+            <span>📄 DOWNLOAD ATS RESUME (PDF)</span>
+            <span>↓</span>
+          </a>
 
-          <!-- Audio toggles if in pokemon mode -->
-          <div *ngIf="currentMode === 'pokemon'" class="flex items-center gap-2">
+          <div class="flex flex-wrap items-center justify-between gap-2">
+            <!-- Switch Mode in Mobile Drawer -->
             <button
-              (click)="audio.toggleMusic()"
-              class="px-2.5 py-1.5 rounded-xl font-bold flex items-center gap-1.5 transition-all text-[11px] cursor-pointer"
-              [ngClass]="audio.isMusicPlaying ? 'bg-energy text-black' : 'bg-white/10 text-white/80'">
-              <span class="w-1.5 h-1.5 rounded-full" [ngClass]="audio.isMusicPlaying ? 'bg-black animate-pulse' : 'bg-red-500'"></span>
-              <span>{{ audio.isMusicPlaying ? 'THEME ON' : 'PLAY THEME' }}</span>
+              (click)="switchMode(currentMode === 'pokemon' ? 'recruiter' : 'pokemon'); mobileMenuOpen = false"
+              class="px-3 py-1.5 rounded-xl border text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer"
+              [ngClass]="currentMode === 'pokemon' ? 'border-cyan-glow/40 bg-cyan-glow/15 text-cyan-glow' : 'border-crimson/50 bg-crimson/20 text-white'">
+              <span>{{ currentMode === 'pokemon' ? '💼 SWITCH TO RECRUITER MODE' : '⚡ SWITCH TO POKÉDEX PRO' }}</span>
             </button>
-            <button
-              (click)="audio.toggleSound()"
-              class="px-2.5 py-1.5 rounded-xl bg-white/10 text-white/80 text-[11px] hover:bg-white/15 transition-all cursor-pointer">
-              {{ audio.soundEnabled ? '🔊 SFX' : '🔇 SFX' }}
-            </button>
+
+            <!-- Audio toggles if in pokemon mode -->
+            <div *ngIf="currentMode === 'pokemon'" class="flex items-center gap-2">
+              <button
+                (click)="audio.toggleMusic()"
+                class="px-2.5 py-1.5 rounded-xl font-bold flex items-center gap-1.5 transition-all text-[11px] cursor-pointer"
+                [ngClass]="audio.isMusicPlaying ? 'bg-energy text-black' : 'bg-white/10 text-white/80'">
+                <span class="w-1.5 h-1.5 rounded-full" [ngClass]="audio.isMusicPlaying ? 'bg-black animate-pulse' : 'bg-red-500'"></span>
+                <span>{{ audio.isMusicPlaying ? 'THEME ON' : 'PLAY THEME' }}</span>
+              </button>
+              <button
+                (click)="audio.toggleSound()"
+                class="px-2.5 py-1.5 rounded-xl bg-white/10 text-white/80 text-[11px] hover:bg-white/15 transition-all cursor-pointer">
+                {{ audio.soundEnabled ? '🔊 SFX' : '🔇 SFX' }}
+              </button>
+            </div>
           </div>
         </div>
       </div>

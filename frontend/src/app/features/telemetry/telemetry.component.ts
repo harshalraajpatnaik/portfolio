@@ -58,7 +58,7 @@ import { interval, Subscription } from 'rxjs';
           <!-- Card 1: API Status -->
           <div class="glass-card p-3.5 sm:p-5 rounded-xl border border-white/10">
             <div class="flex items-center justify-between text-xs font-mono text-white/50 mb-1.5 sm:mb-2">
-              <span class="text-[10px] sm:text-xs">STATUS</span>
+              <span class="text-[10px] sm:text-xs">SERVICE STATUS</span>
               <span class="w-2 h-2 rounded-full" [ngClass]="(api.isBackendOnline$ | async) ? 'bg-grass animate-pulse' : 'bg-cyan-glow animate-pulse'"></span>
             </div>
             <div class="text-xl sm:text-2xl font-mono font-bold" [ngClass]="(api.isBackendOnline$ | async) ? 'text-grass' : 'text-cyan-glow'">
@@ -71,7 +71,7 @@ import { interval, Subscription } from 'rxjs';
 
           <!-- Card 2: Uptime -->
           <div class="glass-card p-3.5 sm:p-5 rounded-xl border border-white/10">
-            <div class="text-[10px] sm:text-xs font-mono text-white/50 mb-1.5 sm:mb-2">UPTIME</div>
+            <div class="text-[10px] sm:text-xs font-mono text-white/50 mb-1.5 sm:mb-2">SYSTEM UPTIME</div>
             <div class="text-xl sm:text-2xl font-mono font-bold text-energy truncate">
               {{ formatUptime(telemetry?.uptimeSeconds || 0) }}
             </div>
@@ -80,7 +80,7 @@ import { interval, Subscription } from 'rxjs';
 
           <!-- Card 3: JVM Heap Memory -->
           <div class="glass-card p-3.5 sm:p-5 rounded-xl border border-white/10">
-            <div class="text-[10px] sm:text-xs font-mono text-white/50 mb-1.5 sm:mb-2">JVM HEAP</div>
+            <div class="text-[10px] sm:text-xs font-mono text-white/50 mb-1.5 sm:mb-2">JVM HEAP ALLOCATION</div>
             <div class="text-xl sm:text-2xl font-mono font-bold text-cyan-glow">
               {{ telemetry?.runtime?.heapUsedMb || 0 }} MB
             </div>
@@ -91,12 +91,12 @@ import { interval, Subscription } from 'rxjs';
 
           <!-- Card 4: Request Telemetry -->
           <div class="glass-card p-3.5 sm:p-5 rounded-xl border border-white/10">
-            <div class="text-[10px] sm:text-xs font-mono text-white/50 mb-1.5 sm:mb-2">API CALLS</div>
+            <div class="text-[10px] sm:text-xs font-mono text-white/50 mb-1.5 sm:mb-2">TOTAL API INVOCATIONS</div>
             <div class="text-xl sm:text-2xl font-mono font-bold text-psychic">
               {{ telemetry?.apiStats?.totalRequests || 0 }}
             </div>
             <div class="text-[10px] sm:text-[11px] font-mono text-white/40 mt-1">
-              P50: ~{{ telemetry?.apiStats?.avgResponseMs || 4.2 }}ms
+              P50 Latency: ~{{ telemetry?.apiStats?.avgResponseMs || 4.2 }}ms
             </div>
           </div>
         </div>

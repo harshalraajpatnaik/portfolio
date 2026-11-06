@@ -113,9 +113,12 @@ import { ContactRequest } from '../../core/models/api.models';
               GITHUB ↗
             </a>
             <span>•</span>
-            <a href="http://localhost:8080/swagger-ui.html" target="_blank" rel="noopener noreferrer" class="hover:text-energy transition-colors">
+            <a *ngIf="(api.isBackendOnline$ | async)" href="http://localhost:8080/swagger-ui.html" target="_blank" rel="noopener noreferrer" class="hover:text-energy transition-colors">
               SWAGGER API ↗
             </a>
+            <button *ngIf="!(api.isBackendOnline$ | async)" (click)="openSwaggerModal()" class="hover:text-energy transition-colors cursor-pointer bg-transparent border-0 text-inherit p-0 font-inherit" title="View OpenAPI REST Specification & Architecture">
+              SWAGGER API ↗
+            </button>
           </div>
         </div>
       </div>
@@ -128,7 +131,11 @@ export class ContactComponent {
   successMsg = '';
   errorMsg = '';
 
-  constructor(private api: PortfolioApiService) {}
+  constructor(public api: PortfolioApiService) {}
+
+  openSwaggerModal(): void {
+    this.api.openApiModal();
+  }
 
   onSubmit(): void {
     if (!this.formData.name || !this.formData.email || !this.formData.message) {
