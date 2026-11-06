@@ -14,10 +14,10 @@ export type PortfolioMode = 'pokemon' | 'recruiter';
     <nav class="fixed top-0 left-0 right-0 z-50 px-3 sm:px-6 py-2.5 transition-all" role="navigation" aria-label="Portfolio Navigation">
       <div class="max-w-7xl mx-auto flex items-center justify-between gap-2 sm:gap-4">
 
-        <!-- BRAND LOGO: Proportional and clean on mobile & desktop -->
-        <a [href]="currentMode === 'pokemon' ? '#hero' : '#executive-summary'"
-           class="flex items-center gap-2 sm:gap-2.5 flex-shrink-0 group"
-           (click)="onNavClick(currentMode === 'pokemon' ? '#hero' : '#executive-summary')">
+        <!-- BRAND LOGO: Click to return to Home Screen (Experience Selector) -->
+        <a (click)="onNameClick($event)"
+           class="flex items-center gap-2 sm:gap-2.5 flex-shrink-0 group cursor-pointer"
+           title="Click to return to Home Screen (Interface Selector)">
           <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white border-2 flex items-center justify-center p-1 group-hover:scale-105 transition-transform flex-shrink-0 overflow-hidden"
                [ngClass]="currentMode === 'pokemon' ? 'border-crimson shadow-[0_0_12px_rgba(220,10,45,0.8)]' : 'border-cyan-glow shadow-[0_0_12px_rgba(0,229,255,0.8)]'">
             <img src="assets/hp-logo.png" alt="Harshal Patnaik (HP)" class="w-full h-full object-contain">
@@ -291,6 +291,7 @@ export type PortfolioMode = 'pokemon' | 'recruiter';
 export class NavComponent implements OnInit, OnDestroy {
   @Input() currentMode: PortfolioMode = 'pokemon';
   @Output() modeChange = new EventEmitter<PortfolioMode>();
+  @Output() returnToHome = new EventEmitter<void>();
 
   mobileMenuOpen = false;
   showApiModal = false;
@@ -353,6 +354,13 @@ export class NavComponent implements OnInit, OnDestroy {
   onNavClick(href: string): void {
     this.audio.playBeep();
     this.mobileMenuOpen = false;
+  }
+
+  onNameClick(event: Event): void {
+    event.preventDefault();
+    this.audio.playBeep();
+    this.mobileMenuOpen = false;
+    this.returnToHome.emit();
   }
 
   openOfflineApiModal(): void {

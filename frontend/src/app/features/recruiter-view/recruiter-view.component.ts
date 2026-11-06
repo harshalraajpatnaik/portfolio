@@ -102,9 +102,9 @@ import { ResumeComponent } from '../resume/resume.component';
             </div>
 
             <div class="p-4 sm:p-5 rounded-2xl bg-[#0f1523] border border-white/10 hover:border-teal-400/40 transition-all">
-              <div class="text-xs font-mono text-teal-400 font-bold mb-1">OBJECT STORAGE</div>
-              <div class="text-2xl sm:text-3xl font-extrabold text-white">100% Self-Service</div>
-              <div class="text-xs text-white/60 mt-1">Caringo Swarm S3 onboarding & automated DNS mapping</div>
+              <div class="text-xs font-mono text-teal-400 font-bold mb-1">CLOUD ORCHESTRATION</div>
+              <div class="text-2xl sm:text-3xl font-extrabold text-white">100% Automated</div>
+              <div class="text-xs text-white/60 mt-1">Automated order-to-deployment &amp; predictive VM autoscaling</div>
             </div>
 
             <div class="p-4 sm:p-5 rounded-2xl bg-[#0f1523] border border-white/10 hover:border-purple-400/40 transition-all">

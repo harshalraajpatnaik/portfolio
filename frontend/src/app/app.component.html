@@ -24,7 +24,8 @@
   <!-- Shared Top Navigation with Dynamic UI Interface Switcher -->
   <app-nav
     [currentMode]="currentMode"
-    (modeChange)="onModeChanged($event)">
+    (modeChange)="onModeChanged($event)"
+    (returnToHome)="onReturnToHome()">
   </app-nav>
 
   <!-- ========================================================================= -->

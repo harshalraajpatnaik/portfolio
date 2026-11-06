@@ -115,6 +115,10 @@ export class AppComponent implements OnInit {
     localStorage.setItem('hrp_portfolio_ui_mode', newMode);
   }
 
+  onReturnToHome(): void {
+    this.portalShown = false;
+  }
+
   onPokeballIntroCompleted(): void {
     this.pokeballIntroShown = true;
   }
