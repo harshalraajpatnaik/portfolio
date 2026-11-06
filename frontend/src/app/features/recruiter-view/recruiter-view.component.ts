@@ -4,11 +4,12 @@ import { FormsModule } from '@angular/forms';
 import { ProfileResponse, ProjectCard } from '../../core/models/api.models';
 import { PortfolioApiService } from '../../core/services/portfolio-api.service';
 import { FALLBACK_PROFILE, FALLBACK_PROJECTS } from '../../core/data/portfolio-fallback.data';
+import { ResumeComponent } from '../resume/resume.component';
 
 @Component({
   selector: 'app-recruiter-view',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, ResumeComponent],
   template: `
     <div class="min-h-screen bg-[#080b12] text-white font-sans selection:bg-cyan-glow selection:text-black">
       
@@ -47,7 +48,7 @@ import { FALLBACK_PROFILE, FALLBACK_PROJECTS } from '../../core/data/portfolio-f
               Architecting <span class="bg-gradient-to-r from-cyan-glow via-teal-300 to-emerald-400 bg-clip-text text-transparent">Resilient Cloud Systems</span> with Executive Business Impact.
             </h1>
             <p class="text-base sm:text-lg text-white/80 leading-relaxed max-w-3xl font-normal">
-              Senior Software Engineer with <strong>4+ years of specialized enterprise engineering</strong> across multi-hypervisor cloud infrastructure, high-throughput asynchronous batch processing, and S3 object storage at Tata Communications. Executive MBA candidate at <strong>IIM Kozhikode</strong> uniting distributed systems architecture with unit economics, product roadmaps, and enterprise ROI.
+              Senior Software Engineer with <strong>5+ years of specialized enterprise engineering</strong> across multi-hypervisor cloud infrastructure, high-throughput asynchronous batch processing, and S3 object storage at Tata Communications. Executive MBA candidate at <strong>IIM Kozhikode</strong> uniting distributed systems architecture with unit economics, product roadmaps, and enterprise ROI.
             </p>
           </div>
 
@@ -170,7 +171,7 @@ import { FALLBACK_PROFILE, FALLBACK_PROJECTS } from '../../core/data/portfolio-f
                 </li>
                 <li class="flex items-start gap-2.5">
                   <span class="text-cyan-glow font-bold mt-1">▸</span>
-                  <span><strong>API Gateway &amp; Agile Engineering Leadership:</strong> Engineered route discovery, wildcard forwarding, and multi-tenant security policies across <strong>Kong API Gateway</strong>; stepped up as <strong>Acting Scrum Master</strong> and technical mentor, driving architecture reviews, code quality, and on-time sprint deliveries in Jira.</span>
+                  <span><strong>API Gateway &amp; Agile Engineering Leadership:</strong> Engineered route discovery, wildcard forwarding, and multi-tenant security policies across <strong>Kong API Gateway</strong>; stepped up as <strong>Acting Scrum Master &amp; Technical Lead for a 5-engineer squad</strong>, driving architecture reviews, sprint ceremonies, backlog grooming, code quality, and on-time sprint deliveries in Jira.</span>
                 </li>
               </ul>
 
@@ -256,7 +257,7 @@ import { FALLBACK_PROFILE, FALLBACK_PROJECTS } from '../../core/data/portfolio-f
             <!-- Category Switcher Tabs -->
             <div class="flex items-center gap-2 font-mono text-xs">
               <button
-                (click)="selectedCategory = 'ALL'"
+                (click)="setCategory('ALL')"
                 [class.bg-cyan-glow]="selectedCategory === 'ALL'"
                 [class.text-black]="selectedCategory === 'ALL'"
                 [class.bg-white-10]="selectedCategory !== 'ALL'"
@@ -265,7 +266,7 @@ import { FALLBACK_PROFILE, FALLBACK_PROJECTS } from '../../core/data/portfolio-f
                 ALL ({{ projectList.length }})
               </button>
               <button
-                (click)="selectedCategory = 'COMPANY'"
+                (click)="setCategory('COMPANY')"
                 [class.bg-cyan-glow]="selectedCategory === 'COMPANY'"
                 [class.text-black]="selectedCategory === 'COMPANY'"
                 [class.bg-white-10]="selectedCategory !== 'COMPANY'"
@@ -274,7 +275,7 @@ import { FALLBACK_PROFILE, FALLBACK_PROJECTS } from '../../core/data/portfolio-f
                 ENTERPRISE
               </button>
               <button
-                (click)="selectedCategory = 'PRODUCT'"
+                (click)="setCategory('PRODUCT')"
                 [class.bg-cyan-glow]="selectedCategory === 'PRODUCT'"
                 [class.text-black]="selectedCategory === 'PRODUCT'"
                 [class.bg-white-10]="selectedCategory !== 'PRODUCT'"
@@ -285,10 +286,10 @@ import { FALLBACK_PROFILE, FALLBACK_PROJECTS } from '../../core/data/portfolio-f
             </div>
           </div>
 
-          <!-- Projects Grid -->
+          <!-- Projects Grid (Paginated 4 per view to eliminate long scrolling) -->
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div
-              *ngFor="let p of filteredProjects"
+              *ngFor="let p of pagedProjects"
               class="p-6 sm:p-7 rounded-3xl bg-[#0c1220] border border-white/10 hover:border-cyan-glow/50 transition-all flex flex-col justify-between group shadow-lg">
               
               <div class="space-y-4">
@@ -328,8 +329,8 @@ import { FALLBACK_PROFILE, FALLBACK_PROJECTS } from '../../core/data/portfolio-f
                 </ul>
               </div>
 
-              <!-- Tech Stack Tags & Links -->
-              <div class="pt-5 mt-5 border-t border-white/5 space-y-3">
+              <!-- Tech Stack Tags -->
+              <div class="pt-5 mt-5 border-t border-white/5">
                 <div class="flex flex-wrap gap-1.5">
                   <span
                     *ngFor="let t of p.techStack"
@@ -337,14 +338,33 @@ import { FALLBACK_PROFILE, FALLBACK_PROJECTS } from '../../core/data/portfolio-f
                     {{ t }}
                   </span>
                 </div>
-
-                <div class="flex items-center justify-end text-xs font-mono text-cyan-glow">
-                  <a [href]="getRepoLink(p)" target="_blank" rel="noopener noreferrer" class="hover:underline flex items-center gap-1">
-                    <span>VIEW REPOSITORY ↗</span>
-                  </a>
-                </div>
               </div>
 
+            </div>
+          </div>
+
+          <!-- Clean Recruiter Pagination Bar -->
+          <div class="flex flex-col sm:flex-row items-center justify-between gap-3 p-4 rounded-2xl bg-[#0c1220] border border-white/10 font-mono text-xs">
+            <div class="text-white/60">
+              SHOWING {{ (currentPage - 1) * pageSize + 1 }}–{{ getUpperBound() }} OF {{ filteredProjects.length }} PROJECTS ({{ selectedCategory === 'COMPANY' ? 'ENTERPRISE SYSTEMS' : (selectedCategory === 'PRODUCT' ? 'INDEPENDENT CAPSTONES' : 'ALL PROJECTS') }})
+            </div>
+
+            <div class="flex items-center gap-2">
+              <button
+                (click)="prevPage()"
+                [disabled]="currentPage === 1"
+                class="px-3.5 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 disabled:opacity-30 border border-white/10 transition-colors cursor-pointer text-white">
+                ◀ PREV
+              </button>
+              <span class="px-3 py-1.5 rounded-lg bg-white/10 text-cyan-glow font-bold">
+                PAGE {{ currentPage }} OF {{ totalPages }}
+              </span>
+              <button
+                (click)="nextPage()"
+                [disabled]="currentPage >= totalPages"
+                class="px-3.5 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 disabled:opacity-30 border border-white/10 transition-colors cursor-pointer text-white">
+                NEXT ▶
+              </button>
             </div>
           </div>
         </section>
@@ -491,197 +511,7 @@ import { FALLBACK_PROFILE, FALLBACK_PROJECTS } from '../../core/data/portfolio-f
         <!-- ========================================================================= -->
         <!-- SECTION 6: OFFICIAL ATS RESUME DOCUMENT PREVIEW                          -->
         <!-- ========================================================================= -->
-        <section id="resume" class="space-y-6 pt-6">
-          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-white/10 pb-4">
-            <div class="space-y-1">
-              <div class="text-xs font-mono text-cyan-glow font-bold uppercase tracking-wider">VERIFIED ATS FORMAT</div>
-              <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Official 1-Page ATS Resume</h2>
-            </div>
-            <div class="flex items-center gap-3">
-              <a href="assets/Harshal_Raaj_Patnaik_Resume.pdf"
-                 download="Harshal_Raaj_Patnaik_Resume.pdf"
-                 target="_blank"
-                 rel="noopener noreferrer"
-                 class="px-4 py-2 rounded-xl bg-cyan-glow hover:bg-cyan-glow/90 text-black font-mono font-bold text-xs flex items-center gap-1.5 shadow-md shadow-cyan-glow/20">
-                <span>DOWNLOAD PDF</span>
-                <span>↓</span>
-              </a>
-              <a href="assets/Harshal_Raaj_Patnaik_Resume.tex"
-                 download="Harshal_Raaj_Patnaik_Resume.tex"
-                 target="_blank"
-                 rel="noopener noreferrer"
-                 class="px-4 py-2 rounded-xl border border-white/20 bg-white/5 text-white font-mono text-xs hover:bg-white/10 flex items-center gap-1.5">
-                <span>DOWNLOAD .TEX</span>
-                <span>⚡</span>
-              </a>
-            </div>
-          </div>
-
-          <!-- Document Wrapper with Scroll Safety on Mobile -->
-          <div class="overflow-x-auto pb-4 rounded-2xl overscroll-x-contain" style="-webkit-overflow-scrolling: touch;">
-            <div class="min-w-[640px] sm:min-w-0 bg-white text-black p-6 sm:p-10 rounded-2xl shadow-2xl relative font-serif text-[12.5px] leading-snug border border-slate-300">
-              
-              <!-- Document Header -->
-              <div class="text-center mb-3">
-                <h3 class="text-2xl sm:text-3xl font-bold tracking-wider mb-0.5" style="font-variant: small-caps;">
-                  HARSHAL RAAJ PATNAIK
-                </h3>
-                <div class="text-[10.5px] font-bold text-slate-800 mb-1">
-                  Senior Software Engineer | Cloud Platforms, Distributed Systems &amp; Technical Lead (Tech × MBA)
-                </div>
-                <div class="text-[10px] text-slate-700 leading-normal">
-                  +91-9982143442 &nbsp;~&nbsp;
-                  <a href="mailto:harshalraajpatnaik&#64;outlook.com" class="underline text-black">harshalraajpatnaik&#64;outlook.com</a> &nbsp;~&nbsp;
-                  <a href="https://linkedin.com/in/harshalraajpatnaik/" target="_blank" rel="noopener noreferrer" class="underline text-black">linkedin.com/in/harshalraajpatnaik</a> &nbsp;~&nbsp;
-                  <a href="https://github.com/harshalraajpatnaik" target="_blank" rel="noopener noreferrer" class="underline text-black">github.com/harshalraajpatnaik</a>
-                </div>
-              </div>
-
-              <!-- Education -->
-              <div class="mb-3">
-                <div class="font-bold uppercase tracking-wider text-[11px] border-b border-black pb-0.5 mb-1" style="font-variant: small-caps;">
-                  Education
-                </div>
-                <div class="mb-1">
-                  <div class="flex justify-between items-baseline font-bold text-[11px]">
-                    <span>Indian Institute of Management Kozhikode (IIMK)</span>
-                    <span>2025 – Present</span>
-                  </div>
-                  <div class="flex justify-between items-baseline italic text-[10px] text-slate-800">
-                    <span>Executive Post Graduate Programme (EPGP) in General Management – Product Strategy, Finance &amp; Operations</span>
-                    <span>Kochi, India</span>
-                  </div>
-                </div>
-                <div>
-                  <div class="flex justify-between items-baseline font-bold text-[11px]">
-                    <span>SRM Institute of Science and Technology</span>
-                    <span>2017 – 2021</span>
-                  </div>
-                  <div class="flex justify-between items-baseline italic text-[10px] text-slate-800">
-                    <span>Bachelor of Technology in Computer Science and Engineering (CGPA: 8.76 / 87.6%)</span>
-                    <span>Chennai, India</span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Professional Experience -->
-              <div class="mb-3">
-                <div class="font-bold uppercase tracking-wider text-[11px] border-b border-black pb-0.5 mb-1" style="font-variant: small-caps;">
-                  Professional Experience
-                </div>
-
-                <!-- Novamesh -->
-                <div class="mb-2">
-                  <div class="flex justify-between items-baseline font-bold text-[11px]">
-                    <span>Novamesh Ltd. (Wholly Owned Subsidiary of Tata Communications)</span>
-                    <span>Apr 2024 – Present</span>
-                  </div>
-                  <div class="flex justify-between items-baseline italic text-[10px] text-slate-800 mb-0.5">
-                    <span>Senior Software Engineer (Cloud Platforms &amp; Distributed Infrastructure)</span>
-                    <span>Chennai, India</span>
-                  </div>
-                  <ul class="list-disc pl-4 space-y-0.5 text-[10px] leading-relaxed text-slate-900">
-                    <li><strong>Capacity &amp; Infrastructure Telemetry Dashboard:</strong> Architected and engineered end-to-end multi-tenant Capacity Planning &amp; Inventory Dashboard from design to distributed backend services, managing real-time lifecycle records across <strong>Compute</strong> (KVM, VMware ESXi, OLVM hypervisors), <strong>Storage</strong> (NetApp ONTAP, HPE 3PAR/Nimble, Caringo Swarm), and <strong>Network</strong> (public IP pool reports, switch port mappings, VDOM reports, bandwidth utilization telemetry) with interactive graphical heatmaps and trend analytics.</li>
-                    <li><strong>Multi-Hypervisor Orchestration &amp; Asynchronous Sagas:</strong> Architected event-driven VM orchestration and capacity tracking engine across <strong>KVM, VMware ESXi, and OLVM</strong>; designed automated compensating sagas with <strong>Flowable BPMN</strong> and decoupled execution via <strong>RabbitMQ (AMQP)</strong> queues to guarantee sub-second portal responsiveness and zero orphaned cloud resources.</li>
-                    <li><strong>High-Throughput Batch Processing:</strong> Slashed cloud batch scheduler execution latency by <strong>92.6% (from ~18 minutes down to 80 seconds)</strong> across distributed Cassandra clusters by implementing strict 50-item batch chunking, multi-level Redis caching, and tuning HikariCP connection pools.</li>
-                    <li><strong>Fortinet Firewall &amp; Network Security Automation:</strong> Automated enterprise <strong>Fortinet FortiGate Firewalls</strong> via REST APIs for dynamic policy orchestration, VDOM segmentation, and IPsec VPN provisioning; engineered an in-process sliding-window rate limiter that <strong>eliminated 100% of HTTP 429 rate-limiting failures</strong>.</li>
-                    <li><strong>API Gateway &amp; Agile Leadership:</strong> Engineered route discovery, wildcard forwarding, and multi-tenant security policies across <strong>Kong API Gateway</strong>; stepped up as <strong>Acting Scrum Master</strong> and technical mentor, driving architecture reviews, code quality, and on-time sprint deliveries.</li>
-                  </ul>
-                </div>
-
-                <!-- Tata Comms -->
-                <div>
-                  <div class="flex justify-between items-baseline font-bold text-[11px]">
-                    <span>Tata Communications Ltd.</span>
-                    <span>Jul 2021 – Mar 2024</span>
-                  </div>
-                  <div class="flex justify-between items-baseline italic text-[10px] text-slate-800 mb-0.5">
-                    <span>Software Development Engineer (Cloud Infrastructure, Storage &amp; Full-Stack)</span>
-                    <span>Chennai, India</span>
-                  </div>
-                  <ul class="list-disc pl-4 space-y-0.5 text-[10px] leading-relaxed text-slate-900">
-                    <li><strong>Cloud Object Storage &amp; DNS Automation:</strong> Built full-stack onboarding workflow for <strong>Caringo Swarm S3-compatible cloud object storage</strong> and automated cPanel DNS A-record associations using Java and Angular, enabling <strong>100% self-service storage provisioning and automated bucket metering</strong>.</li>
-                    <li><strong>Frontend Modernization &amp; Component Architecture:</strong> Spearheaded legacy AngularJS migration to <strong>Angular 17</strong> with reactive component architectures, deconstructing legacy AngularJS scopes to achieve a <strong>35% improvement in client-side rendering speed</strong>.</li>
-                    <li><strong>DevOps &amp; CI/CD Pipelines:</strong> Automated continuous integration, regression testing, and release packaging pipelines with <strong>Jenkins CI/CD</strong>, multi-module Maven builds, and JUnit quality gates, significantly cutting manual verification overhead and deployment friction.</li>
-                    <li><strong>Network Telemetry &amp; Monitoring:</strong> Engineered switch-port utilization and network capacity telemetry engine integrating Zabbix and Nimsoft APIs, computing cluster-wide compute and datastore allocation to prevent capacity exhaustion; earned <strong>3× Extra Mile Commitment Awards</strong>.</li>
-                    <li><strong>Multi-Vendor Load Balancer Orchestration:</strong> Automated enterprise load balancer provisioning and health probe monitoring across <strong>HAProxy, F5 BIG-IP, and VMware Avi</strong> with automated VIP provisioning, traffic steering, and tenant-scoped SSL/TLS offloading.</li>
-                  </ul>
-                </div>
-              </div>
-
-              <!-- Projects -->
-              <div class="mb-3">
-                <div class="font-bold uppercase tracking-wider text-[11px] border-b border-black pb-0.5 mb-1" style="font-variant: small-caps;">
-                  Strategy &amp; Technical Projects
-                </div>
-                <div class="space-y-1.5 text-[10px] text-slate-900 leading-relaxed">
-                  <div>
-                    <div class="flex justify-between items-baseline font-bold">
-                      <span>SthiraX: Distributed CO2-Mineralization &amp; IoT MRV Platform | IIM Kozhikode Capstone (BPP)</span>
-                      <span>2025 – Present</span>
-                    </div>
-                    <ul class="list-disc pl-4 space-y-0.5">
-                      <li>Architected asset-light retrofit platform converting regional concrete plants into certified low-carbon facilities to fulfill India's <strong>April 2026 C&amp;D Waste Rules</strong> (mandating <strong>5% to 25% recycled material by 2030 across 20,000+ sqm projects</strong>); built batch-level IoT MRV software generating cryptographically verifiable Digital Product Passports for developer EPR compliance, supported by SaaS and royalty unit economics.</li>
-                    </ul>
-                  </div>
-                  <div>
-                    <div class="font-bold">MarginOS: Multi-Tenant Cloud FinOps &amp; Unit Economics Optimization Platform | Cloud Economics &amp; FinOps</div>
-                    <ul class="list-disc pl-4 space-y-0.5">
-                      <li>Architected distributed FinOps intelligence engine analyzing multi-cloud hypervisor and storage telemetry to calculate real-time gross margins, compute unit economics (cost-per-VM/hour, storage tiers), and surface automated right-sizing recommendations that eliminate up to 28% in infrastructure spend leakages.</li>
-                    </ul>
-                  </div>
-                  <div>
-                    <div class="font-bold">Workflow Reliability Lab: Distributed Sagas &amp; Chaos Engineering | Distributed Systems Platform</div>
-                    <ul class="list-disc pl-4 space-y-0.5">
-                      <li>Engineered developer platform for testing distributed workflow reliability; built synthetic fault injection simulators (network partitions, timeout anomalies) and invariant checkers verifying ACID saga compensations (<strong>Java 25, Spring Boot 4, Angular, Docker</strong>).</li>
-                    </ul>
-                  </div>
-                  <div>
-                    <div class="font-bold">QueryLens AI: Sandboxed Enterprise Text-to-SQL &amp; Semantic RAG Engine | AI &amp; Data Systems</div>
-                    <ul class="list-disc pl-4 space-y-0.5">
-                      <li>Architected modular C4 3-tier Text-to-SQL engine (Angular 17 → Spring Boot 3 → FastAPI with pgvector RAG) with schema semantic search, AST validation, and read-only sandbox roles preventing SQL injection and unauthorized data exfiltration.</li>
-                    </ul>
-                  </div>
-                  <div>
-                    <div class="font-bold">CloudScale: Predictive Workload Autoscaler &amp; Proactive Telemetry Engine | Autonomous Cloud Infrastructure</div>
-                    <ul class="list-disc pl-4 space-y-0.5">
-                      <li>Built proactive Kubernetes/VM capacity autoscaling engine integrating Prometheus, Grafana, and time-series ML forecasting models to predict compute resource spikes 15 minutes in advance, mitigating cold-start latencies and reducing over-provisioned idle capacity.</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Technical & Leadership Competencies -->
-              <div class="mb-3">
-                <div class="font-bold uppercase tracking-wider text-[11px] border-b border-black pb-0.5 mb-1" style="font-variant: small-caps;">
-                  Technical &amp; Leadership Competencies
-                </div>
-                <div class="text-[9.5px] leading-relaxed space-y-0.5 text-slate-900">
-                  <div><strong>Languages &amp; Core:</strong> Java (8/11/17/25 LTS), Python, TypeScript, JavaScript, SQL, HTML5/CSS3, Bash, Spring Boot 3/4, FastAPI, Angular 17/18, RxJS</div>
-                  <div><strong>Distributed Systems &amp; Cloud:</strong> Microservices Architecture, Flowable BPMN, RabbitMQ (AMQP), Event-Driven Architecture, High Availability (HA), Fault Tolerance, KVM, VMware ESXi, OLVM, Docker, Kubernetes</div>
-                  <div><strong>Databases, Caching &amp; Storage:</strong> Apache Cassandra (NoSQL), Redis (In-Memory Cache), PostgreSQL (pgvector), MySQL, Caringo Swarm (S3 Object Storage), NetApp ONTAP, HPE 3PAR/Nimble, Hibernate/JPA, HikariCP Tuning</div>
-                  <div><strong>Networking, Security &amp; Firewalls:</strong> Fortinet FortiGate Firewalls, VDOMs, Kong API Gateway, IPsec VPN, DNS Automation (cPanel/BIND), Token Bucket Rate Limiting, Reverse Proxies, HAProxy, F5 BIG-IP, VMware Avi</div>
-                  <div><strong>DevOps, SRE &amp; Observability:</strong> Jenkins CI/CD, CI/CD Pipelines, Prometheus, Grafana, OpenTelemetry, Distributed Tracing, Zabbix APIs, Nimsoft, JUnit 5, Mockito, SonarQube, Linux/Unix Administration</div>
-                  <div><strong>Product Strategy &amp; MBA Coursework:</strong> Product Management, Financial Accounting, Operations Management, Strategy Management, Risk Analysis, Product Analytics, Negotiation &amp; Conflict Management, Entrepreneurship, FinOps, Unit Economics</div>
-                </div>
-              </div>
-
-              <!-- Honors & Certifications -->
-              <div>
-                <div class="font-bold uppercase tracking-wider text-[11px] border-b border-black pb-0.5 mb-1" style="font-variant: small-caps;">
-                  Honors, Certifications &amp; Extracurricular
-                </div>
-                <ul class="list-disc pl-4 space-y-0.5 text-[9.5px] leading-relaxed text-slate-900">
-                  <li><strong>3× Extra Mile Commitment Award</strong> – Tata Communications Ltd. for critical cloud platform delivery, stability, and zero-defect deployments.</li>
-                  <li><strong>Flipkart Grid 2.0 Engineering Challenge</strong> – Team Lead; achieved <strong>Top 150 Nationwide Rank</strong> out of 20,000+ teams (Computer Vision &amp; OCR Track).</li>
-                  <li><strong>Architecting with Google Compute Engine</strong> (Google Cloud / Coursera) &amp; <strong>Full Stack Web Development</strong> (Coding Ninjas).</li>
-                  <li><strong>Rank 2404 Globally</strong> in Second Round of 5th SOF International Mathematics Olympiad (Science Olympiad Foundation).</li>
-                </ul>
-              </div>
-
-            </div>
-          </div>
-        </section>
+        <app-resume [profile]="profile"></app-resume>
 
         <!-- ========================================================================= -->
         <!-- SECTION 7: RECRUITER CONTACT GATEWAY                                      -->
@@ -772,6 +602,8 @@ export class RecruiterViewComponent implements OnInit {
   @Input() projects: ProjectCard[] = [];
 
   selectedCategory: 'ALL' | 'COMPANY' | 'PRODUCT' = 'ALL';
+  pageSize = 4;
+  currentPage = 1;
 
   formData = { name: '', email: '', message: '' };
   isSubmitting = false;
@@ -786,6 +618,11 @@ export class RecruiterViewComponent implements OnInit {
     }
   }
 
+  setCategory(cat: 'ALL' | 'COMPANY' | 'PRODUCT'): void {
+    this.selectedCategory = cat;
+    this.currentPage = 1;
+  }
+
   get projectList(): ProjectCard[] {
     return this.projects && this.projects.length > 0
       ? this.projects
@@ -797,6 +634,31 @@ export class RecruiterViewComponent implements OnInit {
       return this.projectList;
     }
     return this.projectList.filter(p => p.category === this.selectedCategory);
+  }
+
+  get pagedProjects(): ProjectCard[] {
+    const start = (this.currentPage - 1) * this.pageSize;
+    return this.filteredProjects.slice(start, start + this.pageSize);
+  }
+
+  get totalPages(): number {
+    return Math.ceil(this.filteredProjects.length / this.pageSize) || 1;
+  }
+
+  getUpperBound(): number {
+    return Math.min(this.currentPage * this.pageSize, this.filteredProjects.length);
+  }
+
+  prevPage(): void {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+    }
+  }
+
+  nextPage(): void {
+    if (this.currentPage < this.totalPages) {
+      this.currentPage++;
+    }
   }
 
   getRepoLink(p: ProjectCard): string {

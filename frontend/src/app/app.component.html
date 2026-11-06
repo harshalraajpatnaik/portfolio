@@ -16,8 +16,9 @@
   (completed)="onRecruiterLoaderCompleted()">
 </app-recruiter-loader>
 
-<!-- Main Unified Portfolio Layout Container -->
-<div class="min-h-screen text-white"
+<!-- Main Unified Portfolio Layout Container (Shown after interface selection) -->
+<div *ngIf="portalShown"
+     class="min-h-screen text-white"
      [ngClass]="currentMode === 'pokemon' ? 'bg-[#07090e] selection:bg-crimson selection:text-white' : 'bg-[#080b12] selection:bg-cyan-glow selection:text-black'">
   
   <!-- Shared Top Navigation with Dynamic UI Interface Switcher -->

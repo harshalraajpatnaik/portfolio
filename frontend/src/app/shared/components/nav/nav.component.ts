@@ -38,19 +38,19 @@ export type PortfolioMode = 'pokemon' | 'recruiter';
         </a>
 
         <!-- CENTER NAVIGATION (Desktop / Wide screens >= 1024px) -->
-        <div class="hidden lg:flex items-center gap-1 font-mono text-xs flex-shrink-0">
+        <div class="hidden lg:flex items-center gap-0.5 xl:gap-1 font-mono text-[11px] xl:text-xs flex-shrink-0">
           <a *ngFor="let link of activeNavLinks"
              [href]="link.href"
              (click)="audio.playBeep()"
-             class="px-2.5 py-1.5 text-white/70 hover:text-white rounded-lg hover:bg-white/10 transition-colors whitespace-nowrap">
+             class="px-2 xl:px-2.5 py-1.5 text-white/70 hover:text-white rounded-lg hover:bg-white/10 transition-colors whitespace-nowrap">
             {{ link.label }}
           </a>
         </div>
 
         <!-- RIGHT SIDE: Mode Switcher + Audio Capsule + Resume + Mobile Hamburger -->
-        <div class="flex items-center gap-1.5 sm:gap-2 flex-shrink-0">
+        <div class="flex items-center gap-2 sm:gap-2.5 flex-shrink-0">
           
-          <!-- DYNAMIC UI INTERFACE SWITCHER TOGGLE (Replaces API Spec) -->
+          <!-- DYNAMIC UI INTERFACE SWITCHER TOGGLE -->
           <div class="flex items-center">
             <button
               *ngIf="currentMode === 'pokemon'"
@@ -58,8 +58,8 @@ export type PortfolioMode = 'pokemon' | 'recruiter';
               class="px-2.5 sm:px-3 py-1.5 rounded-xl text-xs font-mono font-bold bg-cyan-glow/15 hover:bg-cyan-glow/25 border border-cyan-glow/40 text-cyan-glow hover:border-cyan-glow transition-all flex items-center gap-1.5 shadow-sm cursor-pointer"
               title="Switch to Clean Executive Recruiter & Hiring Manager Mode">
               <span>💼</span>
-              <span class="hidden sm:inline">RECRUITER MODE</span>
-              <span class="sm:hidden">RECRUITER</span>
+              <span class="hidden xl:inline">RECRUITER MODE</span>
+              <span class="xl:hidden">RECRUITER</span>
               <span class="text-[10px] opacity-80">⇄</span>
             </button>
 
@@ -69,29 +69,29 @@ export type PortfolioMode = 'pokemon' | 'recruiter';
               class="px-2.5 sm:px-3 py-1.5 rounded-xl text-xs font-mono font-bold bg-crimson/20 hover:bg-crimson/30 border border-crimson/50 text-white hover:border-crimson transition-all flex items-center gap-1.5 shadow-sm cursor-pointer"
               title="Switch to Pokédex Pro Gamified Experience">
               <span>⚡</span>
-              <span class="hidden sm:inline">POKÉDEX PRO</span>
-              <span class="sm:hidden">POKÉDEX</span>
+              <span class="hidden xl:inline">POKÉDEX PRO</span>
+              <span class="xl:hidden">POKÉDEX</span>
               <span class="text-[10px] text-energy">⇄</span>
             </button>
           </div>
 
           <!-- Consolidated Retro Audio Capsule (Active in Pokédex Mode) -->
           <div *ngIf="currentMode === 'pokemon'"
-               class="hidden sm:flex items-center bg-black/50 border border-white/15 rounded-xl p-0.5 font-mono shadow-inner">
+               class="hidden lg:flex items-center bg-black/60 border border-white/15 rounded-xl p-0.5 font-mono shadow-inner">
             <!-- Theme Music Toggle -->
             <button
               (click)="audio.toggleMusic()"
-              class="px-2.5 py-1 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer"
+              class="px-2 py-1 rounded-lg text-xs font-bold transition-all flex items-center gap-1 cursor-pointer"
               [ngClass]="audio.isMusicPlaying ? 'bg-energy text-black shadow-lg shadow-energy/20' : 'text-white/70 hover:text-white hover:bg-white/10'"
               [title]="audio.isMusicPlaying ? '8-Bit Gym Theme Playing (Click to Pause)' : 'Play Nostalgic 8-Bit Gym Theme'">
-              <span class="w-2 h-2 rounded-full" [ngClass]="audio.isMusicPlaying ? 'bg-black animate-pulse' : 'bg-red-500'"></span>
+              <span class="w-1.5 h-1.5 rounded-full" [ngClass]="audio.isMusicPlaying ? 'bg-black animate-pulse' : 'bg-red-500'"></span>
               <span>THEME</span>
             </button>
 
             <!-- SFX Mute/Unmute -->
             <button
               (click)="audio.toggleSound()"
-              class="px-2 py-1 rounded-lg text-xs transition-all text-white/70 hover:text-white hover:bg-white/10 flex items-center cursor-pointer"
+              class="px-1.5 py-1 rounded-lg text-xs transition-all text-white/70 hover:text-white hover:bg-white/10 flex items-center cursor-pointer"
               [title]="audio.soundEnabled ? '8-Bit Retro SFX Active' : 'Sound Effects Muted'">
               <span>{{ audio.soundEnabled ? '🔊' : '🔇' }}</span>
             </button>
@@ -103,10 +103,10 @@ export type PortfolioMode = 'pokemon' | 'recruiter';
              target="_blank"
              rel="noopener noreferrer"
              (click)="audio.playFanfare()"
-             class="px-2.5 sm:px-3.5 py-1.5 rounded-xl text-[11px] sm:text-xs font-mono font-bold transition-all flex items-center gap-1 flex-shrink-0 shadow-lg"
+             class="px-2.5 sm:px-3 py-1.5 rounded-xl text-xs font-mono font-bold transition-all flex items-center gap-1 flex-shrink-0 shadow-md"
              [ngClass]="currentMode === 'pokemon' ? 'bg-energy hover:bg-energy/90 text-black shadow-energy/25' : 'bg-cyan-glow hover:bg-cyan-glow/90 text-black shadow-cyan-glow/20'">
             <span>RESUME</span>
-            <span class="hidden sm:inline">(PDF)</span>
+            <span class="hidden xl:inline">(PDF)</span>
             <span>↓</span>
           </a>
 
