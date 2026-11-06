@@ -1,11 +1,11 @@
 %-------------------------
 % Executive Tech & Business Resume in LaTeX (Google ATS-Standard Format)
 % Candidate: Harshal Raaj Patnaik
-% Target: Senior Full-Stack & Cloud Systems Engineer | Technical Lead & Platform Architect
+% Target: Senior Software Engineer & Platform Architect | Cloud Infrastructure, Distributed Systems & Product Strategy (Tech × MBA)
 % Strictly 1-Page Format following Google's "Accomplished [X] relative to [Y] by doing [Z]" Framework
 %-------------------------
 
-\documentclass[letterpaper,10pt]{article}
+\documentclass[letterpaper,9.5pt]{article}
 
 \usepackage{latexsym}
 \usepackage[empty]{fullpage}
@@ -27,22 +27,22 @@
 \renewcommand{\headrulewidth}{0pt}
 \renewcommand{\footrulewidth}{0pt}
 
-% Tight single-page geometry
-\addtolength{\oddsidemargin}{-0.65in}
-\addtolength{\evensidemargin}{-0.65in}
-\addtolength{\textwidth}{1.3in}
-\addtolength{\topmargin}{-0.75in}
-\addtolength{\textheight}{1.52in}
+% Single-page geometry tailored for density and zero bottom overflow
+\addtolength{\oddsidemargin}{-0.68in}
+\addtolength{\evensidemargin}{-0.68in}
+\addtolength{\textwidth}{1.36in}
+\addtolength{\topmargin}{-0.80in}
+\addtolength{\textheight}{1.65in}
 
 \urlstyle{same}
 \raggedbottom
 \raggedright
 \setlength{\tabcolsep}{0in}
 
-% Section styling with neat horizontal rule
+% Section styling with clean horizontal divider
 \titleformat{\section}{
   \vspace{-5pt}\scshape\raggedright\large\bfseries
-}{}{0em}{}[\color{black}\titlerule \vspace{-4pt}]
+}{}{0em}{}[\color{black}\titlerule \vspace{-3.5pt}]
 
 \pdfgentounicode=1
 
@@ -52,7 +52,7 @@
 }
 
 \newcommand{\resumeSubheading}[4]{
-  \vspace{-2pt}\item
+  \vspace{-2.5pt}\item
     \begin{tabular*}{1.0\textwidth}[t]{l@{\extracolsep{\fill}}r}
       \textbf{#1} & \textbf{\small #2} \\
       \textit{\small#3} & \textit{\small #4} \\
@@ -60,9 +60,9 @@
 }
 
 \newcommand{\resumeProjectHeading}[2]{
-    \item
+    \vspace{-2.5pt}\item
     \begin{tabular*}{1.0\textwidth}{l@{\extracolsep{\fill}}r}
-      \small#1 & \textbf{\small #2}\\
+      \small#1 & \small#2\\
     \end{tabular*}\vspace{-5pt}
 }
 
@@ -70,7 +70,7 @@
 \newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.0in, label={}]}
 \newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
 \newcommand{\resumeItemListStart}{\begin{itemize}[leftmargin=0.15in, rightmargin=0.0in]}
-\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-4pt}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-3pt}}
 
 %-------------------------------------------
 \begin{document}
@@ -78,7 +78,7 @@
 %----------HEADING----------
 \begin{center}
     {\Huge \scshape HARSHAL RAAJ PATNAIK} \\ \vspace{1pt}
-    \textbf{\small Senior Full-Stack \& Cloud Systems Engineer $|$ Technical Lead \& Platform Architect (Tech $\times$ MBA)} \\ \vspace{2pt}
+    \textbf{\small Senior Software Engineer \& Platform Architect $|$ Cloud Infrastructure, Distributed Systems \& Product Strategy (Tech $\times$ MBA)} \\ \vspace{2pt}
     \small \raisebox{-0.1\height}\faPhone\ +91-9982143442 ~ 
     \href{mailto:harshalraajpatnaik@outlook.com}{\raisebox{-0.2\height}\faEnvelope\ \underline{harshalraajpatnaik@outlook.com}} ~ 
     \href{https://linkedin.com/in/harshalraajpatnaik/}{\raisebox{-0.2\height}\faLinkedin\ \underline{linkedin.com/in/harshalraajpatnaik}} ~ 
@@ -102,30 +102,60 @@
   \resumeSubHeadingListStart
 
     \resumeSubheading
-      {Tata Communications Ltd.}{Jul 2021 -- Present}
-      {Software Development Engineer (Cloud Infrastructure, Distributed Workflows \& Full-Stack)}{Chennai, India}
+      {Novamesh Ltd. (Wholly Owned Subsidiary of Tata Communications)}{Apr 2024 -- Present}
+      {Senior Software Engineer (Cloud Platforms \& Distributed Infrastructure)}{Chennai, India}
       \resumeItemListStart
-        \resumeItem{Slashed cloud batch scheduler execution latency by \textbf{92.6\% (from $\sim$18 minutes down to 80 seconds)} across distributed Cassandra clusters by implementing strict 50-item batch chunking, multi-level Redis caching, and tuning HikariCP connection pools.}
-        \resumeItem{Architected multi-hypervisor orchestration engine and Flowable workflows across \textbf{KVM, VMware ESXi, and OLVM}, managing automated VM provisioning, lifecycle operations, and state compensation via asynchronous \textbf{RabbitMQ} queues.}
-        \resumeItem{Built full-stack onboarding workflow for \textbf{Caringo Swarm S3-compatible cloud object storage} and automated cPanel DNS A-record associations, enabling \textbf{100\% self-service cloud storage and public IP lifecycle management}.}
-        \resumeItem{Automated perimeter network security controls via \textbf{FortiGate REST APIs} for firewall rules, VDOM tokens, and IPsec VPNs; engineered an in-process sliding-window rate limiter that \textbf{eliminated 100\% of HTTP 429 rate-limiting failures}.}
-        \resumeItem{Designed dynamic route discovery, wildcard path forwarding, and multi-tenant workspace access validation across \textbf{Kong API Gateway and reverse proxies}, integrating downstream audit logging, rate limiting, and metering pipelines.}
-        \resumeItem{Engineered switch-port utilization and network capacity telemetry engine integrating Zabbix and Nimsoft APIs, computing cluster-wide CPU, memory, NSX, and datastore allocation to prevent capacity exhaustion.}
-        \resumeItem{Spearheaded frontend modernization to \textbf{Angular 17} with reactive component architectures, and led backend modernization from \textbf{Java 8 to 17 / Spring Boot 3}, resolving security CVEs in Netty, Log4j, and Apache Commons.}
-        \resumeItem{Stepped up as \textbf{Acting Scrum Master} and technical mentor for junior engineers, leading architecture reviews, code reviews, and dependency tracking; earned \textbf{3$\times$ Extra Mile Commitment Awards} for operational excellence.}
+        \resumeItem{\textbf{Scaled VM Dynamic Autoscaling:} \emph{Scaled} dynamic VM horizontal and vertical autoscaling policies across \textbf{KVM, VMware ESXi, and OLVM} hypervisors based on real-time CPU/memory thresholds, preventing resource starvation during traffic bursts.}
+        \resumeItem{\textbf{Built Automated Order-to-Deployment Pipeline:} \emph{Built} end-to-end zero-touch order fulfillment pipeline converting customer service orders into automated, self-healing cloud deployments; integrated \textbf{Flowable BPMN sagas} and \textbf{RabbitMQ} to orchestrate VM provisioning, storage provisioning, network routing, and IP assignment with automated rollbacks, slashing customer provisioning lead time by \textbf{85\% (from 4 hours to under 35 minutes)}.}
+        \resumeItem{\textbf{Designed Capacity \& Infrastructure Dashboard:} \emph{Designed} and engineered full-stack multi-tenant Capacity Planning \& Inventory Dashboard from design to distributed backend services, managing real-time lifecycle records across \textbf{Compute} (KVM, VMware ESXi, OLVM hypervisors), \textbf{Storage} (NetApp and HPE storage arrays, Caringo Swarm), and \textbf{Network} (public IP pool reports, switch port mappings, VDOM reports, bandwidth utilization telemetry) with interactive graphical heatmaps and trend analytics.}
+        \resumeItem{\textbf{Engineered High-Throughput Batch Processing:} \emph{Engineered} batch processing optimizations slashing cloud scheduler execution latency by \textbf{92.6\% (from $\sim$18 minutes down to 80 seconds)} across distributed Cassandra clusters using strict 50-item chunking, multi-level Redis caching, and HikariCP connection pool tuning.}
+        \resumeItem{\textbf{Led Kong API Gateway \& Fortinet Firewall Automation:} \emph{Led} enterprise edge routing and security automation across \textbf{Kong API Gateway} and \textbf{Fortinet FortiGate Firewalls}; engineered dynamic route discovery, wildcard forwarding, and IPsec VPNs via REST APIs while implementing an in-process sliding-window rate limiter that \textbf{eliminated 100\% of HTTP 429 throttling errors}.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Tata Communications Ltd.}{Jul 2021 -- Mar 2024}
+      {Software Development Engineer (Cloud Infrastructure, Storage \& Full-Stack)}{Chennai, India}
+      \resumeItemListStart
+        \resumeItem{\textbf{Built Cloud Object Storage \& DNS Automation:} \emph{Built} full-stack onboarding workflow for \textbf{Caringo Swarm S3-compatible cloud object storage} and automated cPanel DNS A-record associations using Java and Angular, enabling \textbf{100\% self-service storage provisioning and automated bucket metering}.}
+        \resumeItem{\textbf{Scaled Frontend Modernization:} \emph{Scaled} legacy AngularJS migration to \textbf{Angular 17} with reactive component architectures, state predictability, and modular testability, achieving a \textbf{35\% improvement in client-side rendering speed}.}
+        \resumeItem{\textbf{Automated CI/CD \& Multi-Cloud Deployment:} \emph{Automated} continuous integration, regression testing, and release packaging pipelines with \textbf{Jenkins CI/CD}, multi-module Maven builds, and JUnit quality gates, significantly cutting manual verification overhead and deployment friction.}
+        \resumeItem{\textbf{Analyzed Network Telemetry \& Monitoring:} \emph{Analyzed} and engineered switch-port utilization and network capacity telemetry engine integrating Zabbix and Nimsoft APIs, computing cluster-wide compute and datastore allocation to prevent capacity exhaustion; earned \textbf{3$\times$ Extra Mile Commitment Awards}.}
+        \resumeItem{\textbf{Architected Multi-Vendor Load Balancer Orchestration:} \emph{Architected} enterprise load balancer provisioning and health probe monitoring across \textbf{HAProxy, F5 BIG-IP, and VMware Avi} with automated VIP provisioning, traffic steering, and tenant-scoped SSL/TLS offloading.}
       \resumeItemListEnd
 
   \resumeSubHeadingListEnd
 
-%-----------STRATEGY & TECH CAPSTONE-----------
-\section{Strategy \& Technical Product Capstone}
+%-----------STRATEGY & TECH PROJECTS-----------
+\section{Strategy \& Technical Projects}
   \resumeSubHeadingListStart
     \resumeProjectHeading
-      {\textbf{SthiraX: Distributed $\text{CO}_2$-Mineralization \& IoT MRV Platform} $|$ \emph{IIM Kozhikode Capstone (BPP)}}{In Progress}
+      {\textbf{SthiraX: Distributed $\text{CO}_2$-Mineralization \& IoT MRV Platform} $|$ \emph{IIM Kozhikode Capstone (BPP)}}{[\href{https://github.com/harshalraajpatnaik/sthirax-mrv}{\underline{GitHub $\nearrow$}}]}
       \resumeItemListStart
-        \resumeItem{Designed an asset-light platform retrofitting regional precast concrete plants with modular industrial $\text{CO}_2$-curing units to address India's \textbf{April 2026 C\&D Waste Management Rules (mandating 5\% to 25\% recycled material by 2030 across 20,000+ sqm projects)}.}
-        \resumeItem{Architected batch-level \textbf{IoT MRV (Measurement, Reporting \& Verification) software} tracking calcium carbonate uptake per production run and generating cryptographically verifiable Digital Product Passports for developer EPR compliance.}
-        \resumeItem{Modeled multi-tier unit economics (equipment leasing, per-tonne curing royalties, and MRV SaaS subscriptions) viable independent of voluntary carbon credit market volatility, supported by a geospatial regional scoring algorithm.}
+        \resumeItem{\emph{Architected} asset-light retrofit platform converting regional concrete plants into certified low-carbon facilities to fulfill India's \textbf{April 2026 C\&D Waste Rules (mandating 5\% to 25\% recycled material by 2030 across 20,000+ sqm projects)}; built batch-level \textbf{IoT MRV (Measurement, Reporting \& Verification) software} generating cryptographically verifiable Digital Product Passports for developer EPR compliance, supported by SaaS and royalty unit economics.}
+      \resumeItemListEnd
+
+    \resumeProjectHeading
+      {\textbf{MarginOS: Multi-Tenant Cloud FinOps \& Unit Economics Platform} $|$ \emph{Cloud Economics \& FinOps}}{[\href{https://github.com/harshalraajpatnaik/margin-os}{\underline{GitHub $\nearrow$}}]}
+      \resumeItemListStart
+        \resumeItem{\emph{Designed} distributed FinOps intelligence engine analyzing multi-cloud hypervisor and storage telemetry to calculate real-time gross margins, compute unit economics (cost-per-VM/hour, storage tiers), and surface automated right-sizing recommendations that eliminate up to 28\% in infrastructure spend leakages.}
+      \resumeItemListEnd
+
+    \resumeProjectHeading
+      {\textbf{Workflow Reliability Lab: Distributed Sagas \& Chaos Engineering} $|$ \emph{Distributed Systems Platform}}{[\href{https://github.com/harshalraajpatnaik/workflow-reliability-lab}{\underline{GitHub $\nearrow$}}]}
+      \resumeItemListStart
+        \resumeItem{\emph{Built} developer platform for testing distributed workflow reliability; built synthetic fault injection simulators (network partitions, timeout anomalies) and invariant checkers verifying ACID saga compensations (\textbf{Java 25, Spring Boot 4, Angular, Docker}).}
+      \resumeItemListEnd
+
+    \resumeProjectHeading
+      {\textbf{QueryLens AI: Sandboxed Enterprise Text-to-SQL \& Semantic RAG} $|$ \emph{AI \& Data Systems}}{[\href{https://github.com/harshalraajpatnaik/querylens-ai}{\underline{GitHub $\nearrow$}}]}
+      \resumeItemListStart
+        \resumeItem{\emph{Architected} modular C4 3-tier Text-to-SQL engine (\textbf{Angular 17 $\rightarrow$ Spring Boot 3 $\rightarrow$ FastAPI with pgvector RAG}) with schema semantic search, AST validation, and read-only sandbox roles preventing SQL injection and unauthorized data exfiltration.}
+      \resumeItemListEnd
+
+    \resumeProjectHeading
+      {\textbf{CloudScale: Predictive Workload Autoscaler \& Telemetry Engine} $|$ \emph{Autonomous Cloud Infrastructure}}{[\href{https://github.com/harshalraajpatnaik/cloudscale}{\underline{GitHub $\nearrow$}}]}
+      \resumeItemListStart
+        \resumeItem{\emph{Developed} proactive Kubernetes/VM capacity autoscaling engine integrating Prometheus, Grafana, and time-series ML forecasting models (\textbf{NumPy, Pandas, Scikit-learn}) predicting compute resource spikes 15 minutes in advance, mitigating cold-start latencies and reducing over-provisioned idle capacity.}
       \resumeItemListEnd
   \resumeSubHeadingListEnd
 
@@ -133,27 +163,29 @@
 \section{Technical \& Leadership Competencies}
  \begin{itemize}[leftmargin=0.15in, label={}]
     \small{\item{
-     \textbf{Languages \& Core}{: Java (8/11/17 LTS), Python, TypeScript, JavaScript, SQL, HTML5/CSS3, Bash} \\
-     \textbf{Distributed Systems \& Cloud}{: Spring Boot 3, Flowable BPMN, RabbitMQ (AMQP), Microservices Architecture, REST APIs, KVM, VMware ESXi, OLVM, Docker} \\
-     \textbf{Databases, Caching \& Storage}{: Cassandra, Redis, MySQL, Caringo Swarm / S3, Hibernate/JPA, HikariCP (Connection Pool Tuning)} \\
-     \textbf{Networking, Security \& Gateways}{: Kong API Gateway, FortiGate REST APIs, IPsec VPN, DNS Automation, Sliding-Window Rate Limiting, Reverse Proxies} \\
-     \textbf{DevOps, SRE \& Observability}{: Jenkins CI/CD, JUnit, Mockito, Zabbix APIs, Linux, Maven, SonarQube, Postman, Swagger/OpenAPI} \\
-     \textbf{Product Strategy \& MBA Coursework}{: Product Management, Financial Accounting, Operations Management, Strategy Management, Risk Analysis, Product Analytics, Negotiation \& Conflict Management, Brand Strategy}
+     \textbf{Languages \& Core}{: Java (8/11/17/25 LTS), Python (NumPy, Pandas, Scikit-learn, Matplotlib), TypeScript, JavaScript, SQL, HTML5/CSS3, Bash, Spring Boot 3/4, FastAPI, Angular 17/18, RxJS} \\
+     \textbf{Distributed Systems \& Cloud}{: Google Cloud Platform (GCP / Compute Engine), Microservices, Flowable BPMN, RabbitMQ (AMQP), Event-Driven Architecture, High Availability (HA), Fault Tolerance, KVM, VMware ESXi, OLVM, Docker, Kubernetes} \\
+     \textbf{Databases, Caching \& Storage}{: Apache Cassandra (NoSQL), Redis (In-Memory Cache), PostgreSQL (pgvector), MySQL, Caringo Swarm (S3 Object Storage), NetApp \& HPE Storage Arrays, Hibernate/JPA, HikariCP Tuning} \\
+     \textbf{Networking, Security \& Gateways}{: Kong API Gateway, Fortinet FortiGate Firewalls, VDOMs, IPsec VPN, DNS Automation (cPanel/BIND), Token Bucket Rate Limiting, Reverse Proxies, HAProxy, F5 BIG-IP, VMware Avi} \\
+     \textbf{DevOps, SRE \& Observability}{: Jenkins CI/CD, CI/CD Pipelines, Prometheus, Grafana, OpenTelemetry, Distributed Tracing, Zabbix APIs, Nimsoft, JUnit 5, Mockito, SonarQube, Linux/Unix Administration} \\
+     \textbf{Product Management \& MBA Coursework}{: Product Strategy, Financial Accounting, Operations Management, Strategy Management, Risk Analysis, Product Analytics, Digital Marketing, Brand Strategy, Negotiation \& Conflict Management, FinOps, Jira (Agile/Scrum)}
     }}
  \end{itemize}
  \vspace{-4pt}
 
-%-----------HONORS & CERTIFICATIONS-----------
-\section{Honors, Certifications \& Extracurricular}
+%-----------HONORS & LEADERSHIP-----------
+\section{Leadership, Certifications \& Honors}
   \resumeSubHeadingListStart
     \resumeProjectHeading
-      {\textbf{3$\times$ Extra Mile Commitment Award} -- Tata Communications Ltd. for critical cloud platform delivery and reliability}{}
+      {\textbf{Tech $\times$ MBA Strategic Product Leadership:} Bridge the critical organizational gap between platform economics and deep systems engineering; partner with executive product leaders and enterprise clients to translate business roadmaps and unit-cost targets into resilient distributed microservices, author technical RFCs, and govern SLA/SLO availability baselines.}{}
     \resumeProjectHeading
-      {\textbf{Flipkart Grid 2.0 Engineering Challenge} -- Team Lead; achieved \textbf{Top 150 Nationwide Rank} out of 20,000+ teams}{}
+      {\textbf{Agile Engineering Delivery \& Mentorship:} Stepped up as \textbf{Acting Scrum Master} across engineering pods; orchestrated sprint ceremonies, backlog prioritization, and release velocity in \textbf{Jira} (100\% on-time milestone delivery), while providing architectural reviews and technical mentorship for junior engineers.}{}
     \resumeProjectHeading
-      {\textbf{Architecting with Google Compute Engine} (Google Cloud / Coursera) \& \textbf{Full Stack Web Development} (Coding Ninjas)}{}
+      {\textbf{3$\times$ Extra Mile Commitment Award} -- Tata Communications Ltd. for critical cloud platform delivery, stability, and zero-defect deployments.}{}
     \resumeProjectHeading
-      {\textbf{Rank 2404 Globally} in Second Round of 5th SOF International Mathematics Olympiad (Science Olympiad Foundation)}{}
+      {\textbf{Flipkart Grid 2.0 Engineering Challenge} -- Team Lead; achieved \textbf{Top 150 Nationwide Rank} out of 20,000+ teams (Computer Vision \& OCR Track).}{}
+    \resumeProjectHeading
+      {\textbf{Certifications:} \textbf{Architecting with Google Compute Engine} (Google Cloud / Coursera) \& \textbf{Full Stack Web Development} (Coding Ninjas).}{}
   \resumeSubHeadingListEnd
 
 \end{document}

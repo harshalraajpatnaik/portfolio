@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PokemonAudioService } from '../../../core/services/pokemon-audio.service';
+import { PortfolioApiService } from '../../../core/services/portfolio-api.service';
 
 @Component({
   selector: 'app-nav',
@@ -48,13 +49,13 @@ import { PokemonAudioService } from '../../../core/services/pokemon-audio.servic
             <button
               (click)="audio.toggleMusic()"
               class="px-2.5 py-1 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5"
-              [ngClass]="audio.musicEnabled && audio.isMusicPlaying ? 'bg-energy text-black shadow-md shadow-energy/20 animate-pulse' : 'text-white/70 hover:text-white hover:bg-white/10'"
-              [title]="audio.musicEnabled ? 'Pause Pokémon Theme Song' : 'Play Official Pokémon Theme Song'">
-              <span>🎵</span>
-              <span class="hidden sm:inline text-[11px]">{{ audio.musicEnabled && audio.isMusicPlaying ? 'THEME ON' : 'THEME OFF' }}</span>
+              [ngClass]="audio.isMusicPlaying ? 'bg-energy text-black shadow-lg shadow-energy/20' : 'text-white/70 hover:text-white hover:bg-white/10'"
+              [title]="audio.isMusicPlaying ? '8-Bit Gym Theme Playing (Click to Pause)' : 'Play Nostalgic 8-Bit Gym Theme'">
+              <span class="w-2 h-2 rounded-full" [ngClass]="audio.isMusicPlaying ? 'bg-black animate-pulse' : 'bg-red-500'"></span>
+              <span>THEME</span>
             </button>
 
-            <!-- SFX Toggle -->
+            <!-- SFX Mute/Unmute -->
             <button
               (click)="audio.toggleSound()"
               class="px-2 py-1 rounded-lg text-xs transition-all text-white/70 hover:text-white hover:bg-white/10 flex items-center"
@@ -64,7 +65,8 @@ import { PokemonAudioService } from '../../../core/services/pokemon-audio.servic
           </div>
 
           <!-- Direct Resume Download Button (Google-Standard ATS PDF) -->
-          <a href="http://localhost:8080/api/v1/resume/download"
+          <a href="assets/Harshal_Raaj_Patnaik_Resume.pdf"
+             download="Harshal_Raaj_Patnaik_Resume.pdf"
              target="_blank"
              rel="noopener noreferrer"
              (click)="audio.playFanfare()"
@@ -73,15 +75,29 @@ import { PokemonAudioService } from '../../../core/services/pokemon-audio.servic
             <span>↓</span>
           </a>
 
-          <!-- Swagger API (Desktop Only) -->
-          <a href="http://localhost:8080/swagger-ui.html"
-             target="_blank"
-             rel="noopener noreferrer"
-             (click)="audio.playChirp()"
-             class="hidden xl:flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-mono border border-grass/40 bg-grass/15 text-grass hover:bg-grass/25 transition-colors">
-            <span class="w-1.5 h-1.5 rounded-full bg-grass animate-pulse"></span>
-            <span>API ↗</span>
-          </a>
+          <!-- Swagger / OpenAPI Button: Live link if online, In-UI modal if offline -->
+          <ng-container *ngIf="!hideApiButton">
+            <ng-container *ngIf="(api.isBackendOnline$ | async); else offlineApiBtn">
+              <a href="http://localhost:8080/swagger-ui.html"
+                 target="_blank"
+                 rel="noopener noreferrer"
+                 title="OpenAPI 3.0 Swagger UI (Spring Boot Live on Port 8080)"
+                 (click)="audio.playChirp()"
+                 class="hidden xl:flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-mono border border-grass/40 bg-grass/15 text-grass hover:bg-grass/25 transition-colors">
+                <span class="w-1.5 h-1.5 rounded-full bg-grass animate-pulse"></span>
+                <span>API ↗</span>
+              </a>
+            </ng-container>
+            <ng-template #offlineApiBtn>
+              <button
+                (click)="openOfflineApiModal()"
+                title="View OpenAPI Specification & REST Architecture (Standalone Mode)"
+                class="hidden xl:flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-mono border border-cyan-glow/40 bg-cyan-glow/15 text-cyan-glow hover:bg-cyan-glow/25 transition-colors">
+                <span class="w-1.5 h-1.5 rounded-full bg-cyan-glow"></span>
+                <span>API SPEC</span>
+              </button>
+            </ng-template>
+          </ng-container>
 
         </div>
 
@@ -90,6 +106,92 @@ import { PokemonAudioService } from '../../../core/services/pokemon-audio.servic
       <!-- Frosted Pokédex Backing -->
       <div class="absolute inset-0 -z-10 backdrop-blur-md border-b border-red-900/60 bg-[#0a0d14]/90" aria-hidden="true"></div>
     </nav>
+
+    <!-- IN-UI OPENAPI SPECIFICATION MODAL (When Backend is Offline or Standalone) -->
+    <div *ngIf="showApiModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
+      <div class="w-full max-w-3xl bg-[#0f1422] border-2 border-cyan-glow/50 rounded-2xl p-6 shadow-2xl font-mono text-white max-h-[85vh] flex flex-col">
+        
+        <!-- Header -->
+        <div class="flex items-center justify-between pb-4 border-b border-white/10 flex-shrink-0">
+          <div class="flex items-center gap-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-cyan-glow animate-pulse"></span>
+            <span class="font-bold text-sm text-cyan-glow tracking-wider">OPENAPI 3.0 / REST SPECIFICATION</span>
+            <span class="text-[10px] px-2 py-0.5 rounded bg-cyan-glow/20 text-cyan-glow border border-cyan-glow/30">STANDALONE MODE</span>
+          </div>
+          <button (click)="closeApiModal()" class="text-white/60 hover:text-white px-2 py-1 rounded hover:bg-white/10 text-xs">✕ CLOSE</button>
+        </div>
+
+        <!-- Body -->
+        <div class="overflow-y-auto py-4 space-y-4 text-xs pr-1">
+          <p class="text-white/70 leading-relaxed">
+            The frontend is operating in <strong>Hybrid Standalone Mode</strong> with complete local mock fallback. When running locally with Java 25 &amp; Maven, the Spring Boot 3 microservice serves live endpoints and interactive Swagger UI on port 8080.
+          </p>
+
+          <!-- Quick Launch -->
+          <div class="bg-black/40 border border-white/10 rounded-xl p-3">
+            <div class="text-white/50 text-[10px] mb-1 uppercase tracking-wider font-bold">To Run Live Backend Microservice:</div>
+            <code class="text-energy text-xs select-all">./start-dev.sh</code>
+            <span class="text-white/50 text-[10px] ml-2">→ Launches Spring Boot on http://localhost:8080/swagger-ui.html</span>
+          </div>
+
+          <!-- Documented Endpoints -->
+          <div class="space-y-2">
+            <div class="text-white/50 text-[10px] uppercase tracking-wider font-bold">Documented REST Endpoints:</div>
+
+            <div class="bg-[#151c2e] border border-white/10 rounded-lg p-2.5 space-y-1">
+              <div class="flex items-center gap-2">
+                <span class="px-1.5 py-0.5 bg-grass/20 text-grass font-bold text-[10px] rounded">GET</span>
+                <span class="text-white font-bold">/api/v1/profile</span>
+                <span class="text-white/40 text-[10px] ml-auto">Returns Profile, Education, Experience, Awards</span>
+              </div>
+            </div>
+
+            <div class="bg-[#151c2e] border border-white/10 rounded-lg p-2.5 space-y-1">
+              <div class="flex items-center gap-2">
+                <span class="px-1.5 py-0.5 bg-grass/20 text-grass font-bold text-[10px] rounded">GET</span>
+                <span class="text-white font-bold">/api/v1/projects</span>
+                <span class="text-white/40 text-[10px] ml-auto">Returns 19 Categorized Architectural Project Cards</span>
+              </div>
+            </div>
+
+            <div class="bg-[#151c2e] border border-white/10 rounded-lg p-2.5 space-y-1">
+              <div class="flex items-center gap-2">
+                <span class="px-1.5 py-0.5 bg-grass/20 text-grass font-bold text-[10px] rounded">GET</span>
+                <span class="text-white font-bold">/api/v1/telemetry</span>
+                <span class="text-white/40 text-[10px] ml-auto">Returns System Load, JVM Heap, Cassandra/Redis Latencies</span>
+              </div>
+            </div>
+
+            <div class="bg-[#151c2e] border border-white/10 rounded-lg p-2.5 space-y-1">
+              <div class="flex items-center gap-2">
+                <span class="px-1.5 py-0.5 bg-energy/20 text-energy font-bold text-[10px] rounded">POST</span>
+                <span class="text-white font-bold">/api/v1/contact</span>
+                <span class="text-white/40 text-[10px] ml-auto">Dispatches Recruiter Inquiries to Harshal</span>
+              </div>
+            </div>
+
+            <div class="bg-[#151c2e] border border-white/10 rounded-lg p-2.5 space-y-1">
+              <div class="flex items-center gap-2">
+                <span class="px-1.5 py-0.5 bg-grass/20 text-grass font-bold text-[10px] rounded">GET</span>
+                <span class="text-white font-bold">/api/v1/resume/download</span>
+                <span class="text-white/40 text-[10px] ml-auto">Dynamically Streams High-Resolution ATS PDF</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Footer Actions -->
+        <div class="pt-4 border-t border-white/10 flex items-center justify-between flex-shrink-0 text-[11px]">
+          <button (click)="toggleHideApiButton()" class="text-white/50 hover:text-white underline">
+            Hide API button from navbar
+          </button>
+          <button (click)="closeApiModal()" class="px-4 py-1.5 bg-cyan-glow text-black font-bold rounded-lg hover:bg-cyan-glow/90 transition-all">
+            Understood
+          </button>
+        </div>
+
+      </div>
+    </div>
   `
 })
 export class NavComponent {
@@ -103,5 +205,25 @@ export class NavComponent {
     { href: '#contact',   label: 'Contact' },
   ];
 
-  constructor(public audio: PokemonAudioService) {}
+  showApiModal = false;
+  hideApiButton = false;
+
+  constructor(
+    public audio: PokemonAudioService,
+    public api: PortfolioApiService
+  ) {}
+
+  openOfflineApiModal(): void {
+    this.audio.playChirp();
+    this.showApiModal = true;
+  }
+
+  closeApiModal(): void {
+    this.showApiModal = false;
+  }
+
+  toggleHideApiButton(): void {
+    this.hideApiButton = true;
+    this.showApiModal = false;
+  }
 }

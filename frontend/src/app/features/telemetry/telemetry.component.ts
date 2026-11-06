@@ -30,12 +30,13 @@ import { interval, Subscription } from 'rxjs';
           <!-- Live Poll Indicator & Swagger link -->
           <div class="flex items-center gap-3">
             <div class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs font-mono text-white/60">
-              <span class="w-1.5 h-1.5 rounded-full bg-cyan-glow animate-pulse"></span>
-              <span>POLLING: 10s</span>
+              <span class="w-1.5 h-1.5 rounded-full" [ngClass]="(api.isBackendOnline$ | async) ? 'bg-grass animate-pulse' : 'bg-cyan-glow animate-pulse'"></span>
+              <span>{{ (api.isBackendOnline$ | async) ? 'BACKEND: CONNECTED' : 'BACKEND: STANDALONE' }}</span>
             </div>
             <a href="http://localhost:8080/swagger-ui.html"
                target="_blank"
                rel="noopener noreferrer"
+               title="Spring Boot 3 OpenAPI Swagger UI (Active when running locally via ./start-dev.sh)"
                class="px-4 py-2 rounded-lg bg-crimson/20 border border-crimson/40 text-crimson hover:bg-crimson/30 transition-all text-xs font-mono font-medium">
               OpenAPI Swagger UI ↗
             </a>
@@ -48,13 +49,13 @@ import { interval, Subscription } from 'rxjs';
           <div class="glass-card p-5 rounded-xl border border-white/10">
             <div class="flex items-center justify-between text-xs font-mono text-white/50 mb-2">
               <span>SERVICE STATUS</span>
-              <span class="w-2 h-2 rounded-full bg-grass animate-pulse"></span>
+              <span class="w-2 h-2 rounded-full" [ngClass]="(api.isBackendOnline$ | async) ? 'bg-grass animate-pulse' : 'bg-cyan-glow animate-pulse'"></span>
             </div>
-            <div class="text-2xl font-mono font-bold text-grass">
-              {{ telemetry?.status || 'ONLINE' }}
+            <div class="text-2xl font-mono font-bold" [ngClass]="(api.isBackendOnline$ | async) ? 'text-grass' : 'text-cyan-glow'">
+              {{ (api.isBackendOnline$ | async) ? 'ONLINE' : 'STANDALONE' }}
             </div>
             <div class="text-[11px] font-mono text-white/40 mt-1">
-              Spring Boot v{{ telemetry?.runtime?.springBootVersion || '3.2.5' }}
+              {{ (api.isBackendOnline$ | async) ? 'Spring Boot v' + (telemetry?.runtime?.springBootVersion || '3.2.5') + ' (Live)' : 'Client-Side Offline Mode' }}
             </div>
           </div>
 
@@ -128,7 +129,7 @@ export class TelemetryComponent implements OnInit, OnDestroy {
 
   private pollSub?: Subscription;
 
-  constructor(private api: PortfolioApiService) {}
+  constructor(public api: PortfolioApiService) {}
 
   ngOnInit(): void {
     // Poll telemetry every 10 seconds

@@ -142,15 +142,21 @@ export class ContactComponent {
 
     this.api.submitContact(this.formData).subscribe({
       next: (res) => {
-        this.successMsg = 'Transmission successfully dispatched to Harshal (harshalraajpatnaik@outlook.com). Thank you for reaching out!';
-        this.formData = { name: '', email: '', message: '' };
+        if (res.offlineFallback) {
+          this.successMsg = 'Backend microservice is in standalone mode. Preparing your transmission via your email client to harshalraajpatnaik@outlook.com...';
+          window.location.href = this.getMailtoUrl();
+        } else {
+          this.successMsg = 'Transmission successfully dispatched to Harshal (harshalraajpatnaik@outlook.com). Thank you for reaching out!';
+          this.formData = { name: '', email: '', message: '' };
+        }
         this.isSubmitting = false;
       },
       error: (err) => {
         if (err.status === 429) {
           this.errorMsg = 'Rate limit exceeded (5 requests per hour). Please try again later or email harshalraajpatnaik@outlook.com directly.';
         } else {
-          this.errorMsg = 'Failed to deliver message via backend API. Please try again or email harshalraajpatnaik@outlook.com directly.';
+          this.errorMsg = 'Backend is offline. Opening direct mail client with pre-filled message...';
+          window.location.href = this.getMailtoUrl();
         }
         this.isSubmitting = false;
       }

@@ -1,28 +1,74 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, of, BehaviorSubject } from 'rxjs';
+import { timeout, catchError, tap } from 'rxjs/operators';
 import { ProfileResponse, ProjectCard, TelemetrySnapshot, ContactRequest } from '../models/api.models';
+import { FALLBACK_PROFILE, FALLBACK_PROJECTS, FALLBACK_TELEMETRY } from '../data/portfolio-fallback.data';
+
+export interface ContactSubmissionResponse {
+  message: string;
+  offlineFallback?: boolean;
+}
 
 @Injectable({ providedIn: 'root' })
 export class PortfolioApiService {
-  // In production, set via environment.ts
+  // In local development or containerized environments, the backend runs on port 8080
   private readonly base = 'http://localhost:8080/api/v1';
+
+  // Live status stream for UI components to display backend connectivity
+  public isBackendOnline$ = new BehaviorSubject<boolean>(false);
 
   constructor(private http: HttpClient) {}
 
   getProfile(): Observable<ProfileResponse> {
-    return this.http.get<ProfileResponse>(`${this.base}/profile`);
+    return this.http.get<ProfileResponse>(`${this.base}/profile`).pipe(
+      timeout(1500),
+      tap(() => this.isBackendOnline$.next(true)),
+      catchError(() => {
+        this.isBackendOnline$.next(false);
+        return of(FALLBACK_PROFILE);
+      })
+    );
   }
 
   getProjects(): Observable<ProjectCard[]> {
-    return this.http.get<ProjectCard[]>(`${this.base}/projects`);
+    return this.http.get<ProjectCard[]>(`${this.base}/projects`).pipe(
+      timeout(1500),
+      tap(() => this.isBackendOnline$.next(true)),
+      catchError(() => {
+        this.isBackendOnline$.next(false);
+        return of(FALLBACK_PROJECTS);
+      })
+    );
   }
 
   getTelemetry(): Observable<TelemetrySnapshot> {
-    return this.http.get<TelemetrySnapshot>(`${this.base}/telemetry`);
+    return this.http.get<TelemetrySnapshot>(`${this.base}/telemetry`).pipe(
+      timeout(1500),
+      tap(() => this.isBackendOnline$.next(true)),
+      catchError(() => {
+        this.isBackendOnline$.next(false);
+        const simulated: TelemetrySnapshot = {
+          ...FALLBACK_TELEMETRY,
+          status: 'STANDALONE (CLIENT MODE)',
+          timestamp: new Date().toISOString()
+        };
+        return of(simulated);
+      })
+    );
   }
 
-  submitContact(req: ContactRequest): Observable<{ message: string }> {
-    return this.http.post<{ message: string }>(`${this.base}/contact`, req);
+  submitContact(req: ContactRequest): Observable<ContactSubmissionResponse> {
+    return this.http.post<ContactSubmissionResponse>(`${this.base}/contact`, req).pipe(
+      timeout(3000),
+      tap(() => this.isBackendOnline$.next(true)),
+      catchError(() => {
+        this.isBackendOnline$.next(false);
+        return of({
+          message: 'Backend is running in standalone mode. Preparing transmission via your default mail client...',
+          offlineFallback: true
+        });
+      })
+    );
   }
 }

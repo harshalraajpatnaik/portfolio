@@ -8,7 +8,7 @@ import java.util.List;
 
 /**
  * Serves verified, genuine profile data for Harshal Raaj Patnaik,
- * synthesizing his enterprise engineering work at Tata Communications with
+ * synthesizing his enterprise engineering work at Novamesh Ltd. / Tata Communications with
  * his Executive PGPM at IIM Kozhikode (SthiraX platform capstone).
  */
 @Service
@@ -17,10 +17,10 @@ public class ProfileService {
     public ProfileResponse getProfile() {
         return new ProfileResponse(
                 "Harshal Raaj Patnaik",
-                "Full-Stack & Cloud Engineer | Technical Product & Platform Builder (Tech × MBA)",
-                "Software Development Engineer at Tata Communications Ltd. and Executive MBA scholar in the " +
-                "Executive Post Graduate Programme (EPGP) in General Management at IIM Kozhikode. Hands-on enterprise " +
-                "architect designing multi-hypervisor VM orchestration across KVM/VMware/OLVM, Caringo Swarm S3 storage onboarding, " +
+                "Senior Software Engineer | Cloud Infrastructure, Distributed Systems & Platform Builder (Tech × MBA)",
+                "Senior Software Engineer at Novamesh Ltd. (wholly owned subsidiary of Tata Communications) and Executive MBA scholar in the " +
+                "Executive Post Graduate Programme (EPGP) in General Management at IIM Kozhikode. Deep distributed systems engineer " +
+                "architecting multi-hypervisor VM orchestration across KVM/VMware/OLVM, Caringo Swarm S3 storage onboarding, " +
                 "and high-throughput distributed batch schedulers (92.6% latency reduction). Unites distributed systems engineering " +
                 "with executive coursework in Product Management, Financial Accounting, Operations Strategy, Risk Analysis, Product Analytics, " +
                 "and Negotiation to bridge deep tech with platform economics and enterprise value.",
@@ -66,26 +66,37 @@ public class ProfileService {
     private List<WorkExperience> buildExperience() {
         return List.of(
                 new WorkExperience(
-                        "Tata Communications Ltd.",
-                        "Software Development Engineer (Full-Stack & Cloud Platforms)",
-                        "Jul 2021 – Present",
+                        "Novamesh Ltd. (Wholly Owned Subsidiary of Tata Communications)",
+                        "Senior Software Engineer (Cloud Platforms & Distributed Infrastructure)",
+                        "Apr 2024 – Present",
                         "Chennai, India",
-                        "Cloud Infrastructure · Distributed Workflows · Full-Stack",
+                        "Multi-Hypervisor Orchestration · Network Automation · High-Throughput Schedulers",
                         List.of(
-                                "Engineered full-stack onboarding module for Caringo Swarm S3-compatible object storage using Java, Maven, and Angular, enabling automated bucket provisioning and DNS A-record associations.",
-                                "Architected multi-hypervisor management dashboard handling KVM, VMware ESXi, and OLVM clusters; decoupled heavy VM provisioning tasks using asynchronous RabbitMQ message queues.",
-                                "Owned and maintained the core enterprise VM tracking service used by executive leadership to monitor virtual infrastructure capacity, state reconciliation, and host allocation.",
-                                "Optimized high-throughput batch scheduler latency by 92.6% (from ~18 minutes down to 1 minute 20 seconds) by partitioning Cassandra batch operations to 50 items, introducing multi-level Redis caching, and tuning HikariCP connection pools.",
-                                "Automated network security controls via FortiGate REST APIs for firewall rule management and IPsec VPNs; implemented sliding-window rate limiting to eliminate HTTP 429 API thrashing.",
-                                "Spearheaded frontend modernization by migrating legacy codebases from AngularJS to modern Angular, improving component reusability and client-side render speed.",
-                                "Automated build, test, and artifact packaging pipelines using Jenkins CI, significantly reducing deployment friction and manual verification overhead.",
-                                "Stepped up as Acting Scrum Master, facilitating sprint ceremonies, cross-functional dependency tracking, and timely production delivery."
+                                "Architected multi-hypervisor VM orchestration and tracking dashboard across KVM, VMware ESXi, and OLVM clusters, decoupling heavy provisioning tasks via RabbitMQ asynchronous message queues.",
+                                "Slashed critical cloud resource batch scheduler latency by 92.6% (from ~18 minutes down to 80 seconds) across distributed Cassandra clusters by implementing strict 50-item batch chunking, multi-level Redis caching, and tuning HikariCP connection pools.",
+                                "Automated network security controls via FortiGate REST APIs for firewall rules, VDOM tokens, and IPsec VPNs; engineered an in-process sliding-window token bucket rate limiter eliminating 100% of HTTP 429 errors.",
+                                "Engineered dynamic route discovery, wildcard path forwarding, and multi-tenant workspace access validation across Kong API Gateway and reverse proxies.",
+                                "Stepped up as Acting Scrum Master and technical mentor, facilitating sprint ceremonies, cross-functional dependency tracking, and timely production delivery."
+                        )
+                ),
+                new WorkExperience(
+                        "Tata Communications Ltd.",
+                        "Software Development Engineer (Cloud Infrastructure & Full-Stack)",
+                        "Jul 2021 – Mar 2024",
+                        "Chennai, India",
+                        "Cloud Storage · Frontend Modernization · CI/CD Pipelines · SRE",
+                        List.of(
+                                "Engineered full-stack onboarding workflow for Caringo Swarm S3-compatible cloud object storage using Java, Maven, and Angular, enabling automated bucket provisioning and cPanel DNS A-record associations.",
+                                "Spearheaded frontend modernization by migrating legacy codebases from AngularJS to modern reactive Angular 17, improving component reusability and client-side rendering speed.",
+                                "Automated continuous integration and release packaging pipelines using Jenkins CI, Maven, and JUnit quality gates, significantly cutting deployment friction and manual verification overhead.",
+                                "Engineered switch-port utilization and network capacity telemetry engine integrating Zabbix and Nimsoft APIs, computing cluster-wide CPU, memory, and datastore allocation to prevent capacity exhaustion.",
+                                "Earned 3× Extra Mile Commitment Awards for operational excellence, critical incident resolution, and high-velocity feature delivery."
                         )
                 ),
                 new WorkExperience(
                         "IIM Kozhikode — Business Plan Capstone (BPP)",
                         "Platform & Strategy Lead — SthiraX Project",
-                        "In Progress",
+                        "2025 – Present",
                         "Kochi, India",
                         "Climate-Tech · Platform Business Models · EPR Compliance",
                         List.of(

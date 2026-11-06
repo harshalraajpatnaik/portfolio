@@ -2,22 +2,22 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title></title>
+  <title>Harshal Raaj Patnaik - Resume</title>
   <style>
     @page {
       size: letter;
-      margin: 0; /* Suppresses Chrome default headers (date, title) and footers (URL, page) */
+      margin: 0; /* Suppresses browser headers and footers */
     }
     *, *::before, *::after {
       box-sizing: border-box;
     }
     body {
       font-family: "Times New Roman", Times, Georgia, "DejaVu Serif", serif;
-      font-size: 8.7pt;
-      line-height: 1.21;
+      font-size: 8.25pt;
+      line-height: 1.13;
       color: #000;
       margin: 0;
-      padding: 0.35in 0.45in;
+      padding: 0.15in 0.36in 0.10in 0.36in;
       background: #fff;
       -webkit-font-smoothing: antialiased;
     }
@@ -27,34 +27,35 @@
     }
     .header {
       text-align: center;
-      margin-bottom: 3.5pt;
+      margin-bottom: 1.2pt;
     }
     .name {
-      font-size: 18pt;
+      font-size: 17.5pt;
       font-variant: small-caps;
       font-weight: bold;
       letter-spacing: 0.5pt;
-      margin-bottom: 1pt;
+      margin-bottom: 0.4pt;
+      line-height: 1;
     }
     .target-role {
-      font-size: 8.8pt;
+      font-size: 8.45pt;
       font-weight: bold;
       color: #111;
-      margin-bottom: 2pt;
+      margin-bottom: 1.2pt;
     }
     .contact {
-      font-size: 8.4pt;
+      font-size: 8.0pt;
       color: #111;
-      line-height: 1.25;
+      line-height: 1.13;
     }
     .section-title {
-      font-size: 9.8pt;
+      font-size: 8.85pt;
       font-weight: bold;
       font-variant: small-caps;
-      border-bottom: 1px solid #000;
-      padding-bottom: 0.5pt;
-      margin-top: 4.5pt;
-      margin-bottom: 2pt;
+      border-bottom: 1.1px solid #000;
+      padding-bottom: 0.3pt;
+      margin-top: 2.1pt;
+      margin-bottom: 0.6pt;
       text-transform: uppercase;
       letter-spacing: 0.3pt;
     }
@@ -62,40 +63,41 @@
       display: flex;
       justify-content: space-between;
       align-items: baseline;
-      margin-top: 1.8pt;
-      margin-bottom: 0.8pt;
+      margin-top: 0.9pt;
+      margin-bottom: 0.3pt;
     }
     .subheading-title {
       font-weight: bold;
-      font-size: 8.8pt;
+      font-size: 8.35pt;
     }
     .subheading-date {
       font-weight: bold;
-      font-size: 8.5pt;
+      font-size: 8.1pt;
       text-align: right;
     }
     .subheading-role {
       font-style: italic;
-      font-size: 8.5pt;
+      font-size: 7.95pt;
     }
     .subheading-loc {
       font-style: italic;
-      font-size: 8.5pt;
+      font-size: 7.95pt;
       text-align: right;
     }
     ul {
-      margin: 1.2pt 0 2pt 0;
+      margin: 0.5pt 0 0.8pt 0;
       padding-left: 10.5pt;
     }
     li {
-      font-size: 8.3pt;
-      line-height: 1.21;
-      margin-bottom: 1.1pt;
+      font-size: 7.95pt;
+      line-height: 1.12;
+      margin-bottom: 0.7pt;
+      text-align: justify;
     }
     .skills-block {
-      font-size: 8.2pt;
-      line-height: 1.26;
-      margin-top: 1pt;
+      font-size: 7.9pt;
+      line-height: 1.14;
+      margin-top: 0.5pt;
     }
     .skills-label {
       font-weight: bold;
@@ -107,7 +109,7 @@
   <!-- HEADER -->
   <div class="header">
     <div class="name">HARSHAL RAAJ PATNAIK</div>
-    <div class="target-role">Senior Full-Stack &amp; Cloud Systems Engineer | Technical Lead &amp; Platform Architect (Tech × MBA)</div>
+    <div class="target-role">Senior Software Engineer &amp; Platform Architect | Cloud Infrastructure, Distributed Systems &amp; Product Strategy (Tech × MBA)</div>
     <div class="contact">
       +91-9982143442 &nbsp;~&nbsp;
       <a href="mailto:harshalraajpatnaik@outlook.com">harshalraajpatnaik@outlook.com</a> &nbsp;~&nbsp;
@@ -127,7 +129,7 @@
     <div class="subheading-loc">Kochi, India</div>
   </div>
 
-  <div class="subheading" style="margin-top: 2pt;">
+  <div class="subheading" style="margin-top: 1pt;">
     <div class="subheading-title">SRM Institute of Science and Technology</div>
     <div class="subheading-date">2017 – 2021</div>
   </div>
@@ -139,56 +141,102 @@
   <!-- PROFESSIONAL EXPERIENCE -->
   <div class="section-title">Professional Experience</div>
 
+  <!-- NOVAMESH LTD. -->
   <div class="subheading">
-    <div class="subheading-title">Tata Communications Ltd.</div>
-    <div class="subheading-date">Jul 2021 – Present</div>
+    <div class="subheading-title">Novamesh Ltd. (Wholly Owned Subsidiary of Tata Communications)</div>
+    <div class="subheading-date">Apr 2024 – Present</div>
   </div>
   <div class="subheading">
-    <div class="subheading-role">Software Development Engineer (Cloud Infrastructure, Distributed Workflows &amp; Full-Stack)</div>
+    <div class="subheading-role">Senior Software Engineer (Cloud Platforms &amp; Distributed Infrastructure)</div>
     <div class="subheading-loc">Chennai, India</div>
   </div>
   <ul>
-    <li>Slashed cloud batch scheduler execution latency by <strong>92.6% (from ~18 minutes down to 80 seconds)</strong> across distributed Cassandra clusters by implementing strict 50-item batch chunking, multi-level Redis caching, and tuning HikariCP connection pools.</li>
-    <li>Architected multi-hypervisor orchestration engine and Flowable workflows across <strong>KVM, VMware ESXi, and OLVM</strong>, managing automated VM provisioning, lifecycle operations, and state compensation via asynchronous <strong>RabbitMQ</strong> queues.</li>
-    <li>Built full-stack onboarding workflow for <strong>Caringo Swarm S3-compatible cloud object storage</strong> and automated cPanel DNS A-record associations, enabling <strong>100% self-service cloud storage and public IP lifecycle management</strong>.</li>
-    <li>Automated perimeter network security controls via <strong>FortiGate REST APIs</strong> for firewall rules, VDOM tokens, and IPsec VPNs; engineered an in-process sliding-window rate limiter that <strong>eliminated 100% of HTTP 429 rate-limiting failures</strong>.</li>
-    <li>Designed dynamic route discovery, wildcard path forwarding, and multi-tenant workspace access validation across <strong>Kong API Gateway and reverse proxies</strong>, integrating downstream audit logging, rate limiting, and metering pipelines.</li>
-    <li>Engineered switch-port utilization and network capacity telemetry engine integrating Zabbix and Nimsoft APIs, computing cluster-wide CPU, memory, NSX, and datastore allocation to prevent capacity exhaustion.</li>
-    <li>Spearheaded frontend modernization to <strong>Angular 17</strong> with reactive component architectures, and led backend modernization from <strong>Java 8 to 17 / Spring Boot 3</strong>, resolving security CVEs in Netty, Log4j, and Apache Commons.</li>
-    <li>Stepped up as <strong>Acting Scrum Master</strong> and technical mentor for junior engineers, leading architecture reviews, code reviews, and dependency tracking; earned <strong>3× Extra Mile Commitment Awards</strong> for operational excellence.</li>
+    <li><strong>Scaled VM Dynamic Autoscaling:</strong> <em>Scaled</em> dynamic VM horizontal and vertical autoscaling policies across <strong>KVM, VMware ESXi, and OLVM</strong> hypervisors based on real-time CPU/memory thresholds, preventing resource starvation during traffic bursts.</li>
+    <li><strong>Built Automated Order-to-Deployment Pipeline:</strong> <em>Built</em> end-to-end zero-touch order fulfillment pipeline converting customer service orders into automated, self-healing cloud deployments; integrated <strong>Flowable BPMN sagas</strong> and <strong>RabbitMQ</strong> to orchestrate VM provisioning, storage provisioning, network routing, and IP assignment with automated rollbacks, slashing customer provisioning lead time by <strong>85% (from 4 hours to under 35 minutes)</strong>.</li>
+    <li><strong>Designed Capacity &amp; Infrastructure Dashboard:</strong> <em>Designed</em> and engineered full-stack multi-tenant Capacity Planning &amp; Inventory Dashboard from design to distributed backend services, managing real-time lifecycle records across <strong>Compute</strong> (KVM, VMware ESXi, OLVM hypervisors), <strong>Storage</strong> (NetApp and HPE storage arrays, Caringo Swarm), and <strong>Network</strong> (public IP pool reports, switch port mappings, VDOM reports, bandwidth utilization telemetry) with interactive graphical heatmaps and trend analytics.</li>
+    <li><strong>Engineered High-Throughput Batch Processing:</strong> <em>Engineered</em> batch processing optimizations slashing cloud scheduler execution latency by <strong>92.6% (from ~18 minutes down to 80 seconds)</strong> across distributed Cassandra clusters using strict 50-item chunking, multi-level Redis caching, and HikariCP connection pool tuning.</li>
+    <li><strong>Led Kong API Gateway &amp; Fortinet Firewall Automation:</strong> <em>Led</em> enterprise edge routing and security automation across <strong>Kong API Gateway</strong> and <strong>Fortinet FortiGate Firewalls</strong>; engineered dynamic route discovery, wildcard forwarding, and IPsec VPNs via REST APIs while implementing an in-process sliding-window rate limiter that <strong>eliminated 100% of HTTP 429 throttling errors</strong>.</li>
   </ul>
 
-  <!-- STRATEGY & TECH CAPSTONE -->
-  <div class="section-title">Strategy &amp; Technical Product Capstone</div>
-
+  <!-- TATA COMMUNICATIONS LTD. -->
+  <div class="subheading" style="margin-top: 1.2pt;">
+    <div class="subheading-title">Tata Communications Ltd.</div>
+    <div class="subheading-date">Jul 2021 – Mar 2024</div>
+  </div>
   <div class="subheading">
-    <div class="subheading-title">SthiraX: Distributed CO₂-Mineralization &amp; IoT MRV Platform <em>| IIM Kozhikode Capstone (BPP)</em></div>
-    <div class="subheading-date">In Progress</div>
+    <div class="subheading-role">Software Development Engineer (Cloud Infrastructure, Storage &amp; Full-Stack)</div>
+    <div class="subheading-loc">Chennai, India</div>
   </div>
   <ul>
-    <li>Designed an asset-light platform retrofitting regional precast concrete plants with modular industrial CO₂-curing units to address India's <strong>April 2026 C&amp;D Waste Management Rules (mandating 5% to 25% recycled material by 2030 across 20,000+ sqm projects)</strong>.</li>
-    <li>Architected batch-level <strong>IoT MRV (Measurement, Reporting &amp; Verification) software</strong> tracking calcium carbonate uptake per production run and generating cryptographically verifiable Digital Product Passports for developer EPR compliance.</li>
-    <li>Modeled multi-tier unit economics (equipment leasing, per-tonne curing royalties, and MRV SaaS subscriptions) viable independent of voluntary carbon credit market volatility, supported by a geospatial regional scoring algorithm.</li>
+    <li><strong>Built Cloud Object Storage &amp; DNS Automation:</strong> <em>Built</em> full-stack onboarding workflow for <strong>Caringo Swarm S3-compatible cloud object storage</strong> and automated cPanel DNS A-record associations using Java and Angular, enabling <strong>100% self-service storage provisioning and automated bucket metering</strong>.</li>
+    <li><strong>Scaled Frontend Modernization:</strong> <em>Scaled</em> legacy AngularJS migration to <strong>Angular 17</strong> with reactive component architectures, state predictability, and modular testability, achieving a <strong>35% improvement in client-side rendering speed</strong>.</li>
+    <li><strong>Automated CI/CD &amp; Multi-Cloud Deployment:</strong> <em>Automated</em> continuous integration, regression testing, and release packaging pipelines with <strong>Jenkins CI/CD</strong>, multi-module Maven builds, and JUnit quality gates, significantly cutting manual verification overhead and deployment friction.</li>
+    <li><strong>Analyzed Network Telemetry &amp; Monitoring:</strong> <em>Analyzed</em> and engineered switch-port utilization and network capacity telemetry engine integrating Zabbix and Nimsoft APIs, computing cluster-wide compute and datastore allocation to prevent capacity exhaustion; earned <strong>3× Extra Mile Commitment Awards</strong>.</li>
+    <li><strong>Architected Multi-Vendor Load Balancer Orchestration:</strong> <em>Architected</em> enterprise load balancer provisioning and health probe monitoring across <strong>HAProxy, F5 BIG-IP, and VMware Avi</strong> with automated VIP provisioning, traffic steering, and tenant-scoped SSL/TLS offloading.</li>
+  </ul>
+
+  <!-- STRATEGY & TECHNICAL PROJECTS -->
+  <div class="section-title">Strategy &amp; Technical Projects</div>
+
+  <div class="subheading">
+    <div class="subheading-title"><strong>SthiraX: Distributed CO₂-Mineralization &amp; IoT MRV Platform</strong> | <em>IIM Kozhikode Capstone (BPP)</em></div>
+    <div class="subheading-date"><a href="https://github.com/harshalraajpatnaik/sthirax-mrv">GitHub ↗</a></div>
+  </div>
+  <ul>
+    <li><em>Architected</em> asset-light retrofit platform converting regional concrete plants into certified low-carbon facilities to fulfill India's <strong>April 2026 C&amp;D Waste Rules (mandating 5% to 25% recycled material by 2030 across 20,000+ sqm projects)</strong>; built batch-level <strong>IoT MRV (Measurement, Reporting &amp; Verification) software</strong> generating cryptographically verifiable Digital Product Passports for developer EPR compliance, supported by SaaS and royalty unit economics.</li>
+  </ul>
+
+  <div class="subheading" style="margin-top: 1pt;">
+    <div class="subheading-title"><strong>MarginOS: Multi-Tenant Cloud FinOps &amp; Unit Economics Platform</strong> | <em>Cloud Economics &amp; FinOps</em></div>
+    <div class="subheading-date"><a href="https://github.com/harshalraajpatnaik/margin-os">GitHub ↗</a></div>
+  </div>
+  <ul>
+    <li><em>Designed</em> distributed FinOps intelligence engine analyzing multi-cloud hypervisor and storage telemetry to calculate real-time gross margins, compute unit economics (cost-per-VM/hour, storage tiers), and surface automated right-sizing recommendations that eliminate up to 28% in infrastructure spend leakages.</li>
+  </ul>
+
+  <div class="subheading" style="margin-top: 1pt;">
+    <div class="subheading-title"><strong>Workflow Reliability Lab: Distributed Sagas &amp; Chaos Engineering</strong> | <em>Distributed Systems Platform</em></div>
+    <div class="subheading-date"><a href="https://github.com/harshalraajpatnaik/workflow-reliability-lab">GitHub ↗</a></div>
+  </div>
+  <ul>
+    <li><em>Built</em> developer platform for testing distributed workflow reliability; built synthetic fault injection simulators (network partitions, timeout anomalies) and invariant checkers verifying ACID saga compensations (<strong>Java 25, Spring Boot 4, Angular, Docker</strong>).</li>
+  </ul>
+
+  <div class="subheading" style="margin-top: 1pt;">
+    <div class="subheading-title"><strong>QueryLens AI: Sandboxed Enterprise Text-to-SQL &amp; Semantic RAG</strong> | <em>AI &amp; Data Systems</em></div>
+    <div class="subheading-date"><a href="https://github.com/harshalraajpatnaik/querylens-ai">GitHub ↗</a></div>
+  </div>
+  <ul>
+    <li><em>Architected</em> modular C4 3-tier Text-to-SQL engine (<strong>Angular 17 &rarr; Spring Boot 3 &rarr; FastAPI with pgvector RAG</strong>) with schema semantic search, AST validation, and read-only sandbox roles preventing SQL injection and unauthorized data exfiltration.</li>
+  </ul>
+
+  <div class="subheading" style="margin-top: 1pt;">
+    <div class="subheading-title"><strong>CloudScale: Predictive Workload Autoscaler &amp; Telemetry Engine</strong> | <em>Autonomous Cloud Infrastructure</em></div>
+    <div class="subheading-date"><a href="https://github.com/harshalraajpatnaik/cloudscale">GitHub ↗</a></div>
+  </div>
+  <ul>
+    <li><em>Developed</em> proactive Kubernetes/VM capacity autoscaling engine integrating Prometheus, Grafana, and time-series ML forecasting models (<strong>NumPy, Pandas, Scikit-learn</strong>) predicting compute resource spikes 15 minutes in advance, mitigating cold-start latencies and reducing over-provisioned idle capacity.</li>
   </ul>
 
   <!-- TECHNICAL & LEADERSHIP SKILLS -->
   <div class="section-title">Technical &amp; Leadership Competencies</div>
   <div class="skills-block">
-    <div><span class="skills-label">Languages &amp; Core:</span> Java (8/11/17 LTS), Python, TypeScript, JavaScript, SQL, HTML5/CSS3, Bash</div>
-    <div><span class="skills-label">Distributed Systems &amp; Cloud:</span> Spring Boot 3, Flowable BPMN, RabbitMQ (AMQP), Microservices Architecture, REST APIs, KVM, VMware ESXi, OLVM, Docker</div>
-    <div><span class="skills-label">Databases, Caching &amp; Storage:</span> Cassandra, Redis, MySQL, Caringo Swarm / S3, Hibernate/JPA, HikariCP (Connection Pool Tuning)</div>
-    <div><span class="skills-label">Networking, Security &amp; Gateways:</span> Kong API Gateway, FortiGate REST APIs, IPsec VPN, DNS Automation, Sliding-Window Rate Limiting, Reverse Proxies</div>
-    <div><span class="skills-label">DevOps, SRE &amp; Observability:</span> Jenkins CI/CD, JUnit, Mockito, Zabbix APIs, Linux, Maven, SonarQube, Postman, Swagger/OpenAPI</div>
-    <div><span class="skills-label">Product Strategy &amp; MBA Coursework:</span> Product Management, Financial Accounting, Operations Management, Strategy Management, Risk Analysis, Product Analytics, Negotiation &amp; Conflict Management, Brand Strategy, Entrepreneurship</div>
+    <div><span class="skills-label">Languages &amp; Core:</span> Java (8/11/17/25 LTS), Python (NumPy, Pandas, Scikit-learn, Matplotlib), TypeScript, JavaScript, SQL, HTML5/CSS3, Bash, Spring Boot 3/4, FastAPI, Angular 17/18, RxJS</div>
+    <div><span class="skills-label">Distributed Systems &amp; Cloud:</span> Google Cloud Platform (GCP / Compute Engine), Microservices, Flowable BPMN, RabbitMQ (AMQP), Event-Driven Architecture, High Availability (HA), Fault Tolerance, KVM, VMware ESXi, OLVM, Docker, Kubernetes</div>
+    <div><span class="skills-label">Databases, Caching &amp; Storage:</span> Apache Cassandra (NoSQL), Redis (In-Memory Cache), PostgreSQL (pgvector), MySQL, Caringo Swarm (S3 Object Storage), NetApp &amp; HPE Storage Arrays, Hibernate/JPA, HikariCP Tuning</div>
+    <div><span class="skills-label">Networking, Security &amp; Gateways:</span> Kong API Gateway, Fortinet FortiGate Firewalls, VDOMs, IPsec VPN, DNS Automation (cPanel/BIND), Token Bucket Rate Limiting, Reverse Proxies, HAProxy, F5 BIG-IP, VMware Avi</div>
+    <div><span class="skills-label">DevOps, SRE &amp; Observability:</span> Jenkins CI/CD, CI/CD Pipelines, Prometheus, Grafana, OpenTelemetry, Distributed Tracing, Zabbix APIs, Nimsoft, JUnit 5, Mockito, SonarQube, Linux/Unix Administration</div>
+    <div><span class="skills-label">Product Management &amp; MBA Coursework:</span> Product Strategy, Financial Accounting, Operations Management, Strategy Management, Risk Analysis, Product Analytics, Digital Marketing, Brand Strategy, Negotiation &amp; Conflict Management, FinOps, Jira (Agile/Scrum)</div>
   </div>
 
-  <!-- HONORS & CERTIFICATIONS -->
-  <div class="section-title">Honors, Certifications &amp; Extracurricular</div>
+  <!-- HONORS & LEADERSHIP -->
+  <div class="section-title">Leadership, Certifications &amp; Honors</div>
   <ul>
-    <li><strong>3× Extra Mile Commitment Award</strong> – Tata Communications Ltd. for critical cloud platform delivery and reliability.</li>
-    <li><strong>Flipkart Grid 2.0 Engineering Challenge</strong> – Team Lead; achieved <strong>Top 150 Nationwide Rank</strong> out of 20,000+ teams.</li>
-    <li><strong>Architecting with Google Compute Engine</strong> (Google Cloud / Coursera) &amp; <strong>Full Stack Web Development</strong> (Coding Ninjas).</li>
-    <li><strong>Rank 2404 Globally</strong> in Second Round of 5th SOF International Mathematics Olympiad (Science Olympiad Foundation).</li>
+    <li><strong>Tech × MBA Strategic Product Leadership:</strong> Bridge the critical organizational gap between platform economics and deep systems engineering; partner with executive product leaders and enterprise clients to translate business roadmaps and unit-cost targets into resilient distributed microservices, author technical RFCs, and govern SLA/SLO availability baselines.</li>
+    <li><strong>Agile Engineering Delivery &amp; Mentorship:</strong> Stepped up as <strong>Acting Scrum Master</strong> across engineering pods; orchestrated sprint ceremonies, backlog prioritization, and release velocity in <strong>Jira</strong> (100% on-time milestone delivery), while providing architectural reviews and technical mentorship for junior engineers.</li>
+    <li><strong>3× Extra Mile Commitment Award</strong> – Tata Communications Ltd. for critical cloud platform delivery, stability, and zero-defect deployments.</li>
+    <li><strong>Flipkart Grid 2.0 Engineering Challenge</strong> – Team Lead; achieved <strong>Top 150 Nationwide Rank</strong> out of 20,000+ teams (Computer Vision &amp; OCR Track).</li>
+    <li><strong>Certifications:</strong> <strong>Architecting with Google Compute Engine</strong> (Google Cloud / Coursera) &amp; <strong>Full Stack Web Development</strong> (Coding Ninjas).</li>
   </ul>
 
 </body>
