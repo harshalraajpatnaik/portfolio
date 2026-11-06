@@ -174,10 +174,10 @@ export class PokemonPlayerComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     if (typeof window !== 'undefined') {
-      // Auto-dismiss the immersion toast after 5 seconds
+      // Auto-dismiss the immersion toast after 10 seconds
       this.calloutTimerId = setTimeout(() => {
         this.showImmersionCallout = false;
-      }, 5000);
+      }, 10000);
 
       this.timerId = setInterval(() => {
         if (this.audio.bgAudio) {
