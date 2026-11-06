@@ -11,26 +11,26 @@ import { PortfolioApiService } from '../../../core/services/portfolio-api.servic
     <nav class="fixed top-0 left-0 right-0 z-50 px-3 sm:px-6 py-2.5 transition-all" role="navigation" aria-label="Pokédex Navigation">
       <div class="max-w-7xl mx-auto flex items-center justify-between gap-2 sm:gap-4">
 
-        <!-- BRAND / POKÉDEX LOGO: Always strictly 1 line, never wraps -->
-        <a href="#hero" class="flex items-center gap-2.5 flex-shrink-0 whitespace-nowrap group" (click)="audio.playBeep()">
+        <!-- BRAND / POKÉDEX LOGO: Proportional and clean on mobile & desktop -->
+        <a href="#hero" class="flex items-center gap-2 sm:gap-2.5 flex-shrink-0 group" (click)="onNavClick('#hero')">
           <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white border-2 border-crimson flex items-center justify-center p-1 shadow-[0_0_12px_rgba(220,10,45,0.8)] group-hover:scale-105 transition-transform flex-shrink-0 overflow-hidden">
             <img src="assets/hp-logo.png" alt="Harshal Patnaik (HP)" class="w-full h-full object-contain">
           </div>
-          <div class="flex flex-col justify-center flex-shrink-0 whitespace-nowrap">
+          <div class="flex flex-col justify-center flex-shrink-0">
             <div class="font-black text-xs sm:text-sm text-white tracking-wider font-mono whitespace-nowrap group-hover:text-energy transition-colors">
               HARSHAL RAAJ PATNAIK
             </div>
-            <div class="text-[9px] sm:text-[10px] font-mono text-white/50 tracking-wider whitespace-nowrap flex items-center gap-1.5">
+            <div class="text-[9px] sm:text-[10px] font-mono text-white/50 tracking-wider whitespace-nowrap flex items-center gap-1 sm:gap-1.5">
               <span>CLOUD SDE</span>
               <span class="text-energy">•</span>
-              <span>TATA COMM</span>
-              <span class="text-energy">•</span>
+              <span class="hidden xs:inline">TATA COMM</span>
+              <span class="text-energy hidden xs:inline">•</span>
               <span>IIM KOZHIKODE</span>
             </div>
           </div>
         </a>
 
-        <!-- CENTER NAVIGATION: Clean, spacious, proportional -->
+        <!-- CENTER NAVIGATION (Desktop / Wide screens >= 1024px) -->
         <div class="hidden lg:flex items-center gap-1 font-mono text-xs flex-shrink-0">
           <a *ngFor="let link of navLinks"
              [href]="link.href"
@@ -40,15 +40,15 @@ import { PortfolioApiService } from '../../../core/services/portfolio-api.servic
           </a>
         </div>
 
-        <!-- RIGHT SIDE: Uniform Audio Capsule + Resume Download -->
-        <div class="flex items-center gap-2 flex-shrink-0 whitespace-nowrap">
+        <!-- RIGHT SIDE: Audio Capsule + Action Buttons + Mobile Menu Toggle -->
+        <div class="flex items-center gap-1.5 sm:gap-2 flex-shrink-0">
           
-          <!-- Consolidated Retro Audio Capsule -->
-          <div class="flex items-center bg-black/50 border border-white/15 rounded-xl p-0.5 font-mono shadow-inner">
+          <!-- Consolidated Retro Audio Capsule (Desktop & Tablet) -->
+          <div class="hidden sm:flex items-center bg-black/50 border border-white/15 rounded-xl p-0.5 font-mono shadow-inner">
             <!-- Theme Music Toggle -->
             <button
               (click)="audio.toggleMusic()"
-              class="px-2.5 py-1 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5"
+              class="px-2.5 py-1 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer"
               [ngClass]="audio.isMusicPlaying ? 'bg-energy text-black shadow-lg shadow-energy/20' : 'text-white/70 hover:text-white hover:bg-white/10'"
               [title]="audio.isMusicPlaying ? '8-Bit Gym Theme Playing (Click to Pause)' : 'Play Nostalgic 8-Bit Gym Theme'">
               <span class="w-2 h-2 rounded-full" [ngClass]="audio.isMusicPlaying ? 'bg-black animate-pulse' : 'bg-red-500'"></span>
@@ -58,7 +58,7 @@ import { PortfolioApiService } from '../../../core/services/portfolio-api.servic
             <!-- SFX Mute/Unmute -->
             <button
               (click)="audio.toggleSound()"
-              class="px-2 py-1 rounded-lg text-xs transition-all text-white/70 hover:text-white hover:bg-white/10 flex items-center"
+              class="px-2 py-1 rounded-lg text-xs transition-all text-white/70 hover:text-white hover:bg-white/10 flex items-center cursor-pointer"
               [title]="audio.soundEnabled ? '8-Bit Retro SFX Active' : 'Sound Effects Muted'">
               <span>{{ audio.soundEnabled ? '🔊' : '🔇' }}</span>
             </button>
@@ -70,8 +70,9 @@ import { PortfolioApiService } from '../../../core/services/portfolio-api.servic
              target="_blank"
              rel="noopener noreferrer"
              (click)="audio.playFanfare()"
-             class="px-3 sm:px-4 py-1.5 rounded-xl text-xs font-mono font-bold bg-energy hover:bg-energy/90 text-black shadow-lg shadow-energy/25 transition-all flex items-center gap-1.5 flex-shrink-0">
-            <span>RESUME (PDF)</span>
+             class="px-2.5 sm:px-3.5 py-1.5 rounded-xl text-[11px] sm:text-xs font-mono font-bold bg-energy hover:bg-energy/90 text-black shadow-lg shadow-energy/25 transition-all flex items-center gap-1 flex-shrink-0">
+            <span>RESUME</span>
+            <span class="hidden sm:inline">(PDF)</span>
             <span>↓</span>
           </a>
 
@@ -92,12 +93,22 @@ import { PortfolioApiService } from '../../../core/services/portfolio-api.servic
               <button
                 (click)="openOfflineApiModal()"
                 title="View OpenAPI Specification & REST Architecture (Standalone Mode)"
-                class="hidden xl:flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-mono border border-cyan-glow/40 bg-cyan-glow/15 text-cyan-glow hover:bg-cyan-glow/25 transition-colors">
+                class="hidden xl:flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-mono border border-cyan-glow/40 bg-cyan-glow/15 text-cyan-glow hover:bg-cyan-glow/25 transition-colors cursor-pointer">
                 <span class="w-1.5 h-1.5 rounded-full bg-cyan-glow"></span>
                 <span>API SPEC</span>
               </button>
             </ng-template>
           </ng-container>
+
+          <!-- MOBILE / TABLET HAMBURGER BUTTON (< 1024px) -->
+          <button
+            (click)="toggleMobileMenu()"
+            class="lg:hidden p-1.5 sm:p-2 rounded-xl text-white/80 hover:text-white bg-white/5 border border-white/15 hover:border-white/30 transition-all flex items-center justify-center cursor-pointer"
+            [attr.aria-expanded]="mobileMenuOpen"
+            aria-label="Toggle Pokédex Navigation Menu">
+            <span *ngIf="!mobileMenuOpen" class="text-base sm:text-lg leading-none font-bold">☰</span>
+            <span *ngIf="mobileMenuOpen" class="text-base sm:text-lg leading-none font-bold text-energy">✕</span>
+          </button>
 
         </div>
 
@@ -105,6 +116,61 @@ import { PortfolioApiService } from '../../../core/services/portfolio-api.servic
 
       <!-- Frosted Pokédex Backing -->
       <div class="absolute inset-0 -z-10 backdrop-blur-md border-b border-red-900/60 bg-[#0a0d14]/90" aria-hidden="true"></div>
+
+      <!-- RESPONSIVE MOBILE / TABLET SLIDE-DOWN DRAWER MENU -->
+      <div
+        *ngIf="mobileMenuOpen"
+        class="lg:hidden mt-2 p-4 rounded-2xl bg-[#0d121f]/98 backdrop-blur-2xl border-2 border-red-900/80 shadow-[0_12px_36px_rgba(0,0,0,0.85)] font-mono animate-in fade-in duration-200">
+        
+        <!-- Header Ribbon inside drawer -->
+        <div class="flex items-center justify-between pb-2.5 mb-3 border-b border-white/10 text-[10px] text-white/50">
+          <div class="flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-cyan-glow animate-pulse"></span>
+            <span class="font-bold tracking-wider text-cyan-glow">POKÉDEX NAVIGATION DIRECTORY</span>
+          </div>
+          <span>8 SECTIONS</span>
+        </div>
+
+        <!-- Section Navigation Links -->
+        <div class="grid grid-cols-2 gap-2 text-xs">
+          <a
+            *ngFor="let link of navLinks"
+            [href]="link.href"
+            (click)="onNavClick(link.href)"
+            class="p-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-energy/50 text-white/85 hover:text-white transition-all flex items-center gap-2">
+            <span class="text-[10px] text-energy font-bold">{{ link.num }}</span>
+            <span class="font-medium truncate">{{ link.label }}</span>
+          </a>
+        </div>
+
+        <!-- Mobile Audio & Utility Controls in Drawer -->
+        <div class="mt-4 pt-3 border-t border-white/10 flex flex-wrap items-center justify-between gap-2 text-xs">
+          <div class="flex items-center gap-2">
+            <!-- Theme Music Toggle -->
+            <button
+              (click)="audio.toggleMusic()"
+              class="px-3 py-1.5 rounded-xl font-bold flex items-center gap-1.5 transition-all text-[11px] cursor-pointer"
+              [ngClass]="audio.isMusicPlaying ? 'bg-energy text-black' : 'bg-white/10 text-white/80'">
+              <span class="w-1.5 h-1.5 rounded-full" [ngClass]="audio.isMusicPlaying ? 'bg-black animate-pulse' : 'bg-red-500'"></span>
+              <span>{{ audio.isMusicPlaying ? 'THEME PLAYING' : 'PLAY THEME' }}</span>
+            </button>
+
+            <!-- SFX Button -->
+            <button
+              (click)="audio.toggleSound()"
+              class="px-2.5 py-1.5 rounded-xl bg-white/10 text-white/80 text-[11px] hover:bg-white/15 transition-all cursor-pointer">
+              {{ audio.soundEnabled ? '🔊 SFX ON' : '🔇 SFX MUTED' }}
+            </button>
+          </div>
+
+          <!-- API Spec Modal button for mobile -->
+          <button
+            (click)="openOfflineApiModal(); mobileMenuOpen = false"
+            class="px-2.5 py-1.5 rounded-xl border border-cyan-glow/40 bg-cyan-glow/15 text-cyan-glow text-[11px] hover:bg-cyan-glow/25 transition-all cursor-pointer">
+            API SPEC ↗
+          </button>
+        </div>
+      </div>
     </nav>
 
     <!-- IN-UI OPENAPI SPECIFICATION MODAL (When Backend is Offline or Standalone) -->
@@ -195,14 +261,17 @@ import { PortfolioApiService } from '../../../core/services/portfolio-api.servic
   `
 })
 export class NavComponent {
+  mobileMenuOpen = false;
+
   navLinks = [
-    { href: '#hero',      label: 'Pokédex' },
-    { href: '#projects',  label: 'Pokémon Roster' },
-    { href: '#sthirax',   label: 'SthiraX (MBA)' },
-    { href: '#trainers',  label: 'Trainers' },
-    { href: '#telemetry', label: 'Telemetry' },
-    { href: '#resume',    label: 'ATS Resume' },
-    { href: '#contact',   label: 'Contact' },
+    { href: '#hero',      label: 'Pokédex',       num: '01' },
+    { href: '#projects',  label: 'Pokémon Roster', num: '02' },
+    { href: '#sthirax',   label: 'SthiraX (MBA)',  num: '03' },
+    { href: '#trainers',  label: 'Gym Leaders',    num: '04' },
+    { href: '#telemetry', label: 'Telemetry',      num: '05' },
+    { href: '#skills',    label: 'Skills',         num: '06' },
+    { href: '#resume',    label: 'ATS Resume',     num: '07' },
+    { href: '#contact',   label: 'Contact',        num: '08' },
   ];
 
   showApiModal = false;
@@ -212,6 +281,16 @@ export class NavComponent {
     public audio: PokemonAudioService,
     public api: PortfolioApiService
   ) {}
+
+  toggleMobileMenu(): void {
+    this.mobileMenuOpen = !this.mobileMenuOpen;
+    this.audio.playBeep();
+  }
+
+  onNavClick(href: string): void {
+    this.audio.playBeep();
+    this.mobileMenuOpen = false;
+  }
 
   openOfflineApiModal(): void {
     this.audio.playChirp();

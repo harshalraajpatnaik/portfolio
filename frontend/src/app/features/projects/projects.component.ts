@@ -34,7 +34,7 @@ interface PokemonProjectMeta {
           </p>
 
           <!-- Primary Category Switcher (Company Work vs Built by Harshal) -->
-          <div class="flex flex-wrap items-center gap-3 pt-2">
+          <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3 pt-2">
             <button
               (click)="setCategory('COMPANY')"
               [class.bg-crimson]="selectedCategory === 'COMPANY'"
@@ -42,9 +42,11 @@ interface PokemonProjectMeta {
               [class.shadow-crimson]="selectedCategory === 'COMPANY'"
               [class.bg-white-5]="selectedCategory !== 'COMPANY'"
               [class.text-white-70]="selectedCategory !== 'COMPANY'"
-              class="px-5 py-2.5 rounded-xl font-mono text-xs sm:text-sm font-bold transition-all border border-white/10 flex items-center gap-2.5 cursor-pointer shadow-lg hover:border-crimson/50">
-              <span class="text-base">🏢</span>
-              <span>COMPANY WORK (ENTERPRISE SYSTEMS)</span>
+              class="w-full sm:w-auto px-4 sm:px-5 py-2.5 rounded-xl font-mono text-xs sm:text-sm font-bold transition-all border border-white/10 flex items-center justify-between sm:justify-start gap-2.5 cursor-pointer shadow-lg hover:border-crimson/50">
+              <span class="flex items-center gap-2">
+                <span class="text-base">🏢</span>
+                <span>COMPANY WORK (ENTERPRISE)</span>
+              </span>
               <span class="px-2 py-0.5 rounded-full text-[11px] font-bold"
                     [ngClass]="selectedCategory === 'COMPANY' ? 'bg-black/40 text-white' : 'bg-white/10 text-white/60'">
                 {{ companyProjects.length }}
@@ -58,9 +60,11 @@ interface PokemonProjectMeta {
               [class.shadow-energy]="selectedCategory === 'PRODUCT'"
               [class.bg-white-5]="selectedCategory !== 'PRODUCT'"
               [class.text-white-70]="selectedCategory !== 'PRODUCT'"
-              class="px-5 py-2.5 rounded-xl font-mono text-xs sm:text-sm font-bold transition-all border border-white/10 flex items-center gap-2.5 cursor-pointer shadow-lg hover:border-energy/50">
-              <span class="text-base">🚀</span>
-              <span>BUILT BY ME (INDEPENDENT PRODUCTS & CAPSTONES)</span>
+              class="w-full sm:w-auto px-4 sm:px-5 py-2.5 rounded-xl font-mono text-xs sm:text-sm font-bold transition-all border border-white/10 flex items-center justify-between sm:justify-start gap-2.5 cursor-pointer shadow-lg hover:border-energy/50">
+              <span class="flex items-center gap-2">
+                <span class="text-base">🚀</span>
+                <span>BUILT BY ME (PRODUCTS & LABS)</span>
+              </span>
               <span class="px-2 py-0.5 rounded-full text-[11px] font-bold"
                     [ngClass]="selectedCategory === 'PRODUCT' ? 'bg-black/30 text-black' : 'bg-white/10 text-white/60'">
                 {{ productProjects.length }}
@@ -243,28 +247,28 @@ interface PokemonProjectMeta {
       <div
         *ngIf="selectedDossier"
         (click)="closeDossier()"
-        class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/80 backdrop-blur-md animate-in fade-in duration-200">
+        class="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/85 backdrop-blur-md animate-in fade-in duration-200">
         
         <div
           (click)="$event.stopPropagation()"
-          class="glass-card w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-3xl border-2 border-energy/40 bg-[#0d1322] shadow-[0_0_50px_rgba(0,0,0,0.9)] p-6 sm:p-8 relative text-white space-y-6">
+          class="glass-card w-full max-w-4xl max-h-[92vh] overflow-y-auto rounded-2xl sm:rounded-3xl border-2 border-energy/40 bg-[#0d1322] shadow-[0_0_50px_rgba(0,0,0,0.9)] p-4 sm:p-7 relative text-white space-y-5">
           
           <!-- Modal Close Button -->
           <button
             (click)="closeDossier()"
-            class="absolute top-5 right-5 w-8 h-8 rounded-full bg-white/10 hover:bg-crimson border border-white/20 text-white flex items-center justify-center text-xs font-bold transition-all cursor-pointer z-10"
+            class="absolute top-3.5 right-3.5 sm:top-5 sm:right-5 w-8 h-8 rounded-full bg-white/10 hover:bg-crimson border border-white/20 text-white flex items-center justify-center text-xs font-bold transition-all cursor-pointer z-10"
             title="Close Dossier (ESC)">
             ✕
           </button>
 
           <!-- Modal Top Header: Pokémon Artwork & Badges -->
-          <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-4 border-b border-white/10 pr-8">
-            <div class="flex items-center gap-4">
-              <div class="w-16 h-16 rounded-2xl bg-black/80 border-2 border-white/20 flex items-center justify-center p-2 shadow-2xl flex-shrink-0">
+          <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4 pb-4 border-b border-white/10 pr-8">
+            <div class="flex items-center gap-3 sm:gap-4">
+              <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-black/80 border-2 border-white/20 flex items-center justify-center p-1.5 sm:p-2 shadow-2xl flex-shrink-0">
                 <img
                   [src]="selectedDossier.spriteUrl || getPokemonMeta(selectedDossier.id).spriteUrl"
                   [alt]="selectedDossier.pokemonName || getPokemonMeta(selectedDossier.id).pokemonName"
-                  class="h-12 w-12 object-contain" />
+                  class="h-10 w-10 sm:h-12 sm:w-12 object-contain" />
               </div>
               <div>
                 <div class="flex items-center gap-2">
@@ -275,10 +279,10 @@ interface PokemonProjectMeta {
                     {{ selectedDossier.element }}
                   </span>
                 </div>
-                <h3 class="text-xl sm:text-2xl font-extrabold text-white tracking-tight mt-1">
+                <h3 class="text-lg sm:text-2xl font-extrabold text-white tracking-tight mt-0.5">
                   {{ selectedDossier.title }}
                 </h3>
-                <div class="text-xs font-mono text-cyan-glow mt-0.5">
+                <div class="text-[11px] sm:text-xs font-mono text-cyan-glow mt-0.5">
                   {{ selectedDossier.companyName || selectedDossier.domain }} · {{ selectedDossier.period || 'Production System' }}
                 </div>
               </div>
@@ -337,11 +341,11 @@ interface PokemonProjectMeta {
           </div>
 
           <!-- Footer Actions -->
-          <div class="pt-4 border-t border-white/10 flex items-center justify-between text-xs font-mono">
-            <span class="text-white/40">PRESS ESC OR CLICK OUTSIDE TO CLOSE</span>
+          <div class="pt-4 border-t border-white/10 flex flex-col-reverse sm:flex-row items-center justify-between gap-3 text-xs font-mono">
+            <span class="text-white/40 text-center sm:text-left text-[11px]">PRESS ESC OR TAP OUTSIDE TO CLOSE</span>
             <button
               (click)="closeDossier()"
-              class="px-5 py-2 rounded-xl bg-crimson hover:bg-crimson/90 text-white font-bold transition-colors cursor-pointer">
+              class="w-full sm:w-auto px-6 py-2.5 rounded-xl bg-crimson hover:bg-crimson/90 text-white font-bold transition-colors cursor-pointer text-center">
               CLOSE DOSSIER ✕
             </button>
           </div>

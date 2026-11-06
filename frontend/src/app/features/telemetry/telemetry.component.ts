@@ -28,7 +28,7 @@ import { interval, Subscription } from 'rxjs';
           </div>
 
           <!-- Live Poll Indicator & Swagger link -->
-          <div class="flex items-center gap-3">
+          <div class="flex flex-wrap items-center gap-2.5 sm:gap-3">
             <div class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs font-mono text-white/60">
               <span class="w-1.5 h-1.5 rounded-full" [ngClass]="(api.isBackendOnline$ | async) ? 'bg-grass animate-pulse' : 'bg-cyan-glow animate-pulse'"></span>
               <span>{{ (api.isBackendOnline$ | async) ? 'BACKEND: CONNECTED' : 'BACKEND: STANDALONE' }}</span>
@@ -37,56 +37,56 @@ import { interval, Subscription } from 'rxjs';
                target="_blank"
                rel="noopener noreferrer"
                title="Spring Boot 3 OpenAPI Swagger UI (Active when running locally via ./start-dev.sh)"
-               class="px-4 py-2 rounded-lg bg-crimson/20 border border-crimson/40 text-crimson hover:bg-crimson/30 transition-all text-xs font-mono font-medium">
+               class="px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-lg bg-crimson/20 border border-crimson/40 text-crimson hover:bg-crimson/30 transition-all text-xs font-mono font-medium">
               OpenAPI Swagger UI ↗
             </a>
           </div>
         </div>
 
         <!-- Telemetry Cards Grid -->
-        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-8">
           <!-- Card 1: API Status -->
-          <div class="glass-card p-5 rounded-xl border border-white/10">
-            <div class="flex items-center justify-between text-xs font-mono text-white/50 mb-2">
-              <span>SERVICE STATUS</span>
+          <div class="glass-card p-3.5 sm:p-5 rounded-xl border border-white/10">
+            <div class="flex items-center justify-between text-xs font-mono text-white/50 mb-1.5 sm:mb-2">
+              <span class="text-[10px] sm:text-xs">STATUS</span>
               <span class="w-2 h-2 rounded-full" [ngClass]="(api.isBackendOnline$ | async) ? 'bg-grass animate-pulse' : 'bg-cyan-glow animate-pulse'"></span>
             </div>
-            <div class="text-2xl font-mono font-bold" [ngClass]="(api.isBackendOnline$ | async) ? 'text-grass' : 'text-cyan-glow'">
+            <div class="text-xl sm:text-2xl font-mono font-bold" [ngClass]="(api.isBackendOnline$ | async) ? 'text-grass' : 'text-cyan-glow'">
               {{ (api.isBackendOnline$ | async) ? 'ONLINE' : 'STANDALONE' }}
             </div>
-            <div class="text-[11px] font-mono text-white/40 mt-1">
-              {{ (api.isBackendOnline$ | async) ? 'Spring Boot v' + (telemetry?.runtime?.springBootVersion || '3.2.5') + ' (Live)' : 'Client-Side Offline Mode' }}
+            <div class="text-[10px] sm:text-[11px] font-mono text-white/40 mt-1 truncate">
+              {{ (api.isBackendOnline$ | async) ? 'Spring Boot 3 (Live)' : 'Client Standalone' }}
             </div>
           </div>
 
           <!-- Card 2: Uptime -->
-          <div class="glass-card p-5 rounded-xl border border-white/10">
-            <div class="text-xs font-mono text-white/50 mb-2">SYSTEM UPTIME</div>
-            <div class="text-2xl font-mono font-bold text-energy">
+          <div class="glass-card p-3.5 sm:p-5 rounded-xl border border-white/10">
+            <div class="text-[10px] sm:text-xs font-mono text-white/50 mb-1.5 sm:mb-2">UPTIME</div>
+            <div class="text-xl sm:text-2xl font-mono font-bold text-energy truncate">
               {{ formatUptime(telemetry?.uptimeSeconds || 0) }}
             </div>
-            <div class="text-[11px] font-mono text-white/40 mt-1">Continuous uptime</div>
+            <div class="text-[10px] sm:text-[11px] font-mono text-white/40 mt-1">Continuous uptime</div>
           </div>
 
           <!-- Card 3: JVM Heap Memory -->
-          <div class="glass-card p-5 rounded-xl border border-white/10">
-            <div class="text-xs font-mono text-white/50 mb-2">JVM HEAP ALLOCATION</div>
-            <div class="text-2xl font-mono font-bold text-cyan-glow">
+          <div class="glass-card p-3.5 sm:p-5 rounded-xl border border-white/10">
+            <div class="text-[10px] sm:text-xs font-mono text-white/50 mb-1.5 sm:mb-2">JVM HEAP</div>
+            <div class="text-xl sm:text-2xl font-mono font-bold text-cyan-glow">
               {{ telemetry?.runtime?.heapUsedMb || 0 }} MB
             </div>
-            <div class="text-[11px] font-mono text-white/40 mt-1">
+            <div class="text-[10px] sm:text-[11px] font-mono text-white/40 mt-1">
               Max: {{ telemetry?.runtime?.heapMaxMb || 512 }} MB
             </div>
           </div>
 
           <!-- Card 4: Request Telemetry -->
-          <div class="glass-card p-5 rounded-xl border border-white/10">
-            <div class="text-xs font-mono text-white/50 mb-2">TOTAL API INVOCATIONS</div>
-            <div class="text-2xl font-mono font-bold text-psychic">
+          <div class="glass-card p-3.5 sm:p-5 rounded-xl border border-white/10">
+            <div class="text-[10px] sm:text-xs font-mono text-white/50 mb-1.5 sm:mb-2">API CALLS</div>
+            <div class="text-xl sm:text-2xl font-mono font-bold text-psychic">
               {{ telemetry?.apiStats?.totalRequests || 0 }}
             </div>
-            <div class="text-[11px] font-mono text-white/40 mt-1">
-              P50 Latency: ~{{ telemetry?.apiStats?.avgResponseMs || 4.2 }}ms
+            <div class="text-[10px] sm:text-[11px] font-mono text-white/40 mt-1">
+              P50: ~{{ telemetry?.apiStats?.avgResponseMs || 4.2 }}ms
             </div>
           </div>
         </div>
@@ -94,18 +94,18 @@ import { interval, Subscription } from 'rxjs';
         <!-- Terminal Console Preview -->
         <div class="glass-card rounded-2xl border border-white/10 overflow-hidden font-mono text-xs">
           <!-- Terminal Titlebar -->
-          <div class="bg-black/60 px-4 py-2.5 border-b border-white/5 flex items-center justify-between">
-            <div class="flex items-center gap-2">
-              <span class="w-3 h-3 rounded-full bg-crimson/80"></span>
-              <span class="w-3 h-3 rounded-full bg-energy/80"></span>
-              <span class="w-3 h-3 rounded-full bg-grass/80"></span>
-              <span class="text-white/40 ml-2">curl -X GET http://localhost:8080/api/v1/telemetry</span>
+          <div class="bg-black/60 px-3 sm:px-4 py-2 sm:py-2.5 border-b border-white/5 flex items-center justify-between">
+            <div class="flex items-center gap-2 truncate">
+              <span class="w-2.5 h-2.5 rounded-full bg-crimson/80 flex-shrink-0"></span>
+              <span class="w-2.5 h-2.5 rounded-full bg-energy/80 flex-shrink-0"></span>
+              <span class="w-2.5 h-2.5 rounded-full bg-grass/80 flex-shrink-0"></span>
+              <span class="text-white/40 ml-1 truncate text-[11px]">curl -X GET /api/v1/telemetry</span>
             </div>
-            <span class="text-white/30 text-[10px]">HTTP/1.1 200 OK</span>
+            <span class="text-white/30 text-[10px] flex-shrink-0">200 OK</span>
           </div>
 
           <!-- Terminal Content -->
-          <div class="p-6 bg-black/80 text-white/80 space-y-1 overflow-x-auto leading-relaxed">
+          <div class="p-4 sm:p-6 bg-black/80 text-white/80 space-y-1 overflow-x-auto leading-relaxed text-[11px] sm:text-xs">
             <div class="text-white/40">// JSON Response from Spring Boot Actuator Management Bean</div>
             <div>&#123;</div>
             <div class="pl-4"><span class="text-energy">"apiVersion"</span>: <span class="text-grass">"{{ telemetry?.apiVersion || '1.0.0' }}"</span>,</div>

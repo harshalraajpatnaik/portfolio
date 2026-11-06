@@ -16,16 +16,16 @@ import { PokemonAudioService } from '../../core/services/pokemon-audio.service';
       <!-- Main Pokédex Shell Container -->
       <div class="max-w-7xl mx-auto w-full">
         <!-- Iconic Top Pokédex Sensor Bar -->
-        <div class="bg-[#C5001A] py-2.5 px-4 sm:py-3 sm:px-6 rounded-t-2xl sm:rounded-t-3xl border-t-2 border-x-2 border-red-900 shadow-2xl flex items-center justify-between">
+        <div class="bg-[#C5001A] py-2 px-3 sm:py-3 sm:px-6 rounded-t-2xl sm:rounded-t-3xl border-t-2 border-x-2 border-red-900 shadow-2xl flex items-center justify-between gap-2">
           <!-- Large Blue Sensor Scanner + 3 Mini LEDs -->
-          <div class="flex items-center gap-3">
-            <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-cyan-glow border-3 sm:border-4 border-white shadow-[0_0_12px_#00E5FF] animate-pulse flex items-center justify-center">
-              <div class="w-2.5 h-2.5 rounded-full bg-white/90"></div>
+          <div class="flex items-center gap-2 sm:gap-3 flex-shrink-0">
+            <div class="w-7 h-7 sm:w-9 sm:h-9 rounded-full bg-cyan-glow border-2 sm:border-4 border-white shadow-[0_0_12px_#00E5FF] animate-pulse flex items-center justify-center">
+              <div class="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-white/90"></div>
             </div>
-            <div class="flex items-center gap-2 ml-1">
-              <span class="w-3 h-3 rounded-full bg-crimson border border-black shadow-[0_0_5px_#ff1744]"></span>
-              <span class="w-3 h-3 rounded-full bg-energy border border-black shadow-[0_0_5px_#ffd600]"></span>
-              <span class="w-3 h-3 rounded-full bg-grass border border-black shadow-[0_0_5px_#00e676]"></span>
+            <div class="flex items-center gap-1.5 sm:gap-2 ml-0.5 sm:ml-1">
+              <span class="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-crimson border border-black shadow-[0_0_5px_#ff1744]"></span>
+              <span class="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-energy border border-black shadow-[0_0_5px_#ffd600]"></span>
+              <span class="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-grass border border-black shadow-[0_0_5px_#00e676]"></span>
             </div>
             <span class="text-xs font-mono font-extrabold text-white tracking-widest uppercase ml-2 hidden sm:inline">
               POKÉDEX PRO · CLOUD & STRATEGY REGION #001
@@ -33,10 +33,10 @@ import { PokemonAudioService } from '../../core/services/pokemon-audio.service';
           </div>
 
           <!-- Quick Audio / Resume Actions -->
-          <div class="flex items-center gap-2.5">
+          <div class="flex items-center gap-1.5 sm:gap-2.5 flex-shrink-0">
             <button
               (click)="toggleAudio()"
-              class="px-2.5 py-1.5 rounded-xl text-[11px] font-mono border border-white/20 bg-black/40 text-white hover:bg-black/60 transition-all flex items-center gap-1.5">
+              class="px-2 sm:px-2.5 py-1 sm:py-1.5 rounded-xl text-[10px] sm:text-[11px] font-mono border border-white/20 bg-black/40 text-white hover:bg-black/60 transition-all flex items-center gap-1 cursor-pointer">
               <span>{{ audio.soundEnabled ? '🔊 8-BIT: ON' : '🔇 8-BIT: OFF' }}</span>
             </button>
             <a
@@ -44,8 +44,9 @@ import { PokemonAudioService } from '../../core/services/pokemon-audio.service';
               download="Harshal_Raaj_Patnaik_Resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              class="px-3.5 py-1.5 rounded-xl text-[11px] font-mono font-bold bg-energy text-black hover:bg-energy/90 transition-all flex items-center gap-1 shadow-lg shadow-energy/20">
-              <span>ATS RESUME (PDF)</span>
+              class="px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-xl text-[10px] sm:text-[11px] font-mono font-bold bg-energy text-black hover:bg-energy/90 transition-all flex items-center gap-1 shadow-lg shadow-energy/20">
+              <span>ATS RESUME</span>
+              <span class="hidden xs:inline">(PDF)</span>
               <span>↓</span>
             </a>
           </div>
@@ -109,21 +110,21 @@ import { PokemonAudioService } from '../../core/services/pokemon-audio.service';
               </div>
 
               <!-- Quick CTAs -->
-              <div class="flex flex-wrap items-center gap-2.5 pt-1.5">
+              <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-2.5 pt-1.5">
                 <a href="#projects"
-                   class="px-5 py-2.5 rounded-xl font-mono text-xs font-bold bg-crimson hover:bg-crimson/90 text-white shadow-lg shadow-crimson/30 transition-all flex items-center gap-1.5">
-                  <span>EXPLORE POKÉMON ROSTER</span>
-                  <span>▼</span>
+                   class="px-5 py-2.5 rounded-xl font-mono text-xs font-bold bg-crimson hover:bg-crimson/90 text-white shadow-lg shadow-crimson/30 transition-all flex items-center justify-center gap-1.5 cursor-pointer">
+                   <span>EXPLORE POKÉMON ROSTER</span>
+                   <span>▼</span>
                 </a>
                 <a href="#sthirax"
-                   class="px-5 py-2.5 rounded-xl font-mono text-xs font-bold border border-emerald-500/40 bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-300 transition-all flex items-center gap-1.5">
-                  <span>TECH × BUSINESS: STHIRAX</span>
-                  <span>🌱</span>
+                   class="px-5 py-2.5 rounded-xl font-mono text-xs font-bold border border-emerald-500/40 bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-300 transition-all flex items-center justify-center gap-1.5 cursor-pointer">
+                   <span>TECH × BUSINESS: STHIRAX</span>
+                   <span>🌱</span>
                 </a>
                 <a href="#resume"
-                   class="px-4 py-2.5 rounded-xl font-mono text-xs text-white/80 hover:text-white border border-white/10 hover:border-white/30 transition-all flex items-center gap-1.5">
-                  <span>1-PAGE ATS RESUME</span>
-                  <span>📄</span>
+                   class="px-4 py-2.5 rounded-xl font-mono text-xs text-white/80 hover:text-white border border-white/10 hover:border-white/30 transition-all flex items-center justify-center gap-1.5 cursor-pointer">
+                   <span>1-PAGE ATS RESUME</span>
+                   <span>📄</span>
                 </a>
               </div>
             </div>
