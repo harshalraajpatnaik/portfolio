@@ -194,18 +194,16 @@ export class PokeballIntroComponent implements OnInit {
   exiting = false;
   statusText = 'DETECTING WILD POKÉMON ENCOUNTER...';
 
-  private readonly STORAGE_KEY = 'hrp_pokemon_intro_shown';
-
   constructor(private audio: PokemonAudioService) {}
 
   ngOnInit(): void {
-    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reducedMotion || localStorage.getItem(this.STORAGE_KEY)) {
+    const reducedMotion = typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reducedMotion) {
       this.completed.emit();
       return;
     }
 
-    // Sequence timing
+    // Authentic Pokéball intro sequence (~2.8 seconds total duration)
     this.phase = 1; // Drop
     this.audio.playPokeballClick();
 
@@ -232,7 +230,6 @@ export class PokeballIntroComponent implements OnInit {
             setTimeout(() => {
               this.exiting = true;
               setTimeout(() => {
-                localStorage.setItem(this.STORAGE_KEY, '1');
                 this.completed.emit();
               }, 400);
             }, 550);
@@ -245,7 +242,6 @@ export class PokeballIntroComponent implements OnInit {
   complete(): void {
     this.exiting = true;
     setTimeout(() => {
-      localStorage.setItem(this.STORAGE_KEY, '1');
       this.completed.emit();
     }, 250);
   }

@@ -342,13 +342,7 @@ export class NavComponent implements OnInit, OnDestroy {
   switchMode(target: PortfolioMode): void {
     if (target === this.currentMode) return;
     this.audio.playFanfare();
-    if (typeof document !== 'undefined' && (document as any).startViewTransition) {
-      (document as any).startViewTransition(() => {
-        this.modeChange.emit(target);
-      });
-    } else {
-      this.modeChange.emit(target);
-    }
+    this.modeChange.emit(target);
   }
 
   toggleMobileMenu(): void {
