@@ -24,11 +24,11 @@ import { ContactRequest } from '../../core/models/api.models';
           </p>
         </div>
 
-        <div class="glass-card p-8 sm:p-12 rounded-2xl border border-white/10 max-w-2xl mx-auto relative overflow-hidden">
+        <div class="glass-card p-5 sm:p-8 lg:p-12 rounded-2xl border border-white/10 max-w-2xl mx-auto relative overflow-hidden">
           <!-- Rate Limit Notice -->
-          <div class="mb-6 p-3 rounded-lg bg-white/5 border border-white/10 flex items-center justify-between text-xs font-mono text-white/50">
-            <span>SECURITY GATEWAY: BUCKET4J RATE LIMITING ACTIVE</span>
-            <span class="text-energy">5 REQ / HR</span>
+          <div class="mb-5 p-3 rounded-lg bg-white/5 border border-white/10 flex items-center justify-between text-xs font-mono text-white/50">
+            <span class="text-[10.5px] sm:text-xs">SECURITY GATEWAY: BUCKET4J ACTIVE</span>
+            <span class="text-energy font-bold text-[10.5px] sm:text-xs">5 REQ / HR</span>
           </div>
 
           <!-- Success Alert -->
@@ -44,9 +44,9 @@ import { ContactRequest } from '../../core/models/api.models';
           </div>
 
           <!-- Contact Form -->
-          <form (ngSubmit)="onSubmit()" class="space-y-6">
+          <form (ngSubmit)="onSubmit()" class="space-y-5">
             <div>
-              <label for="name" class="block text-xs font-mono text-white/60 mb-2">FULL NAME *</label>
+              <label for="name" class="block text-xs font-mono text-white/60 mb-1.5">FULL NAME *</label>
               <input
                 id="name"
                 name="name"
@@ -55,11 +55,11 @@ import { ContactRequest } from '../../core/models/api.models';
                 required
                 maxlength="120"
                 placeholder="e.g. Jane Doe"
-                class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-white/30 text-sm focus:border-energy focus:outline-none transition-colors">
+                class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-white/30 text-base sm:text-sm focus:border-energy focus:outline-none transition-colors">
             </div>
 
             <div>
-              <label for="email" class="block text-xs font-mono text-white/60 mb-2">EMAIL ADDRESS *</label>
+              <label for="email" class="block text-xs font-mono text-white/60 mb-1.5">EMAIL ADDRESS *</label>
               <input
                 id="email"
                 name="email"
@@ -68,11 +68,11 @@ import { ContactRequest } from '../../core/models/api.models';
                 required
                 maxlength="254"
                 placeholder="e.g. jane@company.com"
-                class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-white/30 text-sm focus:border-energy focus:outline-none transition-colors">
+                class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-white/30 text-base sm:text-sm focus:border-energy focus:outline-none transition-colors">
             </div>
 
             <div>
-              <label for="message" class="block text-xs font-mono text-white/60 mb-2">MESSAGE / OPPORTUNITY DETAILS *</label>
+              <label for="message" class="block text-xs font-mono text-white/60 mb-1.5">MESSAGE / OPPORTUNITY DETAILS *</label>
               <textarea
                 id="message"
                 name="message"
@@ -82,13 +82,13 @@ import { ContactRequest } from '../../core/models/api.models';
                 minlength="10"
                 maxlength="2000"
                 placeholder="Discussing a Senior Cloud / Backend Engineering role or system architecture..."
-                class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-white/30 text-sm focus:border-energy focus:outline-none transition-colors"></textarea>
+                class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-white/30 text-base sm:text-sm focus:border-energy focus:outline-none transition-colors"></textarea>
             </div>
 
             <button
               type="submit"
               [disabled]="isSubmitting"
-              class="w-full py-4 rounded-xl font-medium bg-crimson hover:bg-crimson/90 disabled:opacity-50 text-white shadow-lg shadow-crimson/30 transition-all font-mono text-sm tracking-wide">
+              class="w-full py-3.5 sm:py-4 rounded-xl font-medium bg-crimson hover:bg-crimson/90 disabled:opacity-50 text-white shadow-lg shadow-crimson/30 transition-all font-mono text-xs sm:text-sm tracking-wide min-h-[48px] flex items-center justify-center cursor-pointer">
               <span *ngIf="!isSubmitting">SEND TRANSMISSION TO HARSHAL →</span>
               <span *ngIf="isSubmitting">DISPATCHING TO HARSHAL'S EMAIL...</span>
             </button>
@@ -113,9 +113,12 @@ import { ContactRequest } from '../../core/models/api.models';
               GITHUB ↗
             </a>
             <span>•</span>
-            <a href="http://localhost:8080/swagger-ui.html" target="_blank" rel="noopener noreferrer" class="hover:text-energy transition-colors">
+            <a *ngIf="(api.isBackendOnline$ | async)" href="http://localhost:8080/swagger-ui.html" target="_blank" rel="noopener noreferrer" class="hover:text-energy transition-colors">
               SWAGGER API ↗
             </a>
+            <button *ngIf="!(api.isBackendOnline$ | async)" (click)="openSwaggerModal()" class="hover:text-energy transition-colors cursor-pointer bg-transparent border-0 text-inherit p-0 font-inherit" title="View OpenAPI REST Specification & Architecture">
+              SWAGGER API ↗
+            </button>
           </div>
         </div>
       </div>
@@ -128,7 +131,11 @@ export class ContactComponent {
   successMsg = '';
   errorMsg = '';
 
-  constructor(private api: PortfolioApiService) {}
+  constructor(public api: PortfolioApiService) {}
+
+  openSwaggerModal(): void {
+    this.api.openApiModal();
+  }
 
   onSubmit(): void {
     if (!this.formData.name || !this.formData.email || !this.formData.message) {

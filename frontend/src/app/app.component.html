@@ -1,59 +1,117 @@
-<!-- Dramatic Pokéball Throw & Burst Intro (Shown on first visit or re-triggered) -->
+<!-- First-Time Visit Interface Selection Portal -->
+<app-ui-mode-portal
+  *ngIf="!portalShown"
+  (modeSelected)="onPortalModeSelected($event)">
+</app-ui-mode-portal>
+
+<!-- Loader 1: Dramatic Pokéball Throw & Burst Intro (When Pokédex mode is chosen) -->
 <app-pokeball-intro
-  *ngIf="!introShown"
-  (completed)="onIntroCompleted()">
+  *ngIf="portalShown && currentMode === 'pokemon' && !pokeballIntroShown"
+  (completed)="onPokeballIntroCompleted()">
 </app-pokeball-intro>
 
-<!-- Main Pokédex Experience -->
-<div class="min-h-screen bg-[#07090e] text-white selection:bg-crimson selection:text-white">
-  <!-- Top Pokédex Navigation -->
-  <app-nav></app-nav>
+<!-- Loader 2: High-Tech Quantum Pulse Loader (When Recruiter mode is chosen) -->
+<app-recruiter-loader
+  *ngIf="portalShown && currentMode === 'recruiter' && !recruiterLoaderShown"
+  (completed)="onRecruiterLoaderCompleted()">
+</app-recruiter-loader>
 
-  <main>
-    <!-- Section 1: Pokédex Hero & Interactive Starter Pokémon -->
-    <app-hero [profile]="profile"></app-hero>
+<!-- Main Unified Portfolio Layout Container (Shown after interface selection and loader completion) -->
+<div *ngIf="portalShown && ((currentMode === 'pokemon' && pokeballIntroShown) || (currentMode === 'recruiter' && recruiterLoaderShown))"
+     class="min-h-screen text-white"
+     [ngClass]="currentMode === 'pokemon' ? 'bg-[#07090e] selection:bg-crimson selection:text-white' : 'bg-[#080b12] selection:bg-cyan-glow selection:text-black'">
+  
+  <!-- Shared Top Navigation with Dynamic UI Interface Switcher -->
+  <app-nav
+    [currentMode]="currentMode"
+    (modeChange)="onModeChanged($event)"
+    (returnToHome)="onReturnToHome()">
+  </app-nav>
 
-    <!-- Section 2: Pokémon Battle Ready Case Studies (Pikachu, Charmander, Squirtle, Bulbasaur, Psyduck, Onix) -->
-    <app-projects [projects]="projects"></app-projects>
+  <!-- ========================================================================= -->
+  <!-- VIEW 1: POKÉDEX PRO GAMIFIED EXPERIENCE                                   -->
+  <!-- ========================================================================= -->
+  <ng-container *ngIf="currentMode === 'pokemon'">
+    <main>
+      <!-- Section 1: Pokédex Hero & Interactive Starter Pokémon -->
+      <app-hero [profile]="profile"></app-hero>
 
-    <!-- Section 3: Tech × Business Synergy Spotlight: SthiraX Platform Capstone -->
-    <app-sthirax></app-sthirax>
+      <!-- Section 2: Pokémon Battle Ready Case Studies (Pikachu, Charmander, Squirtle, Bulbasaur, etc.) -->
+      <app-projects [projects]="projects"></app-projects>
 
-    <!-- Section 4: Gym Leaders & Mentors (Ash, Misty, Brock RPG Dialogue) -->
-    <app-trainers></app-trainers>
+      <!-- Section 3: Tech × Business Synergy Spotlight: SthiraX Platform Capstone -->
+      <app-sthirax></app-sthirax>
 
-    <!-- Section 5: Real-Time Spring Boot 3 Telemetry -->
-    <app-telemetry [telemetry]="telemetry"></app-telemetry>
+      <!-- Section 4: Gym Leaders & Mentors (Ash, Misty, Brock RPG Dialogue) -->
+      <app-trainers></app-trainers>
 
-    <!-- Section 6: Engineering Competencies & Stats -->
-    <app-skills></app-skills>
+      <!-- Section 5: Real-Time Spring Boot 3 Telemetry -->
+      <app-telemetry [telemetry]="telemetry"></app-telemetry>
 
-    <!-- Section 7: Official 1-Page Google ATS Resume -->
-    <app-resume [profile]="profile"></app-resume>
+      <!-- Section 6: Engineering Competencies & Stats -->
+      <app-skills></app-skills>
 
-    <!-- Section 8: Contact Transmission Gateway -->
-    <app-contact></app-contact>
-  </main>
+      <!-- Section 7: Official 1-Page Google ATS Resume -->
+      <app-resume [profile]="profile"></app-resume>
 
-  <!-- Global Pokédex Footer -->
-  <footer class="py-12 px-6 border-t border-red-900/40 bg-black/80 text-xs font-mono text-white/40 pb-24 sm:pb-12">
-    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-      <div class="flex items-center gap-3">
-        <span class="w-3 h-3 rounded-full bg-crimson animate-pulse"></span>
-        <span class="text-white/80 font-bold">POKÉDEX PRO · HARSHAL RAAJ PATNAIK</span>
+      <!-- Section 8: Contact Transmission Gateway -->
+      <app-contact></app-contact>
+    </main>
+
+    <!-- Global Pokédex Footer -->
+    <footer class="py-12 px-6 border-t border-red-900/40 bg-black/80 text-xs font-mono text-white/40 pb-24 sm:pb-12">
+      <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div class="flex items-center gap-3">
+          <span class="w-3 h-3 rounded-full bg-crimson animate-pulse"></span>
+          <span class="text-white/80 font-bold">POKÉDEX PRO · HARSHAL RAAJ PATNAIK</span>
+        </div>
+        <div class="flex flex-wrap items-center gap-4 text-[11px]">
+          <span>POWERED BY SPRING BOOT 3 &amp; ANGULAR 17</span>
+          <span>•</span>
+          <a *ngIf="(api.isBackendOnline$ | async)" href="http://localhost:8080/swagger-ui.html" target="_blank" rel="noopener noreferrer" title="Spring Boot Swagger UI (Local)" class="hover:text-energy transition-colors">SWAGGER UI ↗</a>
+          <button *ngIf="!(api.isBackendOnline$ | async)" (click)="openSwaggerModal()" title="OpenAPI REST Specification (Standalone Mode)" class="hover:text-cyan-glow transition-colors cursor-pointer bg-transparent border-0 text-inherit p-0 font-inherit">SWAGGER UI (SPEC) ↗</button>
+          <span>•</span>
+          <a href="assets/Harshal_Raaj_Patnaik_Resume.pdf" download="Harshal_Raaj_Patnaik_Resume.pdf" target="_blank" rel="noopener noreferrer" class="hover:text-energy transition-colors">ATS RESUME (PDF) ↗</a>
+          <span>•</span>
+          <a href="assets/Harshal_Raaj_Patnaik_Resume.tex" download="Harshal_Raaj_Patnaik_Resume.tex" target="_blank" rel="noopener noreferrer" class="hover:text-cyan-glow transition-colors">RESUME (.TEX) ↗</a>
+        </div>
       </div>
-      <div class="flex flex-wrap items-center gap-4 text-[11px]">
-        <span>POWERED BY SPRING BOOT 3 & ANGULAR 17</span>
-        <span>•</span>
-        <a href="http://localhost:8080/swagger-ui.html" target="_blank" rel="noopener noreferrer" title="Spring Boot Swagger UI (Local)" class="hover:text-energy transition-colors">SWAGGER UI ↗</a>
-        <span>•</span>
-        <a href="assets/Harshal_Raaj_Patnaik_Resume.pdf" download="Harshal_Raaj_Patnaik_Resume.pdf" target="_blank" rel="noopener noreferrer" class="hover:text-energy transition-colors">ATS RESUME (PDF) ↗</a>
-        <span>•</span>
-        <a href="assets/Harshal_Raaj_Patnaik_Resume.tex" download="Harshal_Raaj_Patnaik_Resume.tex" target="_blank" rel="noopener noreferrer" class="hover:text-cyan-glow transition-colors">RESUME (.TEX) ↗</a>
-      </div>
-    </div>
-  </footer>
+    </footer>
 
-  <!-- Official Pokémon Theme Song Floating Player (YouTube fCkeLBGSINs) -->
-  <app-pokemon-player></app-pokemon-player>
+    <!-- Official Pokémon Theme Song Floating Player (Active in Pokédex Mode) -->
+    <app-pokemon-player></app-pokemon-player>
+  </ng-container>
+
+  <!-- ========================================================================= -->
+  <!-- VIEW 2: EXECUTIVE RECRUITER & HIRING MANAGER MODE                         -->
+  <!-- ========================================================================= -->
+  <ng-container *ngIf="currentMode === 'recruiter'">
+    <main>
+      <app-recruiter-view
+        [profile]="profile"
+        [projects]="projects">
+      </app-recruiter-view>
+    </main>
+
+    <!-- Global Executive Recruiter Footer -->
+    <footer class="py-12 px-6 border-t border-cyan-glow/20 bg-[#060911] text-xs font-mono text-white/50">
+      <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div class="flex items-center gap-2.5">
+          <span class="w-2.5 h-2.5 rounded-full bg-cyan-glow animate-pulse"></span>
+          <span class="text-white font-bold">HARSHAL RAAJ PATNAIK · EXECUTIVE RECRUITER DOSSIER</span>
+        </div>
+        <div class="flex flex-wrap items-center gap-4 text-[11px]">
+          <span>DISTRIBUTED SYSTEMS · TECH × MBA</span>
+          <span>•</span>
+          <a *ngIf="(api.isBackendOnline$ | async)" href="http://localhost:8080/swagger-ui.html" target="_blank" rel="noopener noreferrer" class="hover:text-cyan-glow transition-colors">OPENAPI SWAGGER ↗</a>
+          <button *ngIf="!(api.isBackendOnline$ | async)" (click)="openSwaggerModal()" class="hover:text-cyan-glow transition-colors cursor-pointer bg-transparent border-0 text-inherit p-0 font-inherit">REST SPEC (OPENAPI) ↗</button>
+          <span>•</span>
+          <a href="assets/Harshal_Raaj_Patnaik_Resume.pdf" download="Harshal_Raaj_Patnaik_Resume.pdf" target="_blank" rel="noopener noreferrer" class="hover:text-cyan-glow transition-colors">ATS RESUME (PDF) ↗</a>
+          <span>•</span>
+          <a href="assets/Harshal_Raaj_Patnaik_Resume.tex" download="Harshal_Raaj_Patnaik_Resume.tex" target="_blank" rel="noopener noreferrer" class="hover:text-emerald-400 transition-colors">LATEX SOURCE ↗</a>
+        </div>
+      </div>
+    </footer>
+  </ng-container>
+
 </div>

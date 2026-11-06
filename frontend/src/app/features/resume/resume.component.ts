@@ -67,8 +67,16 @@ import { PokemonAudioService } from '../../core/services/pokemon-audio.service';
           <pre class="overflow-x-auto text-white/80 p-4 rounded-xl bg-black/60 max-h-[400px] leading-relaxed"><code>{{ latexSourceCode }}</code></pre>
         </div>
 
-        <!-- Visual 1-Page ATS Document Rendering -->
-        <div class="bg-white text-black p-8 sm:p-12 rounded-2xl shadow-2xl relative font-serif text-[12.5px] leading-snug border border-slate-300">
+        <!-- Mobile Horizontal Swipe Tip -->
+        <div class="sm:hidden mb-3 text-center text-xs font-mono text-energy/90 flex items-center justify-center gap-1.5 bg-energy/10 border border-energy/30 py-2 px-3 rounded-xl">
+          <span>📱</span>
+          <span>Swipe horizontally to inspect full document width</span>
+        </div>
+
+        <!-- Scrollable Document Wrapper for Mobile/Tablet Screens -->
+        <div class="overflow-x-auto pb-4 -mx-2 sm:mx-0 rounded-2xl overscroll-x-contain" style="-webkit-overflow-scrolling: touch;">
+          <!-- Visual 1-Page ATS Document Rendering -->
+          <div class="min-w-[640px] sm:min-w-0 bg-white text-black p-6 sm:p-10 lg:p-12 rounded-2xl shadow-2xl relative font-serif text-[12.5px] leading-snug border border-slate-300">
           
           <!-- Document Header -->
           <div class="text-center mb-3">
@@ -82,7 +90,8 @@ import { PokemonAudioService } from '../../core/services/pokemon-audio.service';
               +91-9982143442 &nbsp;~&nbsp;
               <a href="mailto:harshalraajpatnaik&#64;outlook.com" class="underline text-black">harshalraajpatnaik&#64;outlook.com</a> &nbsp;~&nbsp;
               <a href="https://linkedin.com/in/harshalraajpatnaik/" target="_blank" rel="noopener noreferrer" class="underline text-black">linkedin.com/in/harshalraajpatnaik</a> &nbsp;~&nbsp;
-              <a href="https://github.com/harshalraajpatnaik" target="_blank" rel="noopener noreferrer" class="underline text-black">github.com/harshalraajpatnaik</a>
+              <a href="https://github.com/harshalraajpatnaik" target="_blank" rel="noopener noreferrer" class="underline text-black">github.com/harshalraajpatnaik</a> &nbsp;~&nbsp;
+              <a href="https://harshalraajpatnaik.pages.dev/" target="_blank" rel="noopener noreferrer" class="underline text-black">harshalraajpatnaik.pages.dev</a>
             </div>
           </div>
 
@@ -210,7 +219,7 @@ import { PokemonAudioService } from '../../core/services/pokemon-audio.service';
                 <span class="text-[10px] text-slate-600"><a href="https://github.com/harshalraajpatnaik/cloudscale" target="_blank" class="underline text-black font-semibold">GitHub ↗</a></span>
               </div>
               <ul class="list-disc pl-4 space-y-0.5 text-[10px] leading-relaxed text-slate-900 mt-0.5">
-                <li><em>Developed</em> proactive Kubernetes/VM capacity autoscaling engine integrating Prometheus, Grafana, and time-series ML forecasting models (<strong>NumPy, Pandas, Scikit-learn</strong>) predicting compute resource spikes 15 minutes in advance, mitigating cold-start latencies and reducing over-provisioned idle capacity.</li>
+                <li><em>Developed</em> proactive Kubernetes/VM capacity autoscaling engine integrating Prometheus, Grafana, and time-series ML forecasting models predicting compute resource spikes 15 minutes in advance, mitigating cold-start latencies and reducing over-provisioned idle capacity.</li>
               </ul>
             </div>
           </div>
@@ -244,6 +253,7 @@ import { PokemonAudioService } from '../../core/services/pokemon-audio.service';
             </ul>
           </div>
 
+          </div>
         </div>
       </div>
     </section>

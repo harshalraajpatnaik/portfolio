@@ -114,11 +114,11 @@ export interface PokemonCompanion {
           ◀
         </button>
 
-        <!-- Scrollable Ribbon Container -->
+        <!-- Scrollable Ribbon Container with Touch Momentum -->
         <div
           #rosterContainer
-          class="flex items-center gap-2 overflow-x-scroll py-2.5 px-6 scroll-smooth w-full rounded-xl bg-black/40 border border-white/10"
-          style="scrollbar-width: thin; scrollbar-color: #FFD600 rgba(220, 10, 45, 0.4);">
+          class="flex items-center gap-2 overflow-x-scroll py-2.5 px-6 scroll-smooth w-full rounded-xl bg-black/40 border border-white/10 overscroll-x-contain"
+          style="scrollbar-width: thin; scrollbar-color: #FFD600 rgba(220, 10, 45, 0.4); -webkit-overflow-scrolling: touch;">
           <button
             *ngFor="let p of party"
             (click)="choosePokemon(p)"

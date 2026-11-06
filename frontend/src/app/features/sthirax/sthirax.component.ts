@@ -25,7 +25,7 @@ import { PokemonAudioService } from '../../core/services/pokemon-audio.service';
         </div>
 
         <!-- The SthiraX Deep Dive Grid -->
-        <div class="glass-card p-8 sm:p-12 rounded-3xl border-2 border-emerald-500/30 bg-[#09151c]/90 shadow-2xl relative overflow-hidden">
+        <div class="glass-card p-5 sm:p-8 lg:p-12 rounded-2xl sm:rounded-3xl border-2 border-emerald-500/30 bg-[#09151c]/90 shadow-2xl relative overflow-hidden">
           
           <!-- Top Watermark / Badge -->
           <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-6 mb-8 border-b border-emerald-500/20 gap-4">
@@ -45,7 +45,7 @@ import { PokemonAudioService } from '../../core/services/pokemon-audio.service';
           </div>
 
           <!-- 4 Strategic Pillars of Tech + MBA Synergy -->
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-10">
             
             <!-- Pillar 1: The Regulatory Catalyst -->
             <div class="p-5 rounded-2xl bg-black/40 border border-emerald-500/20 space-y-2.5">

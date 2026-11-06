@@ -8,12 +8,12 @@ import { PokemonAudioService } from '../../../core/services/pokemon-audio.servic
   imports: [CommonModule],
   template: `
     <!-- Floating Pokédex Retro Cassette Deck & Official Theme Player -->
-    <div class="fixed bottom-4 right-4 z-50 font-mono select-none" role="region" aria-label="Official Pokémon Theme Music Player">
+    <div class="fixed bottom-3 right-3 sm:bottom-4 sm:right-4 z-50 font-mono select-none" role="region" aria-label="Official Pokémon Theme Music Player">
       
       <!-- EXPANDED CASSETTE DECK MODAL -->
       <div
         *ngIf="isExpanded"
-        class="glass-card mb-3 p-4 sm:p-5 rounded-2xl border-2 border-crimson/50 bg-[#0d111a]/95 shadow-[0_10px_35px_rgba(220,10,45,0.4)] w-[320px] sm:w-[360px] max-w-[95vw] text-white transition-all transform animate-in fade-in duration-200">
+        class="glass-card mb-3 p-4 sm:p-5 rounded-2xl border-2 border-crimson/50 bg-[#0d111a]/95 shadow-[0_10px_35px_rgba(220,10,45,0.4)] w-[calc(100vw-2rem)] sm:w-[360px] max-w-[360px] text-white transition-all transform animate-in fade-in duration-200">
         
         <!-- Header -->
         <div class="flex items-center justify-between pb-3 mb-3 border-b border-white/10">
@@ -105,22 +105,22 @@ import { PokemonAudioService } from '../../../core/services/pokemon-audio.servic
 
       </div>
 
-      <!-- 5-Second Pulsing Immersion Speech-Bubble Toast (Auto-dismisses in 5s or when clicked) -->
+      <!-- 10-Second Pulsing Immersion Speech-Bubble Toast (Auto-dismisses in 10s or when clicked) -->
       <div
         *ngIf="showImmersionCallout && !audio.isMusicPlaying"
         (click)="dismissCalloutAndPlay()"
-        class="mb-2 px-3.5 py-2 rounded-2xl bg-gradient-to-r from-crimson via-red-600 to-amber-500 text-white text-xs font-mono font-bold shadow-[0_0_25px_rgba(239,68,68,0.8)] border-2 border-white/90 flex items-center gap-2 cursor-pointer animate-bounce hover:scale-105 transition-all max-w-[290px] ml-auto">
+        class="mb-2 px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-2xl bg-gradient-to-r from-crimson via-red-600 to-amber-500 text-white text-xs font-mono font-bold shadow-[0_0_25px_rgba(239,68,68,0.8)] border-2 border-white/90 flex items-center gap-2 cursor-pointer animate-bounce hover:scale-105 transition-all max-w-[calc(100vw-2rem)] sm:max-w-[290px] ml-auto">
         <span class="text-base animate-spin flex-shrink-0">⚡</span>
-        <div class="leading-tight flex-1">
-          <div class="text-[10.5px] font-black tracking-wide flex items-center gap-1">
+        <div class="leading-tight flex-1 min-w-0">
+          <div class="text-[10px] sm:text-[10.5px] font-black tracking-wide flex items-center gap-1 truncate">
             <span>POKÉMON THEME SONG</span>
-            <span class="text-[9px] bg-black/40 px-1 py-0.2 rounded text-energy">5s</span>
+            <span class="text-[9px] bg-black/40 px-1 py-0.2 rounded text-energy">10s</span>
           </div>
-          <div class="text-[9px] opacity-95 font-medium">Click here for full studio audio! 🎵</div>
+          <div class="text-[8.5px] sm:text-[9px] opacity-95 font-medium truncate">Click here for full studio audio! 🎵</div>
         </div>
         <button
           (click)="$event.stopPropagation(); dismissCallout()"
-          class="text-white/80 hover:text-white text-xs px-1 hover:bg-black/20 rounded">
+          class="text-white/80 hover:text-white text-xs px-1 hover:bg-black/20 rounded cursor-pointer flex-shrink-0">
           ✕
         </button>
       </div>

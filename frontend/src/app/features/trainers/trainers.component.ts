@@ -37,8 +37,8 @@ interface Trainer {
           </p>
         </div>
 
-        <!-- Trainer Selection Ribbon -->
-        <div class="flex flex-wrap gap-4 mb-8">
+        <!-- Trainer Selection Ribbon (Responsive 1-col on mobile, 3-col on tablet/desktop) -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 mb-8">
           <button
             *ngFor="let t of trainers; let i = index"
             (click)="selectTrainer(i)"
@@ -48,40 +48,40 @@ interface Trainer {
               'border-color': selectedIndex === i ? t.color : 'rgba(255,255,255,0.1)',
               'box-shadow': selectedIndex === i ? '0 0 20px ' + t.glowColor : 'none'
             }"
-            class="px-4 py-2.5 rounded-2xl border bg-white/5 hover:bg-white/10 transition-all flex items-center gap-3.5 group">
+            class="px-4 py-3 rounded-2xl border bg-white/5 hover:bg-white/10 transition-all flex items-center gap-3.5 group cursor-pointer">
             <!-- Miniature Trainer Headshot -->
             <div class="w-10 h-10 rounded-full overflow-hidden border border-white/20 flex-shrink-0 bg-black/40">
               <img [src]="t.avatarImage" [alt]="t.name" class="w-full h-full object-cover">
             </div>
             <!-- Trainer Info -->
-            <div class="text-left">
-              <div class="text-sm font-bold text-white group-hover:text-energy transition-colors flex items-center gap-1.5">
+            <div class="text-left flex-1 min-w-0">
+              <div class="text-sm font-bold text-white group-hover:text-energy transition-colors flex items-center gap-1.5 truncate">
                 <span>{{ t.name }}</span>
                 <img [src]="t.badgeImage" [alt]="t.badge" class="w-4 h-4 object-contain inline-block">
               </div>
-              <div class="text-[11px] font-mono text-white/50">{{ t.title }}</div>
+              <div class="text-[11px] font-mono text-white/50 truncate">{{ t.title }}</div>
             </div>
           </button>
         </div>
 
         <!-- Classic Pokémon RPG Dialogue Box -->
-        <div class="glass-card rounded-2xl p-6 sm:p-8 border-2 border-white/20 relative shadow-2xl bg-[#0b1329]/95 overflow-hidden">
+        <div class="glass-card rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-8 border-2 border-white/20 relative shadow-2xl bg-[#0b1329]/95 overflow-hidden">
           <!-- Subtle Glow Accent in Background -->
           <div class="absolute -right-20 -bottom-20 w-80 h-80 rounded-full blur-3xl pointer-events-none opacity-20"
                [ngStyle]="{ 'background-color': currentTrainer.color }"></div>
 
-          <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center relative z-10">
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-center relative z-10">
             <!-- Trainer Anime Portrait Display -->
-            <div class="md:col-span-4 flex flex-col items-center justify-center p-5 rounded-2xl bg-black/60 border border-white/10 backdrop-blur-md">
-              <div class="relative w-32 h-32 sm:w-40 sm:h-40 rounded-2xl p-1 border-2 shadow-2xl mb-4 overflow-hidden group bg-gradient-to-b from-white/10 to-black/60"
+            <div class="md:col-span-4 flex flex-col items-center justify-center p-4 sm:p-5 rounded-2xl bg-black/60 border border-white/10 backdrop-blur-md">
+              <div class="relative w-28 h-28 sm:w-40 sm:h-40 rounded-2xl p-1 border-2 shadow-2xl mb-3 sm:mb-4 overflow-hidden group bg-gradient-to-b from-white/10 to-black/60"
                    [ngStyle]="{ 'border-color': currentTrainer.color, 'box-shadow': '0 0 30px ' + currentTrainer.glowColor }">
                 <img [src]="currentTrainer.avatarImage"
                      [alt]="currentTrainer.name"
                      class="w-full h-full object-cover rounded-xl transform group-hover:scale-105 transition-transform duration-300">
               </div>
               
-              <div class="text-lg font-extrabold text-white text-center tracking-wide">{{ currentTrainer.name }}</div>
-              <div class="text-xs font-mono text-white/60 text-center mb-3">{{ currentTrainer.title }}</div>
+              <div class="text-base sm:text-lg font-extrabold text-white text-center tracking-wide">{{ currentTrainer.name }}</div>
+              <div class="text-xs font-mono text-white/60 text-center mb-2 sm:mb-3">{{ currentTrainer.title }}</div>
 
               <!-- Official Kanto Gym Badge -->
               <div class="flex items-center gap-2 px-3 py-1 rounded-full border border-white/10"

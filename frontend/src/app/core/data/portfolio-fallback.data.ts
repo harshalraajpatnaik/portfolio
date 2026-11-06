@@ -12,7 +12,8 @@ export const FALLBACK_PROFILE: ProfileResponse = {
   "contact": {
     "linkedin": "https://linkedin.com/in/harshalraajpatnaik/",
     "github": "https://github.com/harshalraajpatnaik",
-    "email": "harshalraajpatnaik@outlook.com"
+    "email": "harshalraajpatnaik@outlook.com",
+    "website": "https://harshalraajpatnaik.pages.dev/"
   },
   "education": [
     {

@@ -15,7 +15,11 @@ public record ProfileResponse(
         List<WorkExperience> experience,
         List<String> awards
 ) {
-    public record ContactInfo(String linkedin, String github, String email) {}
+    public record ContactInfo(String linkedin, String github, String email, String website) {
+        public ContactInfo(String linkedin, String github, String email) {
+            this(linkedin, github, email, "https://harshalraajpatnaik.pages.dev/");
+        }
+    }
 
     public record EducationEntry(
             String institution,

@@ -18,7 +18,18 @@ export class PortfolioApiService {
   // Live status stream for UI components to display backend connectivity
   public isBackendOnline$ = new BehaviorSubject<boolean>(false);
 
+  // Observable for opening the in-UI OpenAPI specification modal across any component
+  public showApiModal$ = new BehaviorSubject<boolean>(false);
+
   constructor(private http: HttpClient) {}
+
+  openApiModal(): void {
+    this.showApiModal$.next(true);
+  }
+
+  closeApiModal(): void {
+    this.showApiModal$.next(false);
+  }
 
   getProfile(): Observable<ProfileResponse> {
     return this.http.get<ProfileResponse>(`${this.base}/profile`).pipe(
@@ -70,5 +81,9 @@ export class PortfolioApiService {
         });
       })
     );
+  }
+
+  sendContact(req: ContactRequest): Observable<ContactSubmissionResponse> {
+    return this.submitContact(req);
   }
 }
