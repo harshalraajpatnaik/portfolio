@@ -55,17 +55,16 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     const savedMode = localStorage.getItem('hrp_portfolio_ui_mode') as PortfolioMode | null;
-    const reducedMotion = typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
     if (savedMode === 'pokemon' || savedMode === 'recruiter') {
       this.currentMode = savedMode;
-      this.portalShown = true;
-      this.pokeballIntroShown = true;
-      this.recruiterLoaderShown = true;
-    } else {
-      // First visit: Show the UI Interface Selection Portal
-      this.portalShown = false;
     }
+
+    const reducedMotion = typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // Always present the UI Interface Selection Portal on home screen landing
+    this.portalShown = false;
+    this.pokeballIntroShown = true;
+    this.recruiterLoaderShown = true;
 
     if (reducedMotion) {
       this.pokeballIntroShown = true;

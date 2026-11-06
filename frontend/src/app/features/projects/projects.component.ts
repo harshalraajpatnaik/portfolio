@@ -34,7 +34,7 @@ interface PokemonProjectMeta {
           </p>
 
           <!-- Primary Category Switcher (Company Work vs Built by Harshal) -->
-          <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3 pt-2">
+          <div class="flex flex-wrap items-center gap-3 pt-2">
             <button
               (click)="setCategory('COMPANY')"
               [class.bg-crimson]="selectedCategory === 'COMPANY'"
@@ -42,11 +42,9 @@ interface PokemonProjectMeta {
               [class.shadow-crimson]="selectedCategory === 'COMPANY'"
               [class.bg-white-5]="selectedCategory !== 'COMPANY'"
               [class.text-white-70]="selectedCategory !== 'COMPANY'"
-              class="w-full sm:w-auto px-4 sm:px-5 py-2.5 rounded-xl font-mono text-xs sm:text-sm font-bold transition-all border border-white/10 flex items-center justify-between sm:justify-start gap-2.5 cursor-pointer shadow-lg hover:border-crimson/50">
-              <span class="flex items-center gap-2">
-                <span class="text-base">🏢</span>
-                <span>COMPANY WORK (ENTERPRISE)</span>
-              </span>
+              class="px-5 py-2.5 rounded-xl font-mono text-xs sm:text-sm font-bold transition-all border border-white/10 flex items-center gap-2.5 cursor-pointer shadow-lg hover:border-crimson/50">
+              <span class="text-base">🏢</span>
+              <span>COMPANY WORK (ENTERPRISE SYSTEMS)</span>
               <span class="px-2 py-0.5 rounded-full text-[11px] font-bold"
                     [ngClass]="selectedCategory === 'COMPANY' ? 'bg-black/40 text-white' : 'bg-white/10 text-white/60'">
                 {{ companyProjects.length }}
@@ -60,11 +58,9 @@ interface PokemonProjectMeta {
               [class.shadow-energy]="selectedCategory === 'PRODUCT'"
               [class.bg-white-5]="selectedCategory !== 'PRODUCT'"
               [class.text-white-70]="selectedCategory !== 'PRODUCT'"
-              class="w-full sm:w-auto px-4 sm:px-5 py-2.5 rounded-xl font-mono text-xs sm:text-sm font-bold transition-all border border-white/10 flex items-center justify-between sm:justify-start gap-2.5 cursor-pointer shadow-lg hover:border-energy/50">
-              <span class="flex items-center gap-2">
-                <span class="text-base">🚀</span>
-                <span>BUILT BY ME (PRODUCTS & LABS)</span>
-              </span>
+              class="px-5 py-2.5 rounded-xl font-mono text-xs sm:text-sm font-bold transition-all border border-white/10 flex items-center gap-2.5 cursor-pointer shadow-lg hover:border-energy/50">
+              <span class="text-base">🚀</span>
+              <span>BUILT BY ME (INDEPENDENT PRODUCTS & CAPSTONES)</span>
               <span class="px-2 py-0.5 rounded-full text-[11px] font-bold"
                     [ngClass]="selectedCategory === 'PRODUCT' ? 'bg-black/30 text-black' : 'bg-white/10 text-white/60'">
                 {{ productProjects.length }}
