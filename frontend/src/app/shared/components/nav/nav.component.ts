@@ -14,68 +14,28 @@ export type PortfolioMode = 'pokemon' | 'recruiter';
     <nav class="fixed top-0 left-0 right-0 z-50 px-3 sm:px-6 py-2.5 transition-all" role="navigation" aria-label="Portfolio Navigation">
       <div class="max-w-7xl mx-auto flex items-center justify-between gap-2 sm:gap-4">
 
-        <!-- TOP LEFT: Mode Selection Toggle + Brand Logo -->
-        <div class="flex items-center gap-2 sm:gap-3 flex-shrink-0">
-          
-          <!-- INTERFACE MODE SELECTION TOGGLE (TOP LEFT) -->
-          <div class="flex items-center p-0.5 rounded-xl bg-black/70 border backdrop-blur-md font-mono text-[11px] sm:text-xs shadow-inner"
-               [ngClass]="currentMode === 'pokemon' ? 'border-red-900/70 shadow-[0_0_12px_rgba(220,10,45,0.25)]' : 'border-cyan-glow/40 shadow-[0_0_12px_rgba(0,229,255,0.25)]'">
-            
-            <!-- Pokédex Pro Option -->
-            <button
-              (click)="switchMode('pokemon')"
-              [class.bg-crimson]="currentMode === 'pokemon'"
-              [class.text-white]="currentMode === 'pokemon'"
-              [class.shadow-md]="currentMode === 'pokemon'"
-              [class.text-white-60]="currentMode !== 'pokemon'"
-              class="px-2 sm:px-2.5 py-1 rounded-lg font-bold transition-all flex items-center gap-1.5 cursor-pointer hover:text-white"
-              title="Switch to Pokédex Pro Experience">
-              <span>⚡</span>
-              <span class="hidden md:inline">POKÉDEX PRO</span>
-              <span class="md:hidden">POKÉDEX</span>
-            </button>
-
-            <!-- Recruiter Mode Option -->
-            <button
-              (click)="switchMode('recruiter')"
-              [class.bg-cyan-glow]="currentMode === 'recruiter'"
-              [class.text-black]="currentMode === 'recruiter'"
-              [class.shadow-md]="currentMode === 'recruiter'"
-              [class.text-white-60]="currentMode !== 'recruiter'"
-              class="px-2 sm:px-2.5 py-1 rounded-lg font-bold transition-all flex items-center gap-1.5 cursor-pointer hover:text-white"
-              title="Switch to Clean Executive Recruiter Dossier">
-              <span>💼</span>
-              <span class="hidden md:inline">RECRUITER</span>
-              <span class="md:hidden">RECRUITER</span>
-            </button>
+        <!-- BRAND LOGO: Proportional and clean on mobile & desktop -->
+        <a [href]="currentMode === 'pokemon' ? '#hero' : '#executive-summary'"
+           class="flex items-center gap-2 sm:gap-2.5 flex-shrink-0 group"
+           (click)="onNavClick(currentMode === 'pokemon' ? '#hero' : '#executive-summary')">
+          <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white border-2 flex items-center justify-center p-1 group-hover:scale-105 transition-transform flex-shrink-0 overflow-hidden"
+               [ngClass]="currentMode === 'pokemon' ? 'border-crimson shadow-[0_0_12px_rgba(220,10,45,0.8)]' : 'border-cyan-glow shadow-[0_0_12px_rgba(0,229,255,0.8)]'">
+            <img src="assets/hp-logo.png" alt="Harshal Patnaik (HP)" class="w-full h-full object-contain">
           </div>
-
-          <!-- Vertical Divider -->
-          <span class="hidden sm:inline-block w-px h-6 bg-white/15"></span>
-
-          <!-- BRAND LOGO: Proportional and clean on mobile & desktop -->
-          <a [href]="currentMode === 'pokemon' ? '#hero' : '#executive-summary'"
-             class="flex items-center gap-2 sm:gap-2.5 flex-shrink-0 group"
-             (click)="onNavClick(currentMode === 'pokemon' ? '#hero' : '#executive-summary')">
-            <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white border-2 flex items-center justify-center p-1 group-hover:scale-105 transition-transform flex-shrink-0 overflow-hidden"
-                 [ngClass]="currentMode === 'pokemon' ? 'border-crimson shadow-[0_0_12px_rgba(220,10,45,0.8)]' : 'border-cyan-glow shadow-[0_0_12px_rgba(0,229,255,0.8)]'">
-              <img src="assets/hp-logo.png" alt="Harshal Patnaik (HP)" class="w-full h-full object-contain">
+          <div class="flex flex-col justify-center flex-shrink-0">
+            <div class="font-black text-xs sm:text-sm text-white tracking-wider font-mono whitespace-nowrap transition-colors"
+                 [ngClass]="currentMode === 'pokemon' ? 'group-hover:text-energy' : 'group-hover:text-cyan-glow'">
+              HARSHAL RAAJ PATNAIK
             </div>
-            <div class="flex flex-col justify-center flex-shrink-0">
-              <div class="font-black text-xs sm:text-sm text-white tracking-wider font-mono whitespace-nowrap transition-colors"
-                   [ngClass]="currentMode === 'pokemon' ? 'group-hover:text-energy' : 'group-hover:text-cyan-glow'">
-                HARSHAL RAAJ PATNAIK
-              </div>
-              <div class="text-[9px] sm:text-[10px] font-mono text-white/50 tracking-wider whitespace-nowrap flex items-center gap-1 sm:gap-1.5">
-                <span>CLOUD SDE</span>
-                <span class="text-energy">•</span>
-                <span class="hidden xs:inline">TATA COMM</span>
-                <span class="text-energy hidden xs:inline">•</span>
-                <span>IIM KOZHIKODE</span>
-              </div>
+            <div class="text-[9px] sm:text-[10px] font-mono text-white/50 tracking-wider whitespace-nowrap flex items-center gap-1 sm:gap-1.5">
+              <span>CLOUD SDE</span>
+              <span class="text-energy">•</span>
+              <span class="hidden xs:inline">TATA COMM</span>
+              <span class="text-energy hidden xs:inline">•</span>
+              <span>IIM KOZHIKODE</span>
             </div>
-          </a>
-        </div>
+          </div>
+        </a>
 
         <!-- CENTER NAVIGATION (Desktop / Wide screens >= 1024px) -->
         <div class="hidden lg:flex items-center gap-0.5 xl:gap-1 font-mono text-[11px] xl:text-xs flex-shrink-0">
@@ -87,16 +47,47 @@ export type PortfolioMode = 'pokemon' | 'recruiter';
           </a>
         </div>
 
-        <!-- RIGHT SIDE: Audio Capsule + Resume + Mobile Hamburger -->
-        <div class="flex items-center gap-2 sm:gap-3 flex-shrink-0">
+        <!-- TOP RIGHT: Mode Toggle + Audio Capsule + Resume + Mobile Hamburger -->
+        <div class="flex items-center gap-2 sm:gap-2.5 flex-shrink-0">
           
+          <!-- INTERFACE MODE SELECTION TOGGLE (TOP RIGHT) -->
+          <div class="flex items-center p-0.5 rounded-xl bg-black/70 border backdrop-blur-md font-mono text-[11px] sm:text-xs shadow-inner"
+               [ngClass]="currentMode === 'pokemon' ? 'border-red-900/70 shadow-[0_0_12px_rgba(220,10,45,0.25)]' : 'border-cyan-glow/40 shadow-[0_0_12px_rgba(0,229,255,0.25)]'">
+            
+            <!-- Pokédex Pro Option -->
+            <button
+              (click)="switchMode('pokemon')"
+              [class.bg-crimson]="currentMode === 'pokemon'"
+              [class.text-white]="currentMode === 'pokemon'"
+              [class.shadow-md]="currentMode === 'pokemon'"
+              [class.text-white-60]="currentMode !== 'pokemon'"
+              class="px-2 sm:px-2.5 py-1 rounded-lg font-bold transition-all flex items-center gap-1 cursor-pointer hover:text-white"
+              title="Switch to Pokédex Pro Experience">
+              <span>⚡</span>
+              <span class="hidden md:inline">POKÉDEX</span>
+            </button>
+
+            <!-- Recruiter Mode Option -->
+            <button
+              (click)="switchMode('recruiter')"
+              [class.bg-cyan-glow]="currentMode === 'recruiter'"
+              [class.text-black]="currentMode === 'recruiter'"
+              [class.shadow-md]="currentMode === 'recruiter'"
+              [class.text-white-60]="currentMode !== 'recruiter'"
+              class="px-2 sm:px-2.5 py-1 rounded-lg font-bold transition-all flex items-center gap-1 cursor-pointer hover:text-white"
+              title="Switch to Clean Executive Recruiter Dossier">
+              <span>💼</span>
+              <span class="hidden md:inline">RECRUITER</span>
+            </button>
+          </div>
+
           <!-- Consolidated Retro Audio Capsule (Active in Pokédex Mode) -->
           <div *ngIf="currentMode === 'pokemon'"
-               class="hidden md:flex items-center bg-black/60 border border-white/15 rounded-xl p-0.5 font-mono shadow-inner">
+               class="hidden xl:flex items-center bg-black/60 border border-white/15 rounded-xl p-0.5 font-mono shadow-inner">
             <!-- Theme Music Toggle -->
             <button
               (click)="audio.toggleMusic()"
-              class="px-2.5 py-1 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer"
+              class="px-2 py-1 rounded-lg text-xs font-bold transition-all flex items-center gap-1 cursor-pointer"
               [ngClass]="audio.isMusicPlaying ? 'bg-energy text-black shadow-lg shadow-energy/20' : 'text-white/70 hover:text-white hover:bg-white/10'"
               [title]="audio.isMusicPlaying ? '8-Bit Gym Theme Playing (Click to Pause)' : 'Play Nostalgic 8-Bit Gym Theme'">
               <span class="w-1.5 h-1.5 rounded-full" [ngClass]="audio.isMusicPlaying ? 'bg-black animate-pulse' : 'bg-red-500'"></span>
@@ -106,7 +97,7 @@ export type PortfolioMode = 'pokemon' | 'recruiter';
             <!-- SFX Mute/Unmute -->
             <button
               (click)="audio.toggleSound()"
-              class="px-2 py-1 rounded-lg text-xs transition-all text-white/70 hover:text-white hover:bg-white/10 flex items-center cursor-pointer"
+              class="px-1.5 py-1 rounded-lg text-xs transition-all text-white/70 hover:text-white hover:bg-white/10 flex items-center cursor-pointer"
               [title]="audio.soundEnabled ? '8-Bit Retro SFX Active' : 'Sound Effects Muted'">
               <span>{{ audio.soundEnabled ? '🔊' : '🔇' }}</span>
             </button>
@@ -118,9 +109,10 @@ export type PortfolioMode = 'pokemon' | 'recruiter';
              target="_blank"
              rel="noopener noreferrer"
              (click)="audio.playFanfare()"
-             class="px-3 sm:px-3.5 py-1.5 rounded-xl text-xs font-mono font-bold transition-all flex items-center gap-1.5 flex-shrink-0 shadow-lg cursor-pointer"
+             class="px-2.5 sm:px-3 py-1.5 rounded-xl text-xs font-mono font-bold transition-all flex items-center gap-1 flex-shrink-0 shadow-md cursor-pointer"
              [ngClass]="currentMode === 'pokemon' ? 'bg-energy hover:bg-energy/90 text-black shadow-energy/25' : 'bg-cyan-glow hover:bg-cyan-glow/90 text-black shadow-cyan-glow/20'">
-            <span>RESUME (PDF)</span>
+            <span>RESUME</span>
+            <span class="hidden sm:inline">(PDF)</span>
             <span>↓</span>
           </a>
 
