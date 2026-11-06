@@ -2,7 +2,7 @@ export interface ProfileResponse {
   name: string;
   title: string;
   summary: string;
-  contact: { linkedin: string; github: string; email: string };
+  contact: { linkedin: string; github: string; email: string; website?: string };
   education: EducationEntry[];
   experience: WorkExperience[];
   awards: string[];

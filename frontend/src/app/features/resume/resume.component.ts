@@ -90,7 +90,8 @@ import { PokemonAudioService } from '../../core/services/pokemon-audio.service';
               +91-9982143442 &nbsp;~&nbsp;
               <a href="mailto:harshalraajpatnaik&#64;outlook.com" class="underline text-black">harshalraajpatnaik&#64;outlook.com</a> &nbsp;~&nbsp;
               <a href="https://linkedin.com/in/harshalraajpatnaik/" target="_blank" rel="noopener noreferrer" class="underline text-black">linkedin.com/in/harshalraajpatnaik</a> &nbsp;~&nbsp;
-              <a href="https://github.com/harshalraajpatnaik" target="_blank" rel="noopener noreferrer" class="underline text-black">github.com/harshalraajpatnaik</a>
+              <a href="https://github.com/harshalraajpatnaik" target="_blank" rel="noopener noreferrer" class="underline text-black">github.com/harshalraajpatnaik</a> &nbsp;~&nbsp;
+              <a href="https://harshalraajpatnaik.pages.dev/" target="_blank" rel="noopener noreferrer" class="underline text-black">harshalraajpatnaik.pages.dev</a>
             </div>
           </div>
 

@@ -27,7 +27,8 @@ public class ProfileService {
                 new ContactInfo(
                         "https://linkedin.com/in/harshalraajpatnaik/",
                         "https://github.com/harshalraajpatnaik",
-                        "harshalraajpatnaik@outlook.com"
+                        "harshalraajpatnaik@outlook.com",
+                        "https://harshalraajpatnaik.pages.dev/"
                 ),
                 buildEducation(),
                 buildExperience(),
