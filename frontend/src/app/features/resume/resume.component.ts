@@ -96,11 +96,11 @@ import { PokemonAudioService } from '../../core/services/pokemon-audio.service';
           </div>
 
           <!-- SECTION: EDUCATION -->
-          <div class="mb-3">
-            <div class="font-bold uppercase tracking-wider text-[11px] border-b border-black pb-0.5 mb-1" style="font-variant: small-caps;">
+          <div class="mb-3.5">
+            <div class="font-bold uppercase tracking-wider text-[11px] border-b border-black pb-0.5 mb-1.5" style="font-variant: small-caps;">
               Education
             </div>
-            <div class="mb-1">
+            <div class="mb-1.5">
               <div class="flex justify-between items-baseline font-bold text-[11px]">
                 <span>Indian Institute of Management Kozhikode (IIMK)</span>
                 <span class="text-right">2025 – Present</span>
@@ -123,13 +123,13 @@ import { PokemonAudioService } from '../../core/services/pokemon-audio.service';
           </div>
 
           <!-- SECTION: EXPERIENCE -->
-          <div class="mb-3">
-            <div class="font-bold uppercase tracking-wider text-[11px] border-b border-black pb-0.5 mb-1" style="font-variant: small-caps;">
+          <div class="mb-3.5">
+            <div class="font-bold uppercase tracking-wider text-[11px] border-b border-black pb-0.5 mb-1.5" style="font-variant: small-caps;">
               Professional Experience
             </div>
 
             <!-- NOVAMESH LTD. -->
-            <div class="mb-2">
+            <div class="mb-2.5">
               <div class="flex justify-between items-baseline font-bold text-[11px]">
                 <span>Novamesh Ltd. (Wholly Owned Subsidiary of Tata Communications)</span>
                 <span class="text-right">Apr 2024 – Present</span>
@@ -138,7 +138,7 @@ import { PokemonAudioService } from '../../core/services/pokemon-audio.service';
                 <span>Senior Software Engineer (Cloud Platforms &amp; Distributed Infrastructure)</span>
                 <span class="text-right">Chennai, India</span>
               </div>
-              <ul class="list-disc pl-4 space-y-0.5 text-[10px] leading-relaxed text-slate-900">
+              <ul class="list-disc pl-4 space-y-1 text-[10px] leading-relaxed text-slate-900">
                 <li><strong>Scaled VM Dynamic Autoscaling:</strong> <em>Scaled</em> dynamic VM horizontal and vertical autoscaling policies across <strong>KVM, VMware ESXi, and OLVM</strong> hypervisors based on real-time CPU/memory thresholds, preventing resource starvation during traffic bursts.</li>
                 <li><strong>Built Automated Order-to-Deployment Pipeline:</strong> <em>Built</em> end-to-end zero-touch order fulfillment pipeline converting customer service orders into automated, self-healing cloud deployments; integrated <strong>Flowable BPMN sagas</strong> and <strong>RabbitMQ</strong> to orchestrate VM provisioning, storage provisioning, network routing, and IP assignment with automated rollbacks, slashing customer provisioning lead time by <strong>85% (from 4 hours to under 35 minutes)</strong>.</li>
                 <li><strong>Designed Capacity &amp; Infrastructure Dashboard:</strong> <em>Designed</em> and engineered full-stack multi-tenant Capacity Planning &amp; Inventory Dashboard from design to distributed backend services, managing real-time lifecycle records across <strong>Compute</strong> (KVM, VMware ESXi, OLVM hypervisors), <strong>Storage</strong> (NetApp and HPE storage arrays, Caringo Swarm), and <strong>Network</strong> (public IP pool reports, switch port mappings, VDOM reports, bandwidth utilization telemetry) with interactive graphical heatmaps and trend analytics.</li>
@@ -157,7 +157,7 @@ import { PokemonAudioService } from '../../core/services/pokemon-audio.service';
                 <span>Software Development Engineer (Cloud Infrastructure, Storage &amp; Full-Stack)</span>
                 <span class="text-right">Chennai, India</span>
               </div>
-              <ul class="list-disc pl-4 space-y-0.5 text-[10px] leading-relaxed text-slate-900">
+              <ul class="list-disc pl-4 space-y-1 text-[10px] leading-relaxed text-slate-900">
                 <li><strong>Built Cloud Object Storage &amp; DNS Automation:</strong> <em>Built</em> full-stack onboarding workflow for <strong>Caringo Swarm S3-compatible cloud object storage</strong> and automated cPanel DNS A-record associations using Java and Angular, enabling <strong>100% self-service storage provisioning and automated bucket metering</strong>.</li>
                 <li><strong>Scaled Frontend Modernization:</strong> <em>Scaled</em> legacy AngularJS migration to <strong>Angular 17</strong> with reactive component architectures, state predictability, and modular testability, achieving a <strong>35% improvement in client-side rendering speed</strong>.</li>
                 <li><strong>Automated CI/CD &amp; Multi-Cloud Deployment:</strong> <em>Automated</em> continuous integration, regression testing, and release packaging pipelines with <strong>Jenkins CI/CD</strong>, multi-module Maven builds, and JUnit quality gates, significantly cutting manual verification overhead and deployment friction.</li>
@@ -168,47 +168,47 @@ import { PokemonAudioService } from '../../core/services/pokemon-audio.service';
           </div>
 
           <!-- SECTION: STRATEGY & TECH PROJECTS -->
-          <div class="mb-3">
-            <div class="font-bold uppercase tracking-wider text-[11px] border-b border-black pb-0.5 mb-1" style="font-variant: small-caps;">
+          <div class="mb-3.5">
+            <div class="font-bold uppercase tracking-wider text-[11px] border-b border-black pb-0.5 mb-1.5" style="font-variant: small-caps;">
               Strategy &amp; Technical Projects
             </div>
 
-            <div class="mb-1.5">
+            <div class="mb-2">
               <div class="flex justify-between items-baseline text-[11px]">
                 <span><strong>SthiraX: Distributed CO₂-Mineralization &amp; IoT MRV Platform</strong> | <em>IIM Kozhikode Capstone (BPP)</em></span>
                 <span class="text-[10px] text-slate-600"><a href="https://github.com/harshalraajpatnaik/sthirax-mrv" target="_blank" class="underline text-black font-semibold">GitHub ↗</a></span>
               </div>
-              <ul class="list-disc pl-4 space-y-0.5 text-[10px] leading-relaxed text-slate-900 mt-0.5">
+              <ul class="list-disc pl-4 space-y-1 text-[10px] leading-relaxed text-slate-900 mt-0.5">
                 <li><em>Architected</em> asset-light retrofit platform converting regional concrete plants into certified low-carbon facilities to fulfill India's <strong>April 2026 C&amp;D Waste Rules (mandating 5% to 25% recycled material by 2030 across 20,000+ sqm projects)</strong>; built batch-level <strong>IoT MRV (Measurement, Reporting &amp; Verification) software</strong> generating cryptographically verifiable Digital Product Passports for developer EPR compliance, supported by SaaS and royalty unit economics.</li>
               </ul>
             </div>
 
-            <div class="mb-1.5">
+            <div class="mb-2">
               <div class="flex justify-between items-baseline text-[11px]">
                 <span><strong>MarginOS: Multi-Tenant Cloud FinOps &amp; Unit Economics Platform</strong> | <em>Cloud Economics &amp; FinOps</em></span>
                 <span class="text-[10px] text-slate-600"><a href="https://github.com/harshalraajpatnaik/margin-os" target="_blank" class="underline text-black font-semibold">GitHub ↗</a></span>
               </div>
-              <ul class="list-disc pl-4 space-y-0.5 text-[10px] leading-relaxed text-slate-900 mt-0.5">
+              <ul class="list-disc pl-4 space-y-1 text-[10px] leading-relaxed text-slate-900 mt-0.5">
                 <li><em>Designed</em> distributed FinOps intelligence engine analyzing multi-cloud hypervisor and storage telemetry to calculate real-time gross margins, compute unit economics (cost-per-VM/hour, storage tiers), and surface automated right-sizing recommendations that eliminate up to 28% in infrastructure spend leakages.</li>
               </ul>
             </div>
 
-            <div class="mb-1.5">
+            <div class="mb-2">
               <div class="flex justify-between items-baseline text-[11px]">
                 <span><strong>Workflow Reliability Lab: Distributed Sagas &amp; Chaos Engineering</strong> | <em>Distributed Systems Platform</em></span>
                 <span class="text-[10px] text-slate-600"><a href="https://github.com/harshalraajpatnaik/workflow-reliability-lab" target="_blank" class="underline text-black font-semibold">GitHub ↗</a></span>
               </div>
-              <ul class="list-disc pl-4 space-y-0.5 text-[10px] leading-relaxed text-slate-900 mt-0.5">
+              <ul class="list-disc pl-4 space-y-1 text-[10px] leading-relaxed text-slate-900 mt-0.5">
                 <li><em>Built</em> developer platform for testing distributed workflow reliability; built synthetic fault injection simulators (network partitions, timeout anomalies) and invariant checkers verifying ACID saga compensations (<strong>Java 25, Spring Boot 4, Angular, Docker</strong>).</li>
               </ul>
             </div>
 
-            <div class="mb-1.5">
+            <div class="mb-2">
               <div class="flex justify-between items-baseline text-[11px]">
                 <span><strong>QueryLens AI: Sandboxed Enterprise Text-to-SQL &amp; Semantic RAG</strong> | <em>AI &amp; Data Systems</em></span>
                 <span class="text-[10px] text-slate-600"><a href="https://github.com/harshalraajpatnaik/querylens-ai" target="_blank" class="underline text-black font-semibold">GitHub ↗</a></span>
               </div>
-              <ul class="list-disc pl-4 space-y-0.5 text-[10px] leading-relaxed text-slate-900 mt-0.5">
+              <ul class="list-disc pl-4 space-y-1 text-[10px] leading-relaxed text-slate-900 mt-0.5">
                 <li><em>Architected</em> modular C4 3-tier Text-to-SQL engine (<strong>Angular 17 &rarr; Spring Boot 3 &rarr; FastAPI with pgvector RAG</strong>) with schema semantic search, AST validation, and read-only sandbox roles preventing SQL injection and unauthorized data exfiltration.</li>
               </ul>
             </div>
@@ -218,18 +218,18 @@ import { PokemonAudioService } from '../../core/services/pokemon-audio.service';
                 <span><strong>CloudScale: Predictive Workload Autoscaler &amp; Telemetry Engine</strong> | <em>Autonomous Cloud Infrastructure</em></span>
                 <span class="text-[10px] text-slate-600"><a href="https://github.com/harshalraajpatnaik/cloudscale" target="_blank" class="underline text-black font-semibold">GitHub ↗</a></span>
               </div>
-              <ul class="list-disc pl-4 space-y-0.5 text-[10px] leading-relaxed text-slate-900 mt-0.5">
+              <ul class="list-disc pl-4 space-y-1 text-[10px] leading-relaxed text-slate-900 mt-0.5">
                 <li><em>Developed</em> proactive Kubernetes/VM capacity autoscaling engine integrating Prometheus, Grafana, and time-series ML forecasting models predicting compute resource spikes 15 minutes in advance, mitigating cold-start latencies and reducing over-provisioned idle capacity.</li>
               </ul>
             </div>
           </div>
 
           <!-- SECTION: TECHNICAL SKILLS -->
-          <div class="mb-3">
-            <div class="font-bold uppercase tracking-wider text-[11px] border-b border-black pb-0.5 mb-1" style="font-variant: small-caps;">
+          <div class="mb-3.5">
+            <div class="font-bold uppercase tracking-wider text-[11px] border-b border-black pb-0.5 mb-1.5" style="font-variant: small-caps;">
               Technical &amp; Leadership Competencies
             </div>
-            <div class="text-[10px] space-y-0.5 text-slate-900 leading-normal">
+            <div class="text-[10px] space-y-1 text-slate-900 leading-normal">
               <div><strong>Languages &amp; Core:</strong> Java (8/11/17/25 LTS), Python (NumPy, Pandas, Scikit-learn, Matplotlib), TypeScript, JavaScript, SQL, HTML5/CSS3, Bash, Spring Boot 3/4, FastAPI, Angular 17/18, RxJS</div>
               <div><strong>Distributed Systems &amp; Cloud:</strong> Google Cloud Platform (GCP / Compute Engine), Microservices, Flowable BPMN, RabbitMQ (AMQP), Event-Driven Architecture, High Availability (HA), Fault Tolerance, KVM, VMware ESXi, OLVM, Docker, Kubernetes</div>
               <div><strong>Databases, Caching &amp; Storage:</strong> Apache Cassandra (NoSQL), Redis (In-Memory Cache), PostgreSQL (pgvector), MySQL, Caringo Swarm (S3 Object Storage), NetApp &amp; HPE Storage Arrays, Hibernate/JPA, HikariCP Tuning</div>
@@ -241,10 +241,10 @@ import { PokemonAudioService } from '../../core/services/pokemon-audio.service';
 
           <!-- SECTION: HONORS & LEADERSHIP -->
           <div>
-            <div class="font-bold uppercase tracking-wider text-[11px] border-b border-black pb-0.5 mb-1" style="font-variant: small-caps;">
+            <div class="font-bold uppercase tracking-wider text-[11px] border-b border-black pb-0.5 mb-1.5" style="font-variant: small-caps;">
               Leadership, Certifications &amp; Honors
             </div>
-            <ul class="list-disc pl-4 space-y-0.5 text-[10px] leading-relaxed text-slate-900">
+            <ul class="list-disc pl-4 space-y-1 text-[10px] leading-relaxed text-slate-900">
               <li><strong>Tech × MBA Strategic Product Leadership:</strong> Bridge the critical organizational gap between platform economics and deep systems engineering; partner with executive product leaders and enterprise clients to translate business roadmaps and unit-cost targets into resilient distributed microservices, author technical RFCs, and govern SLA/SLO availability baselines.</li>
               <li><strong>Agile Engineering Delivery &amp; Mentorship:</strong> Stepped up as <strong>Acting Scrum Master</strong> across engineering pods; orchestrated sprint ceremonies, backlog prioritization, and release velocity in <strong>Jira</strong> (100% on-time milestone delivery), while providing architectural reviews and technical mentorship for junior engineers.</li>
               <li><strong>3× Extra Mile Commitment Award</strong> – Tata Communications Ltd. for critical cloud platform delivery, stability, and zero-defect deployments.</li>
