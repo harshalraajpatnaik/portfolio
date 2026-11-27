@@ -16,22 +16,22 @@ export type PortfolioMode = 'pokemon' | 'recruiter';
 
         <!-- BRAND LOGO: Click to return to Home Screen (Experience Selector) -->
         <a (click)="onNameClick($event)"
-           class="flex items-center gap-2 sm:gap-2.5 flex-shrink-0 group cursor-pointer"
+           class="flex items-center gap-2 sm:gap-2.5 min-w-0 flex-shrink group cursor-pointer"
            title="Click to return to Home Screen (Interface Selector)">
           <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white border-2 flex items-center justify-center p-1 group-hover:scale-105 transition-transform flex-shrink-0 overflow-hidden"
                [ngClass]="currentMode === 'pokemon' ? 'border-crimson shadow-[0_0_12px_rgba(220,10,45,0.8)]' : 'border-cyan-glow shadow-[0_0_12px_rgba(0,229,255,0.8)]'">
             <img src="assets/hp-logo.png" alt="Harshal Patnaik (HP)" class="w-full h-full object-contain">
           </div>
-          <div class="flex flex-col justify-center flex-shrink-0">
-            <div class="font-black text-xs sm:text-sm text-white tracking-wider font-mono whitespace-nowrap transition-colors"
+          <div class="flex flex-col justify-center min-w-0">
+            <div class="font-black text-[11px] sm:text-sm text-white tracking-wider font-mono truncate transition-colors"
                  [ngClass]="currentMode === 'pokemon' ? 'group-hover:text-energy' : 'group-hover:text-cyan-glow'">
               HARSHAL RAAJ PATNAIK
             </div>
-            <div class="text-[9px] sm:text-[10px] font-mono text-white/50 tracking-wider whitespace-nowrap flex items-center gap-1 sm:gap-1.5">
+            <div class="text-[8px] sm:text-[10px] font-mono text-white/50 tracking-wider whitespace-nowrap flex items-center gap-1 sm:gap-1.5">
               <span>CLOUD SDE</span>
               <span class="text-energy">•</span>
-              <span class="hidden xs:inline">TATA COMM</span>
-              <span class="text-energy hidden xs:inline">•</span>
+              <span class="hidden sm:inline">TATA COMM</span>
+              <span class="text-energy hidden sm:inline">•</span>
               <span>IIM KOZHIKODE</span>
             </div>
           </div>
@@ -81,23 +81,23 @@ export type PortfolioMode = 'pokemon' | 'recruiter';
             </button>
           </div>
 
-          <!-- Consolidated Retro Audio Capsule (Active in Pokédex Mode) -->
+          <!-- Consolidated Retro Audio Capsule (Active in Pokédex Mode across Mobile, Tablet & Desktop) -->
           <div *ngIf="currentMode === 'pokemon'"
-               class="hidden xl:flex items-center bg-black/60 border border-white/15 rounded-xl p-0.5 font-mono shadow-inner">
+               class="flex items-center bg-black/60 border border-white/15 rounded-xl p-0.5 font-mono shadow-inner flex-shrink-0">
             <!-- Theme Music Toggle -->
             <button
               (click)="audio.toggleMusic()"
-              class="px-2 py-1 rounded-lg text-xs font-bold transition-all flex items-center gap-1 cursor-pointer"
+              class="px-1.5 sm:px-2 py-1 rounded-lg text-[10px] sm:text-xs font-bold transition-all flex items-center gap-1 cursor-pointer"
               [ngClass]="audio.isMusicPlaying ? 'bg-energy text-black shadow-lg shadow-energy/20' : 'text-white/70 hover:text-white hover:bg-white/10'"
               [title]="audio.isMusicPlaying ? '8-Bit Gym Theme Playing (Click to Pause)' : 'Play Nostalgic 8-Bit Gym Theme'">
-              <span class="w-1.5 h-1.5 rounded-full" [ngClass]="audio.isMusicPlaying ? 'bg-black animate-pulse' : 'bg-red-500'"></span>
+              <span class="w-1.5 h-1.5 rounded-full flex-shrink-0" [ngClass]="audio.isMusicPlaying ? 'bg-black animate-pulse' : 'bg-red-500'"></span>
               <span>THEME</span>
             </button>
 
             <!-- SFX Mute/Unmute -->
             <button
               (click)="audio.toggleSound()"
-              class="px-1.5 py-1 rounded-lg text-xs transition-all text-white/70 hover:text-white hover:bg-white/10 flex items-center cursor-pointer"
+              class="hidden sm:flex px-1.5 py-1 rounded-lg text-xs transition-all text-white/70 hover:text-white hover:bg-white/10 items-center cursor-pointer"
               [title]="audio.soundEnabled ? '8-Bit Retro SFX Active' : 'Sound Effects Muted'">
               <span>{{ audio.soundEnabled ? '🔊' : '🔇' }}</span>
             </button>
