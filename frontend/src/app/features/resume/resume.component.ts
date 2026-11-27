@@ -129,7 +129,7 @@ import { PokemonAudioService } from '../../core/services/pokemon-audio.service';
             </div>
 
             <!-- NOVAMESH LTD. -->
-            <div class="mb-2.5">
+            <div class="mb-3.5">
               <div class="flex justify-between items-baseline font-bold text-[11px]">
                 <span>Novamesh Ltd. (Wholly Owned Subsidiary of Tata Communications)</span>
                 <span class="text-right">Apr 2024 – Present</span>
@@ -229,7 +229,7 @@ import { PokemonAudioService } from '../../core/services/pokemon-audio.service';
             <div class="font-bold uppercase tracking-wider text-[11px] border-b border-black pb-0.5 mb-1.5" style="font-variant: small-caps;">
               Technical &amp; Leadership Competencies
             </div>
-            <div class="text-[10px] space-y-1 text-slate-900 leading-normal">
+            <div class="text-[10px] space-y-1.5 text-slate-900 leading-normal">
               <div><strong>Languages, AI &amp; Core:</strong> Java (8/11/17/25 LTS), Python (NumPy, Pandas, Scikit-learn), TypeScript, JavaScript, SQL, Bash, Spring Boot 3/4, FastAPI, Angular 17/18, RxJS, Generative AI, Large Language Models (LLM), RAG</div>
               <div><strong>Architecture &amp; Cloud:</strong> API Design &amp; Distributed Microservices, Fault-Tolerant Systems, Flowable BPMN, RabbitMQ (AMQP), Event-Driven Architecture, KVM, VMware ESXi, OLVM, Cluster Management, Docker, Kubernetes</div>
               <div><strong>Databases, Storage &amp; Analytics:</strong> Apache Cassandra, Redis (In-Memory), PostgreSQL (pgvector), MySQL, Caringo Swarm (S3 Object Storage), File Systems, NetApp &amp; HPE Storage, Data Analytics, Hibernate/JPA, HikariCP</div>
