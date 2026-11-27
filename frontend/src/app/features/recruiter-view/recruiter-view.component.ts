@@ -32,23 +32,23 @@ import { ResumeComponent } from '../resume/resume.component';
           <div class="flex flex-wrap items-center gap-2.5">
             <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-cyan-glow/30 bg-cyan-glow/10 text-cyan-glow text-xs font-mono font-bold tracking-wide">
               <span class="w-2 h-2 rounded-full bg-cyan-glow animate-pulse"></span>
-              <span>SENIOR SOFTWARE ENGINEER · NOVAMESH / TATA COMMUNICATIONS</span>
+              <span>SENIOR SOFTWARE ENGINEER &amp; TECH LEAD · NOVAMESH / TATA COMM</span>
             </div>
             <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-400 text-xs font-mono font-bold tracking-wide">
               <span>🎓 IIM KOZHIKODE EPGP SCHOLAR</span>
             </div>
             <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-white/15 bg-white/5 text-white/70 text-xs font-mono">
-              <span>TECH × MBA PLATFORM ARCHITECT</span>
+              <span>TECH × BUSINESS · PEOPLE &amp; PLATFORM LEADERSHIP</span>
             </div>
           </div>
 
           <!-- Headline & Core Title -->
           <div class="space-y-4 max-w-4xl">
             <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white leading-[1.1]">
-              Architecting <span class="bg-gradient-to-r from-cyan-glow via-teal-300 to-emerald-400 bg-clip-text text-transparent">Resilient Cloud Systems</span> with Executive Business Impact.
+              Architecting <span class="bg-gradient-to-r from-cyan-glow via-teal-300 to-emerald-400 bg-clip-text text-transparent">Resilient Cloud Systems</span> with Tech × Business Leadership.
             </h1>
             <p class="text-base sm:text-lg text-white/80 leading-relaxed max-w-3xl font-normal">
-              Senior Software Engineer with <strong>5+ years of specialized enterprise engineering</strong> across multi-hypervisor cloud infrastructure, high-throughput asynchronous batch processing, and S3 object storage at Tata Communications. Executive MBA candidate at <strong>IIM Kozhikode</strong> uniting distributed systems architecture with unit economics, product roadmaps, and enterprise ROI.
+              Senior Software Engineer &amp; Squad Lead with <strong>5+ years of enterprise engineering</strong> across fault-tolerant distributed systems, multi-hypervisor cloud IaaS, Generative AI / LLM RAG workflows, and S3-compatible object storage. Executive MBA scholar at <strong>IIM Kozhikode</strong> uniting people management, cross-team alignment, and 0-to-1 product strategy with SLO/SLI reliability and SaaS unit economics.
             </p>
           </div>
 
@@ -419,12 +419,12 @@ import { ResumeComponent } from '../resume/resume.component';
 
           </div>
 
-          <!-- Why Tech × MBA Matters for Enterprise Teams Callout -->
+          <!-- Why Tech × Business & People Leadership Matters Callout -->
           <div class="p-6 rounded-2xl bg-gradient-to-r from-emerald-950/40 via-[#0a121d] to-[#0c182b] border border-emerald-500/30 font-sans space-y-2">
-            <div class="text-xs font-mono text-emerald-400 font-bold uppercase tracking-wider">THE RECRUITER VALUE MULTIPLIER</div>
-            <h4 class="text-lg font-bold text-white">Bridging Deep Tech with Enterprise Platform ROI</h4>
+            <div class="text-xs font-mono text-emerald-400 font-bold uppercase tracking-wider">TECH × BUSINESS &amp; LEADERSHIP MULTIPLIER</div>
+            <h4 class="text-lg font-bold text-white">Uniting People Leadership, Product Strategy &amp; Systems Architecture</h4>
             <p class="text-xs sm:text-sm text-white/80 leading-relaxed">
-              Most software organizations struggle with the divide between executive product strategy and deep infrastructure reality. By mastering both distributed systems engineering and executive business management, I translate business platform roadmaps into resilient microservices, author SLA/SLO contracts, and design cloud architectures that maximize gross margins and eliminate waste.
+              Most organizations struggle with the divide between executive product roadmaps and deep infrastructure reality. Leading a 5-engineer squad as Acting Scrum Master while pursuing an Executive MBA at IIM Kozhikode, I align strategy, processes, and decision-making across teams, vet scalable microservice designs via technical RFCs, govern SLO/SLI reliability frameworks, and deliver 0-to-1 SaaS and platform solutions that maximize gross margins.
             </p>
           </div>
         </section>
@@ -436,19 +436,19 @@ import { ResumeComponent } from '../resume/resume.component';
           <div class="space-y-2 border-b border-white/10 pb-4">
             <div class="text-xs font-mono text-cyan-glow font-bold uppercase tracking-wider">SKILLS &amp; CAPABILITIES</div>
             <h2 class="text-2xl sm:text-4xl font-extrabold text-white">
-              Technical &amp; Leadership Competencies
+              Technical, Leadership &amp; Business Competencies
             </h2>
             <p class="text-sm text-white/70">
-              Verified domain depth across backend systems, cloud platforms, databases, and executive strategy.
+              Verified depth across distributed systems, Generative AI/LLM workflows, networking, and executive product leadership.
             </p>
           </div>
 
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             
             <div class="p-5 rounded-2xl bg-[#0c1220] border border-white/10 space-y-3">
-              <div class="text-xs font-mono text-cyan-glow font-bold">LANGUAGES &amp; CORE</div>
+              <div class="text-xs font-mono text-cyan-glow font-bold">LANGUAGES, AI &amp; CORE</div>
               <div class="flex flex-wrap gap-1.5">
-                <span *ngFor="let s of ['Java 8/11/17/25 LTS', 'Python', 'TypeScript', 'JavaScript', 'SQL', 'HTML5/CSS3', 'Bash', 'Spring Boot 3/4', 'FastAPI', 'Angular 17/18', 'RxJS']"
+                <span *ngFor="let s of ['Java 8/11/17/25 LTS', 'Python', 'TypeScript', 'JavaScript', 'SQL', 'Spring Boot 3/4', 'FastAPI', 'Angular 17/18', 'Generative AI', 'Large Language Models (LLM)', 'pgvector RAG']"
                       class="px-2 py-1 rounded text-xs font-mono bg-white/5 border border-white/10 text-white/80">
                   {{ s }}
                 </span>
@@ -456,9 +456,9 @@ import { ResumeComponent } from '../resume/resume.component';
             </div>
 
             <div class="p-5 rounded-2xl bg-[#0c1220] border border-white/10 space-y-3">
-              <div class="text-xs font-mono text-emerald-400 font-bold">DISTRIBUTED SYSTEMS &amp; CLOUD</div>
+              <div class="text-xs font-mono text-emerald-400 font-bold">ARCHITECTURE &amp; CLOUD</div>
               <div class="flex flex-wrap gap-1.5">
-                <span *ngFor="let s of ['Microservices', 'Flowable BPMN', 'RabbitMQ (AMQP)', 'Event-Driven Architecture', 'KVM', 'VMware ESXi', 'OLVM', 'Docker', 'Kubernetes', 'High Availability']"
+                <span *ngFor="let s of ['API Design & Distributed Microservices', 'Fault-Tolerant Systems', 'Flowable BPMN', 'RabbitMQ (AMQP)', 'KVM / ESXi / OLVM', 'Cluster Management', 'Docker', 'Kubernetes', 'GCP']"
                       class="px-2 py-1 rounded text-xs font-mono bg-white/5 border border-white/10 text-white/80">
                   {{ s }}
                 </span>
@@ -466,9 +466,9 @@ import { ResumeComponent } from '../resume/resume.component';
             </div>
 
             <div class="p-5 rounded-2xl bg-[#0c1220] border border-white/10 space-y-3">
-              <div class="text-xs font-mono text-teal-400 font-bold">DATABASES &amp; STORAGE</div>
+              <div class="text-xs font-mono text-teal-400 font-bold">DATABASES, STORAGE &amp; ANALYTICS</div>
               <div class="flex flex-wrap gap-1.5">
-                <span *ngFor="let s of ['Apache Cassandra', 'Redis (In-Memory)', 'PostgreSQL (pgvector)', 'MySQL', 'Caringo Swarm S3', 'Hibernate/JPA', 'HikariCP Tuning']"
+                <span *ngFor="let s of ['Apache Cassandra', 'Redis (In-Memory)', 'PostgreSQL (pgvector)', 'MySQL', 'Caringo Swarm S3', 'File Systems', 'Data Analytics', 'NetApp & HPE Storage', 'HikariCP']"
                       class="px-2 py-1 rounded text-xs font-mono bg-white/5 border border-white/10 text-white/80">
                   {{ s }}
                 </span>
@@ -478,7 +478,7 @@ import { ResumeComponent } from '../resume/resume.component';
             <div class="p-5 rounded-2xl bg-[#0c1220] border border-white/10 space-y-3">
               <div class="text-xs font-mono text-purple-400 font-bold">NETWORKING &amp; SECURITY</div>
               <div class="flex flex-wrap gap-1.5">
-                <span *ngFor="let s of ['Fortinet FortiGate Firewalls', 'VDOMs', 'Kong API Gateway', 'IPsec VPN', 'DNS Automation', 'Token Bucket Rate Limiting', 'Reverse Proxies', 'HAProxy', 'F5 BIG-IP']"
+                <span *ngFor="let s of ['TCP/IP', 'DNS', 'IPsec VPN', 'QoS', 'Reverse Proxies', 'Fortinet FortiGate', 'Kong Gateway', 'HAProxy / F5 / Avi']"
                       class="px-2 py-1 rounded text-xs font-mono bg-white/5 border border-white/10 text-white/80">
                   {{ s }}
                 </span>
@@ -486,9 +486,9 @@ import { ResumeComponent } from '../resume/resume.component';
             </div>
 
             <div class="p-5 rounded-2xl bg-[#0c1220] border border-white/10 space-y-3">
-              <div class="text-xs font-mono text-yellow-400 font-bold">DEVOPS &amp; OBSERVABILITY</div>
+              <div class="text-xs font-mono text-yellow-400 font-bold">SRE, APIS &amp; OBSERVABILITY</div>
               <div class="flex flex-wrap gap-1.5">
-                <span *ngFor="let s of ['Jenkins CI/CD', 'Prometheus', 'Grafana', 'OpenTelemetry', 'Distributed Tracing', 'Zabbix APIs', 'Nimsoft', 'JUnit 5', 'Mockito', 'SonarQube', 'Linux/Unix']"
+                <span *ngFor="let s of ['REST & OpenAPI', 'SLO / SLI Frameworks', 'Prometheus', 'Grafana', 'OpenTelemetry', 'Jenkins CI/CD', 'Cloud Deployment', 'Troubleshooting', 'Performance Optimization', 'JUnit 5']"
                       class="px-2 py-1 rounded text-xs font-mono bg-white/5 border border-white/10 text-white/80">
                   {{ s }}
                 </span>
@@ -496,9 +496,9 @@ import { ResumeComponent } from '../resume/resume.component';
             </div>
 
             <div class="p-5 rounded-2xl bg-[#0c1220] border border-white/10 space-y-3">
-              <div class="text-xs font-mono text-emerald-400 font-bold">PRODUCT STRATEGY &amp; MBA</div>
+              <div class="text-xs font-mono text-emerald-400 font-bold">TECH × BUSINESS &amp; LEADERSHIP</div>
               <div class="flex flex-wrap gap-1.5">
-                <span *ngFor="let s of ['Product Management', 'Financial Accounting', 'Operations Management', 'Strategy Management', 'Risk Analysis', 'Product Analytics', 'Negotiation', 'FinOps', 'Unit Economics']"
+                <span *ngFor="let s of ['People & Team Leadership', 'Stakeholder Management & Risk Mitigation', 'System Design Vetting (RFCs)', '0-to-1 Ideation to Execution', 'Product Management Lifecycle', 'Product Backlogs', 'SaaS & Enterprise Solutions', 'FinOps']"
                       class="px-2 py-1 rounded text-xs font-mono bg-white/5 border border-white/10 text-white/80">
                   {{ s }}
                 </span>
@@ -547,7 +547,7 @@ import { ResumeComponent } from '../resume/resume.component';
                   name="name"
                   [(ngModel)]="formData.name"
                   required
-                  placeholder="e.g. Google Engineering Talent Acquisition"
+                  placeholder="e.g. Engineering Talent Acquisition"
                   class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-white/30 text-sm focus:border-cyan-glow focus:outline-none transition-colors">
               </div>
 
@@ -559,7 +559,7 @@ import { ResumeComponent } from '../resume/resume.component';
                   name="email"
                   [(ngModel)]="formData.email"
                   required
-                  placeholder="e.g. recruiter@google.com"
+                  placeholder="e.g. recruiter@company.com"
                   class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-white/30 text-sm focus:border-cyan-glow focus:outline-none transition-colors">
               </div>
 
@@ -572,7 +572,7 @@ import { ResumeComponent } from '../resume/resume.component';
                   [(ngModel)]="formData.message"
                   required
                   minlength="10"
-                  placeholder="Discussing Senior Software Engineer / Distributed Systems opportunities at Google..."
+                  placeholder="Discussing Senior Software Engineer / Platform Architect / Product Leadership opportunities..."
                   class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-white/30 text-sm focus:border-cyan-glow focus:outline-none transition-colors"></textarea>
               </div>
 

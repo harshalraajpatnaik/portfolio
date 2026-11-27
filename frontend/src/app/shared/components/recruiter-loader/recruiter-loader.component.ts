@@ -73,7 +73,7 @@ export class RecruiterLoaderComponent implements OnInit {
     'Connecting to distributed cloud telemetry...',
     'Loading multi-hypervisor provisioning specs...',
     'Synthesizing Tata Communications & Novamesh track record...',
-    'Formatting Google XYZ impact metrics...',
+    'Formatting executive XYZ impact metrics...',
     'Compiling 1-Page ATS vector documentation...',
     'Executive dossier ready.'
   ];

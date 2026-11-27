@@ -61,7 +61,7 @@ import { PokemonAudioService } from '../../core/services/pokemon-audio.service';
         <!-- Raw LaTeX Source Code Block (Collapsible) -->
         <div *ngIf="showLatexSource" class="mb-10 glass-card p-6 rounded-2xl border border-white/20 font-mono text-xs bg-black/90">
           <div class="flex items-center justify-between pb-3 mb-3 border-b border-white/10 text-white/50">
-            <span>Harshal_Raaj_Patnaik_Resume.tex (Google-Standard ATS LaTeX Format)</span>
+            <span>Harshal_Raaj_Patnaik_Resume.tex (Executive ATS LaTeX Format)</span>
             <span class="text-energy">LaTeX 2e</span>
           </div>
           <pre class="overflow-x-auto text-white/80 p-4 rounded-xl bg-black/60 max-h-[400px] leading-relaxed"><code>{{ latexSourceCode }}</code></pre>
@@ -84,7 +84,7 @@ import { PokemonAudioService } from '../../core/services/pokemon-audio.service';
               HARSHAL RAAJ PATNAIK
             </h1>
             <div class="text-[10.5px] font-bold text-slate-800 mb-1">
-              Senior Software Engineer &amp; Platform Architect | Cloud Infrastructure, Distributed Systems &amp; Product Strategy (Tech × MBA)
+              Senior Lead Software Engineer &amp; Cloud Architect | Technical Product Strategy &amp; Engineering Leadership (Tech × MBA)
             </div>
             <div class="text-[10px] text-slate-700 leading-normal">
               +91-9982143442 &nbsp;~&nbsp;
@@ -129,7 +129,7 @@ import { PokemonAudioService } from '../../core/services/pokemon-audio.service';
             </div>
 
             <!-- NOVAMESH LTD. -->
-            <div class="mb-2.5">
+            <div class="mb-3.5">
               <div class="flex justify-between items-baseline font-bold text-[11px]">
                 <span>Novamesh Ltd. (Wholly Owned Subsidiary of Tata Communications)</span>
                 <span class="text-right">Apr 2024 – Present</span>
@@ -139,11 +139,11 @@ import { PokemonAudioService } from '../../core/services/pokemon-audio.service';
                 <span class="text-right">Chennai, India</span>
               </div>
               <ul class="list-disc pl-4 space-y-1 text-[10px] leading-relaxed text-slate-900">
-                <li><strong>Scaled VM Dynamic Autoscaling:</strong> <em>Scaled</em> dynamic VM horizontal and vertical autoscaling policies across <strong>KVM, VMware ESXi, and OLVM</strong> hypervisors based on real-time CPU/memory thresholds, preventing resource starvation during traffic bursts.</li>
-                <li><strong>Built Automated Order-to-Deployment Pipeline:</strong> <em>Built</em> end-to-end zero-touch order fulfillment pipeline converting customer service orders into automated, self-healing cloud deployments; integrated <strong>Flowable BPMN sagas</strong> and <strong>RabbitMQ</strong> to orchestrate VM provisioning, storage provisioning, network routing, and IP assignment with automated rollbacks, slashing customer provisioning lead time by <strong>85% (from 4 hours to under 35 minutes)</strong>.</li>
-                <li><strong>Designed Capacity &amp; Infrastructure Dashboard:</strong> <em>Designed</em> and engineered full-stack multi-tenant Capacity Planning &amp; Inventory Dashboard from design to distributed backend services, managing real-time lifecycle records across <strong>Compute</strong> (KVM, VMware ESXi, OLVM hypervisors), <strong>Storage</strong> (NetApp and HPE storage arrays, Caringo Swarm), and <strong>Network</strong> (public IP pool reports, switch port mappings, VDOM reports, bandwidth utilization telemetry) with interactive graphical heatmaps and trend analytics.</li>
-                <li><strong>Engineered High-Throughput Batch Processing:</strong> <em>Engineered</em> batch processing optimizations slashing cloud scheduler execution latency by <strong>92.6% (from ~18 minutes down to 80 seconds)</strong> across distributed Cassandra clusters using strict 50-item chunking, multi-level Redis caching, and HikariCP connection pool tuning.</li>
-                <li><strong>Led Kong API Gateway &amp; Fortinet Firewall Automation:</strong> <em>Led</em> enterprise edge routing and security automation across <strong>Kong API Gateway</strong> and <strong>Fortinet FortiGate Firewalls</strong>; engineered dynamic route discovery, wildcard forwarding, and IPsec VPNs via REST APIs while implementing an in-process sliding-window rate limiter that <strong>eliminated 100% of HTTP 429 throttling errors</strong>.</li>
+                <li><strong>Scaled VM Dynamic Autoscaling &amp; Reliability:</strong> <em>Scaled</em> fault-tolerant horizontal and vertical VM autoscaling policies across <strong>KVM, VMware ESXi, and OLVM</strong> clusters using real-time CPU and memory thresholds, sustaining <strong>99.95% workload SLA</strong> with zero out-of-memory downtime during traffic bursts.</li>
+                <li><strong>Built Automated Order-to-Deployment Pipeline:</strong> <em>Architected</em> an end-to-end, zero-touch order fulfillment pipeline converting customer service requests into self-healing cloud deployments; orchestrated <strong>Flowable BPMN sagas</strong> and <strong>RabbitMQ</strong> across compute, storage, and IP routing to slash provisioning lead time by <strong>85% (from 4 hours to under 35 minutes)</strong>.</li>
+                <li><strong>Designed Capacity &amp; Infrastructure Telemetry Platform:</strong> <em>Designed</em> and delivered a multi-tenant Capacity Planning &amp; Inventory platform unifying real-time lifecycle telemetry across compute clusters (<strong>KVM, ESXi, OLVM</strong>), enterprise storage &amp; file systems (<strong>NetApp, HPE, Caringo Swarm</strong>), databases, and network pools with interactive utilization analytics.</li>
+                <li><strong>Engineered High-Throughput Batch Processing:</strong> <em>Engineered</em> distributed batch-processing optimizations across <strong>Apache Cassandra</strong> clusters using 50-item chunking, multi-level <strong>Redis</strong> caching, and <strong>HikariCP</strong> pool tuning, cutting cloud scheduler execution latency by <strong>92.6% (from ~18 minutes to 80 seconds)</strong>.</li>
+                <li><strong>Led Edge Security, API Design &amp; Team Supervision:</strong> <em>Led</em> edge routing and <strong>Fortinet FortiGate</strong> firewall/IPsec VPN automation across <strong>Kong API Gateway</strong> (rate limiter <strong>eliminating 100% of HTTP 429 errors</strong>); served as <strong>Acting Scrum Master &amp; Squad Lead (5 engineers)</strong>, vetting distributed microservice designs via <strong>PRDs &amp; technical RFCs</strong>, prioritizing <strong>product backlogs</strong>, and enforcing <strong>SLO/SLI</strong> reliability standards.</li>
               </ul>
             </div>
 
@@ -158,11 +158,11 @@ import { PokemonAudioService } from '../../core/services/pokemon-audio.service';
                 <span class="text-right">Chennai, India</span>
               </div>
               <ul class="list-disc pl-4 space-y-1 text-[10px] leading-relaxed text-slate-900">
-                <li><strong>Built Cloud Object Storage &amp; DNS Automation:</strong> <em>Built</em> full-stack onboarding workflow for <strong>Caringo Swarm S3-compatible cloud object storage</strong> and automated cPanel DNS A-record associations using Java and Angular, enabling <strong>100% self-service storage provisioning and automated bucket metering</strong>.</li>
-                <li><strong>Scaled Frontend Modernization:</strong> <em>Scaled</em> legacy AngularJS migration to <strong>Angular 17</strong> with reactive component architectures, state predictability, and modular testability, achieving a <strong>35% improvement in client-side rendering speed</strong>.</li>
-                <li><strong>Automated CI/CD &amp; Multi-Cloud Deployment:</strong> <em>Automated</em> continuous integration, regression testing, and release packaging pipelines with <strong>Jenkins CI/CD</strong>, multi-module Maven builds, and JUnit quality gates, significantly cutting manual verification overhead and deployment friction.</li>
-                <li><strong>Analyzed Network Telemetry &amp; Monitoring:</strong> <em>Analyzed</em> and engineered switch-port utilization and network capacity telemetry engine integrating Zabbix and Nimsoft APIs, computing cluster-wide compute and datastore allocation to prevent capacity exhaustion; earned <strong>3× Extra Mile Commitment Awards</strong>.</li>
-                <li><strong>Architected Multi-Vendor Load Balancer Orchestration:</strong> <em>Architected</em> enterprise load balancer provisioning and health probe monitoring across <strong>HAProxy, F5 BIG-IP, and VMware Avi</strong> with automated VIP provisioning, traffic steering, and tenant-scoped SSL/TLS offloading.</li>
+                <li><strong>Built Cloud Object Storage &amp; DNS Automation:</strong> <em>Built</em> a full-stack self-service onboarding platform for <strong>Caringo Swarm S3-compatible object storage</strong> with automated DNS A-record provisioning in Java and Angular, enabling <strong>100% self-service bucket lifecycle management and automated metering</strong>.</li>
+                <li><strong>Scaled Frontend Modernization:</strong> <em>Spearheaded</em> the migration from legacy AngularJS to <strong>Angular 17</strong> using reactive component architectures and modular state management, improving <strong>client-side rendering speed by 35%</strong>.</li>
+                <li><strong>Automated CI/CD, Release Governance &amp; Observability:</strong> <em>Automated</em> CI/CD build, regression, and cloud deployment pipelines using <strong>Jenkins</strong>, multi-module Maven, and JUnit quality gates, <strong>cutting release verification cycle time by ~60%</strong> while improving production troubleshooting and observability.</li>
+                <li><strong>Analyzed Network Capacity &amp; Telemetry:</strong> <em>Built</em> a switch-port utilization and cluster capacity telemetry engine integrating <strong>Zabbix</strong> and <strong>Nimsoft</strong> APIs, preventing unplanned compute/datastore exhaustion across production clusters; awarded <strong>3× Extra Mile Commitment Awards</strong>.</li>
+                <li><strong>Architected Multi-Vendor Load Balancer Orchestration:</strong> <em>Automated</em> enterprise load balancer provisioning, traffic steering, and SSL/TLS offloading across <strong>HAProxy, F5 BIG-IP, and VMware Avi</strong>, <strong>reducing VIP provisioning time by ~70%</strong>.</li>
               </ul>
             </div>
           </div>
@@ -179,7 +179,7 @@ import { PokemonAudioService } from '../../core/services/pokemon-audio.service';
                 <span class="text-[10px] text-slate-600"><a href="https://github.com/harshalraajpatnaik/SthiraX" target="_blank" class="underline text-black font-semibold">GitHub ↗</a></span>
               </div>
               <ul class="list-disc pl-4 space-y-1 text-[10px] leading-relaxed text-slate-900 mt-0.5">
-                <li><em>Architected</em> asset-light retrofit platform converting regional concrete plants into certified low-carbon facilities to fulfill India's <strong>April 2026 C&amp;D Waste Rules (mandating 5% to 25% recycled material by 2030 across 20,000+ sqm projects)</strong>; built batch-level <strong>IoT MRV (Measurement, Reporting &amp; Verification) software</strong> generating cryptographically verifiable Digital Product Passports for developer EPR compliance, supported by SaaS and royalty unit economics.</li>
+                <li><em>Led</em> 0-to-1 ideation-to-execution of a <strong>SaaS &amp; Enterprise platform</strong> helping concrete plants meet India's <strong>April 2026 C&amp;D Waste Rules (5%–25% recycled mandate by 2030)</strong>; owned end-to-end <strong>product strategy, roadmap, and IoT MRV software</strong> generating verifiable Digital Product Passports.</li>
               </ul>
             </div>
 
@@ -189,7 +189,7 @@ import { PokemonAudioService } from '../../core/services/pokemon-audio.service';
                 <span class="text-[10px] text-slate-600"><a href="https://github.com/harshalraajpatnaik/marginos" target="_blank" class="underline text-black font-semibold">GitHub ↗</a></span>
               </div>
               <ul class="list-disc pl-4 space-y-1 text-[10px] leading-relaxed text-slate-900 mt-0.5">
-                <li><em>Designed</em> distributed FinOps intelligence engine analyzing multi-cloud hypervisor and storage telemetry to calculate real-time gross margins, compute unit economics (cost-per-VM/hour, storage tiers), and surface automated right-sizing recommendations that eliminate up to 28% in infrastructure spend leakages.</li>
+                <li><em>Designed</em> a distributed FinOps intelligence engine analyzing multi-cloud hypervisor and storage telemetry to compute real-time gross margins and unit economics, surfacing automated right-sizing actions that eliminate up to <strong>28% in cloud spend leakages</strong>.</li>
               </ul>
             </div>
 
@@ -199,17 +199,17 @@ import { PokemonAudioService } from '../../core/services/pokemon-audio.service';
                 <span class="text-[10px] text-slate-600"><a href="https://github.com/harshalraajpatnaik/Workflow-Reliability-Lab" target="_blank" class="underline text-black font-semibold">GitHub ↗</a></span>
               </div>
               <ul class="list-disc pl-4 space-y-1 text-[10px] leading-relaxed text-slate-900 mt-0.5">
-                <li><em>Built</em> developer platform for testing distributed workflow reliability; built synthetic fault injection simulators (network partitions, timeout anomalies) and invariant checkers verifying ACID saga compensations (<strong>Java 25, Spring Boot 4, Angular, Docker</strong>).</li>
+                <li><em>Built</em> a distributed microservice reliability platform with synthetic fault injection simulators (network partitions, timeout anomalies) and invariant checkers verifying ACID saga compensations (<strong>Java 25, Spring Boot 4, Angular, Docker</strong>).</li>
               </ul>
             </div>
 
             <div class="mb-2">
               <div class="flex justify-between items-baseline text-[11px]">
-                <span><strong>QueryLens AI: Sandboxed Enterprise Text-to-SQL &amp; Semantic RAG</strong> | <em>AI &amp; Data Systems</em></span>
+                <span><strong>QueryLens AI: Generative AI Text-to-SQL &amp; Semantic LLM RAG</strong> | <em>Generative AI &amp; Data Systems</em></span>
                 <span class="text-[10px] text-slate-600"><a href="https://github.com/harshalraajpatnaik/QueryLens-AI" target="_blank" class="underline text-black font-semibold">GitHub ↗</a></span>
               </div>
               <ul class="list-disc pl-4 space-y-1 text-[10px] leading-relaxed text-slate-900 mt-0.5">
-                <li><em>Architected</em> modular C4 3-tier Text-to-SQL engine (<strong>Angular 17 &rarr; Spring Boot 3 &rarr; FastAPI with pgvector RAG</strong>) with schema semantic search, AST validation, and read-only sandbox roles preventing SQL injection and unauthorized data exfiltration.</li>
+                <li><em>Built</em> an end-to-end <strong>Generative AI &amp; Large Language Model (LLM)</strong> Text-to-SQL engine (<strong>Angular 17 &rarr; Spring Boot 3 &rarr; FastAPI with pgvector RAG</strong>) using semantic schema search, AST validation, and read-only sandboxing to block SQL injection.</li>
               </ul>
             </div>
 
@@ -219,7 +219,7 @@ import { PokemonAudioService } from '../../core/services/pokemon-audio.service';
                 <span class="text-[10px] text-slate-600"><a href="https://github.com/harshalraajpatnaik/CloudScale" target="_blank" class="underline text-black font-semibold">GitHub ↗</a></span>
               </div>
               <ul class="list-disc pl-4 space-y-1 text-[10px] leading-relaxed text-slate-900 mt-0.5">
-                <li><em>Developed</em> proactive Kubernetes/VM capacity autoscaling engine integrating Prometheus, Grafana, and time-series ML forecasting models predicting compute resource spikes 15 minutes in advance, mitigating cold-start latencies and reducing over-provisioned idle capacity.</li>
+                <li><em>Developed</em> a proactive Kubernetes/VM capacity autoscaling engine integrating <strong>Prometheus, Grafana</strong>, and time-series ML forecasting models predicting compute spikes 15 minutes in advance, mitigating cold-start latencies and idle capacity.</li>
               </ul>
             </div>
           </div>
@@ -229,13 +229,13 @@ import { PokemonAudioService } from '../../core/services/pokemon-audio.service';
             <div class="font-bold uppercase tracking-wider text-[11px] border-b border-black pb-0.5 mb-1.5" style="font-variant: small-caps;">
               Technical &amp; Leadership Competencies
             </div>
-            <div class="text-[10px] space-y-1 text-slate-900 leading-normal">
-              <div><strong>Languages &amp; Core:</strong> Java (8/11/17/25 LTS), Python (NumPy, Pandas, Scikit-learn, Matplotlib), TypeScript, JavaScript, SQL, HTML5/CSS3, Bash, Spring Boot 3/4, FastAPI, Angular 17/18, RxJS</div>
-              <div><strong>Distributed Systems &amp; Cloud:</strong> Google Cloud Platform (GCP / Compute Engine), Microservices, Flowable BPMN, RabbitMQ (AMQP), Event-Driven Architecture, High Availability (HA), Fault Tolerance, KVM, VMware ESXi, OLVM, Docker, Kubernetes</div>
-              <div><strong>Databases, Caching &amp; Storage:</strong> Apache Cassandra (NoSQL), Redis (In-Memory Cache), PostgreSQL (pgvector), MySQL, Caringo Swarm (S3 Object Storage), NetApp &amp; HPE Storage Arrays, Hibernate/JPA, HikariCP Tuning</div>
-              <div><strong>Networking, Security &amp; Firewalls:</strong> Fortinet FortiGate Firewalls, VDOMs, Kong API Gateway, IPsec VPN, DNS Automation (cPanel/BIND), Token Bucket Rate Limiting, Reverse Proxies, HAProxy, F5 BIG-IP, VMware Avi</div>
-              <div><strong>DevOps, SRE &amp; Observability:</strong> Jenkins CI/CD, CI/CD Pipelines, Prometheus, Grafana, OpenTelemetry, Distributed Tracing, Zabbix APIs, Nimsoft, JUnit 5, Mockito, SonarQube, Linux/Unix Administration</div>
-              <div><strong>Product Management &amp; MBA Coursework:</strong> Product Strategy, Financial Accounting, Operations Management, Strategy Management, Risk Analysis, Product Analytics, Digital Marketing, Brand Strategy, Negotiation &amp; Conflict Management, FinOps, Jira (Agile/Scrum)</div>
+            <div class="text-[10px] space-y-1.5 text-slate-900 leading-normal">
+              <div><strong>Languages, AI &amp; Core:</strong> Java (8/11/17/25 LTS), Python (NumPy, Pandas, Scikit-learn), TypeScript, JavaScript, SQL, Bash, Spring Boot 3/4, FastAPI, Angular 17/18, RxJS, Generative AI, Large Language Models (LLM), RAG</div>
+              <div><strong>Architecture &amp; Cloud:</strong> API Design &amp; Distributed Microservices, Fault-Tolerant Systems, Flowable BPMN, RabbitMQ (AMQP), Event-Driven Architecture, KVM, VMware ESXi, OLVM, Cluster Management, Docker, Kubernetes</div>
+              <div><strong>Databases, Storage &amp; Analytics:</strong> Apache Cassandra, Redis (In-Memory), PostgreSQL (pgvector), MySQL, Caringo Swarm (S3 Object Storage), File Systems, NetApp &amp; HPE Storage, Data Analytics, Hibernate/JPA, HikariCP</div>
+              <div><strong>Networking, Security &amp; Gateways:</strong> TCP/IP, DNS, IPsec VPN, QoS, Reverse Proxies, Kong API Gateway, Fortinet FortiGate (VDOMs), Token Bucket Rate Limiting, HAProxy, F5 BIG-IP, VMware Avi</div>
+              <div><strong>DevOps, SRE &amp; Observability:</strong> REST, OpenAPI, Jenkins CI/CD, Cloud Deployment, Prometheus, Grafana, OpenTelemetry, SLO/SLI Frameworks, Troubleshooting, Performance Optimization, Zabbix, Nimsoft, JUnit 5, Mockito, SonarQube, Linux</div>
+              <div><strong>Tech × Business &amp; Leadership:</strong> Program &amp; People Management, Cross-Functional Stakeholder &amp; Risk Mitigation, 0-to-1 Ideation to Execution, Product Management Lifecycle, Product Strategy &amp; Analytics, Operations &amp; Financial Accounting, Negotiation, Product Backlogs, SaaS, FinOps, KPIs, Agile, Jira</div>
             </div>
           </div>
 
@@ -245,11 +245,11 @@ import { PokemonAudioService } from '../../core/services/pokemon-audio.service';
               Leadership, Certifications &amp; Honors
             </div>
             <ul class="list-disc pl-4 space-y-1 text-[10px] leading-relaxed text-slate-900">
-              <li><strong>Tech × MBA Strategic Product Leadership:</strong> Bridge the critical organizational gap between platform economics and deep systems engineering; partner with executive product leaders and enterprise clients to translate business roadmaps and unit-cost targets into resilient distributed microservices, author technical RFCs, and govern SLA/SLO availability baselines.</li>
-              <li><strong>Agile Engineering Delivery &amp; Mentorship:</strong> Stepped up as <strong>Acting Scrum Master</strong> across engineering pods; orchestrated sprint ceremonies, backlog prioritization, and release velocity in <strong>Jira</strong> (100% on-time milestone delivery), while providing architectural reviews and technical mentorship for junior engineers.</li>
+              <li><strong>Engineering Mentorship &amp; Stakeholder Alignment:</strong> Partnered with product and enterprise stakeholders to mitigate delivery risks, author technical RFCs, and mentor junior engineers through architecture and code reviews with 100% on-time sprint delivery.</li>
+              <li><strong>Tech × Business Bridge (Product &amp; Engineering Alignment):</strong> Bridge the critical organizational gap between platform economics and deep systems engineering; translate P&amp;L, unit-cost FinOps targets, and 0-to-1 SaaS product strategy into resilient cloud architectures while aligning technical trade-offs with executive stakeholders.</li>
               <li><strong>3× Extra Mile Commitment Award</strong> – Tata Communications Ltd. for critical cloud platform delivery, stability, and zero-defect deployments.</li>
               <li><strong>Flipkart Grid 2.0 Engineering Challenge</strong> – Team Lead; achieved <strong>Top 150 Nationwide Rank</strong> out of 20,000+ teams (Computer Vision &amp; OCR Track).</li>
-              <li><strong>Certifications:</strong> <strong>Architecting with Google Compute Engine</strong> (Google Cloud / Coursera) &amp; <strong>Full Stack Web Development</strong> (Coding Ninjas).</li>
+              <li><strong>Certifications:</strong> <strong>Architecting with Google Compute Engine</strong> (Google Cloud / GCP &mdash; Coursera) &amp; <strong>Full Stack Web Development</strong> (Coding Ninjas).</li>
             </ul>
           </div>
 
