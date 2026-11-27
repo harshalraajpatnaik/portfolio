@@ -230,12 +230,12 @@ import { PokemonAudioService } from '../../core/services/pokemon-audio.service';
               Technical &amp; Leadership Competencies
             </div>
             <div class="text-[10px] space-y-1 text-slate-900 leading-normal">
-              <div><strong>Languages, AI &amp; Core:</strong> Java (8/11/17/25 LTS), Python (NumPy, Pandas, Scikit-learn), TypeScript, JavaScript, SQL, Bash, Spring Boot 3/4, FastAPI, Angular 17/18, RxJS, <strong>Generative AI, Large Language Models (LLM), pgvector RAG</strong></div>
-              <div><strong>Architecture &amp; Cloud:</strong> <strong>API Design &amp; Distributed Microservices</strong>, GCP (Compute Engine), Fault-Tolerant Systems, Flowable BPMN, RabbitMQ (AMQP), Event-Driven Architecture, KVM, VMware ESXi, OLVM, Cluster Management, Docker, Kubernetes</div>
+              <div><strong>Languages, AI &amp; Core:</strong> Java (8/11/17/25 LTS), Python (NumPy, Pandas, Scikit-learn), TypeScript, JavaScript, SQL, Bash, Spring Boot 3/4, FastAPI, Angular 17/18, RxJS, Generative AI, Large Language Models (LLM), RAG</div>
+              <div><strong>Architecture &amp; Cloud:</strong> API Design &amp; Distributed Microservices, Fault-Tolerant Systems, Flowable BPMN, RabbitMQ (AMQP), Event-Driven Architecture, KVM, VMware ESXi, OLVM, Cluster Management, Docker, Kubernetes</div>
               <div><strong>Databases, Storage &amp; Analytics:</strong> Apache Cassandra, Redis (In-Memory), PostgreSQL (pgvector), MySQL, Caringo Swarm (S3 Object Storage), File Systems, NetApp &amp; HPE Storage, Data Analytics, Hibernate/JPA, HikariCP</div>
               <div><strong>Networking, Security &amp; Gateways:</strong> TCP/IP, DNS, IPsec VPN, QoS, Reverse Proxies, Kong API Gateway, Fortinet FortiGate (VDOMs), Token Bucket Rate Limiting, HAProxy, F5 BIG-IP, VMware Avi</div>
               <div><strong>DevOps, SRE &amp; Observability:</strong> REST, OpenAPI, Jenkins CI/CD, Cloud Deployment, Prometheus, Grafana, OpenTelemetry, SLO/SLI Frameworks, Troubleshooting, Performance Optimization, Zabbix, Nimsoft, JUnit 5, Mockito, SonarQube, Linux</div>
-              <div><strong>Tech × Business &amp; Leadership:</strong> People Management, Team Supervision, <strong>Cross-Functional Stakeholder Management &amp; Risk Mitigation</strong>, System Design Vetting (RFCs), 0-to-1 Ideation to Execution, Product Management Lifecycle, Product Roadmaps, Product Backlogs, SaaS, FinOps, Jira</div>
+              <div><strong>Tech × Business &amp; Leadership:</strong> People Management, Cross-Functional Stakeholder Management &amp; Risk Mitigation, 0-to-1 Ideation to Execution, Product Management Lifecycle, Product Strategy &amp; Analytics, Operations Management, Financial Accounting, Negotiation &amp; Conflict Management, Product Backlogs, SaaS, FinOps, Jira (Agile/Scrum)</div>
             </div>
           </div>
 
@@ -245,8 +245,8 @@ import { PokemonAudioService } from '../../core/services/pokemon-audio.service';
               Leadership, Certifications &amp; Honors
             </div>
             <ul class="list-disc pl-4 space-y-1 text-[10px] leading-relaxed text-slate-900">
-              <li><strong>People Management &amp; Cross-Functional Alignment:</strong> Led a 5-engineer pod as <strong>Acting Scrum Master</strong>; partnered with product and infrastructure stakeholders to mitigate delivery risks, vet system architectures via technical RFCs, mentor junior engineers, and deliver 100% on-time releases in Jira.</li>
-              <li><strong>Tech × Business Platform Strategy:</strong> Bridge executive product strategy and cloud architecture; drive 0-to-1 SaaS &amp; Enterprise platform solutions, unit-cost FinOps targets, and SLO/SLI availability governance.</li>
+              <li><strong>Engineering Mentorship &amp; Stakeholder Alignment:</strong> Partnered with product and enterprise stakeholders to mitigate delivery risks, author technical RFCs, and mentor junior engineers through architecture and code reviews with 100% on-time sprint delivery.</li>
+              <li><strong>Tech × Business Platform Strategy:</strong> Bridge executive product strategy and cloud architecture; drive 0-to-1 SaaS &amp; Enterprise platform solutions, unit-cost FinOps targets, and data-driven product analytics.</li>
               <li><strong>3× Extra Mile Commitment Award</strong> – Tata Communications Ltd. for critical cloud platform delivery, stability, and zero-defect deployments.</li>
               <li><strong>Flipkart Grid 2.0 Engineering Challenge</strong> – Team Lead; achieved <strong>Top 150 Nationwide Rank</strong> out of 20,000+ teams (Computer Vision &amp; OCR Track).</li>
               <li><strong>Certifications:</strong> <strong>Architecting with Google Compute Engine</strong> (Google Cloud / Coursera) &amp; <strong>Full Stack Web Development</strong> (Coding Ninjas).</li>
