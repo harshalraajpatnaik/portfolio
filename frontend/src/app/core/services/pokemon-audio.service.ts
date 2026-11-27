@@ -13,6 +13,7 @@ export class PokemonAudioService {
   public soundEnabled = true;
   public musicEnabled = true;
   public isMusicPlaying = false;
+  public isRecruiterMode = false;
 
   public bgAudio: HTMLAudioElement | null = null;
 
@@ -53,7 +54,7 @@ export class PokemonAudioService {
 
     const startAudioOnGesture = () => {
       this.ensureContext();
-      if (this.musicEnabled && !this.isMusicPlaying) {
+      if (!this.isRecruiterMode && this.musicEnabled && !this.isMusicPlaying) {
         this.playPokemonThemeSong();
       }
       window.removeEventListener('click', startAudioOnGesture);
@@ -108,9 +109,23 @@ export class PokemonAudioService {
   }
 
   /**
+   * Synchronize audio state with the active UI mode.
+   * Automatically stops the theme song when switching to Recruiter Mode.
+   */
+  setMode(mode: 'pokemon' | 'recruiter'): void {
+    this.isRecruiterMode = mode === 'recruiter';
+    if (this.isRecruiterMode) {
+      this.stopPokemonThemeSong();
+    } else if (this.musicEnabled && !this.isMusicPlaying) {
+      this.playPokemonThemeSong();
+    }
+  }
+
+  /**
    * Play the Official Pokémon Theme Song (Jason Paige studio recording)
    */
   playPokemonThemeSong(): void {
+    if (this.isRecruiterMode) return;
     this.initBgAudio();
     if (this.bgAudio && this.musicEnabled) {
       this.bgAudio.play().then(() => {

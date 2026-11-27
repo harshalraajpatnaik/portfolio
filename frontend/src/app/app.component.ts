@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PortfolioApiService } from './core/services/portfolio-api.service';
+import { PokemonAudioService } from './core/services/pokemon-audio.service';
 import { ProfileResponse, ProjectCard, TelemetrySnapshot } from './core/models/api.models';
 import { NavComponent, PortfolioMode } from './shared/components/nav/nav.component';
 import { PokemonPlayerComponent } from './shared/components/pokemon-player/pokemon-player.component';
@@ -51,13 +52,17 @@ export class AppComponent implements OnInit {
   telemetry: TelemetrySnapshot | null = null;
   isLoading = true;
 
-  constructor(public api: PortfolioApiService) {}
+  constructor(
+    public api: PortfolioApiService,
+    private audio: PokemonAudioService
+  ) {}
 
   ngOnInit(): void {
     const savedMode = localStorage.getItem('hrp_portfolio_ui_mode') as PortfolioMode | null;
     if (savedMode === 'pokemon' || savedMode === 'recruiter') {
       this.currentMode = savedMode;
     }
+    this.audio.isRecruiterMode = true; // Keep BGM silent until user selects Pokédex Pro on portal
 
     const reducedMotion = typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -100,6 +105,7 @@ export class AppComponent implements OnInit {
     this.currentMode = mode;
     localStorage.setItem('hrp_portfolio_ui_mode', mode);
     this.portalShown = true;
+    this.audio.setMode(mode);
 
     if (mode === 'pokemon') {
       this.pokeballIntroShown = false;
@@ -113,10 +119,12 @@ export class AppComponent implements OnInit {
   onModeChanged(newMode: PortfolioMode): void {
     this.currentMode = newMode;
     localStorage.setItem('hrp_portfolio_ui_mode', newMode);
+    this.audio.setMode(newMode);
   }
 
   onReturnToHome(): void {
     this.portalShown = false;
+    this.audio.setMode('recruiter');
   }
 
   onPokeballIntroCompleted(): void {
