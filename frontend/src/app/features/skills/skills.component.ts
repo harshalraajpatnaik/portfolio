@@ -16,7 +16,7 @@ import { CommonModule } from '@angular/common';
             Technical Stack & <span class="gradient-text">Domain Depth</span>
           </h2>
           <p class="text-white/60 max-w-2xl text-base sm:text-lg">
-            Grounded in distributed Java enterprise architecture, cloud automation, and business operational strategy.
+            Uniting distributed systems architecture, Generative AI/LLM workflows, and Tech × Business product leadership.
           </p>
         </div>
 
@@ -115,10 +115,10 @@ export class SkillsComponent {
   ];
 
   platformSkills = [
-    { name: 'Multi-Hypervisor VM Engines', level: 'Expert', proficiency: 92, context: 'Orchestrating KVM, VMware ESXi, vCloud Director, and OLVM' },
-    { name: 'FortiGate Network Automation', level: 'Advanced', proficiency: 85, context: 'Firewall rules, IPsec VPN automation, sliding-window rate control' },
-    { name: 'Zabbix Telemetry & Capacity', level: 'Proficient', proficiency: 80, context: 'Bandwidth monitoring, history.get vs trend.get telemetry pipelines' },
-    { name: 'Business & Operations Strategy', level: 'Executive', proficiency: 90, context: 'IIM Kozhikode EPGP: Capacity planning, SLA governance, product analytics, cost metering' },
-    { name: 'Docker & Containerization', level: 'Advanced', proficiency: 82, context: 'Multi-stage lean builds, non-root runtimes, containerized microservices' },
+    { name: 'Multi-Hypervisor VM Engines', level: 'Expert', proficiency: 92, context: 'Cluster management across KVM, VMware ESXi, vCloud Director, and OLVM' },
+    { name: 'FortiGate & Enterprise Networking', level: 'Advanced', proficiency: 85, context: 'TCP/IP, BGP, OSPF, VxLAN, IPsec VPN, DNS, FortiGate VDOMs & rate limiting' },
+    { name: 'Team Leadership & People Mgmt', level: 'Lead', proficiency: 90, context: 'Acting Scrum Master (5-engineer squad), RFC system design reviews & mentoring' },
+    { name: 'Tech × Business & Product Strategy', level: 'Executive', proficiency: 92, context: 'IIM Kozhikode EPGP: 0-to-1 product lifecycle, SaaS FinOps, SLO/SLI & backlogs' },
+    { name: 'Generative AI / LLM & Observability', level: 'Advanced', proficiency: 84, context: 'pgvector RAG LLM workflows, Prometheus, Grafana, OpenTelemetry & Docker' },
   ];
 }

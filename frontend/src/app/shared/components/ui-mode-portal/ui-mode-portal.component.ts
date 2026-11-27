@@ -123,7 +123,7 @@ export type PortfolioMode = 'pokemon' | 'recruiter';
                   Executive Recruiter Mode 💼
                 </h2>
                 <p class="text-xs sm:text-[13px] text-white/70 mt-2 leading-relaxed">
-                  Tailored for Google & top-tier recruiters, hiring managers, and engineering leadership:
+                  Designed for top-tier recruiters, hiring managers, and engineering leadership:
                 </p>
               </div>
 
@@ -131,15 +131,15 @@ export type PortfolioMode = 'pokemon' | 'recruiter';
               <ul class="space-y-2 text-xs font-mono text-white/80">
                 <li class="flex items-start gap-2">
                   <span class="text-cyan-glow font-bold">✓</span>
-                  <span>Distraction-free, elegant layout with instant readability</span>
+                  <span>Distraction-free, executive layout with instant readability</span>
                 </li>
                 <li class="flex items-start gap-2">
                   <span class="text-cyan-glow font-bold">✓</span>
-                  <span>Google XYZ metric formula: 92.6% latency cut, 4+ hypervisors</span>
+                  <span>Quantified XYZ impact metrics: 92.6% latency cut, 4+ hypervisors</span>
                 </li>
                 <li class="flex items-start gap-2">
                   <span class="text-cyan-glow font-bold">✓</span>
-                  <span>Clear Tech × MBA value proposition (IIMK Capstone & FinOps)</span>
+                  <span>Tech × Business value proposition, team leadership &amp; FinOps ROI</span>
                 </li>
                 <li class="flex items-start gap-2">
                   <span class="text-cyan-glow font-bold">✓</span>
