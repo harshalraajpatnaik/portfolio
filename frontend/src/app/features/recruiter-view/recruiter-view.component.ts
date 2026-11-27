@@ -456,9 +456,9 @@ import { ResumeComponent } from '../resume/resume.component';
             </div>
 
             <div class="p-5 rounded-2xl bg-[#0c1220] border border-white/10 space-y-3">
-              <div class="text-xs font-mono text-emerald-400 font-bold">DISTRIBUTED SYSTEMS &amp; CLOUD</div>
+              <div class="text-xs font-mono text-emerald-400 font-bold">ARCHITECTURE &amp; CLOUD</div>
               <div class="flex flex-wrap gap-1.5">
-                <span *ngFor="let s of ['Microservices', 'Fault-Tolerant Systems', 'Flowable BPMN', 'RabbitMQ (AMQP)', 'KVM / ESXi / OLVM', 'Compute Hardware', 'Cluster Management', 'Docker', 'Kubernetes', 'GCP']"
+                <span *ngFor="let s of ['API Design & Distributed Microservices', 'Fault-Tolerant Systems', 'Flowable BPMN', 'RabbitMQ (AMQP)', 'KVM / ESXi / OLVM', 'Cluster Management', 'Docker', 'Kubernetes', 'GCP']"
                       class="px-2 py-1 rounded text-xs font-mono bg-white/5 border border-white/10 text-white/80">
                   {{ s }}
                 </span>
@@ -498,7 +498,7 @@ import { ResumeComponent } from '../resume/resume.component';
             <div class="p-5 rounded-2xl bg-[#0c1220] border border-white/10 space-y-3">
               <div class="text-xs font-mono text-emerald-400 font-bold">TECH × BUSINESS &amp; LEADERSHIP</div>
               <div class="flex flex-wrap gap-1.5">
-                <span *ngFor="let s of ['People & Team Leadership', 'Cross-Team Alignment', 'System Design Vetting (RFCs)', '0-to-1 Ideation to Execution', 'Product Management Lifecycle', 'Product Backlogs', 'SaaS & Enterprise Solutions', 'FinOps & Unit Economics']"
+                <span *ngFor="let s of ['People & Team Leadership', 'Stakeholder Management & Risk Mitigation', 'System Design Vetting (RFCs)', '0-to-1 Ideation to Execution', 'Product Management Lifecycle', 'Product Backlogs', 'SaaS & Enterprise Solutions', 'FinOps']"
                       class="px-2 py-1 rounded text-xs font-mono bg-white/5 border border-white/10 text-white/80">
                   {{ s }}
                 </span>

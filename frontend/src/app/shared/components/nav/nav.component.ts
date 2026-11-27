@@ -11,47 +11,45 @@ export type PortfolioMode = 'pokemon' | 'recruiter';
   standalone: true,
   imports: [CommonModule],
   template: `
-    <nav class="fixed top-0 left-0 right-0 z-50 px-3 sm:px-6 py-2.5 transition-all" role="navigation" aria-label="Portfolio Navigation">
-      <div class="max-w-7xl mx-auto flex items-center justify-between gap-2 sm:gap-4">
+    <nav class="fixed top-0 left-0 right-0 z-50 px-2.5 sm:px-6 py-2.5 transition-all" role="navigation" aria-label="Portfolio Navigation">
+      <div class="max-w-7xl mx-auto flex items-center justify-between gap-1.5 sm:gap-4">
 
         <!-- BRAND LOGO: Click to return to Home Screen (Experience Selector) -->
         <a (click)="onNameClick($event)"
-           class="flex items-center gap-2 sm:gap-2.5 min-w-0 flex-shrink group cursor-pointer"
+           class="flex items-center gap-1.5 sm:gap-2.5 flex-shrink-0 group cursor-pointer"
            title="Click to return to Home Screen (Interface Selector)">
-          <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white border-2 flex items-center justify-center p-1 group-hover:scale-105 transition-transform flex-shrink-0 overflow-hidden"
+          <div class="w-7 h-7 sm:w-9 sm:h-9 rounded-full bg-white border-2 flex items-center justify-center p-1 group-hover:scale-105 transition-transform flex-shrink-0 overflow-hidden"
                [ngClass]="currentMode === 'pokemon' ? 'border-crimson shadow-[0_0_12px_rgba(220,10,45,0.8)]' : 'border-cyan-glow shadow-[0_0_12px_rgba(0,229,255,0.8)]'">
             <img src="assets/hp-logo.png" alt="Harshal Patnaik (HP)" class="w-full h-full object-contain">
           </div>
-          <div class="flex flex-col justify-center min-w-0">
-            <div class="font-black text-[11px] sm:text-sm text-white tracking-wider font-mono truncate transition-colors"
+          <div class="flex flex-col justify-center flex-shrink-0">
+            <div class="font-black text-[10.5px] sm:text-sm text-white tracking-wider font-mono whitespace-nowrap transition-colors"
                  [ngClass]="currentMode === 'pokemon' ? 'group-hover:text-energy' : 'group-hover:text-cyan-glow'">
               HARSHAL RAAJ PATNAIK
             </div>
-            <div class="text-[8px] sm:text-[10px] font-mono text-white/50 tracking-wider whitespace-nowrap flex items-center gap-1 sm:gap-1.5">
-              <span>CLOUD SDE</span>
+            <div class="text-[7.5px] sm:text-[10px] font-mono text-white/50 tracking-wider whitespace-nowrap flex items-center gap-1 sm:gap-1.5">
+              <span>CLOUD ARCHITECT</span>
               <span class="text-energy">•</span>
-              <span class="hidden sm:inline">TATA COMM</span>
-              <span class="text-energy hidden sm:inline">•</span>
               <span>IIM KOZHIKODE</span>
             </div>
           </div>
         </a>
 
-        <!-- CENTER NAVIGATION (Desktop / Wide screens >= 1024px) -->
-        <div class="hidden lg:flex items-center gap-0.5 xl:gap-1 font-mono text-[11px] xl:text-xs flex-shrink-0">
+        <!-- CENTER NAVIGATION (Wide Desktop >= 1280px) -->
+        <div class="hidden xl:flex items-center gap-1 font-mono text-xs flex-shrink-0">
           <a *ngFor="let link of activeNavLinks"
              [href]="link.href"
              (click)="audio.playBeep()"
-             class="px-2 xl:px-2.5 py-1.5 text-white/70 hover:text-white rounded-lg hover:bg-white/10 transition-colors whitespace-nowrap">
+             class="px-2.5 py-1.5 text-white/70 hover:text-white rounded-lg hover:bg-white/10 transition-colors whitespace-nowrap">
             {{ link.label }}
           </a>
         </div>
 
-        <!-- TOP RIGHT: Mode Toggle + Audio Capsule + Resume + Mobile Hamburger -->
-        <div class="flex items-center gap-2 sm:gap-2.5 flex-shrink-0">
+        <!-- TOP RIGHT: Mode Toggle + Audio Capsule + Resume + Mobile/Laptop Hamburger -->
+        <div class="flex items-center gap-1.5 sm:gap-2.5 flex-shrink-0">
           
           <!-- INTERFACE MODE SELECTION TOGGLE (TOP RIGHT) -->
-          <div class="flex items-center p-0.5 rounded-xl bg-black/70 border backdrop-blur-md font-mono text-[11px] sm:text-xs shadow-inner"
+          <div class="flex items-center p-0.5 rounded-xl bg-black/70 border backdrop-blur-md font-mono text-[10px] sm:text-xs shadow-inner"
                [ngClass]="currentMode === 'pokemon' ? 'border-red-900/70 shadow-[0_0_12px_rgba(220,10,45,0.25)]' : 'border-cyan-glow/40 shadow-[0_0_12px_rgba(0,229,255,0.25)]'">
             
             <!-- Pokédex Pro Option -->
@@ -61,7 +59,7 @@ export type PortfolioMode = 'pokemon' | 'recruiter';
               [class.text-white]="currentMode === 'pokemon'"
               [class.shadow-md]="currentMode === 'pokemon'"
               [class.text-white-60]="currentMode !== 'pokemon'"
-              class="px-2 sm:px-2.5 py-1 rounded-lg font-bold transition-all flex items-center gap-1 cursor-pointer hover:text-white"
+              class="px-1.5 sm:px-2.5 py-1 rounded-lg font-bold transition-all flex items-center gap-1 cursor-pointer hover:text-white"
               title="Switch to Pokédex Pro Experience">
               <span>⚡</span>
               <span class="hidden md:inline">POKÉDEX</span>
@@ -74,7 +72,7 @@ export type PortfolioMode = 'pokemon' | 'recruiter';
               [class.text-black]="currentMode === 'recruiter'"
               [class.shadow-md]="currentMode === 'recruiter'"
               [class.text-white-60]="currentMode !== 'recruiter'"
-              class="px-2 sm:px-2.5 py-1 rounded-lg font-bold transition-all flex items-center gap-1 cursor-pointer hover:text-white"
+              class="px-1.5 sm:px-2.5 py-1 rounded-lg font-bold transition-all flex items-center gap-1 cursor-pointer hover:text-white"
               title="Switch to Clean Executive Recruiter Dossier">
               <span>💼</span>
               <span class="hidden md:inline">RECRUITER</span>
@@ -116,14 +114,14 @@ export type PortfolioMode = 'pokemon' | 'recruiter';
             <span>↓</span>
           </a>
 
-          <!-- MOBILE / TABLET HAMBURGER BUTTON (< 1024px) -->
+          <!-- MOBILE / TABLET HAMBURGER BUTTON (< 1280px) -->
           <button
             (click)="toggleMobileMenu()"
-            class="lg:hidden p-1.5 sm:p-2 rounded-xl text-white/80 hover:text-white bg-white/5 border border-white/15 hover:border-white/30 transition-all flex items-center justify-center cursor-pointer"
+            class="xl:hidden p-1.5 sm:p-2 rounded-xl text-white/80 hover:text-white bg-white/5 border border-white/15 hover:border-white/30 transition-all flex items-center justify-center cursor-pointer"
             [attr.aria-expanded]="mobileMenuOpen"
             aria-label="Toggle Navigation Menu">
-            <span *ngIf="!mobileMenuOpen" class="text-base sm:text-lg leading-none font-bold">☰</span>
-            <span *ngIf="mobileMenuOpen" class="text-base sm:text-lg leading-none font-bold"
+            <span *ngIf="!mobileMenuOpen" class="text-sm sm:text-lg leading-none font-bold">☰</span>
+            <span *ngIf="mobileMenuOpen" class="text-sm sm:text-lg leading-none font-bold"
                   [ngClass]="currentMode === 'pokemon' ? 'text-energy' : 'text-cyan-glow'">✕</span>
           </button>
 
@@ -139,7 +137,7 @@ export type PortfolioMode = 'pokemon' | 'recruiter';
       <!-- RESPONSIVE MOBILE / TABLET SLIDE-DOWN DRAWER MENU -->
       <div
         *ngIf="mobileMenuOpen"
-        class="lg:hidden mt-2 p-4 rounded-2xl bg-[#0d121f]/98 backdrop-blur-2xl border-2 shadow-[0_12px_36px_rgba(0,0,0,0.85)] font-mono animate-in fade-in duration-200"
+        class="xl:hidden mt-2 p-4 rounded-2xl bg-[#0d121f]/98 backdrop-blur-2xl border-2 shadow-[0_12px_36px_rgba(0,0,0,0.85)] font-mono animate-in fade-in duration-200"
         [ngClass]="currentMode === 'pokemon' ? 'border-red-900/80' : 'border-cyan-glow/40'">
         
         <!-- Header Ribbon inside drawer -->
