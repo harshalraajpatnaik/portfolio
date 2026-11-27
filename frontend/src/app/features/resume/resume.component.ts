@@ -246,7 +246,7 @@ import { PokemonAudioService } from '../../core/services/pokemon-audio.service';
             </div>
             <ul class="list-disc pl-4 space-y-1 text-[10px] leading-relaxed text-slate-900">
               <li><strong>Engineering Mentorship &amp; Stakeholder Alignment:</strong> Partnered with product and enterprise stakeholders to mitigate delivery risks, author technical RFCs, and mentor junior engineers through architecture and code reviews with 100% on-time sprint delivery.</li>
-              <li><strong>Tech × Business Platform Strategy:</strong> Bridge executive product strategy and cloud architecture; drive 0-to-1 SaaS &amp; Enterprise platform solutions, unit-cost FinOps targets, and data-driven product analytics.</li>
+              <li><strong>Tech × Business Bridge (Product &amp; Engineering Alignment):</strong> Bridge the critical organizational gap between platform economics and deep systems engineering; translate P&amp;L, unit-cost FinOps targets, and 0-to-1 SaaS product strategy into resilient cloud architectures while aligning technical trade-offs with executive stakeholders.</li>
               <li><strong>3× Extra Mile Commitment Award</strong> – Tata Communications Ltd. for critical cloud platform delivery, stability, and zero-defect deployments.</li>
               <li><strong>Flipkart Grid 2.0 Engineering Challenge</strong> – Team Lead; achieved <strong>Top 150 Nationwide Rank</strong> out of 20,000+ teams (Computer Vision &amp; OCR Track).</li>
               <li><strong>Certifications:</strong> <strong>Architecting with Google Compute Engine</strong> (Google Cloud / Coursera) &amp; <strong>Full Stack Web Development</strong> (Coding Ninjas).</li>
