@@ -478,7 +478,7 @@ import { ResumeComponent } from '../resume/resume.component';
             <div class="p-5 rounded-2xl bg-[#0c1220] border border-white/10 space-y-3">
               <div class="text-xs font-mono text-purple-400 font-bold">NETWORKING &amp; SECURITY</div>
               <div class="flex flex-wrap gap-1.5">
-                <span *ngFor="let s of ['TCP/IP', 'BGP / OSPF / MPLS / IS-IS', 'VxLAN / EVPN / GRE', 'QoS / MACsec', 'IPsec VPN', 'DNS', 'Fortinet FortiGate', 'Kong Gateway', 'HAProxy / F5 / Avi']"
+                <span *ngFor="let s of ['TCP/IP', 'DNS', 'IPsec VPN', 'QoS', 'Reverse Proxies', 'Fortinet FortiGate', 'Kong Gateway', 'HAProxy / F5 / Avi']"
                       class="px-2 py-1 rounded text-xs font-mono bg-white/5 border border-white/10 text-white/80">
                   {{ s }}
                 </span>

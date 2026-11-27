@@ -84,7 +84,7 @@ import { PokemonAudioService } from '../../core/services/pokemon-audio.service';
               HARSHAL RAAJ PATNAIK
             </h1>
             <div class="text-[10.5px] font-bold text-slate-800 mb-1">
-              Senior Software Engineer &amp; Platform Architect | Cloud Infrastructure, Distributed Systems &amp; Product Strategy (Tech × MBA)
+              Senior Lead Software Engineer &amp; Cloud Architect | Technical Product Strategy &amp; Engineering Leadership (Tech × MBA)
             </div>
             <div class="text-[10px] text-slate-700 leading-normal">
               +91-9982143442 &nbsp;~&nbsp;
@@ -233,9 +233,9 @@ import { PokemonAudioService } from '../../core/services/pokemon-audio.service';
               <div><strong>Languages, AI &amp; Core:</strong> Java (8/11/17/25 LTS), Python (NumPy, Pandas, Scikit-learn), TypeScript, JavaScript, SQL, Bash, Spring Boot 3/4, FastAPI, Angular 17/18, RxJS, <strong>Generative AI, Large Language Models (LLM), pgvector RAG</strong></div>
               <div><strong>Distributed Systems &amp; Cloud:</strong> GCP (Compute Engine), Scalable Microservices, Fault-Tolerant Distributed Systems, Flowable BPMN, RabbitMQ (AMQP), Event-Driven Architecture, KVM, VMware ESXi, OLVM, Compute Hardware, Cluster Management, Docker, Kubernetes</div>
               <div><strong>Databases, Storage &amp; Analytics:</strong> Apache Cassandra, Redis (In-Memory), PostgreSQL (pgvector), MySQL, Caringo Swarm (S3 Object Storage), File Systems, NetApp &amp; HPE Storage, Data Analytics, Hibernate/JPA, HikariCP</div>
-              <div><strong>Networking, Security &amp; Gateways:</strong> TCP/IP, BGP, OSPF, MPLS, IS-IS, VxLAN, EVPN, QoS, GRE, IPsec VPN, DNS, MACsec, Kong API Gateway, Fortinet FortiGate (VDOMs), Token Bucket Rate Limiting, HAProxy, F5 BIG-IP, VMware Avi</div>
+              <div><strong>Networking, Security &amp; Gateways:</strong> TCP/IP, DNS, IPsec VPN, QoS, Reverse Proxies, Kong API Gateway, Fortinet FortiGate (VDOMs), Token Bucket Rate Limiting, HAProxy, F5 BIG-IP, VMware Avi</div>
               <div><strong>DevOps, SRE &amp; Observability:</strong> REST, OpenAPI, Jenkins CI/CD, Cloud Deployment, Prometheus, Grafana, OpenTelemetry, SLO/SLI Frameworks, Troubleshooting, Performance Optimization, Zabbix, Nimsoft, JUnit 5, Mockito, SonarQube, Linux</div>
-              <div><strong>Tech × Business &amp; Leadership:</strong> People Management, Team Supervision, Cross-Team Alignment, System Design Vetting (RFCs), 0-to-1 Ideation to Execution, Product Management Lifecycle, Product Strategy &amp; Roadmaps, Product Backlogs, SaaS, FinOps, Jira</div>
+              <div><strong>Tech × Business &amp; Leadership:</strong> People Management, Team Supervision, Cross-Team &amp; Stakeholder Alignment, System Design Vetting (RFCs), End-to-End 0-to-1 Ideation to Execution, Product Management Lifecycle, Product Roadmaps, Product Backlogs, SaaS, FinOps, Jira</div>
             </div>
           </div>
 
