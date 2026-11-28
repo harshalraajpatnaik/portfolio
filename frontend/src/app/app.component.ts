@@ -9,6 +9,8 @@ import { PokeballIntroComponent } from './shared/components/pokeball-intro/pokeb
 import { UiModePortalComponent } from './shared/components/ui-mode-portal/ui-mode-portal.component';
 import { RecruiterLoaderComponent } from './shared/components/recruiter-loader/recruiter-loader.component';
 import { RecruiterViewComponent } from './features/recruiter-view/recruiter-view.component';
+import { StoryLoaderComponent } from './shared/components/story-loader/story-loader.component';
+import { StoryViewComponent } from './features/story-view/story-view.component';
 import { HeroComponent } from './features/hero/hero.component';
 import { ProjectsComponent } from './features/projects/projects.component';
 import { SthiraxComponent } from './features/sthirax/sthirax.component';
@@ -29,6 +31,8 @@ import { ContactComponent } from './features/contact/contact.component';
     PokeballIntroComponent,
     RecruiterLoaderComponent,
     RecruiterViewComponent,
+    StoryLoaderComponent,
+    StoryViewComponent,
     HeroComponent,
     ProjectsComponent,
     SthiraxComponent,
@@ -46,6 +50,7 @@ export class AppComponent implements OnInit {
   portalShown = false;
   pokeballIntroShown = true;
   recruiterLoaderShown = true;
+  storyLoaderShown = true;
 
   profile: ProfileResponse | null = null;
   projects: ProjectCard[] = [];
@@ -59,7 +64,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     const savedMode = localStorage.getItem('hrp_portfolio_ui_mode') as PortfolioMode | null;
-    if (savedMode === 'pokemon' || savedMode === 'recruiter') {
+    if (savedMode === 'pokemon' || savedMode === 'recruiter' || savedMode === 'story') {
       this.currentMode = savedMode;
     }
     this.audio.isRecruiterMode = true; // Keep BGM silent until user selects Pokédex Pro on portal
@@ -70,10 +75,12 @@ export class AppComponent implements OnInit {
     this.portalShown = false;
     this.pokeballIntroShown = true;
     this.recruiterLoaderShown = true;
+    this.storyLoaderShown = true;
 
     if (reducedMotion) {
       this.pokeballIntroShown = true;
       this.recruiterLoaderShown = true;
+      this.storyLoaderShown = true;
     }
 
     this.api.getProfile().subscribe({
@@ -110,9 +117,15 @@ export class AppComponent implements OnInit {
     if (mode === 'pokemon') {
       this.pokeballIntroShown = false;
       this.recruiterLoaderShown = true;
-    } else {
+      this.storyLoaderShown = true;
+    } else if (mode === 'recruiter') {
       this.recruiterLoaderShown = false;
       this.pokeballIntroShown = true;
+      this.storyLoaderShown = true;
+    } else {
+      this.storyLoaderShown = false;
+      this.pokeballIntroShown = true;
+      this.recruiterLoaderShown = true;
     }
   }
 
@@ -133,6 +146,10 @@ export class AppComponent implements OnInit {
 
   onRecruiterLoaderCompleted(): void {
     this.recruiterLoaderShown = true;
+  }
+
+  onStoryLoaderCompleted(): void {
+    this.storyLoaderShown = true;
   }
 
   openSwaggerModal(): void {

@@ -1,24 +1,27 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-export type PortfolioMode = 'pokemon' | 'recruiter';
+export type PortfolioMode = 'pokemon' | 'recruiter' | 'story';
 
 @Component({
   selector: 'app-ui-mode-portal',
   standalone: true,
   imports: [CommonModule],
   template: `
-    <div class="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-[#06080e]/95 backdrop-blur-2xl overflow-y-auto animate-in fade-in duration-300 font-sans" role="dialog" aria-modal="true" aria-labelledby="portal-title">
+    <div class="fixed inset-0 z-50 block sm:flex sm:items-center sm:justify-center p-3 sm:p-6 bg-[#06080e]/95 backdrop-blur-2xl overflow-y-auto overflow-x-hidden animate-in fade-in duration-300 font-sans" role="dialog" aria-modal="true" aria-labelledby="portal-title">
       <!-- Ambient background grid & glow -->
-      <div class="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:32px_32px] pointer-events-none"></div>
-      <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-crimson/15 rounded-full blur-[140px] pointer-events-none"></div>
-      <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-cyan-glow/15 rounded-full blur-[140px] pointer-events-none"></div>
+      <div class="fixed inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
+        <div class="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:32px_32px]"></div>
+        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-crimson/15 rounded-full blur-[140px]"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-cyan-glow/15 rounded-full blur-[140px]"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-amber-500/8 rounded-full blur-[120px]"></div>
+      </div>
 
-      <div class="relative w-full max-w-4xl mx-auto my-auto text-white">
+      <div class="relative w-full max-w-6xl mx-auto my-auto py-4 sm:py-0 text-white min-w-0">
         <!-- Top Badge & Header -->
         <div class="text-center space-y-3 mb-8 sm:mb-12">
-          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-white/15 bg-white/5 backdrop-blur-md text-[11px] font-mono tracking-widest text-white/80">
-            <span class="w-2 h-2 rounded-full bg-energy animate-pulse"></span>
+          <div class="inline-flex flex-wrap items-center justify-center gap-2 px-3.5 py-1.5 rounded-full border border-white/15 bg-white/5 backdrop-blur-md text-[10px] sm:text-[11px] font-mono tracking-wider sm:tracking-widest text-white/80 max-w-full">
+            <span class="w-2 h-2 rounded-full bg-energy animate-pulse flex-shrink-0"></span>
             <span>HARSHAL RAAJ PATNAIK · PORTFOLIO ARCHITECTURE</span>
           </div>
 
@@ -31,8 +34,8 @@ export type PortfolioMode = 'pokemon' | 'recruiter';
           </p>
         </div>
 
-        <!-- Two Interface Choice Cards -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-8">
+        <!-- Three Interface Choice Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
           
           <!-- OPTION 1: POKÉDEX PRO GAMIFIED PORTFOLIO -->
           <div
@@ -53,14 +56,14 @@ export type PortfolioMode = 'pokemon' | 'recruiter';
                   </div>
                 </div>
                 <span class="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-crimson/20 border border-crimson/40 text-crimson">
-                  GAMIFIED & RETRO
+                  GAMIFIED &amp; RETRO
                 </span>
               </div>
 
               <!-- Title & Tagline -->
               <div>
                 <div class="text-xs font-mono font-bold text-energy mb-1">OPTION 01</div>
-                <h2 class="text-xl sm:text-2xl font-black tracking-tight text-white group-hover:text-energy transition-colors">
+                <h2 class="text-lg sm:text-xl font-black tracking-tight text-white group-hover:text-energy transition-colors">
                   Pokédex Pro Experience ⚡
                 </h2>
                 <p class="text-xs sm:text-[13px] text-white/70 mt-2 leading-relaxed">
@@ -76,7 +79,7 @@ export type PortfolioMode = 'pokemon' | 'recruiter';
                 </li>
                 <li class="flex items-start gap-2">
                   <span class="text-energy font-bold">▶</span>
-                  <span>Authentic 8-Bit Pokémon Gym Theme & retro sound effects</span>
+                  <span>Authentic 8-Bit Pokémon Gym Theme &amp; retro sound effects</span>
                 </li>
                 <li class="flex items-start gap-2">
                   <span class="text-energy font-bold">▶</span>
@@ -84,7 +87,7 @@ export type PortfolioMode = 'pokemon' | 'recruiter';
                 </li>
                 <li class="flex items-start gap-2">
                   <span class="text-energy font-bold">▶</span>
-                  <span>Classic Pokéball throw & burst intro animation</span>
+                  <span>Classic Pokéball throw &amp; burst intro animation</span>
                 </li>
               </ul>
             </div>
@@ -106,20 +109,20 @@ export type PortfolioMode = 'pokemon' | 'recruiter';
             
             <div class="space-y-4">
               <!-- Header Bar with Executive Tag -->
-              <div class="flex items-center justify-between pb-3 border-b border-cyan-glow/20">
-                <div class="flex items-center gap-2">
-                  <span class="w-2.5 h-2.5 rounded-full bg-cyan-glow animate-ping"></span>
-                  <span class="text-xs font-mono font-bold text-cyan-glow">TOP RECRUITER RECOMMENDED</span>
+              <div class="flex items-center justify-between gap-2 pb-3 border-b border-cyan-glow/20">
+                <div class="flex items-center gap-2 min-w-0">
+                  <span class="w-2 h-2 rounded-full bg-cyan-glow animate-ping flex-shrink-0"></span>
+                  <span class="text-[10px] sm:text-[11px] font-mono font-bold text-cyan-glow truncate">RECRUITER RECOMMENDED</span>
                 </div>
-                <span class="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-cyan-glow/15 border border-cyan-glow/30 text-cyan-glow">
-                  EXECUTIVE & CLEAN
+                <span class="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-cyan-glow/15 border border-cyan-glow/30 text-cyan-glow whitespace-nowrap flex-shrink-0">
+                  EXECUTIVE
                 </span>
               </div>
 
               <!-- Title & Tagline -->
               <div>
                 <div class="text-xs font-mono font-bold text-cyan-glow mb-1">OPTION 02</div>
-                <h2 class="text-xl sm:text-2xl font-black tracking-tight text-white group-hover:text-cyan-glow transition-colors">
+                <h2 class="text-lg sm:text-xl font-black tracking-tight text-white group-hover:text-cyan-glow transition-colors">
                   Executive Recruiter Mode 💼
                 </h2>
                 <p class="text-xs sm:text-[13px] text-white/70 mt-2 leading-relaxed">
@@ -143,7 +146,7 @@ export type PortfolioMode = 'pokemon' | 'recruiter';
                 </li>
                 <li class="flex items-start gap-2">
                   <span class="text-cyan-glow font-bold">✓</span>
-                  <span>Immediate access to 1-Page ATS Resume (PDF) & GitHub code</span>
+                  <span>Immediate access to 1-Page ATS Resume (PDF) &amp; GitHub code</span>
                 </li>
               </ul>
             </div>
@@ -158,11 +161,80 @@ export type PortfolioMode = 'pokemon' | 'recruiter';
             </div>
           </div>
 
+          <!-- OPTION 3: INTERACTIVE STORY MODE -->
+          <div
+            (click)="selectMode('story')"
+            class="group relative rounded-3xl p-6 sm:p-8 bg-gradient-to-b from-[#121108] to-[#0d0e14] border-2 border-amber-500/40 hover:border-amber-500 transition-all duration-300 shadow-2xl hover:shadow-[0_0_40px_rgba(245,158,11,0.3)] cursor-pointer flex flex-col justify-between transform hover:-translate-y-1.5 md:col-span-2 lg:col-span-1">
+            
+            <div class="space-y-4">
+              <!-- Header Bar with Story Badge -->
+              <div class="flex items-center justify-between pb-3 border-b border-amber-500/20">
+                <div class="flex items-center gap-2">
+                  <!-- Compass SVG icon -->
+                  <svg class="w-5 h-5 text-amber-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <circle cx="12" cy="12" r="10"/>
+                    <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/>
+                  </svg>
+                  <span class="text-xs font-mono font-bold text-amber-400">SCROLL · 3D · MOTION</span>
+                </div>
+                <span class="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-amber-500/15 border border-amber-500/30 text-amber-400">
+                  IMMERSIVE
+                </span>
+              </div>
+
+              <!-- Title & Tagline -->
+              <div>
+                <div class="text-xs font-mono font-bold text-amber-400 mb-1">OPTION 03</div>
+                <h2 class="text-lg sm:text-xl font-black tracking-tight text-white group-hover:text-amber-400 transition-colors">
+                  Interactive Story Mode
+                  <!-- Book SVG inline -->
+                  <svg class="inline-block w-5 h-5 ml-1.5 -mt-0.5 text-amber-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+                  </svg>
+                </h2>
+                <p class="text-xs sm:text-[13px] text-white/70 mt-2 leading-relaxed">
+                  A 5-chapter scrollytelling journey through Harshal's career — built to connect with people and remembered by recruiters:
+                </p>
+              </div>
+
+              <!-- Feature Highlights -->
+              <ul class="space-y-2 text-xs font-mono text-white/80">
+                <li class="flex items-start gap-2">
+                  <!-- Arrow right SVG -->
+                  <svg class="w-3.5 h-3.5 mt-0.5 flex-shrink-0 text-amber-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+                  <span>Pointer-reactive 3D depth cards &amp; CSS scroll-driven reveals</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <svg class="w-3.5 h-3.5 mt-0.5 flex-shrink-0 text-amber-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+                  <span>Interactive milestone scrubber, pipeline simulator &amp; layer stack</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <svg class="w-3.5 h-3.5 mt-0.5 flex-shrink-0 text-amber-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+                  <span>5 chapters: Spark → Tata → Novamesh → IIM Bridge → Connect</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <svg class="w-3.5 h-3.5 mt-0.5 flex-shrink-0 text-amber-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+                  <span>Motion On/Off toggle — full prefers-reduced-motion support</span>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Launch Button -->
+            <div class="pt-6 mt-6 border-t border-white/10">
+              <button
+                class="w-full py-3.5 px-5 rounded-2xl bg-amber-500 hover:bg-amber-400 text-black font-mono font-extrabold text-xs sm:text-sm tracking-wider shadow-lg shadow-amber-500/25 transition-all flex items-center justify-center gap-2 group-hover:gap-3 cursor-pointer">
+                <span>ENTER STORY MODE</span>
+                <span class="text-base transition-transform group-hover:translate-x-1">→</span>
+              </button>
+            </div>
+          </div>
+
         </div>
 
         <!-- Bottom Informational Subtitle -->
         <div class="text-center mt-6 text-white/50 text-[11px] font-mono">
-          <span>Tip: You can switch between Pokédex Pro and Recruiter Mode anytime using the toggle button in the top navbar.</span>
+          <span>Tip: You can switch between all three modes anytime using the toggle button in the top navbar.</span>
         </div>
       </div>
     </div>

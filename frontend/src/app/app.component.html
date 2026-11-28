@@ -16,10 +16,16 @@
   (completed)="onRecruiterLoaderCompleted()">
 </app-recruiter-loader>
 
+<!-- Loader 3: Editorial Chapter Curtain Loader (When Story mode is chosen) -->
+<app-story-loader
+  *ngIf="portalShown && currentMode === 'story' && !storyLoaderShown"
+  (completed)="onStoryLoaderCompleted()">
+</app-story-loader>
+
 <!-- Main Unified Portfolio Layout Container (Shown after interface selection and loader completion) -->
-<div *ngIf="portalShown && ((currentMode === 'pokemon' && pokeballIntroShown) || (currentMode === 'recruiter' && recruiterLoaderShown))"
+<div *ngIf="portalShown && ((currentMode === 'pokemon' && pokeballIntroShown) || (currentMode === 'recruiter' && recruiterLoaderShown) || (currentMode === 'story' && storyLoaderShown))"
      class="min-h-screen text-white"
-     [ngClass]="currentMode === 'pokemon' ? 'bg-[#07090e] selection:bg-crimson selection:text-white' : 'bg-[#080b12] selection:bg-cyan-glow selection:text-black'">
+     [ngClass]="currentMode === 'pokemon' ? 'bg-[#07090e] selection:bg-crimson selection:text-white' : currentMode === 'story' ? 'bg-[#090b10] selection:bg-amber-500 selection:text-black' : 'bg-[#080b12] selection:bg-cyan-glow selection:text-black'">
   
   <!-- Shared Top Navigation with Dynamic UI Interface Switcher -->
   <app-nav
@@ -112,6 +118,15 @@
         </div>
       </div>
     </footer>
+  </ng-container>
+
+  <!-- ========================================================================= -->
+  <!-- VIEW 3: INTERACTIVE STORY MODE                                            -->
+  <!-- ========================================================================= -->
+  <ng-container *ngIf="currentMode === 'story'">
+    <main>
+      <app-story-view (modeChangeRequest)="onModeChanged($event)"></app-story-view>
+    </main>
   </ng-container>
 
 </div>

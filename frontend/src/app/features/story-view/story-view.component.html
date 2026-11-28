@@ -1,0 +1,571 @@
+<!-- ═══════════════════════════════════════════════════════════════════════
+     STORY VIEW — 5-Chapter Scrollytelling Portfolio
+     Palette: obsidian #090b10, surface #111622, accent amber #F59E0B
+     ═══════════════════════════════════════════════════════════════════════ -->
+
+<!-- ── Sticky Progress Rail ───────────────────────────────────────────────── -->
+<div class="fixed top-0 left-0 right-0 z-40 h-0.5 bg-white/5" role="progressbar" [attr.aria-valuenow]="scrollProgress" aria-valuemin="0" aria-valuemax="100" aria-label="Story reading progress">
+  <div class="h-full bg-amber-500 transition-all duration-100" [style.width]="scrollProgress + '%'"></div>
+</div>
+
+<!-- ── Motion & Pause Controls (WCAG 2.2.2) ──────────────────────────────── -->
+<div class="fixed bottom-6 right-4 z-50 flex flex-col gap-2">
+  <button
+    (click)="toggleMotion()"
+    class="flex items-center gap-2 px-3 py-2 rounded-xl bg-[#111622]/90 border border-amber-500/30 backdrop-blur-md text-xs font-mono text-white/80 hover:border-amber-500 hover:text-white transition-all shadow-lg"
+    [attr.aria-label]="motionEnabled ? 'Pause animations' : 'Resume animations'"
+    [title]="motionEnabled ? 'Pause animations' : 'Resume animations'">
+    <!-- Play/Pause SVG -->
+    <svg *ngIf="motionEnabled" class="w-3.5 h-3.5 text-amber-400" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/>
+    </svg>
+    <svg *ngIf="!motionEnabled" class="w-3.5 h-3.5 text-amber-400" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <polygon points="5 3 19 12 5 21 5 3"/>
+    </svg>
+    <span class="hidden sm:inline">{{ motionEnabled ? 'PAUSE' : 'PLAY' }}</span>
+  </button>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     PROLOGUE — Dimensional 3D Hero
+     ═══════════════════════════════════════════════════════════════ -->
+<section id="ch-prologue" class="relative min-h-screen flex items-center bg-[#090b10] overflow-hidden px-6 pt-20 pb-16">
+  <!-- Atmospheric grain layer -->
+  <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJub2lzZSI+PGZlVHVyYnVsZW5jZSB0eXBlPSJmcmFjdGFsTm9pc2UiIGJhc2VGcmVxdWVuY3k9IjAuNjUiIG51bU9jdGF2ZXM9IjMiIHN0aXRjaFRpbGVzPSJzdGl0Y2giLz48ZmVDb2xvck1hdHJpeCB0eXBlPSJzYXR1cmF0ZSIgdmFsdWVzPSIwIi8+PC9maWx0ZXI+PHJlY3Qgd2lkdGg9IjMwMCIgaGVpZ2h0PSIzMDAiIGZpbHRlcj0idXJsKCNub2lzZSkiIG9wYWNpdHk9IjAuMDMiLz48L3N2Zz4=')] opacity-40 pointer-events-none" aria-hidden="true"></div>
+  <div class="absolute top-1/3 right-1/4 w-96 h-96 bg-amber-500/8 rounded-full blur-[160px] pointer-events-none" aria-hidden="true"></div>
+
+  <div class="relative max-w-6xl mx-auto w-full grid lg:grid-cols-2 gap-12 items-center">
+    <!-- Left: Editorial text -->
+    <div class="space-y-6 story-reveal" #storyReveal>
+      <div class="flex items-center gap-3 text-[11px] font-mono text-amber-400/80 tracking-[0.3em] uppercase">
+        <div class="w-8 h-px bg-amber-400/60"></div>
+        <span>Chapter 00 · Prologue</span>
+      </div>
+
+      <h1 class="text-4xl sm:text-5xl lg:text-[clamp(2.5rem,5vw,4.25rem)] font-black text-white leading-[1.05] tracking-tight">
+        From First<br>
+        <span class="text-amber-400">Packet</span> to<br>
+        Platform Leader
+      </h1>
+
+      <p class="text-base sm:text-lg text-white/70 leading-relaxed max-w-lg">
+        Seven years. Three companies. One MBA. Infinite packets routed.<br>
+        This is the story of how a network engineer became the bridge between deep systems engineering and enterprise strategy.
+      </p>
+
+      <div class="flex flex-wrap gap-3 pt-2">
+        <a href="#ch-spark" class="inline-flex items-center gap-2 px-5 py-2.5 bg-amber-500 hover:bg-amber-400 text-black font-mono font-bold text-sm rounded-xl transition-all shadow-lg shadow-amber-500/25">
+          Begin Reading
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+        <a href="#ch-connect" class="inline-flex items-center gap-2 px-5 py-2.5 border border-white/20 hover:border-amber-500/60 text-white/80 hover:text-white font-mono text-sm rounded-xl transition-all">
+          Skip to Connect
+        </a>
+      </div>
+
+      <!-- Chapter quick-nav dots -->
+      <div class="flex items-center gap-3 pt-4" role="navigation" aria-label="Story chapters">
+        <a *ngFor="let ch of ['Prologue','Spark','Backbone','Scale','Bridge','Connect']; let i = index"
+           [href]="'#ch-' + ['prologue','spark','backbone','scale','bridge','connect'][i]"
+           class="group flex items-center gap-2 text-[11px] font-mono text-white/40 hover:text-amber-400 transition-colors">
+          <span class="w-1.5 h-1.5 rounded-full bg-current group-hover:bg-amber-400 transition-colors"></span>
+          <span class="hidden sm:inline">{{ ch }}</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Right: 3D dimensional card -->
+    <div class="hidden lg:flex items-center justify-center">
+      <div class="relative w-80 min-h-[26rem] story-reveal story-hero-card" #storyReveal
+           [style.transform]="motionEnabled ? 'perspective(800px) rotateX(' + layerCardX * 0.4 + 'deg) rotateY(' + layerCardY * 0.4 + 'deg)' : 'none'"
+           (mousemove)="onLayerMouseMove($event, $any($event.currentTarget))"
+           (mouseleave)="onLayerMouseLeave()">
+
+        <!-- Card face -->
+        <div class="relative rounded-3xl bg-gradient-to-br from-[#1a1600] to-[#111622] border border-amber-500/20 shadow-2xl overflow-hidden">
+          <!-- Grid pattern -->
+          <div class="absolute inset-0 bg-[linear-gradient(to_right,#f59e0b08_1px,transparent_1px),linear-gradient(to_bottom,#f59e0b08_1px,transparent_1px)] bg-[size:24px_24px]"></div>
+
+          <!-- Content -->
+          <div class="relative flex flex-col p-6 gap-5">
+            <div class="flex items-center justify-between">
+              <span class="text-[10px] font-mono text-amber-400/70 tracking-widest">CAREER · PROFILE</span>
+              <div class="flex gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-amber-500"></span>
+                <span class="w-2 h-2 rounded-full bg-white/20"></span>
+                <span class="w-2 h-2 rounded-full bg-white/20"></span>
+              </div>
+            </div>
+
+            <div class="space-y-1">
+              <div class="text-[11px] font-mono text-white/40">PRINCIPAL ENGINEER · TPM</div>
+              <div class="text-2xl font-black text-white tracking-tight">Harshal Raaj<br>Patnaik</div>
+              <div class="text-xs text-amber-400/80 font-mono mt-1">IIM Kozhikode PGP · Cloud Architect · GCP</div>
+            </div>
+
+            <!-- Stats grid -->
+            <div class="grid grid-cols-2 gap-3 pt-1">
+              <div class="p-3 rounded-xl bg-white/5 border border-white/8">
+                <div class="text-xl font-black text-amber-400">7+</div>
+                <div class="text-[10px] font-mono text-white/50 mt-0.5">Years Engineering</div>
+              </div>
+              <div class="p-3 rounded-xl bg-white/5 border border-white/8">
+                <div class="text-xl font-black text-amber-400">92.6%</div>
+                <div class="text-[10px] font-mono text-white/50 mt-0.5">Latency Reduction</div>
+              </div>
+              <div class="p-3 rounded-xl bg-white/5 border border-white/8">
+                <div class="text-xl font-black text-amber-400">5</div>
+                <div class="text-[10px] font-mono text-white/50 mt-0.5">Engineers Led</div>
+              </div>
+              <div class="p-3 rounded-xl bg-white/5 border border-white/8">
+                <div class="text-xl font-black text-amber-400">3×</div>
+                <div class="text-[10px] font-mono text-white/50 mt-0.5">Excellence Awards</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Floating depth badges positioned clear of card content -->
+        <div class="absolute -right-6 -top-3 px-3 py-1.5 bg-[#111622] border border-amber-500/40 rounded-xl text-[10px] font-mono text-amber-400 shadow-lg z-20" [class.story-float]="motionEnabled">Cloud Architect</div>
+        <div class="absolute -left-6 -bottom-3 px-3 py-1.5 bg-[#111622] border border-white/20 rounded-xl text-[10px] font-mono text-white/70 shadow-lg z-20" [class.story-float-slow]="motionEnabled">Tech × MBA</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     CHAPTER 01 — The Spark (Sticky Split + 3D Layer Stack)
+     ═══════════════════════════════════════════════════════════════ -->
+<section id="ch-spark" class="relative min-h-screen bg-[#090b10] border-t border-white/5 overflow-hidden">
+  <div class="max-w-6xl mx-auto px-6 py-24 grid lg:grid-cols-2 gap-16 items-start">
+
+    <!-- Left: Sticky editorial text -->
+    <div class="lg:sticky lg:top-24 space-y-6 story-reveal" #storyReveal>
+      <div class="flex items-center gap-3 text-[11px] font-mono text-amber-400/80 tracking-[0.3em] uppercase">
+        <div class="w-8 h-px bg-amber-400/60"></div>
+        <span>Chapter 01 · The Spark</span>
+      </div>
+      <h2 class="text-3xl sm:text-4xl font-black text-white leading-tight">
+        Systems Start<br>With a <span class="text-amber-400">First Packet</span>
+      </h2>
+      <p class="text-white/70 leading-relaxed">
+        Every distributed system has the same three layers: the user surface, the contract that makes it safe, and the compute that makes it real. Early in my career at Tata Communications, I learned to reason about all three simultaneously — not just the network, but the entire value chain.
+      </p>
+      <p class="text-white/60 text-sm leading-relaxed">
+        Click the layers below to peel through the architecture stack. Each layer reveals a mental model I carry into every system design today.
+      </p>
+      <!-- Layer selector buttons -->
+      <div class="flex flex-wrap gap-2 pt-2">
+        <button *ngFor="let lbl of layerLabels; let i = index"
+                (click)="activateLayer(i)"
+                class="px-3 py-1.5 rounded-lg text-xs font-mono transition-all border"
+                [class.bg-amber-500]="activeLayers[i]"
+                [class.text-black]="activeLayers[i]"
+                [class.border-amber-500]="activeLayers[i]"
+                [class.font-bold]="activeLayers[i]"
+                [class.border-white-20]="!activeLayers[i]"
+                [class.text-white-60]="!activeLayers[i]"
+                [ngClass]="!activeLayers[i] ? 'border-white/20 text-white/60 hover:border-amber-500/50' : ''">
+          {{ i + 1 }}. {{ lbl }}
+        </button>
+      </div>
+    </div>
+
+    <!-- Right: 3D interactive layer stack -->
+    <div class="relative h-96 lg:h-auto lg:min-h-[460px] flex items-center justify-center story-reveal" #storyReveal
+         (mousemove)="onLayerMouseMove($event, $any($event.currentTarget))"
+         (mouseleave)="onLayerMouseLeave()">
+      <div class="relative w-full max-w-sm"
+           [style.transform]="motionEnabled ? 'perspective(800px) rotateX(' + layerCardX * 0.5 + 'deg) rotateY(' + layerCardY * 0.5 + 'deg)' : 'none'"
+           style="transform-style: preserve-3d; transition: transform 0.15s ease-out;">
+
+        <div *ngFor="let lbl of layerLabels; let i = index"
+             class="absolute inset-0 rounded-2xl border p-5 flex flex-col gap-3 transition-all duration-500 cursor-pointer"
+             [style.transform]="motionEnabled ? 'translateZ(' + ((activeLayers[i] ? i * 28 : i * 8) - 20) + 'px) translateY(' + (i * -6) + 'px)' : 'translateY(' + (i * -4) + 'px)'"
+             [style.opacity]="activeLayers[i] ? '1' : '0.35'"
+             [style.zIndex]="activeLayers[i] ? (i + 10) : i"
+             [class.border-amber-500]="activeLayers[i]"
+             [class.bg-gradient-to-br]="true"
+             [ngClass]="activeLayers[i]
+               ? 'from-[#1c1500] to-[#111622] shadow-[0_8px_32px_rgba(245,158,11,0.2)]'
+               : 'from-[#111622] to-[#0d0e14] border-white/10'"
+             (click)="activateLayer(i)">
+
+          <div class="flex items-center justify-between">
+            <span class="text-[10px] font-mono tracking-widest"
+                  [class.text-amber-400]="activeLayers[i]"
+                  [class.text-white-40]="!activeLayers[i]"
+                  [ngClass]="!activeLayers[i] ? 'text-white/40' : ''">LAYER {{ ['01','02','03'][i] }}</span>
+            <div class="w-5 h-5 rounded-full flex items-center justify-center"
+                 [class.bg-amber-500]="activeLayers[i]"
+                 [ngClass]="!activeLayers[i] ? 'bg-white/10' : ''">
+              <svg class="w-3 h-3" [class.text-black]="activeLayers[i]" [class.text-white-40]="!activeLayers[i]" [ngClass]="!activeLayers[i] ? 'text-white/40' : ''" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="4"/></svg>
+            </div>
+          </div>
+
+          <div class="font-black text-lg" [class.text-white]="activeLayers[i]" [ngClass]="!activeLayers[i] ? 'text-white/50' : ''">{{ lbl }}</div>
+          <div class="text-xs font-mono" [class.text-amber-400]="activeLayers[i]" [ngClass]="!activeLayers[i] ? 'text-white/30' : ''">{{ layerSubs[i] }}</div>
+        </div>
+
+        <!-- Spacer so container has height -->
+        <div class="invisible rounded-2xl border p-5 flex flex-col gap-3 h-44">
+          <div class="font-black text-lg">placeholder</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     CHAPTER 02 — Backbone (Tata Milestone Scrubber)
+     ═══════════════════════════════════════════════════════════════ -->
+<section id="ch-backbone" class="relative bg-[#070910] border-t border-white/5 px-6 py-24 overflow-hidden">
+  <div class="absolute inset-0 bg-[linear-gradient(to_right,#f59e0b06_1px,transparent_1px),linear-gradient(to_bottom,#f59e0b06_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" aria-hidden="true"></div>
+
+  <div class="relative max-w-5xl mx-auto space-y-16">
+    <!-- Header -->
+    <div class="text-center space-y-4 story-reveal" #storyReveal>
+      <div class="flex items-center justify-center gap-3 text-[11px] font-mono text-amber-400/80 tracking-[0.3em] uppercase">
+        <div class="w-8 h-px bg-amber-400/60"></div>
+        <span>Chapter 02 · Backbone</span>
+        <div class="w-8 h-px bg-amber-400/60"></div>
+      </div>
+      <h2 class="text-3xl sm:text-4xl font-black text-white">Tata Communications:<br><span class="text-amber-400">Building the Backbone</span></h2>
+      <p class="text-white/60 max-w-2xl mx-auto leading-relaxed">
+        5 years. Enterprise-scale networking. Cloud migrations. Real latency reductions that protected revenue. Each milestone is a chapter within a chapter.
+      </p>
+    </div>
+
+    <!-- Milestone tabs (horizontal scrubber) -->
+    <div class="story-reveal" #storyReveal>
+      <!-- Tab nav -->
+      <div class="flex gap-2 overflow-x-auto pb-3 scrollbar-hide" role="tablist" aria-label="Tata Communications milestones">
+        <button *ngFor="let m of milestones; let i = index"
+                (click)="activeMilestone = i"
+                role="tab"
+                [attr.aria-selected]="activeMilestone === i"
+                [attr.aria-controls]="'milestone-panel-' + i"
+                class="flex-shrink-0 px-4 py-2 rounded-xl text-xs font-mono font-bold border transition-all"
+                [class.bg-amber-500]="activeMilestone === i"
+                [class.text-black]="activeMilestone === i"
+                [class.border-amber-500]="activeMilestone === i"
+                [ngClass]="activeMilestone !== i ? 'border-white/15 text-white/50 hover:border-amber-500/40 hover:text-white/80' : ''">
+          {{ m.year }} · {{ m.label }}
+        </button>
+      </div>
+
+      <!-- Active milestone panel -->
+      <div *ngFor="let m of milestones; let i = index"
+           [id]="'milestone-panel-' + i"
+           role="tabpanel"
+           [hidden]="activeMilestone !== i"
+           class="mt-6 rounded-2xl bg-[#111622] border border-white/10 p-6 sm:p-8 grid sm:grid-cols-[auto_1fr] gap-6 sm:gap-10 items-start milestone-panel"
+           [class.milestone-active]="activeMilestone === i">
+
+        <!-- Metric spotlight -->
+        <div class="sm:w-48 md:w-52 flex-shrink-0 text-center">
+          <div class="text-4xl sm:text-5xl font-black text-amber-400 leading-none">{{ m.metric }}</div>
+          <div class="text-xs font-mono text-white/50 mt-2 leading-relaxed">{{ m.metricLabel }}</div>
+        </div>
+
+        <!-- Detail text -->
+        <div class="space-y-3">
+          <div class="text-[11px] font-mono text-amber-400/70 tracking-widest uppercase">{{ m.year }} · {{ m.label }}</div>
+          <p class="text-white/80 leading-relaxed">{{ m.detail }}</p>
+          <div class="flex items-center gap-2 mt-4 pt-4 border-t border-white/8">
+            <span class="w-2 h-2 rounded-full bg-amber-400 flex-shrink-0"></span>
+            <span class="text-xs font-mono text-white/40">Tata Communications Ltd. · Cloud Infrastructure</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     CHAPTER 03 — Scale & Lead (Novamesh Pipeline Simulator)
+     ═══════════════════════════════════════════════════════════════ -->
+<section id="ch-scale" class="relative bg-[#090b10] border-t border-white/5 px-6 py-24 overflow-hidden">
+  <div class="absolute top-1/4 left-0 w-72 h-72 bg-amber-500/5 rounded-full blur-[120px] pointer-events-none" aria-hidden="true"></div>
+
+  <div class="relative max-w-5xl mx-auto space-y-16">
+    <!-- Header -->
+    <div class="grid lg:grid-cols-2 gap-8 items-end story-reveal" #storyReveal>
+      <div class="space-y-4">
+        <div class="flex items-center gap-3 text-[11px] font-mono text-amber-400/80 tracking-[0.3em] uppercase">
+          <div class="w-8 h-px bg-amber-400/60"></div>
+          <span>Chapter 03 · Scale &amp; Lead</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-black text-white">Novamesh:<br><span class="text-amber-400">Orchestrating at Cloud Scale</span></h2>
+        <p class="text-white/60 leading-relaxed">
+          Acting Scrum Master and squad lead for 5 engineers. Architected a Flowable BPMN + RabbitMQ orchestration layer that provisioned services across 4+ hypervisors — with full compensation saga support for failures.
+        </p>
+      </div>
+      <div class="flex gap-3 lg:justify-end flex-wrap">
+        <button (click)="runPipeline()"
+                [disabled]="pipelineRunning"
+                class="px-5 py-2.5 bg-amber-500 hover:bg-amber-400 disabled:opacity-50 disabled:cursor-not-allowed text-black font-mono font-bold text-sm rounded-xl transition-all shadow-lg shadow-amber-500/20">
+          {{ pipelineRunning ? 'Running…' : pipelineStep >= 0 ? 'Run Again' : 'Simulate Pipeline' }}
+        </button>
+        <button (click)="triggerFailure()"
+                class="px-5 py-2.5 border text-sm font-mono rounded-xl transition-all"
+                [class.border-red-500]="pipelineFailure"
+                [class.text-red-400]="pipelineFailure"
+                [class.bg-red-500-10]="pipelineFailure"
+                [ngClass]="pipelineFailure ? 'border-red-500 text-red-400 bg-red-500/10' : 'border-white/20 text-white/60 hover:border-red-500/50 hover:text-red-400'">
+          {{ pipelineFailure ? 'Rollback Active' : 'Simulate Failure' }}
+        </button>
+      </div>
+    </div>
+
+    <!-- Pipeline visualiser -->
+    <div class="story-reveal" #storyReveal>
+      <div class="flex flex-col sm:flex-row gap-4 sm:gap-0 items-stretch">
+        <ng-container *ngFor="let step of pipelineSteps; let i = index">
+          <!-- Step card -->
+          <div class="flex-1 relative rounded-2xl border p-5 transition-all duration-500"
+               [class.border-amber-500]="pipelineStep >= i && !pipelineFailure"
+               [class.bg-[#1c1500]]="pipelineStep >= i && !pipelineFailure"
+               [class.shadow-amber-glow]="pipelineStep >= i && !pipelineFailure"
+               [class.border-red-500]="pipelineFailure && pipelineStep === i"
+               [class.bg-red-900-10]="pipelineFailure && pipelineStep === i"
+               [ngClass]="(pipelineStep >= i && !pipelineFailure) ? 'border-amber-500 bg-[#1c1500] shadow-[0_0_20px_rgba(245,158,11,0.15)]'
+                          : (pipelineFailure && pipelineStep === i) ? 'border-red-500 bg-red-900/10'
+                          : 'border-white/10 bg-[#111622]'">
+            <div class="text-[10px] font-mono text-white/40 tracking-widest mb-2">STEP {{ ['01','02','03'][i] }}</div>
+            <div class="font-bold text-white mb-1">{{ step.label }}</div>
+            <div class="text-[11px] font-mono text-amber-400/70 mb-3">{{ step.sub }}</div>
+            <p class="text-xs text-white/60 leading-relaxed">
+              {{ (pipelineFailure && pipelineStep === i) ? step.failDesc : step.desc }}
+            </p>
+
+            <!-- Status indicator -->
+            <div class="mt-4 flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full"
+                    [class.bg-amber-400]="pipelineStep >= i && !pipelineFailure"
+                    [class.animate-pulse]="pipelineStep === i && !pipelineFailure"
+                    [class.bg-red-400]="pipelineFailure && pipelineStep === i"
+                    [ngClass]="(pipelineStep < i || (pipelineFailure && pipelineStep < i)) ? 'bg-white/20' : ''"></span>
+              <span class="text-[10px] font-mono"
+                    [class.text-amber-400]="pipelineStep >= i && !pipelineFailure"
+                    [class.text-red-400]="pipelineFailure && pipelineStep === i"
+                    [ngClass]="pipelineStep < i ? 'text-white/30' : ''">
+                {{ pipelineFailure && pipelineStep === i ? 'FAILED · ROLLBACK' : pipelineStep >= i ? 'ACTIVE' : 'WAITING' }}
+              </span>
+            </div>
+          </div>
+
+          <!-- Connector arrow (between steps) -->
+          <div *ngIf="i < pipelineSteps.length - 1" class="hidden sm:flex items-center justify-center w-10 flex-shrink-0">
+            <svg class="w-5 h-5 transition-colors duration-500"
+                 [class.text-amber-400]="pipelineStep > i"
+                 [class.text-red-400]="pipelineFailure && pipelineStep === i + 1"
+                 [ngClass]="pipelineStep <= i ? 'text-white/15' : ''"
+                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+            </svg>
+          </div>
+        </ng-container>
+      </div>
+
+      <!-- Idle hint -->
+      <p *ngIf="pipelineStep < 0" class="text-center text-xs font-mono text-white/30 mt-6">
+        Press "Simulate Pipeline" to watch the full service provisioning flow — or trigger a failure to see the compensation saga in action.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     CHAPTER 04 — Bridge (IIM × Ventures Tabbed Spotlight)
+     ═══════════════════════════════════════════════════════════════ -->
+<section id="ch-bridge" class="relative bg-[#07090e] border-t border-white/5 px-6 py-24 overflow-hidden">
+  <div class="absolute bottom-0 right-0 w-96 h-96 bg-amber-500/6 rounded-full blur-[160px] pointer-events-none" aria-hidden="true"></div>
+
+  <div class="relative max-w-5xl mx-auto space-y-14">
+    <!-- Header -->
+    <div class="story-reveal" #storyReveal>
+      <div class="flex items-center gap-3 text-[11px] font-mono text-amber-400/80 tracking-[0.3em] uppercase mb-5">
+        <div class="w-8 h-px bg-amber-400/60"></div>
+        <span>Chapter 04 · The Bridge</span>
+      </div>
+      <div class="grid lg:grid-cols-[2fr_1fr] gap-8 items-end">
+        <div class="space-y-4">
+          <h2 class="text-3xl sm:text-4xl font-black text-white">IIM Kozhikode PGP:<br><span class="text-amber-400">Tech × MBA Synthesis</span></h2>
+          <p class="text-white/60 leading-relaxed max-w-xl">
+            I pursued the IIM Kozhikode PGP not to exit engineering, but to understand why systems fail at the business layer. Product Strategy, FinOps, Risk Analysis, and Brand Strategy became new weapons in my architecture toolkit.
+          </p>
+        </div>
+        <div class="p-4 rounded-2xl bg-[#111622] border border-amber-500/20">
+          <div class="text-xs font-mono text-white/40 mb-3 tracking-widest">COURSEWORK INCLUDES</div>
+          <div class="flex flex-wrap gap-1.5">
+            <span *ngFor="let tag of ['Product Strategy','FinOps','Risk Analysis','Financial Accounting','Digital Marketing','Brand Strategy','Negotiation','Operations Mgmt']"
+                  class="px-2 py-0.5 bg-amber-500/10 border border-amber-500/20 rounded text-[10px] font-mono text-amber-400/80">{{ tag }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Asymmetric tab inspector -->
+    <div class="story-reveal" #storyReveal>
+      <!-- Tab nav -->
+      <div class="flex gap-2 mb-6 border-b border-white/8 pb-0" role="tablist" aria-label="Venture projects">
+        <button *ngFor="let tab of tabs; let i = index"
+                (click)="activeTab = i"
+                role="tab"
+                [attr.aria-selected]="activeTab === i"
+                class="pb-3 px-4 text-sm font-mono font-bold border-b-2 transition-all -mb-px"
+                [class.border-amber-500]="activeTab === i"
+                [class.text-amber-400]="activeTab === i"
+                [ngClass]="activeTab !== i ? 'border-transparent text-white/40 hover:text-white/70' : ''">
+          {{ tab.label }}
+        </button>
+      </div>
+
+      <!-- Tab panel -->
+      <div *ngFor="let tab of tabs; let i = index" [hidden]="activeTab !== i" role="tabpanel">
+        <div class="grid lg:grid-cols-[1fr_auto] gap-8 items-start rounded-2xl bg-[#111622] border border-white/8 p-6 sm:p-8">
+
+          <!-- Left: main spotlight -->
+          <div class="space-y-5">
+            <div class="space-y-1">
+              <div class="text-[11px] font-mono text-amber-400/70 tracking-widest uppercase">{{ tab.id }} · Venture Project</div>
+              <h3 class="text-2xl font-black text-white">{{ tab.tagline }}</h3>
+            </div>
+            <p class="text-white/70 leading-relaxed">{{ tab.description }}</p>
+            <div class="flex flex-wrap gap-2">
+              <span *ngFor="let t of tab.tags"
+                    class="px-2.5 py-1 rounded-lg bg-white/5 border border-white/10 text-[11px] font-mono text-white/70">{{ t }}</span>
+            </div>
+            <div class="flex gap-3 pt-2">
+              <a *ngFor="let link of tab.links"
+                 [href]="link.href"
+                 target="_blank"
+                 rel="noopener noreferrer"
+                 class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-amber-500/40 hover:border-amber-500 text-amber-400 hover:text-amber-300 text-xs font-mono font-bold transition-all">
+                <!-- GitHub SVG -->
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg>
+                {{ link.label }}
+              </a>
+            </div>
+          </div>
+
+          <!-- Right: stat card -->
+          <div class="lg:w-44 flex-shrink-0 p-5 rounded-2xl bg-[#0d0e14] border border-white/8 text-center space-y-3">
+            <svg class="w-8 h-8 mx-auto text-amber-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <!-- Layers icon -->
+              <polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/>
+            </svg>
+            <div class="text-[10px] font-mono text-white/40 tracking-wider uppercase">IIM Kozhikode<br>PGP Capstone</div>
+            <div class="text-xs font-mono text-amber-400">Tech × MBA<br>Bridge</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     CHAPTER 05 — Epilogue & Connect
+     ═══════════════════════════════════════════════════════════════ -->
+<section id="ch-connect" class="relative bg-[#090b10] border-t border-white/5 px-6 py-24 overflow-hidden">
+  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-px h-24 bg-gradient-to-b from-transparent to-amber-500/40" aria-hidden="true"></div>
+
+  <div class="relative max-w-4xl mx-auto space-y-16">
+    <!-- Header -->
+    <div class="text-center space-y-5 story-reveal" #storyReveal>
+      <div class="flex items-center justify-center gap-3 text-[11px] font-mono text-amber-400/80 tracking-[0.3em] uppercase">
+        <div class="w-8 h-px bg-amber-400/60"></div>
+        <span>Chapter 05 · Connect</span>
+        <div class="w-8 h-px bg-amber-400/60"></div>
+      </div>
+      <h2 class="text-3xl sm:text-4xl font-black text-white">The Story<br>Continues <span class="text-amber-400">With You</span></h2>
+      <p class="text-white/60 leading-relaxed max-w-xl mx-auto">
+        Every great system needs the right team. If you're building something that needs a Principal Engineer who reads P&amp;L statements and writes distributed systems architecture — let's talk.
+      </p>
+
+      <!-- Action buttons -->
+      <div class="flex flex-wrap gap-4 justify-center pt-4">
+        <button (click)="downloadResume()"
+                class="inline-flex items-center gap-2.5 px-6 py-3 bg-amber-500 hover:bg-amber-400 text-black font-mono font-bold rounded-xl transition-all shadow-lg shadow-amber-500/25">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download ATS Resume
+        </button>
+        <button (click)="switchToRecruiter()"
+                class="inline-flex items-center gap-2.5 px-6 py-3 border border-cyan-glow/40 hover:border-cyan-glow text-white hover:text-cyan-glow font-mono font-bold rounded-xl transition-all">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+          Switch to Recruiter Mode
+        </button>
+        <a href="https://github.com/harshalraajpatnaik" target="_blank" rel="noopener noreferrer"
+           class="inline-flex items-center gap-2.5 px-6 py-3 border border-white/15 hover:border-white/40 text-white/70 hover:text-white font-mono rounded-xl transition-all">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg>
+          GitHub
+        </a>
+      </div>
+    </div>
+
+    <!-- Contact form -->
+    <div class="rounded-3xl bg-[#111622] border border-white/8 p-6 sm:p-10 story-reveal" #storyReveal>
+      <h3 class="text-xl font-black text-white mb-6">Start a Conversation</h3>
+
+      <!-- Success state -->
+      <div *ngIf="contactState === 'success'" class="text-center py-10 space-y-4">
+        <svg class="w-12 h-12 mx-auto text-amber-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        <div class="text-white font-bold">Message sent successfully!</div>
+        <div class="text-white/50 text-sm">I'll get back to you within 24 hours.</div>
+        <button (click)="resetContact()" class="mt-2 px-4 py-2 border border-white/20 text-white/60 hover:text-white text-sm font-mono rounded-xl transition-all">Send another</button>
+      </div>
+
+      <!-- Form -->
+      <form *ngIf="contactState !== 'success'" (ngSubmit)="submitContact()" class="space-y-4">
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div class="space-y-1.5">
+            <label for="story-name" class="text-xs font-mono text-white/50 tracking-wider">Your Name</label>
+            <input id="story-name" type="text" [(ngModel)]="contactName" name="contactName" required
+                   placeholder="Jane Smith"
+                   class="w-full px-4 py-3 rounded-xl bg-[#0d0e14] border border-white/10 focus:border-amber-500/60 outline-none text-white placeholder-white/25 text-sm font-mono transition-colors">
+          </div>
+          <div class="space-y-1.5">
+            <label for="story-email" class="text-xs font-mono text-white/50 tracking-wider">Work Email</label>
+            <input id="story-email" type="email" [(ngModel)]="contactEmail" name="contactEmail" required
+                   placeholder="jane@company.com"
+                   class="w-full px-4 py-3 rounded-xl bg-[#0d0e14] border border-white/10 focus:border-amber-500/60 outline-none text-white placeholder-white/25 text-sm font-mono transition-colors">
+          </div>
+        </div>
+        <div class="space-y-1.5">
+          <label for="story-msg" class="text-xs font-mono text-white/50 tracking-wider">Message</label>
+          <textarea id="story-msg" [(ngModel)]="contactMessage" name="contactMessage" required rows="4"
+                    placeholder="Tell me about the role or what you're building…"
+                    class="w-full px-4 py-3 rounded-xl bg-[#0d0e14] border border-white/10 focus:border-amber-500/60 outline-none text-white placeholder-white/25 text-sm font-mono transition-colors resize-none"></textarea>
+        </div>
+
+        <!-- Error state -->
+        <p *ngIf="contactState === 'error'" class="text-red-400 text-xs font-mono">Something went wrong. Please try again or email me directly.</p>
+
+        <button type="submit"
+                [disabled]="contactState === 'loading' || !contactName || !contactEmail || !contactMessage"
+                class="w-full sm:w-auto px-8 py-3 bg-amber-500 hover:bg-amber-400 disabled:opacity-50 disabled:cursor-not-allowed text-black font-mono font-bold rounded-xl transition-all shadow-lg shadow-amber-500/20 flex items-center gap-2">
+          <span>{{ contactState === 'loading' ? 'Sending…' : 'Send Message' }}</span>
+          <svg *ngIf="contactState !== 'loading'" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ── Story Footer ──────────────────────────────────────────────────────────── -->
+<footer class="py-10 px-6 border-t border-amber-500/10 bg-[#07090e] text-xs font-mono text-white/40 pb-24 sm:pb-10">
+  <div class="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 sm:pr-24">
+    <div class="flex items-center gap-3">
+      <span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
+      <span class="text-white/70 font-bold">STORY MODE · HARSHAL RAAJ PATNAIK</span>
+    </div>
+    <div class="flex flex-wrap items-center gap-4 text-[11px]">
+      <span>SCROLL · 3D · MOTION · ZERO DEPENDENCIES</span>
+      <span>•</span>
+      <a href="assets/Harshal_Raaj_Patnaik_Resume.pdf" download class="hover:text-amber-400 transition-colors">ATS RESUME ↗</a>
+      <span>•</span>
+      <a href="https://github.com/harshalraajpatnaik" target="_blank" rel="noopener noreferrer" class="hover:text-amber-400 transition-colors">GITHUB ↗</a>
+    </div>
+  </div>
+</footer>

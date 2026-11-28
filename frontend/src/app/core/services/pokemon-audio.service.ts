@@ -110,10 +110,10 @@ export class PokemonAudioService {
 
   /**
    * Synchronize audio state with the active UI mode.
-   * Automatically stops the theme song when switching to Recruiter Mode.
+   * Automatically stops the theme song when switching to Recruiter or Story Mode.
    */
-  setMode(mode: 'pokemon' | 'recruiter'): void {
-    this.isRecruiterMode = mode === 'recruiter';
+  setMode(mode: 'pokemon' | 'recruiter' | 'story'): void {
+    this.isRecruiterMode = mode !== 'pokemon';
     if (this.isRecruiterMode) {
       this.stopPokemonThemeSong();
     } else if (this.musicEnabled && !this.isMusicPlaying) {
