@@ -203,19 +203,19 @@ export type PortfolioMode = 'pokemon' | 'recruiter' | 'story';
                 <li class="flex items-start gap-2">
                   <!-- Arrow right SVG -->
                   <svg class="w-3.5 h-3.5 mt-0.5 flex-shrink-0 text-amber-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
-                  <span>Pointer-reactive 3D depth cards &amp; CSS scroll-driven reveals</span>
+                  <span>Interactive Three.js 3D spatial constellation &amp; particle mesh</span>
                 </li>
                 <li class="flex items-start gap-2">
                   <svg class="w-3.5 h-3.5 mt-0.5 flex-shrink-0 text-amber-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
-                  <span>Interactive milestone scrubber, pipeline simulator &amp; layer stack</span>
+                  <span>Authentic 4-Act Life Journey (SRM ➔ Tata Comm ➔ Novamesh ➔ IIMK)</span>
                 </li>
                 <li class="flex items-start gap-2">
                   <svg class="w-3.5 h-3.5 mt-0.5 flex-shrink-0 text-amber-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
-                  <span>5 chapters: Spark → Tata → Novamesh → IIM Bridge → Connect</span>
+                  <span>Flowable BPMN Saga pipeline simulator with rollback toggle</span>
                 </li>
                 <li class="flex items-start gap-2">
                   <svg class="w-3.5 h-3.5 mt-0.5 flex-shrink-0 text-amber-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
-                  <span>Motion On/Off toggle — full prefers-reduced-motion support</span>
+                  <span>5+ years true corporate scale, 92.6% latency cut &amp; 3 capstones</span>
                 </li>
               </ul>
             </div>

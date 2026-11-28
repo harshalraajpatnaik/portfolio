@@ -351,11 +351,8 @@ export class NavComponent implements OnInit, OnDestroy {
 
   storyNavLinks = [
     { href: '#ch-prologue', label: 'Prologue',     num: '00' },
-    { href: '#ch-spark',    label: 'Spark',        num: '01' },
-    { href: '#ch-backbone', label: 'Backbone',     num: '02' },
-    { href: '#ch-scale',    label: 'Scale & Lead', num: '03' },
-    { href: '#ch-bridge',   label: 'Tech × MBA',   num: '04' },
-    { href: '#ch-connect',  label: 'Connect',      num: '05' },
+    { href: '#ch-journey',  label: 'Life Journey', num: '01' },
+    { href: '#ch-connect',  label: 'Connect',      num: '02' },
   ];
 
   constructor(

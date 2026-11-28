@@ -1,107 +1,32 @@
-// ── Story View Styles ─────────────────────────────────────────────────────────
-// GPU composited only: transform, opacity (no width, height, top, left)
-// prefers-reduced-motion respected everywhere
+// ── Story View SCSS ──────────────────────────────────────────────────────────
+// GPU-composited transforms and opacity only
+// Adhering to /motion-and-3d and /modern-web-guidance
 // ─────────────────────────────────────────────────────────────────────────────
 
 :host {
   display: block;
-  background: #090b10;
+  background-color: #07090e;
+  color: #ffffff;
 }
 
-// ── Scroll-driven reveals (Newly Available: Chrome 115+, Safari 26+) ─────────
-@supports (animation-timeline: scroll()) and (animation-range: 0% 100%) {
-  .story-reveal {
-    @media (prefers-reduced-motion: no-preference) {
-      animation: story-fade-up linear both;
-      animation-timeline: view();
-      animation-range: entry 5% cover 35%;
-    }
-  }
+canvas {
+  touch-action: none;
 }
 
-// IntersectionObserver fallback (applied by TypeScript when @supports fails)
-.story-reveal {
-  opacity: 0;
-  transform: translateY(28px);
-  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
-
-  &.io-visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  // Always visible when SDA is supported (SDA handles the reveal)
-  @supports (animation-timeline: scroll()) and (animation-range: 0% 100%) {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    opacity: 1 !important;
-    transform: none !important;
-    transition: none !important;
-    animation: none !important;
-  }
+// ── Smooth 3D Transform Transitions ──────────────────────────────────────────
+.transition-transform-gpu {
+  transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
 }
 
-@keyframes story-fade-up {
-  from {
-    opacity: 0;
-    transform: translateY(32px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-// ── Hero 3D card float ────────────────────────────────────────────────────────
-.story-hero-card {
-  transition: transform 0.15s ease-out;
-}
-
-.story-float {
-  animation: gentle-float 4s ease-in-out infinite;
-
-  @media (prefers-reduced-motion: reduce) {
-    animation: none;
+// ── Motion Accessibility Fallbacks ───────────────────────────────────────────
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
-
-.story-float-slow {
-  animation: gentle-float 5.5s ease-in-out infinite reverse;
-
-  @media (prefers-reduced-motion: reduce) {
-    animation: none;
-  }
-}
-
-@keyframes gentle-float {
-  0%, 100% { transform: translateY(0px); }
-  50%       { transform: translateY(-8px); }
-}
-
-// ── Milestone panel transition ────────────────────────────────────────────────
-.milestone-panel {
-  transition: transform 0.3s ease;
-
-  &.milestone-active {
-    transform: translateY(0);
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    transform: none !important;
-    transition: none !important;
-  }
-}
-
-// ── Scrollbar hide utility ────────────────────────────────────────────────────
-.scrollbar-hide {
-  scrollbar-width: none;
-  &::-webkit-scrollbar { display: none; }
-}
-
-// ── Chapter progress rail ─────────────────────────────────────────────────────
-// (Handled inline in template, no SCSS needed)
