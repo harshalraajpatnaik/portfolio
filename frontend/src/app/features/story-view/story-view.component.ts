@@ -15,19 +15,38 @@ import { FormsModule } from '@angular/forms';
 import * as THREE from 'three';
 import { PortfolioApiService } from '../../core/services/portfolio-api.service';
 
-interface StoryChapter {
+export interface ProjectDetail {
   id: string;
+  name: string;
+  category: string;
+  badge: string;
+  tagline: string;
+  description: string;
+  businessImpact: string;
+  technicalArchitecture: string[];
+  metrics: { label: string; value: string }[];
+  tags: string[];
+  githubUrl: string;
+  color: string;
+}
+
+export interface StoryAct {
+  id: string;
+  actNumber: string;
   badge: string;
   period: string;
+  shortLabel: string;
   title: string;
   subtitle: string;
   organization: string;
   location: string;
-  accent: 'energy' | 'cyan' | 'emerald' | 'amber';
-  summary: string;
-  metrics: { value: string; label: string; desc: string }[];
-  technicalHighlights: string[];
-  systemTags: string[];
+  storyNarrative: string;
+  imagePath: string;
+  fallbackIcon: string;
+  accentColor: string;
+  metrics: { value: string; label: string; detail: string }[];
+  highlights: string[];
+  tags: string[];
 }
 
 @Component({
@@ -40,10 +59,10 @@ interface StoryChapter {
 export class StoryViewComponent implements OnInit, AfterViewInit, OnDestroy {
   @Output() modeChangeRequest = new EventEmitter<'recruiter' | 'pokemon'>();
 
-  @ViewChild('threeCanvas', { static: false }) threeCanvasRef?: ElementRef<HTMLCanvasElement>;
-  @ViewChild('sceneContainer', { static: false }) sceneContainerRef?: ElementRef<HTMLDivElement>;
+  @ViewChild('laptopCanvas', { static: false }) laptopCanvasRef?: ElementRef<HTMLCanvasElement>;
+  @ViewChild('laptopContainer', { static: false }) laptopContainerRef?: ElementRef<HTMLDivElement>;
 
-  // ── Three.js Spatial Scene State ──────────────────────────────────────────
+  // ── Three.js 3D Laptop & Command Studio ──────────────────────────────────
   private renderer?: THREE.WebGLRenderer;
   private scene?: THREE.Scene;
   private camera?: THREE.PerspectiveCamera;
@@ -51,127 +70,229 @@ export class StoryViewComponent implements OnInit, AfterViewInit, OnDestroy {
   private isVisible = true;
   private intersectionObserver?: IntersectionObserver;
 
-  // 3D Objects
-  private particleCloud?: THREE.Points;
-  private coreSphere?: THREE.Mesh;
-  private orbitRings: THREE.Line[] = [];
-  private nodeMeshes: THREE.Mesh[] = [];
+  // 3D Meshes
+  private laptopGroup?: THREE.Group;
+  private laptopScreenMesh?: THREE.Mesh;
+  private laptopScreenCanvas?: HTMLCanvasElement;
+  private laptopScreenTexture?: THREE.CanvasTexture;
+  private pedestalMesh?: THREE.Mesh;
+  private floatingBadges: THREE.Mesh[] = [];
 
-  // Pointer tracking for 3D parallax
+  // Mouse / Pointer Parallax
   targetMouseX = 0;
   targetMouseY = 0;
   currentMouseX = 0;
   currentMouseY = 0;
 
-  // ── 3D Card Interactive Tilt ──────────────────────────────────────────────
-  heroTiltX = 0;
-  heroTiltY = 0;
-
-  // ── Active Life Journey Acts (Verified Facts from Resume & Recruiter Dossier) ──
+  // Active Story Chapter
   activeActIndex = 0;
-  acts: StoryChapter[] = [
+
+  // ── Authentic Chronological Life Journey Acts (Zero Hallucination) ────────
+  acts: StoryAct[] = [
     {
       id: 'act-1-genesis',
-      badge: 'ACT I · GENESIS',
+      actNumber: 'ACT I',
+      badge: 'THE GENESIS',
       period: '2017 – 2021',
-      title: 'The Engineering Genesis',
-      subtitle: 'Algorithmic Rigor, Systems Programming & Distributed Foundations',
+      shortLabel: '2017–2021 · SRM CHENNAI',
+      title: 'Arriving in Chennai & Forging Systems Foundations',
+      subtitle: 'SRM Institute of Science and Technology · Bachelor of Technology in CSE',
       organization: 'SRM Institute of Science and Technology',
-      location: 'Chennai, India',
-      accent: 'cyan',
-      summary: 'Before scaling enterprise cloud systems, the foundation was forged through computer science theory, operating systems, Linux internals, network socket programming, and distributed database mechanics. Graduated with 87.6% (CGPA 8.76).',
+      location: 'Chennai, Tamil Nadu, India',
+      storyNarrative:
+        'In 2017, after completing 12th standard, Harshal moved to Chennai to enter SRM Institute of Science and Technology for Computer Science & Engineering. Over four rigorous years, late nights in the lab turned into deep mastery of data structures, distributed algorithms, operating systems, Linux kernel internals, and socket networking protocols. Graduated with honors at 87.6% (CGPA 8.76), setting the stage for industrial cloud infrastructure.',
+      imagePath: 'assets/images/story/act1-college-chennai.jpg',
+      fallbackIcon: 'mortarboard',
+      accentColor: 'cyan',
       metrics: [
-        { value: '8.76', label: 'B.Tech CGPA', desc: 'Computer Science & Engineering (87.6%)' },
-        { value: '4 Years', label: 'Foundational Depth', desc: 'OS, Linux internals, data structures & protocols' },
-        { value: '0-to-1', label: 'Systems Mastery', desc: 'Low-level concurrency, sockets & databases' }
+        { value: '8.76', label: 'B.Tech CGPA', detail: 'Computer Science & Engineering (87.6%)' },
+        { value: '4 Years', label: 'Foundational Rigor', detail: 'Linux, OS, distributed algorithms & networks' },
+        { value: '0 to 1', label: 'Systems Mindset', detail: 'Building multi-threaded C/C++ & Java engines' }
       ],
-      technicalHighlights: [
-        'Mastered core algorithms, distributed data structures, and computer networking protocols (TCP/IP, UDP, DNS, routing).',
-        'Implemented low-level concurrency models, multi-threaded C/C++ services, and Linux kernel memory management.',
-        'Explored database query execution plans, relational algebra, and distributed transaction semantics.'
+      highlights: [
+        'Built solid low-level foundations in concurrency, memory models, Linux kernel internals, and TCP/IP networking sockets.',
+        'Explored distributed database mechanics, relational query optimizers, and ACID transaction guarantees.',
+        'Developed end-to-end full-stack utilities and developer tools, earning top academic honors.'
       ],
-      systemTags: ['Computer Science', 'Algorithms', 'Distributed Systems', 'Linux Internals', 'Data Structures', 'Networking']
+      tags: ['SRM Institute', 'Computer Science', 'Algorithms', 'Linux Internals', 'Operating Systems', 'Networking']
     },
     {
       id: 'act-2-tatacomm',
-      badge: 'ACT II · ENTERPRISE BACKBONE',
+      actNumber: 'ACT II',
+      badge: 'ENTERPRISE BACKBONE',
       period: 'Jul 2021 – Mar 2024',
-      title: 'Cloud Infrastructure & S3 Automation',
-      subtitle: 'Joined Tata Communications · Industrial Object Storage & Frontend Modernization',
+      shortLabel: '2021–2024 · TATA COMM',
+      title: 'Industrial Cloud Infrastructure & S3 Automation',
+      subtitle: 'Tata Communications Ltd. · Software Development Engineer (Cloud Storage & Full-Stack)',
       organization: 'Tata Communications Ltd.',
       location: 'Chennai, India',
-      accent: 'energy',
-      summary: 'Joined Tata Communications in July 2021 as Software Development Engineer. Spearheaded the enterprise onboarding architecture for Caringo Swarm S3-compatible cloud object storage, automated DNS provisioning, and modern reactive Angular migration.',
+      storyNarrative:
+        'In July 2021, Harshal joined Tata Communications as Software Development Engineer, stepping directly onto the enterprise cloud backbone. He took ownership of onboarding workflows for Caringo Swarm S3-compatible cloud object storage, architecting self-service bucket lifecycle management with automated cPanel DNS A-record associations. Spearheaded frontend modernization from legacy AngularJS to reactive Angular 17, receiving 3× Division Excellence Awards.',
+      imagePath: 'assets/images/story/act2-tata-datacenter.jpg',
+      fallbackIcon: 'server',
+      accentColor: 'energy',
       metrics: [
-        { value: '100%', label: 'Self-Service Lifecycle', desc: 'Automated Caringo Swarm S3 bucket provisioning' },
-        { value: '3×', label: 'Excellence Awards', desc: 'Division recognition for reliability & velocity' },
-        { value: 'v17', label: 'Angular Modernization', desc: 'Upgraded legacy AngularJS to modern reactive Angular' }
+        { value: '100%', label: 'Self-Service S3', detail: 'Automated Caringo Swarm bucket lifecycle & metering' },
+        { value: '3×', label: 'Excellence Awards', detail: 'Recognized for platform reliability & engineering velocity' },
+        { value: 'v17', label: 'Angular Modernization', detail: 'Migrated mission-critical portals to standalone Angular 17' }
       ],
-      technicalHighlights: [
-        'Built full-stack onboarding workflow for Caringo Swarm S3-compatible object storage with automated cPanel DNS A-record associations.',
-        'Migrated mission-critical customer portals from legacy AngularJS to Angular 17 with standalone components and OnPush change detection.',
+      highlights: [
+        'Architected full-stack self-service onboarding for Caringo Swarm S3-compatible object storage with automated DNS A-records in Java and Angular.',
+        'Modernized enterprise customer portals from AngularJS to Angular 17 with OnPush reactive state and modular components.',
         'Hardened automated CI/CD release packaging pipelines using Jenkins, Maven, and JUnit quality gates.'
       ],
-      systemTags: ['Tata Communications', 'Caringo Swarm S3', 'Java', 'Angular 17', 'DNS Automation', 'Jenkins CI/CD']
+      tags: ['Tata Communications', 'Caringo Swarm S3', 'Java', 'Angular 17', 'DNS Automation', 'Jenkins CI/CD']
     },
     {
       id: 'act-3-novamesh',
-      badge: 'ACT III · SCALE & LEADERSHIP',
+      actNumber: 'ACT III',
+      badge: 'SCALE & SQUAD LEADERSHIP',
       period: 'Apr 2024 – Present',
-      title: 'Distributed Scale & Squad Leadership',
-      subtitle: 'Senior Software Engineer & Squad Lead · Multi-Hypervisor IaaS & Sagas',
-      organization: 'Novamesh Ltd. (Tata Communications Subsidiary)',
+      shortLabel: '2024–PRESENT · NOVAMESH',
+      title: 'Distributed Scale, Sagas & Engineering Leadership',
+      subtitle: 'Novamesh Ltd. (Tata Communications Subsidiary) · Senior Software Engineer & Squad Lead',
+      organization: 'Novamesh Ltd. (Wholly Owned Subsidiary of Tata Communications)',
       location: 'Chennai, India',
-      accent: 'amber',
-      summary: 'Leading distributed cloud infrastructure engineering at Novamesh. Architected zero-touch VM fulfillment pipelines across 4+ hypervisors (KVM, ESXi, OLVM), cut batch scheduler execution latency by 92.6%, and led a squad of 5 engineers as Acting Scrum Master.',
+      storyNarrative:
+        'Elevated to Senior Software Engineer and Squad Lead at Novamesh (Tata Communications subsidiary), leading 5 engineers. Architected an automated zero-touch order fulfillment pipeline with Flowable BPMN sagas and RabbitMQ across KVM, VMware ESXi, and OLVM clusters, slashing provisioning lead time by 85%. Slashed batch scheduler latency by 92.6% (18m down to 80s) with Cassandra chunking and Redis caching, while enforcing Fortinet FortiGate and Kong API Gateway edge security.',
+      imagePath: 'assets/images/story/act3-novamesh-leadership.jpg',
+      fallbackIcon: 'cpu',
+      accentColor: 'amber',
       metrics: [
-        { value: '92.6%', label: 'Scheduler Latency Cut', desc: 'Slashed critical batch runtime from 18m to 80s' },
-        { value: '85%', label: 'Lead Time Cut', desc: 'Order fulfillment reduced from 4 hrs to <35 mins' },
-        { value: '99.95%', label: 'Workload SLA', desc: 'Dynamic autoscaling across KVM, VMware & OLVM' },
-        { value: '5 Engineers', label: 'Squad Leadership', desc: 'Acting Scrum Master vetting PRDs & RFCs' }
+        { value: '92.6%', label: 'Scheduler Latency Cut', detail: 'Slashed critical batch runtime from 18m to 80s' },
+        { value: '85%', label: 'Lead Time Cut', detail: 'Order fulfillment slashed from 4 hours to <35 minutes' },
+        { value: '99.95%', label: 'Workload SLA', detail: 'Fault-tolerant autoscaling across 4+ hypervisors' },
+        { value: '5 Engineers', label: 'Squad Leadership', detail: 'Acting Scrum Master vetting PRDs & technical RFCs' }
       ],
-      technicalHighlights: [
+      highlights: [
         'Architected Flowable BPMN distributed sagas with RabbitMQ asynchronous event exchanges for zero-touch cloud provisioning.',
-        'Optimized distributed Cassandra batch chunking (50 items), multi-level Redis caching, and HikariCP pool tuning to slash latency from ~18m down to 80s.',
-        'Configured Fortinet FortiGate REST APIs for IPsec VPNs and engineered in-process sliding-window token bucket rate limiting on Kong API Gateway.'
+        'Optimized distributed Cassandra batch chunking (50 items), multi-level Redis caching, and HikariCP pool tuning to cut execution latency by 92.6%.',
+        'Configured Fortinet FortiGate REST APIs for IPsec VPNs and engineered an in-process sliding-window rate limiter on Kong API Gateway eliminating 100% of HTTP 429s.'
       ],
-      systemTags: ['Novamesh', 'KVM / ESXi / OLVM', 'Flowable BPMN', 'RabbitMQ', 'Cassandra', 'Redis', 'Kong Gateway']
+      tags: ['Novamesh', 'KVM / ESXi / OLVM', 'Flowable BPMN', 'RabbitMQ', 'Cassandra', 'Redis', 'Kong Gateway']
     },
     {
       id: 'act-4-iimk',
-      badge: 'ACT IV · THE STRATEGIC BRIDGE',
+      actNumber: 'ACT IV',
+      badge: 'THE STRATEGIC BRIDGE',
       period: '2025 – Present',
+      shortLabel: '2025–PRESENT · IIM KOZHIKODE',
       title: 'The Tech × MBA Strategic Convergence',
-      subtitle: 'IIM Kozhikode EPGP Scholar · Bridging Platform Economics with Systems Engineering',
+      subtitle: 'Indian Institute of Management Kozhikode · Executive PGP Scholar in General Management',
       organization: 'Indian Institute of Management Kozhikode (IIMK)',
-      location: 'Kochi, India',
-      accent: 'emerald',
-      summary: 'Pursuing Executive PGP in General Management at IIM Kozhikode to unite deep technical distributed systems leadership with executive financial modeling, product strategy, FinOps SaaS unit economics, and operations management.',
+      location: 'Kochi / Kozhikode, India',
+      storyNarrative:
+        'Recognizing that the greatest organizational bottleneck in cloud platforms lies between deep systems engineering and executive business strategy, Harshal entered IIM Kozhikode for the Executive Post Graduate Programme (EPGP) in General Management. Uniting hands-on backend systems with coursework in Product Strategy, FinOps SaaS Unit Economics, Operations, Risk Analysis, and Financial Accounting to bridge tech with business economics.',
+      imagePath: 'assets/images/story/act4-iimk-strategy.jpg',
+      fallbackIcon: 'building',
+      accentColor: 'emerald',
       metrics: [
-        { value: 'EPGP', label: 'Executive Scholar', desc: 'IIM Kozhikode General Management' },
-        { value: 'Tech × MBA', label: 'Strategic Synergy', desc: 'FinOps, SaaS economics & risk analysis' },
-        { value: '3 Ventures', label: 'Venture Architect', desc: 'SthiraX, MarginOS & QueryLens AI' }
+        { value: 'EPGP', label: 'IIM Kozhikode Scholar', detail: 'General Management & Executive Leadership' },
+        { value: 'Tech × MBA', label: 'Strategic Synthesis', detail: 'FinOps, SaaS economics, risk analysis & P&L' },
+        { value: '3 Ventures', label: 'Flagship Platforms', detail: 'SthiraX, MarginOS & QueryLens AI' }
       ],
-      technicalHighlights: [
+      highlights: [
         'Spearheaded SthiraX: Distributed CO2-mineralization & IoT MRV platform uniting AIOps telemetry with FinOps carbon accounting.',
         'Engineered MarginOS: High-throughput algorithmic trading engine with real-time portfolio risk computation and options Greeks modeling.',
-        'Architected QueryLens AI: Enterprise natural-language analytics engine using pgvector RAG and Gemini LLM over relational data.'
+        'Architected QueryLens AI: Enterprise natural-language analytics engine using pgvector RAG and Gemini LLM over relational schemas.'
       ],
-      systemTags: ['IIM Kozhikode', 'Product Strategy', 'FinOps', 'SthiraX', 'MarginOS', 'pgvector RAG', 'GenAI']
+      tags: ['IIM Kozhikode', 'Product Strategy', 'FinOps', 'SthiraX', 'MarginOS', 'pgvector RAG', 'GenAI']
     }
   ];
 
-  // ── Interactive Pipeline Simulator (Novamesh Act) ─────────────────────────
+  // ── Novamesh Saga Simulator ───────────────────────────────────────────────
   pipelineStep = -1;
   pipelineRunning = false;
   pipelineRollback = false;
   private pipelineTimer?: ReturnType<typeof setTimeout>;
 
   pipelineNodes = [
-    { name: '1. Order Ingestion', detail: 'REST API Gateway / Swagger Schema validation' },
-    { name: '2. BPMN Saga Engine', detail: 'Flowable BPMN orchestration & RabbitMQ queue' },
-    { name: '3. Multi-Hypervisor Deploy', detail: 'Zero-touch provisioning: KVM / ESXi / OLVM' },
-    { name: '4. Network & Security', detail: 'FortiGate IPsec VPN & Kong API Gateway route' }
+    { name: '1. Order Ingestion', detail: 'Customer API order hits gateway with schema validation' },
+    { name: '2. BPMN Saga Engine', detail: 'Flowable BPMN initiates distributed saga & RabbitMQ queue' },
+    { name: '3. Multi-Hypervisor Deploy', detail: 'Dynamic VM autoscaling across KVM / ESXi / OLVM clusters' },
+    { name: '4. Network & Security', detail: 'Fortinet FortiGate IPsec VPN & Kong API Gateway route' }
+  ];
+
+  // ── Flagship Venture Projects (Tech × MBA Capstones) ──────────────────────
+  activeProjectIndex = 0;
+  selectedProjectModal: ProjectDetail | null = null;
+
+  projects: ProjectDetail[] = [
+    {
+      id: 'sthirax',
+      name: 'SthiraX Platform',
+      category: 'IIM KOZHIKODE CAPSTONE',
+      badge: 'CLIMATE TECH & FINOPS',
+      tagline: 'Autonomous Cloud Governance & IoT MRV Platform for Precast Carbon Mineralization',
+      description:
+        'SthiraX is an enterprise platform developed as the capstone for IIM Kozhikode. It bridges IoT hardware telemetry from industrial CO2-mineralization curing chambers with real-time FinOps carbon credit accounting, giving industrial plants verified MRV (Measurement, Reporting & Verification) certification.',
+      businessImpact:
+        'Enables cement and precast manufacturers in India to certify up to 15 kg of sequestered CO2 per cubic meter of precast concrete, generating high-trust verified carbon credits with auditable unit economics.',
+      technicalArchitecture: [
+        'Edge IoT ingestion layer handling MQTT and HTTP telemetry streams from sensor arrays.',
+        'Spring Boot 3 reactive microservices orchestrating automated baseline comparisons.',
+        'PostgreSQL with timescaledb extensions for time-series sensor curves and audit logging.',
+        'FinOps real-time dashboard evaluating carbon offset ROI, curing cycle energy costs, and regulatory credits.'
+      ],
+      metrics: [
+        { label: 'CO2 Sequestration', value: 'Up to 15 kg/m³' },
+        { label: 'Ingestion Latency', value: '<45 ms p99' },
+        { label: 'Audit Trail', value: '100% Immutable' }
+      ],
+      tags: ['AIOps', 'FinOps', 'IoT MRV', 'Spring Boot 3', 'Carbon Accounting', 'PostgreSQL'],
+      githubUrl: 'https://github.com/harshalraajpatnaik/SthiraX',
+      color: '#10b981'
+    },
+    {
+      id: 'marginos',
+      name: 'MarginOS',
+      category: 'HIGH-FREQUENCY FINTECH',
+      badge: 'QUANTITATIVE RISK ENGINE',
+      tagline: 'Sub-Millisecond Algorithmic Trading & Real-Time Portfolio Risk Engine',
+      description:
+        'MarginOS is a high-throughput quantitative risk and margin calculation engine. It computes real-time portfolio VaR (Value at Risk), options Greeks (Delta, Gamma, Vega, Theta), and multi-exchange collateral requirements under extreme market volatility.',
+      businessImpact:
+        'Protects trading firms against cascading margin liquidations by providing sub-millisecond portfolio stress-testing under simulated black-swan macro events.',
+      technicalArchitecture: [
+        'Lock-free concurrent memory ring buffer (Disruptor pattern) for microsecond order intake.',
+        'Real-time WebSocket streaming gateway broadcasting tick-by-tick risk attribution.',
+        'Vectorized Python / NumPy quantitative Greeks and Monte Carlo simulation cores.',
+        'Automated margin call alerts integrated with real-time risk parameter sliders.'
+      ],
+      metrics: [
+        { label: 'Throughput', value: '10,000+ orders/sec' },
+        { label: 'Greeks Latency', value: '<2 ms tick-to-trade' },
+        { label: 'Precision', value: 'Multi-Asset VaR' }
+      ],
+      tags: ['Quantitative Finance', 'Risk Analysis', 'WebSocket', 'Python', 'Disruptor', 'Algorithmic Trading'],
+      githubUrl: 'https://github.com/harshalraajpatnaik/MarginOS',
+      color: '#f59e0b'
+    },
+    {
+      id: 'querylens',
+      name: 'QueryLens AI',
+      category: 'GENERATIVE AI & DATA',
+      badge: 'ENTERPRISE RAG COPILOT',
+      tagline: 'Natural-Language to SQL Analytics Copilot Powered by pgvector RAG',
+      description:
+        'QueryLens AI democratizes complex database analytics by converting natural language business questions into optimized, schema-validated SQL queries using pgvector semantic embeddings and Gemini LLM reasoning.',
+      businessImpact:
+        'Eliminates the backlog of ad-hoc data reporting for non-technical executives, cutting business intelligence turnaround time from hours to instantaneous natural conversations.',
+      technicalArchitecture: [
+        'pgvector semantic embedding index storing database schema topologies and foreign-key graphs.',
+        'Multi-stage LLM verification pipeline: intent extraction, SQL generation, dry-run EXPLAIN plan validation.',
+        'Read-only connection sandboxing with strict row-limit ceilings to prevent runaway table scans.',
+        'FastAPI backend with streaming token responses and interactive chart generation.'
+      ],
+      metrics: [
+        { label: 'SQL Accuracy', value: '94.8% on Complex Joins' },
+        { label: 'Generation Speed', value: '<1.2s roundtrip' },
+        { label: 'Security', value: 'Zero Mutation Sandboxed' }
+      ],
+      tags: ['Generative AI', 'pgvector RAG', 'Gemini LLM', 'PostgreSQL', 'FastAPI', 'Data Analytics'],
+      githubUrl: 'https://github.com/harshalraajpatnaik/QueryLens-AI',
+      color: '#00e5ff'
+    }
   ];
 
   // ── Contact Form ──────────────────────────────────────────────────────────
@@ -186,7 +307,6 @@ export class StoryViewComponent implements OnInit, AfterViewInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    // Read stored preferred act if available
     const savedAct = localStorage.getItem('hrp_story_act');
     if (savedAct) {
       const idx = parseInt(savedAct, 10);
@@ -197,7 +317,7 @@ export class StoryViewComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit(): void {
-    this.initThreeScene();
+    this.initThreeLaptopScene();
     this.setupIntersectionObserver();
   }
 
@@ -212,18 +332,17 @@ export class StoryViewComponent implements OnInit, AfterViewInit, OnDestroy {
     this.cleanupThreeScene();
   }
 
-  // ── Three.js Scene Setup (Conforming to /motion-and-3d) ────────────────────
-  private initThreeScene(): void {
-    if (!this.threeCanvasRef) return;
-    const canvas = this.threeCanvasRef.nativeElement;
-    const width = canvas.clientWidth || 600;
-    const height = canvas.clientHeight || 450;
+  // ── Contextual 3D Laptop & Command Studio Scene ───────────────────────────
+  private initThreeLaptopScene(): void {
+    if (!this.laptopCanvasRef) return;
+    const canvas = this.laptopCanvasRef.nativeElement;
+    const width = canvas.clientWidth || 500;
+    const height = canvas.clientHeight || 400;
 
-    // Run outside Angular zone to avoid triggering change detection on every RAF frame
     this.ngZone.runOutsideAngular(() => {
       this.scene = new THREE.Scene();
-      this.camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);
-      this.camera.position.set(0, 0, 16);
+      this.camera = new THREE.PerspectiveCamera(40, width / height, 0.1, 100);
+      this.camera.position.set(0, 1.8, 7.5);
 
       this.renderer = new THREE.WebGLRenderer({
         canvas,
@@ -231,142 +350,182 @@ export class StoryViewComponent implements OnInit, AfterViewInit, OnDestroy {
         antialias: true,
         powerPreference: 'high-performance'
       });
-      // Cap devicePixelRatio at <= 2 for mobile battery / GPU efficiency
       this.renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
       this.renderer.setSize(width, height, false);
 
-      this.build3DConstellation();
+      this.build3DLaptop();
       this.animate();
     });
   }
 
-  private build3DConstellation(): void {
+  private build3DLaptop(): void {
     if (!this.scene) return;
 
-    // 1. Core Sphere (representing Central Cloud Nexus)
-    const coreGeo = new THREE.IcosahedronGeometry(2.2, 2);
-    const coreMat = new THREE.MeshBasicMaterial({
-      color: 0x00e5ff,
+    this.laptopGroup = new THREE.Group();
+
+    // 1. Pedestal Base (Server Rack Disk)
+    const pedGeo = new THREE.CylinderGeometry(3.2, 3.4, 0.25, 48);
+    const pedMat = new THREE.MeshBasicMaterial({
+      color: 0x111624,
       wireframe: true,
       transparent: true,
-      opacity: 0.35
+      opacity: 0.4
     });
-    this.coreSphere = new THREE.Mesh(coreGeo, coreMat);
-    this.scene.add(this.coreSphere);
+    this.pedestalMesh = new THREE.Mesh(pedGeo, pedMat);
+    this.pedestalMesh.position.y = -1.2;
+    this.laptopGroup.add(this.pedestalMesh);
 
-    // 2. Inner Glow Nucleus
-    const nucleusGeo = new THREE.SphereGeometry(1.2, 16, 16);
-    const nucleusMat = new THREE.MeshBasicMaterial({
-      color: 0xf59e0b,
-      wireframe: false,
-      transparent: true,
-      opacity: 0.2
+    // 2. Laptop Base / Keyboard Deck
+    const baseGeo = new THREE.BoxGeometry(3.6, 0.14, 2.5);
+    const baseMat = new THREE.MeshBasicMaterial({ color: 0x1a2133 });
+    const laptopBase = new THREE.Mesh(baseGeo, baseMat);
+    laptopBase.position.set(0, -0.6, 0.3);
+    this.laptopGroup.add(laptopBase);
+
+    // Keyboard glow plate
+    const kbGeo = new THREE.PlaneGeometry(2.8, 1.4);
+    const kbMat = new THREE.MeshBasicMaterial({ color: 0xf59e0b, transparent: true, opacity: 0.25 });
+    const kbMesh = new THREE.Mesh(kbGeo, kbMat);
+    kbMesh.rotation.x = -Math.PI / 2;
+    kbMesh.position.set(0, -0.52, 0.2);
+    this.laptopGroup.add(kbMesh);
+
+    // Trackpad
+    const tpGeo = new THREE.PlaneGeometry(1.0, 0.6);
+    const tpMat = new THREE.MeshBasicMaterial({ color: 0x00e5ff, transparent: true, opacity: 0.3 });
+    const tpMesh = new THREE.Mesh(tpGeo, tpMat);
+    tpMesh.rotation.x = -Math.PI / 2;
+    tpMesh.position.set(0, -0.52, 1.1);
+    this.laptopGroup.add(tpMesh);
+
+    // 3. Laptop Screen Lid (Angled at ~110 degrees)
+    const screenGroup = new THREE.Group();
+    screenGroup.position.set(0, -0.52, -0.95);
+
+    const lidGeo = new THREE.BoxGeometry(3.6, 2.4, 0.08);
+    const lidMat = new THREE.MeshBasicMaterial({ color: 0x131a29 });
+    const lid = new THREE.Mesh(lidGeo, lidMat);
+    lid.position.set(0, 1.15, 0);
+    screenGroup.add(lid);
+
+    // Dynamic 2D Canvas Texture for Laptop Screen
+    this.laptopScreenCanvas = document.createElement('canvas');
+    this.laptopScreenCanvas.width = 512;
+    this.laptopScreenCanvas.height = 320;
+    this.updateLaptopScreenCanvas(this.projects[this.activeProjectIndex]);
+
+    this.laptopScreenTexture = new THREE.CanvasTexture(this.laptopScreenCanvas);
+    const screenMat = new THREE.MeshBasicMaterial({ map: this.laptopScreenTexture });
+    const displayGeo = new THREE.PlaneGeometry(3.3, 2.1);
+    this.laptopScreenMesh = new THREE.Mesh(displayGeo, screenMat);
+    this.laptopScreenMesh.position.set(0, 1.15, 0.045);
+    screenGroup.add(this.laptopScreenMesh);
+
+    // Angle lid back
+    screenGroup.rotation.x = -0.32;
+    this.laptopGroup.add(screenGroup);
+
+    // 4. Floating System Orbit Badges
+    const badgeColors = [0x00e5ff, 0xf59e0b, 0x10b981, 0xa855f7];
+    const badgeRadii = [2.8, 3.3, 3.8, 4.2];
+
+    badgeColors.forEach((color, i) => {
+      const bGeo = new THREE.BoxGeometry(0.35, 0.35, 0.35);
+      const bMat = new THREE.MeshBasicMaterial({ color, wireframe: true });
+      const bMesh = new THREE.Mesh(bGeo, bMat);
+      const angle = (i / badgeColors.length) * Math.PI * 2;
+      bMesh.position.set(Math.cos(angle) * badgeRadii[i], Math.sin(angle) * 1.5, Math.sin(angle) * 1.2);
+      this.floatingBadges.push(bMesh);
+      this.laptopGroup?.add(bMesh);
     });
-    const nucleus = new THREE.Mesh(nucleusGeo, nucleusMat);
-    this.scene.add(nucleus);
 
-    // 3. Orbital Rings (representing Tata Comm & Novamesh Backbones)
-    const ringRadius = [4.5, 6.2, 8.0];
-    const ringColors = [0x00e5ff, 0xf59e0b, 0x10b981];
+    this.scene.add(this.laptopGroup);
+  }
 
-    ringRadius.forEach((r, idx) => {
-      const ringGeo = new THREE.BufferGeometry();
-      const points: THREE.Vector3[] = [];
-      const segments = 64;
-      for (let i = 0; i <= segments; i++) {
-        const theta = (i / segments) * Math.PI * 2;
-        points.push(new THREE.Vector3(Math.cos(theta) * r, Math.sin(theta) * r, 0));
-      }
-      ringGeo.setFromPoints(points);
-      const ringMat = new THREE.LineBasicMaterial({
-        color: ringColors[idx],
-        transparent: true,
-        opacity: 0.25
-      });
-      const ring = new THREE.Line(ringGeo, ringMat);
-      ring.rotation.x = Math.PI * 0.35 + idx * 0.4;
-      ring.rotation.y = idx * 0.5;
-      this.orbitRings.push(ring);
-      this.scene?.add(ring);
-    });
+  private updateLaptopScreenCanvas(proj: ProjectDetail): void {
+    if (!this.laptopScreenCanvas) return;
+    const ctx = this.laptopScreenCanvas.getContext('2d');
+    if (!ctx) return;
 
-    // 4. Distributed Cloud Node Points (Particles)
-    const particleCount = 180;
-    const posArray = new Float32Array(particleCount * 3);
-    for (let i = 0; i < particleCount * 3; i += 3) {
-      const radius = 3.5 + Math.random() * 6.5;
-      const theta = Math.random() * Math.PI * 2;
-      const phi = Math.acos(2 * Math.random() - 1);
-      posArray[i] = radius * Math.sin(phi) * Math.cos(theta);
-      posArray[i + 1] = radius * Math.sin(phi) * Math.sin(theta);
-      posArray[i + 2] = radius * Math.cos(phi);
-    }
-    const particleGeo = new THREE.BufferGeometry();
-    particleGeo.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
-    const particleMat = new THREE.PointsMaterial({
-      size: 0.12,
-      color: 0x00e5ff,
-      transparent: true,
-      opacity: 0.65
-    });
-    this.particleCloud = new THREE.Points(particleGeo, particleMat);
-    this.scene.add(this.particleCloud);
+    ctx.fillStyle = '#0a0d16';
+    ctx.fillRect(0, 0, 512, 320);
 
-    // 5. Featured Planetary Nodes (Tata Comm, Novamesh, IIMK)
-    const nodeCoords = [
-      { x: 4.2, y: 1.8, z: 2.0, color: 0x00e5ff, label: 'Tata Comm' },
-      { x: -3.8, y: 3.2, z: -1.5, color: 0xf59e0b, label: 'Novamesh' },
-      { x: 2.1, y: -4.0, z: 3.2, color: 0x10b981, label: 'IIM Kozhikode' }
-    ];
+    // Window top bar
+    ctx.fillStyle = '#151c2e';
+    ctx.fillRect(0, 0, 512, 38);
 
-    nodeCoords.forEach(nc => {
-      const nodeGeo = new THREE.SphereGeometry(0.35, 12, 12);
-      const nodeMat = new THREE.MeshBasicMaterial({ color: nc.color, wireframe: false });
-      const mesh = new THREE.Mesh(nodeGeo, nodeMat);
-      mesh.position.set(nc.x, nc.y, nc.z);
-      this.nodeMeshes.push(mesh);
-      this.scene?.add(mesh);
-    });
+    // Window buttons
+    ctx.fillStyle = '#ff5f56';
+    ctx.beginPath(); ctx.arc(22, 19, 6, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = '#ffbd2e';
+    ctx.beginPath(); ctx.arc(42, 19, 6, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = '#27c93f';
+    ctx.beginPath(); ctx.arc(62, 19, 6, 0, Math.PI * 2); ctx.fill();
+
+    // Window Title
+    ctx.fillStyle = '#ffffff';
+    ctx.font = 'bold 14px monospace';
+    ctx.fillText(`harshal@cloud-nexus:~/${proj.id}`, 90, 24);
+
+    // Project Name & Badge
+    ctx.fillStyle = proj.color || '#f59e0b';
+    ctx.font = 'bold 22px monospace';
+    ctx.fillText(`> ${proj.name.toUpperCase()}`, 24, 80);
+
+    ctx.fillStyle = '#94a3b8';
+    ctx.font = '12px monospace';
+    ctx.fillText(`CATEGORY: ${proj.category}`, 24, 110);
+    ctx.fillText(`TAGLINE: ${proj.badge}`, 24, 132);
+
+    // Code & Metrics Snippet
+    ctx.fillStyle = '#38bdf8';
+    ctx.font = '13px monospace';
+    ctx.fillText(`$ sys_status --evaluate-sla`, 24, 175);
+
+    ctx.fillStyle = '#4ade80';
+    ctx.font = 'bold 15px monospace';
+    ctx.fillText(`[SUCCESS] 99.95% WORKLOAD SLA VERIFIED`, 24, 205);
+
+    ctx.fillStyle = '#e2e8f0';
+    ctx.font = '12px monospace';
+    ctx.fillText(`Metrics: ${proj.metrics.map(m => `${m.label}: ${m.value}`).join(' | ')}`, 24, 235);
+
+    // Bottom prompt
+    ctx.fillStyle = '#f59e0b';
+    ctx.font = 'bold 12px monospace';
+    ctx.fillText(`[INFO] Click project buttons below to switch live 3D view`, 24, 290);
   }
 
   private animate = (): void => {
     if (!this.isVisible) {
-      // Pause RAF loop when offscreen as mandated by /motion-and-3d
       this.animationFrameId = requestAnimationFrame(this.animate);
       return;
     }
 
-    // Smooth lerp mouse towards target
+    // Smooth lerp mouse coordinates
     this.currentMouseX += (this.targetMouseX - this.currentMouseX) * 0.05;
     this.currentMouseY += (this.targetMouseY - this.currentMouseY) * 0.05;
 
-    if (this.coreSphere) {
-      this.coreSphere.rotation.x += 0.003;
-      this.coreSphere.rotation.y += 0.005;
+    if (this.laptopGroup) {
+      this.laptopGroup.rotation.y = this.currentMouseX * 0.45;
+      this.laptopGroup.rotation.x = -this.currentMouseY * 0.25;
     }
 
-    if (this.particleCloud) {
-      this.particleCloud.rotation.y += 0.0015;
-      this.particleCloud.rotation.x = this.currentMouseY * 0.2;
-      this.particleCloud.rotation.z = this.currentMouseX * 0.2;
+    if (this.pedestalMesh) {
+      this.pedestalMesh.rotation.y += 0.003;
     }
 
-    this.orbitRings.forEach((ring, idx) => {
-      ring.rotation.z += 0.002 * (idx + 1);
+    this.floatingBadges.forEach((b, i) => {
+      b.rotation.x += 0.015 * (i + 1);
+      b.rotation.y += 0.02 * (i + 1);
     });
-
-    if (this.camera) {
-      this.camera.position.x = this.currentMouseX * 1.5;
-      this.camera.position.y = -this.currentMouseY * 1.5;
-      this.camera.lookAt(0, 0, 0);
-    }
 
     this.renderer?.render(this.scene!, this.camera!);
     this.animationFrameId = requestAnimationFrame(this.animate);
   };
 
   private setupIntersectionObserver(): void {
-    if (!this.sceneContainerRef) return;
+    if (!this.laptopContainerRef) return;
     this.intersectionObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach(entry => {
@@ -375,26 +534,15 @@ export class StoryViewComponent implements OnInit, AfterViewInit, OnDestroy {
       },
       { threshold: 0.1 }
     );
-    this.intersectionObserver.observe(this.sceneContainerRef.nativeElement);
+    this.intersectionObserver.observe(this.laptopContainerRef.nativeElement);
   }
 
   private cleanupThreeScene(): void {
-    this.coreSphere?.geometry.dispose();
-    (this.coreSphere?.material as THREE.Material)?.dispose();
-    this.particleCloud?.geometry.dispose();
-    (this.particleCloud?.material as THREE.Material)?.dispose();
-    this.orbitRings.forEach(r => {
-      r.geometry.dispose();
-      (r.material as THREE.Material)?.dispose();
-    });
-    this.nodeMeshes.forEach(n => {
-      n.geometry.dispose();
-      (n.material as THREE.Material)?.dispose();
-    });
     this.renderer?.dispose();
+    this.laptopScreenTexture?.dispose();
   }
 
-  // ── Pointer & Parallax Interaction ────────────────────────────────────────
+  // ── Global Pointer Parallax ───────────────────────────────────────────────
   @HostListener('mousemove', ['$event'])
   onGlobalMouseMove(event: MouseEvent): void {
     const width = window.innerWidth || 1;
@@ -403,41 +551,46 @@ export class StoryViewComponent implements OnInit, AfterViewInit, OnDestroy {
     this.targetMouseY = (event.clientY / height - 0.5) * 2;
   }
 
-  onHeroCardMouseMove(event: MouseEvent, card: HTMLElement): void {
-    const rect = card.getBoundingClientRect();
-    const x = ((event.clientX - rect.left) / rect.width - 0.5) * 20;
-    const y = -((event.clientY - rect.top) / rect.height - 0.5) * 20;
-    this.heroTiltX = y;
-    this.heroTiltY = x;
-  }
-
-  onHeroCardMouseLeave(): void {
-    this.heroTiltX = 0;
-    this.heroTiltY = 0;
-  }
-
   @HostListener('window:resize')
   onWindowResize(): void {
-    if (!this.threeCanvasRef || !this.renderer || !this.camera) return;
-    const canvas = this.threeCanvasRef.nativeElement;
-    const width = canvas.clientWidth || 600;
-    const height = canvas.clientHeight || 450;
+    if (!this.laptopCanvasRef || !this.renderer || !this.camera) return;
+    const canvas = this.laptopCanvasRef.nativeElement;
+    const width = canvas.clientWidth || 500;
+    const height = canvas.clientHeight || 400;
     this.camera.aspect = width / height;
     this.camera.updateProjectionMatrix();
     this.renderer.setSize(width, height, false);
   }
 
-  // ── Act Selector ──────────────────────────────────────────────────────────
+  // ── Act Navigation (Guaranteed to Work and Scroll Cleanly) ─────────────────
   selectAct(index: number): void {
     this.activeActIndex = index;
     localStorage.setItem('hrp_story_act', String(index));
+    const element = document.getElementById(`act-${index}`);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   }
 
-  get activeAct(): StoryChapter {
-    return this.acts[this.activeActIndex];
+  // ── Project Selection & 3D Laptop Update ──────────────────────────────────
+  selectProject(index: number): void {
+    this.activeProjectIndex = index;
+    const proj = this.projects[index];
+    this.updateLaptopScreenCanvas(proj);
+    if (this.laptopScreenTexture) {
+      this.laptopScreenTexture.needsUpdate = true;
+    }
   }
 
-  // ── Pipeline Simulator ────────────────────────────────────────────────────
+  openProjectModal(proj: ProjectDetail): void {
+    this.selectedProjectModal = proj;
+  }
+
+  closeProjectModal(): void {
+    this.selectedProjectModal = null;
+  }
+
+  // ── Saga Simulator ────────────────────────────────────────────────────────
   simulatePipeline(): void {
     if (this.pipelineRunning) return;
     this.pipelineRunning = true;
@@ -447,7 +600,7 @@ export class StoryViewComponent implements OnInit, AfterViewInit, OnDestroy {
     const advance = (step: number) => {
       this.pipelineStep = step;
       if (step < this.pipelineNodes.length - 1) {
-        this.pipelineTimer = setTimeout(() => advance(step + 1), 700);
+        this.pipelineTimer = setTimeout(() => advance(step + 1), 600);
       } else {
         this.pipelineTimer = setTimeout(() => {
           this.pipelineRunning = false;

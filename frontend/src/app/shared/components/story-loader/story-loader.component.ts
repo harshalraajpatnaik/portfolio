@@ -29,9 +29,9 @@ import { CommonModule } from '@angular/common';
         </svg>
 
         <div class="space-y-2">
-          <div class="text-[11px] font-mono text-amber-400/80 tracking-[0.3em] uppercase">Chapter 00</div>
-          <h2 class="text-2xl sm:text-3xl font-black text-white tracking-tight">Loading Your Story</h2>
-          <p class="text-sm text-white/50 font-mono max-w-xs">Preparing an immersive journey through 7+ years of cloud architecture &amp; leadership</p>
+          <div class="text-[11px] font-mono text-amber-400/80 tracking-[0.3em] uppercase">5+ YEARS OF PROFESSIONAL JOURNEY</div>
+          <h2 class="text-2xl sm:text-3xl font-black text-white tracking-tight">Loading Your Life Story</h2>
+          <p class="text-sm text-white/50 font-mono max-w-xs">Preparing an immersive journey through 5+ years of enterprise cloud engineering &amp; leadership</p>
         </div>
 
         <!-- Progress bar -->
@@ -103,7 +103,7 @@ export class StoryLoaderComponent implements OnInit {
   done = false;
 
   lines = new Array(8);
-  chapters = ['00 · Prologue', '01 · Spark', '02 · Backbone', '03 · Scale', '04 · Bridge', '05 · Connect'];
+  chapters = ['Prologue', 'Act I · SRM College', 'Act II · Tata Comm', 'Act III · Novamesh', 'Act IV · IIMK Bridge', 'Connect'];
 
   ngOnInit(): void {
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;

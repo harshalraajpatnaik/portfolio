@@ -1,67 +1,70 @@
 <!-- ═══════════════════════════════════════════════════════════════════════
-     INTERACTIVE 3D LIFE JOURNEY STORY MODE
-     Accurate Timeline: SRM (2017-21) -> Tata Comm (2021-24) -> Novamesh (2024-Now) -> IIMK (2025-Now)
-     True Experience: 5+ Years Corporate Cloud & Distributed Engineering
-     Three.js Spatial Graphics + GPU-Composited 3D Perspective Cards
+     CONTEXTUAL 3D LIFE JOURNEY PORTFOLIO
+     Chronicle: SRM Chennai (2017-21) ➔ Tata Comm (2021-24) ➔ Novamesh (2024-Now) ➔ IIM Kozhikode (2025-Now)
+     Interactive Three.js 3D Laptop Studio + Contextual 3D Illustrations + Deep Architecture Modals
      ═══════════════════════════════════════════════════════════════════════ -->
 
-<div class="relative min-h-screen bg-[#07090e] text-white font-sans selection:bg-amber-500 selection:text-black overflow-x-hidden">
+<div class="relative min-h-screen bg-[#06080e] text-white font-sans selection:bg-amber-500 selection:text-black overflow-x-hidden">
 
-  <!-- Ambient background grid -->
+  <!-- Ambient lighting backdrop -->
   <div class="fixed inset-0 pointer-events-none -z-10 overflow-hidden" aria-hidden="true">
-    <div class="absolute inset-0 bg-[linear-gradient(to_right,#ffffff04_1px,transparent_1px),linear-gradient(to_bottom,#ffffff04_1px,transparent_1px)] bg-[size:36px_36px]"></div>
-    <div class="absolute -top-32 left-1/3 w-[600px] h-[600px] bg-amber-500/8 rounded-full blur-[160px]"></div>
-    <div class="absolute top-[45%] right-[-5%] w-[650px] h-[650px] bg-cyan-glow/8 rounded-full blur-[180px]"></div>
-    <div class="absolute bottom-[-10%] left-[-10%] w-[700px] h-[700px] bg-emerald-500/8 rounded-full blur-[180px]"></div>
+    <div class="absolute inset-0 bg-[linear-gradient(to_right,#ffffff03_1px,transparent_1px),linear-gradient(to_bottom,#ffffff03_1px,transparent_1px)] bg-[size:40px_40px]"></div>
+    <div class="absolute -top-32 left-1/4 w-[600px] h-[600px] bg-amber-500/10 rounded-full blur-[170px]"></div>
+    <div class="absolute top-[35%] right-[-10%] w-[650px] h-[650px] bg-cyan-glow/8 rounded-full blur-[180px]"></div>
+    <div class="absolute top-[65%] left-[-10%] w-[700px] h-[700px] bg-emerald-500/8 rounded-full blur-[180px]"></div>
   </div>
 
   <!-- ═══════════════════════════════════════════════════════════════
-       SECTION 1: 3D SPATIAL PROLOGUE & DUAL-MIND ARCHITECTURE
+       SECTION 1: PROLOGUE & 3D INTERACTIVE LAPTOP COMMAND STUDIO
        ═══════════════════════════════════════════════════════════════ -->
   <section id="ch-prologue" class="relative min-h-[92vh] flex items-center pt-28 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
     <div class="grid lg:grid-cols-12 gap-10 lg:gap-8 items-center w-full">
 
-      <!-- Left Column: Story Editorial Lead (7 Cols) -->
+      <!-- Left Column: Story Editorial Narrative (7 Cols) -->
       <div class="lg:col-span-7 space-y-6">
         
-        <!-- Mode & Journey Badges -->
+        <!-- Experience & Persona Badges -->
         <div class="flex flex-wrap items-center gap-2">
           <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-amber-500/30 bg-amber-500/10 text-amber-400 text-xs font-mono font-bold tracking-wider">
             <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
-            <span>CHRONICLES · 5+ YEARS LIFE JOURNEY</span>
+            <span>5+ YEARS OF PROFESSIONAL CLOUD JOURNEY</span>
           </div>
           <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-cyan-glow/30 bg-cyan-glow/10 text-cyan-glow text-xs font-mono">
-            <span>TATA COMM · NOVAMESH · IIM KOZHIKODE</span>
+            <span>CHENNAI ➔ TATA COMM ➔ NOVAMESH ➔ IIMK</span>
           </div>
         </div>
 
         <!-- Main Title -->
         <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black text-white leading-[1.1] tracking-tight">
-          From First Code to <span class="bg-gradient-to-r from-amber-400 via-yellow-300 to-orange-400 bg-clip-text text-transparent">Distributed Cloud Leader.</span>
+          A Life in Code:<br>
+          <span class="bg-gradient-to-r from-amber-400 via-yellow-300 to-orange-400 bg-clip-text text-transparent">From Chennai College to Cloud Leadership.</span>
         </h1>
 
-        <!-- Subtitle Narrative -->
+        <!-- Contextual Story Lead -->
         <p class="text-base sm:text-lg text-white/80 leading-relaxed font-normal max-w-2xl">
-          A chronicle of relentless curiosity: starting with computer science fundamentals at <strong>SRM (2017–2021)</strong>, industrial S3 storage at <strong>Tata Communications (2021–2024)</strong>, multi-hypervisor orchestration and squad leadership at <strong>Novamesh (2024–Present)</strong>, and strategic executive synthesis at <strong>IIM Kozhikode (2025–Present)</strong>.
+          An authentic journey across four pivotal eras: arriving in Chennai after 12th standard at <strong>SRM (2017–2021)</strong>, architecting enterprise S3 storage at <strong>Tata Communications (2021–2024)</strong>, leading a squad of 5 on distributed hypervisors at <strong>Novamesh (2024–Present)</strong>, and synthesizing platform economics at <strong>IIM Kozhikode (2025–Present)</strong>.
         </p>
 
-        <!-- Quick Act Navigation Strip -->
-        <div class="flex flex-wrap gap-2 pt-1" role="tablist" aria-label="Life Journey Acts">
-          <button *ngFor="let act of acts; let i = index"
-                  (click)="selectAct(i)"
-                  class="px-3.5 py-2 rounded-xl text-xs font-mono font-bold border transition-all cursor-pointer flex items-center gap-1.5"
-                  [ngClass]="activeActIndex === i
-                    ? 'bg-amber-500 text-black border-amber-500 shadow-lg shadow-amber-500/25 scale-105'
-                    : 'bg-[#0f1422] text-white/70 border-white/10 hover:border-amber-500/40 hover:text-white'">
-            <span class="w-1.5 h-1.5 rounded-full" [ngClass]="activeActIndex === i ? 'bg-black' : 'bg-amber-400'"></span>
-            <span>{{ act.period.split(' ')[0] }} · {{ act.badge.split('·')[1] }}</span>
-          </button>
+        <!-- Chronological Quick-Jump Bar -->
+        <div class="space-y-2 pt-1">
+          <div class="text-[11px] font-mono text-white/50 tracking-wider">CHRONOLOGICAL LIFE ACTS (CLICK TO JUMP):</div>
+          <div class="flex flex-wrap gap-2" role="tablist">
+            <button *ngFor="let act of acts; let i = index"
+                    (click)="selectAct(i)"
+                    class="px-3 py-1.5 rounded-xl text-xs font-mono font-bold border transition-all cursor-pointer flex items-center gap-1.5"
+                    [ngClass]="activeActIndex === i
+                      ? 'bg-amber-500 text-black border-amber-500 shadow-md shadow-amber-500/25 scale-105'
+                      : 'bg-[#0e121e] text-white/70 border-white/10 hover:border-amber-500/40 hover:text-white'">
+              <span class="w-1.5 h-1.5 rounded-full" [ngClass]="activeActIndex === i ? 'bg-black' : 'bg-amber-400'"></span>
+              <span>{{ act.shortLabel }}</span>
+            </button>
+          </div>
         </div>
 
         <!-- Action CTAs -->
         <div class="flex flex-wrap items-center gap-3 pt-3">
-          <a href="#ch-journey" class="px-5 py-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-black font-mono font-bold text-xs sm:text-sm shadow-xl shadow-amber-500/20 transition-all flex items-center gap-2 cursor-pointer">
-            <span>EXPLORE CHRONICLES ↓</span>
+          <a href="#act-0" class="px-5 py-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-black font-mono font-bold text-xs sm:text-sm shadow-xl shadow-amber-500/20 transition-all flex items-center gap-2 cursor-pointer">
+            <span>START STORY EXPERIENCE ↓</span>
           </a>
 
           <button (click)="switchToRecruiter()" class="px-4 py-3 rounded-xl border border-cyan-glow/40 bg-cyan-glow/10 hover:bg-cyan-glow/20 text-cyan-glow font-mono text-xs sm:text-sm transition-all flex items-center gap-2 cursor-pointer">
@@ -73,16 +76,16 @@
           </button>
         </div>
 
-        <!-- Verified Real Metrics Bar (From Resume) -->
+        <!-- Grounded Real Metrics Strip -->
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-4 border-t border-white/10">
           <div class="p-3.5 rounded-xl bg-[#0e1320] border border-white/10">
-            <div class="text-xs font-mono text-amber-400 font-bold">EXPERIENCE</div>
+            <div class="text-xs font-mono text-amber-400 font-bold">PROFESSIONAL</div>
             <div class="text-xl sm:text-2xl font-black text-white mt-0.5">5+ Years</div>
             <div class="text-[10px] text-white/50">Company Engineering</div>
           </div>
           <div class="p-3.5 rounded-xl bg-[#0e1320] border border-white/10">
-            <div class="text-xs font-mono text-cyan-glow font-bold">LATENCY CUT</div>
-            <div class="text-xl sm:text-2xl font-black text-white mt-0.5">92.6%</div>
+            <div class="text-xs font-mono text-cyan-glow font-bold">SCHEDULER</div>
+            <div class="text-xl sm:text-2xl font-black text-white mt-0.5">92.6% Cut</div>
             <div class="text-[10px] text-white/50">18m down to 80s</div>
           </div>
           <div class="p-3.5 rounded-xl bg-[#0e1320] border border-white/10">
@@ -91,7 +94,7 @@
             <div class="text-[10px] text-white/50">Acting Scrum Master</div>
           </div>
           <div class="p-3.5 rounded-xl bg-[#0e1320] border border-white/10">
-            <div class="text-xs font-mono text-purple-400 font-bold">UPTIME SLA</div>
+            <div class="text-xs font-mono text-purple-400 font-bold">CLOUD SLA</div>
             <div class="text-xl sm:text-2xl font-black text-white mt-0.5">99.95%</div>
             <div class="text-[10px] text-white/50">Multi-Hypervisors</div>
           </div>
@@ -99,30 +102,38 @@
 
       </div>
 
-      <!-- Right Column: Interactive Three.js 3D Spatial Canvas (5 Cols) -->
-      <div class="lg:col-span-5 relative" #sceneContainer>
-        <div class="relative w-full aspect-square max-w-[460px] mx-auto rounded-3xl bg-gradient-to-b from-[#101422] to-[#0a0d16] border border-amber-500/25 p-2 shadow-2xl overflow-hidden group">
+      <!-- Right Column: Contextual Interactive 3D Laptop & Project Station (5 Cols) -->
+      <div class="lg:col-span-5 relative" #laptopContainer>
+        <div class="relative w-full aspect-square max-w-[480px] mx-auto rounded-3xl bg-gradient-to-b from-[#111628] to-[#0a0d16] border border-amber-500/30 p-3 shadow-2xl overflow-hidden group">
           
-          <!-- Three.js Canvas -->
-          <canvas #threeCanvas class="w-full h-full block rounded-2xl cursor-grab active:cursor-grabbing"></canvas>
+          <!-- Three.js Laptop Canvas -->
+          <canvas #laptopCanvas class="w-full h-full block rounded-2xl cursor-grab active:cursor-grabbing"></canvas>
 
-          <!-- Spatial HUD Overlay -->
-          <div class="absolute top-4 left-4 right-4 flex items-center justify-between pointer-events-none text-[10px] font-mono text-white/60">
-            <div class="flex items-center gap-1.5 bg-black/60 px-2.5 py-1 rounded-full border border-white/10 backdrop-blur-md">
-              <span class="w-2 h-2 rounded-full bg-cyan-glow animate-ping"></span>
-              <span class="text-cyan-glow font-bold">3D CONSTELLATION HUD</span>
+          <!-- 3D Station HUD Overlay -->
+          <div class="absolute top-4 left-4 right-4 flex items-center justify-between pointer-events-none text-[10px] font-mono text-white/70">
+            <div class="flex items-center gap-1.5 bg-black/70 px-2.5 py-1 rounded-full border border-white/10 backdrop-blur-md">
+              <span class="w-2 h-2 rounded-full bg-amber-400 animate-ping"></span>
+              <span class="text-amber-400 font-bold">3D COMMAND RIG</span>
             </div>
-            <span class="text-white/40">INTERACTIVE MESH</span>
+            <span class="text-white/40">INTERACTIVE STUDIO</span>
           </div>
 
-          <div class="absolute bottom-4 left-4 right-4 pointer-events-none">
-            <div class="bg-black/70 backdrop-blur-md p-3 rounded-2xl border border-white/10 text-[11px] font-mono text-white/80 space-y-1">
-              <div class="flex items-center justify-between text-amber-400 font-bold">
-                <span>SYSTEM NODES ROTATION</span>
-                <span>SPATIAL 3D</span>
+          <!-- Bottom Switcher to toggle live project onto the 3D laptop -->
+          <div class="absolute bottom-4 left-4 right-4">
+            <div class="bg-black/85 backdrop-blur-md p-3 rounded-2xl border border-white/10 text-[11px] font-mono space-y-2">
+              <div class="flex items-center justify-between text-xs text-amber-400 font-bold">
+                <span>PROJECT DISPLAYED ON 3D SCREEN:</span>
+                <span class="text-[10px] text-white/50">LIVE TILT</span>
               </div>
-              <div class="text-[10px] text-white/50">
-                Tracking Cursor Parallax · Nodes: Tata Comm (Cyan), Novamesh (Amber), IIM Kozhikode (Emerald).
+              <div class="flex gap-1.5">
+                <button *ngFor="let proj of projects; let pIdx = index"
+                        (click)="selectProject(pIdx)"
+                        class="flex-1 py-1 px-1.5 rounded-lg text-[10px] font-bold border transition-all cursor-pointer text-center truncate"
+                        [ngClass]="activeProjectIndex === pIdx
+                          ? 'bg-amber-500 text-black border-amber-500 shadow-sm'
+                          : 'bg-white/5 text-white/70 border-white/10 hover:border-amber-400/40'">
+                  {{ proj.name.split(' ')[0] }}
+                </button>
               </div>
             </div>
           </div>
@@ -134,270 +145,313 @@
   </section>
 
   <!-- ═══════════════════════════════════════════════════════════════
-       SECTION 2: THE 4 ACTS OF HARSHAL'S LIFE JOURNEY
+       SECTION 2: THE 4 VISUAL CHAPTERS OF HARSHAL'S LIFE STORY
        ═══════════════════════════════════════════════════════════════ -->
-  <section id="ch-journey" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-12">
+  <section id="ch-journey" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-20">
     
-    <!-- Section Header -->
     <div class="text-center space-y-3 max-w-3xl mx-auto">
       <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-white/15 bg-white/5 text-xs font-mono text-white/70">
-        <span>CHRONOLOGICAL MILESTONES · 2017 TO PRESENT</span>
+        <span>CHRONOLOGICAL CHRONICLES · 2017 TO PRESENT</span>
       </div>
       <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight">
-        The Four Acts of <span class="text-amber-400">Engineering Evolution</span>
+        The Four Chapters of <span class="text-amber-400">Harshal's Journey</span>
       </h2>
       <p class="text-sm sm:text-base text-white/70 leading-relaxed font-mono">
-        Each era solved progressively harder technical problems while forging leadership resilience.
+        Explore each stage with its contextual 3D illustrations, genuine life narrative, and real engineering achievements.
       </p>
     </div>
 
-    <!-- Act Selection Scrubber Tabs -->
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-5xl mx-auto">
-      <button *ngFor="let act of acts; let i = index"
-              (click)="selectAct(i)"
-              class="p-4 rounded-2xl border text-left transition-all duration-300 cursor-pointer flex flex-col justify-between"
-              [ngClass]="activeActIndex === i
-                ? 'bg-[#151928] border-amber-500 shadow-[0_0_25px_rgba(245,158,11,0.25)] translate-y-[-2px]'
-                : 'bg-[#0b0e18] border-white/10 hover:border-white/25 hover:bg-[#101422]'">
-        <div>
-          <div class="text-[10px] font-mono font-bold tracking-widest text-amber-400">{{ act.badge }}</div>
-          <div class="text-sm font-bold text-white mt-1">{{ act.title }}</div>
-        </div>
-        <div class="mt-4 pt-2 border-t border-white/10 flex items-center justify-between text-[11px] font-mono text-white/50">
-          <span>{{ act.period }}</span>
-          <span class="text-xs" [ngClass]="activeActIndex === i ? 'text-amber-400 font-bold' : 'text-white/30'">➔</span>
-        </div>
-      </button>
-    </div>
-
-    <!-- Active Act Deep Dive Showcase (3D Perspective Card) -->
-    <div class="max-w-5xl mx-auto">
-      <div class="rounded-3xl bg-gradient-to-b from-[#111626] to-[#0c0f1c] border-2 border-amber-500/40 p-6 sm:p-10 shadow-2xl relative overflow-hidden transition-all duration-300"
-           #heroCard
-           (mousemove)="onHeroCardMouseMove($event, heroCard)"
-           (mouseleave)="onHeroCardMouseLeave()"
-           [style.transform]="'perspective(1000px) rotateX(' + heroTiltX + 'deg) rotateY(' + heroTiltY + 'deg)'">
+    <!-- Chapter 1 to 4: In-Depth Rendered Chronological Story Cards -->
+    <div class="space-y-20">
+      
+      <div *ngFor="let act of acts; let idx = index"
+           [id]="'act-' + idx"
+           class="rounded-3xl bg-[#0c101c] border-2 border-white/10 hover:border-amber-500/40 transition-all duration-300 p-6 sm:p-10 shadow-2xl space-y-8 relative overflow-hidden"
+           [class.border-amber-500-40]="activeActIndex === idx">
         
-        <!-- Subtle internal glow -->
-        <div class="absolute top-0 right-0 w-80 h-80 bg-amber-500/10 rounded-full blur-[100px] pointer-events-none"></div>
+        <!-- Subtle internal glow based on era -->
+        <div class="absolute -top-20 -right-20 w-96 h-96 rounded-full blur-[120px] pointer-events-none"
+             [ngClass]="act.accentColor === 'cyan' ? 'bg-cyan-glow/10' : act.accentColor === 'energy' ? 'bg-energy/10' : act.accentColor === 'amber' ? 'bg-amber-500/10' : 'bg-emerald-500/10'"></div>
 
-        <div class="relative space-y-8">
+        <!-- Top Chapter Header -->
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-white/10">
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="px-2.5 py-1 rounded bg-amber-500/20 border border-amber-500/40 text-amber-400 font-mono text-xs font-bold">
+                {{ act.actNumber }} · {{ act.badge }}
+              </span>
+              <span class="text-xs font-mono text-white/50">{{ act.period }}</span>
+            </div>
+            <h3 class="text-2xl sm:text-3xl font-black text-white mt-2">{{ act.title }}</h3>
+            <p class="text-xs sm:text-sm text-cyan-glow font-mono mt-1">{{ act.subtitle }}</p>
+          </div>
+
+          <div class="font-mono text-xs text-white/60 sm:text-right">
+            <div class="font-bold text-white">{{ act.organization }}</div>
+            <div class="text-[11px] text-white/40">{{ act.location }}</div>
+          </div>
+        </div>
+
+        <!-- Core Split: Contextual 3D Illustration + Narrative Content -->
+        <div class="grid lg:grid-cols-12 gap-8 items-center">
           
-          <!-- Chapter Metadata Banner -->
-          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-white/10">
-            <div>
-              <div class="flex items-center gap-2">
-                <span class="px-2.5 py-1 rounded bg-amber-500/20 border border-amber-500/40 text-amber-400 font-mono text-xs font-bold">
-                  {{ activeAct.badge }}
-                </span>
-                <span class="text-xs font-mono text-white/50">{{ activeAct.period }}</span>
+          <!-- Contextual 3D Illustration Panel (5 Cols) -->
+          <div class="lg:col-span-5 relative group">
+            <div class="aspect-[16/10] sm:aspect-[16/9] w-full rounded-2xl overflow-hidden border border-white/15 bg-[#151c2e] shadow-xl relative">
+              <img [src]="act.imagePath"
+                   [alt]="act.title"
+                   class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                   loading="lazy">
+              <!-- Gradient Overlay -->
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none"></div>
+              
+              <!-- Image Label -->
+              <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between text-[10px] font-mono text-white/80 pointer-events-none">
+                <span class="bg-black/70 px-2 py-0.5 rounded backdrop-blur-md border border-white/10">{{ act.badge }}</span>
+                <span class="text-amber-400 font-bold">3D SCENE</span>
               </div>
-              <h3 class="text-2xl sm:text-3xl font-black text-white mt-2">{{ activeAct.title }}</h3>
-              <p class="text-xs sm:text-sm text-cyan-glow font-mono mt-1">{{ activeAct.subtitle }}</p>
-            </div>
-
-            <div class="text-left sm:text-right font-mono text-xs text-white/60">
-              <div class="font-bold text-white">{{ activeAct.organization }}</div>
-              <div class="text-[11px] text-white/40">{{ activeAct.location }}</div>
             </div>
           </div>
 
-          <!-- Act Overview Narrative -->
-          <p class="text-sm sm:text-base text-white/80 leading-relaxed font-normal">
-            {{ activeAct.summary }}
-          </p>
+          <!-- Narrative and Highlights (7 Cols) -->
+          <div class="lg:col-span-7 space-y-5">
+            <p class="text-sm sm:text-base text-white/80 leading-relaxed font-normal">
+              {{ act.storyNarrative }}
+            </p>
 
-          <!-- Verified Quantified Metrics Grid -->
-          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            <div *ngFor="let m of activeAct.metrics"
-                 class="p-4 rounded-2xl bg-[#080b14] border border-white/10 hover:border-amber-500/30 transition-all">
-              <div class="text-2xl sm:text-3xl font-black text-amber-400">{{ m.value }}</div>
-              <div class="text-xs font-mono font-bold text-white mt-1">{{ m.label }}</div>
-              <div class="text-[11px] text-white/50 mt-1 leading-snug">{{ m.desc }}</div>
+            <!-- Metrics Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1">
+              <div *ngFor="let m of act.metrics"
+                   class="p-3.5 rounded-xl bg-[#07090e] border border-white/10 hover:border-amber-500/30 transition-all">
+                <div class="text-xl sm:text-2xl font-black text-amber-400">{{ m.value }}</div>
+                <div class="text-xs font-mono font-bold text-white mt-0.5">{{ m.label }}</div>
+                <div class="text-[10px] text-white/50 mt-0.5 leading-snug">{{ m.detail }}</div>
+              </div>
             </div>
-          </div>
 
-          <!-- Technical Bullets (From Resume) -->
-          <div class="space-y-3 pt-2">
-            <h4 class="text-xs font-mono font-bold tracking-wider text-white/60 uppercase">Key Architecture &amp; Engineering Contributions</h4>
-            <ul class="space-y-2.5 text-xs sm:text-sm text-white/80">
-              <li *ngFor="let h of activeAct.technicalHighlights" class="flex items-start gap-2.5">
-                <span class="text-amber-400 font-bold text-sm mt-0.5">▶</span>
-                <span class="leading-relaxed">{{ h }}</span>
-              </li>
-            </ul>
-          </div>
+            <!-- Bullet Highlights -->
+            <div class="space-y-2 pt-1">
+              <div class="text-[11px] font-mono font-bold text-white/50 uppercase">Key Milestones &amp; Responsibilities:</div>
+              <ul class="space-y-2 text-xs sm:text-sm text-white/80">
+                <li *ngFor="let h of act.highlights" class="flex items-start gap-2">
+                  <span class="text-amber-400 font-bold mt-0.5">▶</span>
+                  <span class="leading-relaxed">{{ h }}</span>
+                </li>
+              </ul>
+            </div>
 
-          <!-- System Tags -->
-          <div class="flex flex-wrap items-center gap-2 pt-4 border-t border-white/10">
-            <span class="text-[11px] font-mono text-white/40 mr-1">STACK:</span>
-            <span *ngFor="let tag of activeAct.systemTags"
-                  class="px-2.5 py-1 rounded-lg bg-white/5 border border-white/10 text-white/70 text-[11px] font-mono">
-              {{ tag }}
-            </span>
+            <!-- Tags -->
+            <div class="flex flex-wrap gap-1.5 pt-2">
+              <span *ngFor="let tag of act.tags"
+                    class="px-2.5 py-0.5 rounded bg-white/5 border border-white/10 text-white/70 text-[10px] font-mono">
+                {{ tag }}
+              </span>
+            </div>
           </div>
 
         </div>
 
-      </div>
-    </div>
+        <!-- SPECIAL INTEGRATED WIDGET: Novamesh Saga Simulator (Inside Act III) -->
+        <div *ngIf="act.id === 'act-3-novamesh'"
+             class="mt-6 p-6 rounded-2xl bg-[#07090e] border border-amber-500/30 space-y-5">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div>
+              <div class="text-[10px] font-mono font-bold text-amber-400 tracking-wider">LIVE SYSTEM SIMULATOR</div>
+              <h4 class="text-base sm:text-lg font-black text-white mt-0.5">Novamesh Zero-Touch Order Fulfillment Saga</h4>
+              <p class="text-xs text-white/60 font-mono">Flowable BPMN + RabbitMQ Sagas across KVM, ESXi &amp; OLVM</p>
+            </div>
+            <div class="flex items-center gap-2">
+              <button (click)="simulatePipeline()"
+                      [disabled]="pipelineRunning"
+                      class="px-3.5 py-2 rounded-xl bg-amber-500 hover:bg-amber-400 disabled:opacity-50 text-black font-mono font-bold text-xs shadow transition-all cursor-pointer">
+                <span>{{ pipelineRunning ? 'SIMULATING...' : pipelineStep >= 0 ? 'RE-RUN FLOW' : 'RUN PIPELINE ▶' }}</span>
+              </button>
+              <button (click)="simulateSagaFailure()"
+                      class="px-3 py-2 rounded-xl border text-xs font-mono font-bold transition-all cursor-pointer"
+                      [ngClass]="pipelineRollback ? 'border-red-500 bg-red-500/20 text-red-300' : 'border-white/15 bg-white/5 text-white/70 hover:border-red-500/50 hover:text-red-400'">
+                <span>{{ pipelineRollback ? 'ROLLBACK ACTIVE ↺' : 'SIMULATE FAILURE ✕' }}</span>
+              </button>
+            </div>
+          </div>
 
-  </section>
-
-  <!-- ═══════════════════════════════════════════════════════════════
-       SECTION 3: NOVAMESH ZERO-TOUCH PIPELINE SIMULATOR
-       ═══════════════════════════════════════════════════════════════ -->
-  <section class="py-16 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto space-y-8">
-    <div class="p-6 sm:p-8 rounded-3xl bg-[#0b0e18] border border-amber-500/30 space-y-6">
-      
-      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-        <div>
-          <div class="text-xs font-mono font-bold text-amber-400 tracking-wider">INTERACTIVE SIMULATION</div>
-          <h3 class="text-xl sm:text-2xl font-black text-white mt-1">
-            Novamesh Zero-Touch Order Fulfillment Saga
-          </h3>
-          <p class="text-xs text-white/60 font-mono mt-1">
-            Flowable BPMN + RabbitMQ Sagas across KVM, VMware ESXi &amp; OLVM
-          </p>
-        </div>
-
-        <div class="flex items-center gap-2">
-          <button (click)="simulatePipeline()"
-                  [disabled]="pipelineRunning"
-                  class="px-4 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 disabled:opacity-50 text-black font-mono font-bold text-xs shadow-md transition-all cursor-pointer">
-            <span>{{ pipelineRunning ? 'SIMULATING...' : pipelineStep >= 0 ? 'RE-RUN FLOW' : 'RUN PIPELINE ▶' }}</span>
-          </button>
+          <div class="grid grid-cols-1 sm:grid-cols-4 gap-2.5">
+            <div *ngFor="let node of pipelineNodes; let idx = index"
+                 class="p-3 rounded-xl border transition-all duration-300"
+                 [ngClass]="pipelineRollback && pipelineStep === idx
+                   ? 'bg-red-950/40 border-red-500 text-red-200'
+                   : pipelineStep >= idx
+                     ? 'bg-amber-500/10 border-amber-500 text-white shadow-[0_0_12px_rgba(245,158,11,0.2)]'
+                     : 'bg-[#101422] border-white/10 text-white/50'">
+              <div class="flex items-center justify-between text-[10px] font-mono">
+                <span [ngClass]="pipelineStep >= idx ? 'text-amber-400 font-bold' : 'text-white/40'">
+                  {{ pipelineRollback && pipelineStep === idx ? 'COMPENSATION' : pipelineStep >= idx ? 'SUCCESS' : 'PENDING' }}
+                </span>
+                <span class="w-1.5 h-1.5 rounded-full"
+                      [ngClass]="pipelineRollback && pipelineStep === idx ? 'bg-red-500 animate-ping' : pipelineStep >= idx ? 'bg-amber-400' : 'bg-white/20'"></span>
+              </div>
+              <div class="text-xs font-bold mt-1 text-white">{{ node.name }}</div>
+              <div class="text-[10px] mt-0.5 opacity-70 leading-relaxed font-mono">{{ node.detail }}</div>
+            </div>
+          </div>
           
-          <button (click)="simulateSagaFailure()"
-                  class="px-3.5 py-2.5 rounded-xl border text-xs font-mono font-bold transition-all cursor-pointer"
-                  [ngClass]="pipelineRollback
-                    ? 'border-red-500 bg-red-500/20 text-red-300'
-                    : 'border-white/15 bg-white/5 text-white/70 hover:border-red-500/50 hover:text-red-400'">
-            <span>{{ pipelineRollback ? 'ROLLBACK ACTIVE ↺' : 'SIMULATE FAILURE ✕' }}</span>
-          </button>
-        </div>
-      </div>
-
-      <!-- Pipeline Node Steps -->
-      <div class="grid grid-cols-1 sm:grid-cols-4 gap-3">
-        <div *ngFor="let node of pipelineNodes; let idx = index"
-             class="p-3.5 rounded-xl border transition-all duration-300"
-             [ngClass]="pipelineRollback && pipelineStep === idx
-               ? 'bg-red-950/40 border-red-500 text-red-200'
-               : pipelineStep >= idx
-                 ? 'bg-amber-500/10 border-amber-500 text-white shadow-[0_0_15px_rgba(245,158,11,0.2)]'
-                 : 'bg-[#101422] border-white/10 text-white/50'">
-          <div class="flex items-center justify-between text-[10px] font-mono">
-            <span [ngClass]="pipelineStep >= idx ? 'text-amber-400 font-bold' : 'text-white/40'">
-              {{ pipelineRollback && pipelineStep === idx ? 'COMPENSATION' : pipelineStep >= idx ? 'SUCCESS' : 'PENDING' }}
-            </span>
-            <span class="w-2 h-2 rounded-full"
-                  [ngClass]="pipelineRollback && pipelineStep === idx
-                    ? 'bg-red-500 animate-ping'
-                    : pipelineStep >= idx
-                      ? 'bg-amber-400'
-                      : 'bg-white/20'"></span>
+          <div class="text-[11px] font-mono text-white/50 pt-2 border-t border-white/10">
+            <span class="text-amber-400 font-bold">Result:</span> Slashed provisioning lead time by <strong>85% (from 4 hours to &lt;35 minutes)</strong> with automated compensation sagas.
           </div>
-          <div class="text-xs font-bold mt-2 text-white">{{ node.name }}</div>
-          <div class="text-[10px] mt-1 opacity-70 leading-relaxed font-mono">{{ node.detail }}</div>
         </div>
-      </div>
 
-      <div class="text-[11px] font-mono text-white/50 flex items-center gap-2 pt-2 border-t border-white/10">
-        <span class="text-amber-400">⚡ Result:</span>
-        <span>Slashed cloud provisioning lead time by <strong>85% (from 4 hours down to &lt;35 minutes)</strong> with self-healing failure recovery.</span>
       </div>
 
     </div>
+
   </section>
 
   <!-- ═══════════════════════════════════════════════════════════════
-       SECTION 4: TECH × MBA VENTURES & CAPSTONES
+       SECTION 3: THREE FLAGSHIP VENTURE PROJECTS (TECH × MBA)
        ═══════════════════════════════════════════════════════════════ -->
-  <section class="py-16 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto space-y-8">
-    <div class="text-center space-y-2">
-      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-400 text-xs font-mono font-bold">
-        <span>IIM KOZHIKODE SCHOLAR · INDEPENDENT VENTURES</span>
+  <section class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-10">
+    <div class="text-center space-y-3 max-w-3xl mx-auto">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-400 text-xs font-mono font-bold">
+        <span>EXECUTIVE VENTURE ARCHITECTURE</span>
       </div>
-      <h3 class="text-2xl sm:text-3xl font-black text-white">Three Flagship Capstone Platforms</h3>
-      <p class="text-xs sm:text-sm text-white/60 font-mono">Translating executive management theory into high-throughput production infrastructure</p>
+      <h3 class="text-3xl sm:text-4xl font-black text-white">Three Flagship Capstone Platforms</h3>
+      <p class="text-xs sm:text-sm text-white/60 font-mono">
+        All projects feature full architecture details with expandable deep-dive modals so zero information is missed.
+      </p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+    <!-- 3 Project Cards with Expand Architecture Button -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
       
-      <!-- SthiraX -->
-      <div class="p-6 rounded-2xl bg-[#0e1322] border border-white/10 hover:border-emerald-400/50 transition-all space-y-4">
-        <div class="flex items-center justify-between">
-          <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 border border-emerald-500/40">IIMK CAPSTONE</span>
-          <span class="text-xs font-mono text-white/40">IoT + FinOps</span>
-        </div>
-        <h4 class="text-xl font-black text-white">SthiraX Platform</h4>
-        <p class="text-xs text-white/70 leading-relaxed">
-          Distributed CO2-Mineralization &amp; IoT MRV Platform for Certified Low-Carbon Precast Materials in India. Bridges carbon accounting with real-time hardware telemetry.
-        </p>
-        <div class="flex flex-wrap gap-1.5 pt-2">
-          <span class="px-2 py-0.5 rounded bg-white/5 text-[10px] font-mono text-white/60">AIOps</span>
-          <span class="px-2 py-0.5 rounded bg-white/5 text-[10px] font-mono text-white/60">FinOps</span>
-          <span class="px-2 py-0.5 rounded bg-white/5 text-[10px] font-mono text-white/60">Spring Boot 3</span>
-        </div>
-        <a href="https://github.com/harshalraajpatnaik/SthiraX" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-mono text-emerald-400 hover:text-emerald-300 font-bold pt-2">
-          <span>GITHUB REPO</span>
-          <span>↗</span>
-        </a>
-      </div>
+      <div *ngFor="let proj of projects"
+           class="p-6 sm:p-7 rounded-3xl bg-[#0e1322] border border-white/10 hover:border-amber-400/50 transition-all flex flex-col justify-between space-y-5 group">
+        
+        <div class="space-y-4">
+          <div class="flex items-center justify-between">
+            <span class="text-[10px] font-mono px-2.5 py-1 rounded bg-white/5 border border-white/15 text-white/70">{{ proj.category }}</span>
+            <span class="text-[11px] font-mono font-bold" [style.color]="proj.color">{{ proj.badge }}</span>
+          </div>
 
-      <!-- MarginOS -->
-      <div class="p-6 rounded-2xl bg-[#0e1322] border border-white/10 hover:border-amber-400/50 transition-all space-y-4">
-        <div class="flex items-center justify-between">
-          <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-500/20 text-amber-400 border border-amber-500/40">FINTECH ENGINE</span>
-          <span class="text-xs font-mono text-white/40">Real-Time Risk</span>
-        </div>
-        <h4 class="text-xl font-black text-white">MarginOS</h4>
-        <p class="text-xs text-white/70 leading-relaxed">
-          Quantitative risk analytics and algorithmic trading engine computing real-time P&amp;L attribution, options Greeks, and multi-asset margin requirements.
-        </p>
-        <div class="flex flex-wrap gap-1.5 pt-2">
-          <span class="px-2 py-0.5 rounded bg-white/5 text-[10px] font-mono text-white/60">Quantitative Risk</span>
-          <span class="px-2 py-0.5 rounded bg-white/5 text-[10px] font-mono text-white/60">WebSocket</span>
-          <span class="px-2 py-0.5 rounded bg-white/5 text-[10px] font-mono text-white/60">Python</span>
-        </div>
-        <a href="https://github.com/harshalraajpatnaik/MarginOS" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-mono text-amber-400 hover:text-amber-300 font-bold pt-2">
-          <span>GITHUB REPO</span>
-          <span>↗</span>
-        </a>
-      </div>
+          <div>
+            <h4 class="text-xl sm:text-2xl font-black text-white group-hover:text-amber-400 transition-colors">{{ proj.name }}</h4>
+            <p class="text-xs text-white/70 mt-2 leading-relaxed">{{ proj.tagline }}</p>
+          </div>
 
-      <!-- QueryLens AI -->
-      <div class="p-6 rounded-2xl bg-[#0e1322] border border-white/10 hover:border-cyan-glow/50 transition-all space-y-4">
-        <div class="flex items-center justify-between">
-          <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-cyan-glow/20 text-cyan-glow border border-cyan-glow/40">GENAI / RAG</span>
-          <span class="text-xs font-mono text-white/40">pgvector</span>
+          <!-- Metrics Highlights -->
+          <div class="grid grid-cols-2 gap-2 pt-2">
+            <div *ngFor="let m of proj.metrics" class="p-2.5 rounded-xl bg-[#07090e] border border-white/10">
+              <div class="text-xs font-mono font-bold text-amber-400">{{ m.value }}</div>
+              <div class="text-[10px] text-white/50 mt-0.5">{{ m.label }}</div>
+            </div>
+          </div>
+
+          <!-- Tags -->
+          <div class="flex flex-wrap gap-1.5 pt-2">
+            <span *ngFor="let t of proj.tags.slice(0, 4)" class="px-2 py-0.5 rounded bg-white/5 text-[10px] font-mono text-white/60">
+              {{ t }}
+            </span>
+          </div>
         </div>
-        <h4 class="text-xl font-black text-white">QueryLens AI</h4>
-        <p class="text-xs text-white/70 leading-relaxed">
-          Natural-Language to SQL semantic database query copilot powered by pgvector RAG embeddings and LLM reasoning over enterprise schemas.
-        </p>
-        <div class="flex flex-wrap gap-1.5 pt-2">
-          <span class="px-2 py-0.5 rounded bg-white/5 text-[10px] font-mono text-white/60">pgvector RAG</span>
-          <span class="px-2 py-0.5 rounded bg-white/5 text-[10px] font-mono text-white/60">LLM Reasoning</span>
-          <span class="px-2 py-0.5 rounded bg-white/5 text-[10px] font-mono text-white/60">FastAPI</span>
+
+        <!-- Buttons: Expand Details Modal + GitHub -->
+        <div class="pt-4 border-t border-white/10 flex items-center justify-between gap-2">
+          <button (click)="openProjectModal(proj)"
+                  class="px-3.5 py-2 rounded-xl bg-amber-500 hover:bg-amber-400 text-black font-mono font-bold text-xs transition-all cursor-pointer flex items-center gap-1.5">
+            <span>EXPAND DETAILS 🔍</span>
+          </button>
+
+          <a [href]="proj.githubUrl" target="_blank" rel="noopener noreferrer"
+             class="px-3 py-2 rounded-xl border border-white/20 hover:border-white/40 text-white/80 hover:text-white font-mono text-xs transition-all flex items-center gap-1">
+            <span>GITHUB</span>
+            <span>↗</span>
+          </a>
         </div>
-        <a href="https://github.com/harshalraajpatnaik/QueryLens-AI" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-mono text-cyan-glow hover:text-cyan-300 font-bold pt-2">
-          <span>GITHUB REPO</span>
-          <span>↗</span>
-        </a>
+
       </div>
 
     </div>
   </section>
 
   <!-- ═══════════════════════════════════════════════════════════════
-       SECTION 5: DIRECT RECRUITER GATEWAY & CONTACT
+       MODAL: FULL PROJECT DEEP-DIVE & ARCHITECTURE
+       ═══════════════════════════════════════════════════════════════ -->
+  <div *ngIf="selectedProjectModal"
+       class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-xl animate-in fade-in duration-200"
+       role="dialog" aria-modal="true" [attr.aria-label]="selectedProjectModal.name">
+    
+    <div class="relative w-full max-w-3xl rounded-3xl bg-[#0c101c] border-2 border-amber-500/50 p-6 sm:p-8 shadow-2xl space-y-6 max-h-[90vh] overflow-y-auto">
+      
+      <!-- Modal Header -->
+      <div class="flex items-start justify-between gap-4 pb-4 border-b border-white/10">
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="px-2.5 py-1 rounded bg-amber-500/20 text-amber-400 border border-amber-500/40 text-xs font-mono font-bold">
+              {{ selectedProjectModal.category }}
+            </span>
+            <span class="text-xs font-mono text-white/50">{{ selectedProjectModal.badge }}</span>
+          </div>
+          <h3 class="text-2xl sm:text-3xl font-black text-white mt-2">{{ selectedProjectModal.name }}</h3>
+          <p class="text-xs sm:text-sm text-cyan-glow font-mono mt-1">{{ selectedProjectModal.tagline }}</p>
+        </div>
+
+        <button (click)="closeProjectModal()"
+                class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-white font-bold flex items-center justify-center transition-all cursor-pointer">
+          ✕
+        </button>
+      </div>
+
+      <!-- Overview -->
+      <div class="space-y-2">
+        <h4 class="text-xs font-mono font-bold text-white/50 uppercase">Project Description &amp; Problem Solved</h4>
+        <p class="text-sm text-white/85 leading-relaxed">{{ selectedProjectModal.description }}</p>
+      </div>
+
+      <!-- Business Impact -->
+      <div class="p-4 rounded-2xl bg-amber-500/10 border border-amber-500/25 space-y-1.5">
+        <div class="text-xs font-mono font-bold text-amber-400 uppercase">Strategic &amp; Business Value (Tech × MBA)</div>
+        <p class="text-xs sm:text-sm text-white/90 leading-relaxed">{{ selectedProjectModal.businessImpact }}</p>
+      </div>
+
+      <!-- Technical Architecture Highlights -->
+      <div class="space-y-2.5">
+        <h4 class="text-xs font-mono font-bold text-white/50 uppercase">Technical Systems Architecture</h4>
+        <ul class="space-y-2 text-xs sm:text-sm text-white/80">
+          <li *ngFor="let arch of selectedProjectModal.technicalArchitecture" class="flex items-start gap-2">
+            <span class="text-amber-400 font-bold mt-0.5">▶</span>
+            <span class="leading-relaxed">{{ arch }}</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Metrics -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+        <div *ngFor="let m of selectedProjectModal.metrics" class="p-3.5 rounded-xl bg-[#07090e] border border-white/10">
+          <div class="text-xs font-mono font-bold text-amber-400">{{ m.value }}</div>
+          <div class="text-[10px] text-white/50 mt-0.5">{{ m.label }}</div>
+        </div>
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="pt-4 border-t border-white/10 flex items-center justify-between gap-3">
+        <a [href]="selectedProjectModal.githubUrl" target="_blank" rel="noopener noreferrer"
+           class="px-5 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-black font-mono font-bold text-xs transition-all flex items-center gap-2">
+          <span>VIEW GITHUB REPOSITORY</span>
+          <span>↗</span>
+        </a>
+        <button (click)="closeProjectModal()" class="px-4 py-2.5 rounded-xl border border-white/20 text-white/70 hover:text-white font-mono text-xs cursor-pointer">
+          Close Window
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       SECTION 4: DIRECT RECRUITER GATEWAY & CONTACT
        ═══════════════════════════════════════════════════════════════ -->
   <section id="ch-connect" class="py-20 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto space-y-12">
     <div class="text-center space-y-4">
       <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-amber-500/30 bg-amber-500/10 text-amber-400 text-xs font-mono font-bold">
-        <span>THE NEXT CHAPTER BEGINS</span>
+        <span>LET'S CONNECT</span>
       </div>
       <h3 class="text-3xl sm:text-4xl font-black text-white">Let's Build Resilient Systems Together</h3>
       <p class="text-sm text-white/70 font-mono max-w-xl mx-auto">
@@ -433,7 +487,7 @@
       <!-- Error Notification -->
       <div *ngIf="contactState === 'error'" class="p-4 rounded-xl bg-red-500/20 border border-red-500/40 text-red-300 text-xs font-mono space-y-2">
         <div class="font-bold">Transmission issue detected</div>
-        <div>Recorded safely in telemetry. You can also reach Harshal directly at <strong>harshalraajpatnaik&#64;outlook.com</strong>.</div>
+        <div>Recorded safely in telemetry. You can reach Harshal directly at <strong>harshalraajpatnaik&#64;outlook.com</strong>.</div>
       </div>
 
       <!-- Form Inputs -->
@@ -474,7 +528,7 @@
         <span class="text-white font-bold">HARSHAL RAAJ PATNAIK · INTERACTIVE 3D LIFE CHRONICLES</span>
       </div>
       <div class="flex flex-wrap items-center gap-4 text-[11px]">
-        <span>5+ YEARS EXPERIENCE · TECH × MBA</span>
+        <span>5+ YEARS PROFESSIONAL JOURNEY · TECH × MBA</span>
         <span>•</span>
         <a href="assets/Harshal_Raaj_Patnaik_Resume.pdf" download="Harshal_Raaj_Patnaik_Resume.pdf" target="_blank" rel="noopener noreferrer" class="hover:text-amber-400 transition-colors">ATS RESUME (PDF) ↗</a>
         <span>•</span>
